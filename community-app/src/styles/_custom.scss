@@ -1,0 +1,11 @@
+
+
+$theme-colors: (
+  accueil: #007C84,
+  accueil-darker: darken(#007C84, 5%),
+  accueil-navbar: #136367
+) !default;
+
+/* remove rounding from cards, buttons and inputs */
+
+$btn-border-radius: 20px;
