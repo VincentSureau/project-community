@@ -1,4 +1,8 @@
 @import 'reset';
+// My Bootstrap configuration
+@import 'custom';
+// Bootstrap library
+@import '../../node_modules/bootstrap/scss/bootstrap';
 
 body {
   background-color: #eaeaea;

@@ -2,11 +2,9 @@
  * NPM import
  */
 // Bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css';
-import $ from 'jquery';
-import Popper from 'popper.js';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 import '@babel/polyfill';
+import './styles/index.scss';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';

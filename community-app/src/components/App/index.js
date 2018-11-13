@@ -15,9 +15,13 @@ import './app.scss';
  * Code
  */
 const App = () => (
-  <div className="bg-primary" id="app">
+  <div className="bg-accueil" id="app">
     Hello World !
+    <div className="bg-accueil-darker">
+    Nouvelle div
+    </div>
   </div>
+
 );
 
 /**
