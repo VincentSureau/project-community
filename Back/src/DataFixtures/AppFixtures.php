@@ -28,12 +28,16 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $generator = Factory::create('fr_FR');
-        $competence = new Competence();
-        $competence->setName('La 2eme competence');
 
+        $competence = new Competence();
+        $competence->setName('La 1ère competence');
         $manager->persist($competence);
-        // $product = new Product();
-        // $manager->persist($product);
+
+        for ($i = 2; $i < 30; $i++){
+            $competence = new Competence();
+            $competence->setName('La '. $i . 'eme competence');
+            $manager->persist($competence);
+        }
 
         $manager->flush();
         dump($competence->getSlug());
