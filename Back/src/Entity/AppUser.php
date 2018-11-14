@@ -26,9 +26,6 @@ class AppUser implements UserInterface
      */
     private $email;
 
-    /**
-     * @ORM\Column(type="json")
-     */
     private $roles = [];
 
     /**
@@ -58,7 +55,7 @@ class AppUser implements UserInterface
     private $profilePicture;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", length=25, nullable=true)
      */
     private $phoneNumber;
 
@@ -134,6 +131,7 @@ class AppUser implements UserInterface
 
     public function __construct()
     {
+        $this->createdDate = new \DateTime();
         $this->competences = new ArrayCollection();
     }
 
@@ -169,18 +167,7 @@ class AppUser implements UserInterface
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
-        return array_unique($roles);
-    }
-
-    public function setRoles(array $roles): self
-    {
-        $this->roles = $roles;
-
-        return $this;
+        return [$this->role->getCode()];
     }
 
     /**
@@ -263,12 +250,12 @@ class AppUser implements UserInterface
         return $this;
     }
 
-    public function getPhoneNumber(): ?int
+    public function getPhoneNumber(): ?string
     {
         return $this->phoneNumber;
     }
 
-    public function setPhoneNumber(?int $phoneNumber): self
+    public function setPhoneNumber(?string $phoneNumber): self
     {
         $this->phoneNumber = $phoneNumber;
 
