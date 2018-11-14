@@ -8,4 +8,8 @@ $theme-colors: (
 
 /* remove rounding from cards, buttons and inputs */
 
-$btn-border-radius: 20px;
+// Cette variable affecte les classes `.h-*` et `.w-*`
+$sizes: (
+  10: 10%,
+  15: 15%,
+);
