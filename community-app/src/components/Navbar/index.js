@@ -36,6 +36,9 @@ const Navbar = () => (
           <li className="nav-item">
             <a className="nav-link" href="http://oclock.io">O'Clock</a>
           </li>
+          <li className="nav-item">
+            <NavLink activeClassName="" className="nav-link" exact to="/login">Me connecter</NavLink>
+          </li>
         </ul>
       </div>
     </nav>
