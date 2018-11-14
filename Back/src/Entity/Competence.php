@@ -27,7 +27,7 @@ class Competence
     private $name;
 
     /**
-     * @Gedmo\Slug(fields={"name","id"})
+     * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(type="string", length=120, nullable=true)
      */
     private $slug;
