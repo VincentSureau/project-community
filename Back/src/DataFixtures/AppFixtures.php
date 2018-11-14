@@ -38,7 +38,7 @@ class AppFixtures extends Fixture
             $competence->setName('La '. $i . 'eme competence');
             $manager->persist($competence);
         }
-        
+
         $manager->flush();
         dump($competence->getSlug());
     }
