@@ -8,6 +8,7 @@ import './styles/index.scss';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 /**
  * Local import
@@ -22,7 +23,9 @@ import store from 'src/store';
  */
 const rootComponent = (
   <Provider store={store}>
-    <App />
+    <Router>
+      <App />
+    </Router>
   </Provider>
 );
 
