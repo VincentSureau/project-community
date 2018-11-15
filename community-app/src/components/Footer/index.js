@@ -26,10 +26,19 @@ class Footer extends React.Component {
       { 'bg-project-navfoot': window.location.pathname.includes('/projects/') },
     );
 
+    const classcolortext = ClassNames(
+      { 'text-hometext': window.location.pathname === '/' },
+      { 'text-memberstext': window.location.pathname === '/members' },
+      { 'text-projectstext': window.location.pathname === '/projects' },
+      { 'text-logintext': window.location.pathname === '/login' },
+      { 'text-membertext': window.location.pathname.includes('/members/') },
+      { 'text-projecttext': window.location.pathname.includes('/projects/') },
+    );
+
     return (
       <footer id="footer" className={classcolor}>
         <img id="footer-img" className="img-fluid w-10" src="src/images/logo_oclock_community.svg" alt="" />
-        <p id="footer-copyright">2018 &copy; <a href="https://www.linkedin.com/in/elodiechiarani/">Elodie Chiarani</a> / <a href="https://www.linkedin.com/in/thibault-garnier/">Thibault Garnier</a> / <a href="https://www.linkedin.com/in/tristantouchain/">Tristan Touchain</a> / <a href="https://www.linkedin.com/in/vincentsureau/">Vincent Sureau</a></p>
+        <p id="footer-copyright" className={classcolortext} >2018 &copy; <a className={classcolortext} href="https://www.linkedin.com/in/elodiechiarani/">Elodie Chiarani</a> / <a className={classcolortext} href="https://www.linkedin.com/in/thibault-garnier/">Thibault Garnier</a> / <a className={classcolortext} href="https://www.linkedin.com/in/tristantouchain/">Tristan Touchain</a> / <a className={classcolortext} href="https://www.linkedin.com/in/vincentsureau/">Vincent Sureau</a></p>
       </footer>
     );
   }
