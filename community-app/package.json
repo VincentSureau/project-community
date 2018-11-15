@@ -20,7 +20,7 @@
     "html-webpack-plugin": "*",
     "ignore-styles": "*",
     "mini-css-extract-plugin": "*",
-    "node-sass": "*",
+    "node-sass": "^4.10.0",
     "optimize-css-assets-webpack-plugin": "*",
     "postcss": "*",
     "postcss-loader": "*",
