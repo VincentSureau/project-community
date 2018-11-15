@@ -16,7 +16,7 @@ import './login.scss';
  * Code
  */
 const Login = () => (
-  <section className="login bg-login">
+  <section className="login bg-login d-flex flex-column justify-content-center align-items-center">
     <h1 className="login-title">Welcome home</h1>
     <div className="d-flex">
       <article className="login-article w-50 d-flex flex-column align-items-center">

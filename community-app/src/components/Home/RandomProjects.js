@@ -20,7 +20,7 @@ const RandomProjects = () => (
     <h2 id="home-projects-title" className="text-uppercase">Leurs projets <br /> de fin d'étude</h2>
     <h3 id="home-projects-subtitle" className="text-uppercase">En un mois, on obtient cela !</h3>
     <ProjectsCarousel />
-    <button type="button" className="btn btn-lg bg-custom-button text-uppercase mt-7">Voir tous les projets</button>
+    <button type="button" className="btn btn-outline-white mx-3 btn-border-radius text-uppercase mt-7">Voir tous les projets</button>
   </section>
 );
 
