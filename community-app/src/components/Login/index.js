@@ -9,14 +9,14 @@ import React from 'react';
 // Components
 
 // Styles
-import './loginEdit.scss';
+import './login.scss';
 
 /**
  * Code
  */
-const LoginEdit = () => (
-  <div id="loginEdit">
-    LoginEdit
+const Login = () => (
+  <div id="login">
+    Login
   </div>
 
 );
@@ -24,4 +24,4 @@ const LoginEdit = () => (
 /**
  * Export
  */
-export default LoginEdit;
+export default Login;
