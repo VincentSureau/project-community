@@ -9,6 +9,7 @@ import React from 'react';
 // Components
 import LastMembers from './LastMembers';
 import RandomProjects from './RandomProjects';
+import Specialities from './Specialities';
 
 // Styles
 import './home.scss';
@@ -25,6 +26,7 @@ const Home = () => (
     </section>
     <LastMembers />
     <RandomProjects />
+    <Specialities />
   </div>
 
 );
