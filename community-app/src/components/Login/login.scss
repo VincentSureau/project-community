@@ -1,1 +1,45 @@
+@import 'src/styles/vars';
 
+.login {
+  padding: 8em 20em;
+  text-align: center;
+
+  &-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 5em;
+  }
+
+  &-article {
+    margin: 2em 0;
+    // text-align: center;
+
+    &-title {
+      text-transform: uppercase;
+      font-size: 1.8em;
+      font-weight: bold;
+    }
+
+    &-text {
+      margin-top: 1em;
+      font-size: 1.25em;
+      width: 55%;
+      text-align: justify;
+    }
+
+    &-form {
+      width: 60%;
+      &-textinput {
+        border: none;
+        border-bottom: 1px solid $text-color;
+        height: 3.5em;
+        margin: 1em 0;
+
+        &::placeholder {
+          text-transform: uppercase;
+          color: lighten(#8D3131, 20%);
+        }
+      }
+    }
+  }
+}

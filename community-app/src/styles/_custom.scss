@@ -92,7 +92,14 @@ $theme-colors: (
 
   //OTHER COLOR THEME
   custom-button: #fdf1cd,
-  white: #fdf1cd
+  white: #fdf1cd,
+  hometext: lighten(#007C84, 5%),
+  memberstext: lighten(#C77B7A, 5%),
+  membertext: lighten(#598DC5, 5%),
+  projectstext: lighten(#D8B177, 5%),
+  projecttext: lighten(#877EA5, 5%),
+  logintext: lighten(#8D3131, 5%),
+  loginsubtitle: darken(#8D3131, 8%),
 
 ) !default;
 
@@ -102,9 +109,18 @@ $theme-colors: (
 $sizes: (
   10: 10%,
   15: 15%,
-  100vh: 100vh,
+);
+
+// Cette variable affecte les classes de margin `m*-` et de padding `p*-`
+$spacers: (
+  6: 3em,
+  7: 4em,
 );
 
 // Boutons
 $btn-border-radius: 25px;
+
 $btn-border-radius-lg: 25px;
+
+// Input
+$input-bg: transparent;
