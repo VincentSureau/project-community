@@ -12,6 +12,7 @@ import ClassNames from 'classnames';
 // Styles
 import './navbar.scss';
 
+
 /**
  * Code
  */
@@ -19,39 +20,31 @@ class Navbar extends React.Component {
 
   render() {
     const classcolor = ClassNames(
-      { 'home-navbar': window.location.pathname === '/' },
-      { 'members-navbar': window.location.pathname === '/members' },
-      { 'projects-navbar': window.location.pathname === '/projects' },
-      { 'login-navbar': window.location.pathname === '/login' },
-      { 'member-navbar': window.location.pathname.includes('/members/') },
-      { 'project-navbar': window.location.pathname.includes('/projects/') },
+      { 'home-navfoot': window.location.pathname === '/' },
+      { 'members-navfoot': window.location.pathname === '/members' },
+      { 'projects-navfoot': window.location.pathname === '/projects' },
+      { 'login-navfoot': window.location.pathname === '/login' },
+      { 'member-navfoot': window.location.pathname.includes('/members/') },
+      { 'project-navfoot': window.location.pathname.includes('/projects/') },
     );
-    const classNavBar = ''.concat('navbar sticky-top navbar-expand navbar-dark bg-', classcolor, ' d-flex justify-content-between');
+    const classNavBar = ''.concat('navbar fixed-top navbar-expand navbar-dark bg-', classcolor, ' row');
     return (
       <div id="navbar">
         <nav className={classNavBar}>
-          <div>
-            <ul className="navbar-nav ">
-              <li className="nav-item">
-                <NavLink activeClassName="" className="nav-link " exact to="/">Accueil</NavLink>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link " href="http://oclock.io">O'Clock</a>
-              </li>
+          <div className="col-4">
+            <ul className="navbar-nav">
+              <NavLink activeClassName="" className="nav-item nav-link text-white" exact to="/">Accueil</NavLink>
+              <a className="nav-item nav-link text-white" href="http://oclock.io">O'Clock</a>
             </ul>
           </div>
-          <div>
-            <a className="navbar-brand" href="#">Community</a>
+          <div className="col-4 d-flex justify-content-center">
+            <NavLink activeClassName="" className="w-25 h-25" exact to="/"><img src="src/images/logo_oclock_community_navbar.svg" alt="Logo Community" /></NavLink>
           </div>
-          <div>
+          <div className="col-4 d-flex justify-content-end">
             <ul className="navbar-nav">
-              <li className="nav-item">
-                <NavLink activeClassName="" className="nav-link " exact to="/projects">Projets</NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink activeClassName="" className="nav-link " exact to="/members">Etudiants</NavLink>
-              </li>
-              <NavLink activeClassName="" className="btn btn-outline-white " exact to="/login">Me connecter</NavLink>
+              <NavLink activeClassName="" className="nav-item nav-link text-white" exact to="/projects">Projets</NavLink>
+              <NavLink activeClassName="" className="nav-item nav-link text-white" exact to="/members">Etudiants</NavLink>
+              <NavLink activeClassName="" className="btn btn-outline-white mx-3" exact to="/login">Me connecter</NavLink>
             </ul>
           </div>
         </nav>
