@@ -17,12 +17,12 @@ import './footer.scss';
  */
 
 const classcolor = ClassNames(
-  { 'bg-home-navbar': window.location.pathname === '/' },
-  { 'bg-members-navbar': window.location.pathname === '/members' },
-  { 'bg-projects-navbar': window.location.pathname === '/projects' },
-  { 'bg-login-navbar': window.location.pathname === '/login' },
-  { 'bg-member-navbar': window.location.pathname.includes('/members/') },
-  { 'bg-project-navbar': window.location.pathname.includes('/projects/') },
+  { 'bg-home-navfoot': window.location.pathname === '/' },
+  { 'bg-members-navfoot': window.location.pathname === '/members' },
+  { 'bg-projects-navfoot': window.location.pathname === '/projects' },
+  { 'bg-login-navfoot': window.location.pathname === '/login' },
+  { 'bg-member-navfoot': window.location.pathname.includes('/members/') },
+  { 'bg-project-navfoot': window.location.pathname.includes('/projects/') },
 );
 
 const Footer = () => (
