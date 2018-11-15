@@ -9,14 +9,14 @@ import React from 'react';
 // Components
 
 // Styles
-import './project-editEditedit.scss';
+import './projectEdit.scss';
 
 /**
  * Code
  */
-const ProjectEditEditEdit = () => (
-  <div id="project-editEditedit">
-    ProjectEditEditEdit
+const ProjectEdit = () => (
+  <div id="projectEdit">
+    ProjectEdit
   </div>
 
 );
@@ -24,4 +24,4 @@ const ProjectEditEditEdit = () => (
 /**
  * Export
  */
-export default ProjectEditEditEdit;
+export default ProjectEdit;
