@@ -10,6 +10,7 @@ import React from 'react';
 import SelectInput from '../SelectInput';
 import TextInput from '../TextInput';
 import ArrowDown from '../ArrowDown';
+import SingleMember from '../SingleMember';
 
 // Styles
 import './members.scss';
@@ -32,6 +33,15 @@ const Members = () => (
 
       </div>
       <ArrowDown />
+    </section>
+    <section id="members-list" className="bg-members-darker justify-content-center row">
+      <SingleMember />
+      <SingleMember />
+      <SingleMember />
+      <SingleMember />
+      <SingleMember />
+      <SingleMember />
+      <SingleMember />
     </section>
   </div>
 
