@@ -19,7 +19,8 @@
 
   &-presentation {
     width: 100%;
-    height: 100vh;
+    background-color: $bg-color-presentation;
+    min-height: 100vh;
 
     &-text {
       font-size: 1.3em;
@@ -28,7 +29,10 @@
       padding: 3em 0;
     }
   }
-
+  &-members {
+    margin: 0;
+    padding: 3em;
+  }
   &-projects {
     &-carousel {
       margin-bottom: 3em !important;

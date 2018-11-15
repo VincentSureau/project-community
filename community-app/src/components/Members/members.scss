@@ -1,11 +1,41 @@
+@import '../../styles/vars';
 
 #members {
   & h1 {
-    font-size: 3.2em;
+    font-size: 6em;
     font-weight: bold;
   }
   & h3 {
     font-size: 1.5em;
     padding: 0 0 2em 0;
+    font-weight: normal;
+  }
+  &-presentation {
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  &-list {
+    margin: 0;
+    padding: 3em;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  &-form {
+    width: 80%;
+  }
+
+
+}
+
+#selectinput {
+  border-color: darken($color-members, 20%);
+}
+
+#textinput {
+  border-color: darken($color-members, 20%);
+  &-input::placeholder {
+    color: $text-color;
   }
 }
