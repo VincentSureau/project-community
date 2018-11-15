@@ -1,3 +1,5 @@
+@import 'src/styles/vars';
+
 @import 'reset';
 // My Bootstrap configuration
 @import 'custom';
@@ -6,4 +8,8 @@
 
 body {
   background-color: #eaeaea;
+}
+
+p, h1, h2, h3 {
+  color: $text-color;
 }
