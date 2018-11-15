@@ -1,0 +1,18 @@
+
+
+.singlemember {
+  width: 200px;
+    &-photo {
+      width: 100%;
+      height: auto;
+    }
+    &-name {
+      font-size: 2em;
+      margin-bottom: -20px;
+    }
+    &-prom {
+      font-size: 1.5em;
+      font-weight: normal;
+      margin-top: 10px;
+    }
+}
