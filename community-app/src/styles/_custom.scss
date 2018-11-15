@@ -1,11 +1,41 @@
 
 
 $theme-colors: (
-  accueil: #007C84,
-  accueil-darker: darken(#007C84, 5%),
-  accueil-navbar: #136367
+  // HOME
+  home: #007C84,
+  home-darker: darken(#007C84, 5%),
+  home-navbar: darken(#007C84, 8%),
+
+  // MEMBERS PAGE
+  members: #C77B7A,
+  members-darker: darken(#C77B7A, 5%),
+  members-navbar: darken(#C77B7A, 8%),
+
+  // MEMBER PAGE
+  member: #598DC5,
+  member-darker: darken(#598DC5, 5%),
+  member-navbar: darken(#598DC5, 8%),
+
+  // PROJECTS PAGE
+  projects: #D8B177,
+  projects-darker: darken(#D8B177, 5%),
+  projects-navbar: darken(#D8B177, 8%),
+
+  // PROJECT PAGE   
+  project: #877EA5,
+  project-darker: darken(#877EA5, 5%),
+  project-navbar: darken(#877EA5, 8%),
+
+  // LOGIN PAGE
+  login: #8D3131,
+  login-darker: darken(#8D3131, 5%),
+  login-navbar: darken(#8D3131, 8%),
+
+  //OTHER COLOR THEME
+  custom-button: #fdf1cd,
+  white: white
+
 ) !default;
 
 /* remove rounding from cards, buttons and inputs */
-
-$btn-border-radius: 20px;
+$btn-border-radius-lg: 25px;
