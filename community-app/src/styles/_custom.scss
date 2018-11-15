@@ -99,6 +99,7 @@ $theme-colors: (
   projectstext: lighten(#D8B177, 5%),
   projecttext: lighten(#877EA5, 5%),
   logintext: lighten(#8D3131, 5%),
+  loginsubtitle: darken(#8D3131, 8%),
 
 ) !default;
 
@@ -120,3 +121,6 @@ $spacers: (
 $btn-border-radius: 25px;
 
 $btn-border-radius-lg: 25px;
+
+// Input
+$input-bg: transparent;
