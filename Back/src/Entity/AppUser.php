@@ -40,11 +40,13 @@ class AppUser implements UserInterface
     private $password;
 
     /**
+     * @Groups({"project"})
      * @ORM\Column(type="string", length=80, nullable=true)
      */
     private $firstname;
 
     /**
+     * @Groups({"project"})
      * @ORM\Column(type="string", length=80, nullable=true)
      */
     private $lastname;
@@ -116,7 +118,7 @@ class AppUser implements UserInterface
     private $promotion;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "project"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Specialisation", inversedBy="appUsers")
      */
     private $specialisation;
@@ -454,4 +456,3 @@ class AppUser implements UserInterface
         return $this;
     }
 }
-https://insiders.liveshare.vsengsaas.visualstudio.com/join?956745D7AE008825FB057A9C76BD62F2725F
