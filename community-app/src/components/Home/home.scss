@@ -4,10 +4,12 @@
   & h2 {
     font-size: 3.2em;
     font-weight: bold;
+    text-align: center;
+    line-height: 1;
   }
   & h3 {
     font-size: 1.5em;
-    padding: 0 0 2em 0;
+    padding: 0.2em 0 2em 0;
   }
 
   &-presentation {
@@ -22,4 +24,15 @@
       padding: 3em 0;
     }
   }
+
+  &-projects {
+    &-carousel {
+      margin-bottom: 3em !important;
+    }
+  }
 }
+
+.full-height {
+  min-height: 100vh;
+}
+

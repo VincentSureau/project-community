@@ -43,9 +43,13 @@ $theme-colors: (
 $sizes: (
   10: 10%,
   15: 15%,
-  100vh: 100vh,
+);
+
+// Cette variable affecte les classes de margin `m*-` et de padding `p*-`
+$spacers: (
+  6: 3em,
+  7: 4em,
 );
 
 // Boutons
-
 $btn-border-radius-lg: 25px;
