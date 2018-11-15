@@ -1,4 +1,63 @@
+// ----------------------------------------- NEW FONT OCLOCK -----------------------------------------
 
+@font-face{
+  font-family : "Oclock";
+
+  src : url('./fonts/oclock-regular.woff2') format('woff2'),
+        url('./fonts/oclock-regular.ttf') format('truetype');
+
+  font-weight:normal;
+  font-style:normal;
+  font-variant:normal;
+}
+
+@font-face{
+  font-family : "Oclock";
+
+  src : url('./fonts/oclock-regularitalic.woff2') format('woff2'),
+        url('./fonts/oclock-regularitalic.ttf') format('truetype');
+
+  font-weight:normal;
+  font-style:italic;
+  font-variant:normal;
+}
+
+@font-face{
+  font-family : "Oclock";
+
+  src : url('./fonts/oclock-medium.woff2') format('woff2'),
+        url('./fonts/oclock-medium.ttf') format('truetype');
+
+  font-weight:500;
+  font-style:normal;
+  font-variant:normal;
+}
+
+@font-face{
+  font-family : "Oclock";
+
+  src : url('./fonts/oclock-bold.woff2') format('woff2'),
+        url('./fonts/oclock-bold.ttf') format('truetype');
+
+  font-weight:700;
+  font-style:normal;
+  font-variant:normal;
+}
+
+@font-face{
+  font-family : "Oclock";
+
+  src : url('./fonts/oclock-black.woff2') format('woff2'),
+        url('./fonts/oclock-black.ttf') format('truetype');
+
+  font-weight:900;
+  font-style:normal;
+  font-variant:normal;
+}
+
+$font-family-base: "Oclock";
+
+// ----------------------------------------- THEME COLOR -----------------------------------------
 
 $theme-colors: (
   // HOME
@@ -58,4 +117,6 @@ $spacers: (
 );
 
 // Boutons
+$btn-border-radius: 25px;
+
 $btn-border-radius-lg: 25px;
