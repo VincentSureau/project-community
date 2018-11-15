@@ -9,6 +9,7 @@ import React from 'react';
 // Components
 import SelectInput from '../SelectInput';
 import TextInput from '../TextInput';
+import ArrowDown from '../ArrowDown';
 
 // Styles
 import './members.scss';
@@ -22,6 +23,7 @@ const Members = () => (
     <section id="members-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-members">
       <h1 className="text-uppercase">Étudiants</h1>
       <h3 className="text-uppercase">Vous êtes prêts ? Eux oui !</h3>
+
       <div id="members-form" className="row w-100">
 
         <SelectInput />
@@ -29,6 +31,7 @@ const Members = () => (
         <TextInput />
 
       </div>
+      <ArrowDown />
     </section>
   </div>
 
