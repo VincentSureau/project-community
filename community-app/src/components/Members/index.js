@@ -8,6 +8,7 @@ import React from 'react';
  */
 // Components
 import SelectInput from '../SelectInput';
+import TextInput from '../TextInput';
 
 // Styles
 import './members.scss';
@@ -25,7 +26,7 @@ const Members = () => (
 
         <SelectInput />
         <SelectInput />
-        <SelectInput />
+        <TextInput />
 
       </div>
     </section>

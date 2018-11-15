@@ -27,3 +27,12 @@
   border-radius: 25px;
   margin: 1em;
 }
+
+#textinput {
+  border: 3px solid darken($color-members, 20%);
+  border-radius: 25px;
+  margin: 1em;
+  &-input::placeholder {
+    color: $text-color;
+  }
+}
