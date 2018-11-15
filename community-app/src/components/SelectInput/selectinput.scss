@@ -9,7 +9,9 @@
     border-style: none;
     text-align: center;
     text-align-last: center;
-
+    &:focus {
+      outline:none;
+    }
 
   }
 }

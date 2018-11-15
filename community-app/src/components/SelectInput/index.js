@@ -17,6 +17,7 @@ import './selectinput.scss';
 const SelectInput = () => (
   <div id="selectinput" className="col">
     <select id="selectinput-select" className="w-100 text-white" value="" onChange="">
+      <option value="" disabled selected>Catégorie</option>
       <option value="grapefruit">Grapefruit</option>
       <option value="lime">Lime</option>
       <option value="coconut">Coconut</option>
