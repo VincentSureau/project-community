@@ -7,9 +7,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     attributes={
+ *         "normalization_context"={"groups"={"user"}}
+ *     }
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\AppUserRepository")
  */
 class AppUser implements UserInterface
@@ -105,26 +110,31 @@ class AppUser implements UserInterface
     private $role;
 
     /**
+     * @Groups({"user"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Promotion", inversedBy="appUsers")
      */
     private $promotion;
 
     /**
+     * @Groups({"user"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Specialisation", inversedBy="appUsers")
      */
     private $specialisation;
 
     /**
+     * @Groups({"user"})
      * @ORM\ManyToOne(targetEntity="App\Entity\ProfessionalStatus", inversedBy="appUsers")
      */
     private $professionalStatus;
 
     /**
+     * @Groups({"user"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="appUsers")
      */
     private $project;
 
     /**
+     * @Groups({"user"})
      * @ORM\ManyToMany(targetEntity="App\Entity\Competence", inversedBy="appUsers")
      */
     private $competences;
@@ -444,3 +454,4 @@ class AppUser implements UserInterface
         return $this;
     }
 }
+https://insiders.liveshare.vsengsaas.visualstudio.com/join?956745D7AE008825FB057A9C76BD62F2725F

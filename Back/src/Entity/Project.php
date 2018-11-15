@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ApiResource()
@@ -22,6 +23,7 @@ class Project
     private $id;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="string", length=120)
      */
     private $name;
@@ -68,6 +70,7 @@ class Project
     private $promotion;
 
     /**
+     * @Groups({"user"})
      * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="project")
      */
     private $images;
