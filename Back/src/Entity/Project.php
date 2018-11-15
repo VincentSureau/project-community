@@ -10,7 +10,11 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     attributes={
+ *         "normalization_context"={"groups"={"project"}}
+ *     }
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")
  */
 class Project
@@ -60,22 +64,25 @@ class Project
     private $linkVideo;
 
     /**
+     * @Groups({"project"})
      * @ORM\OneToMany(targetEntity="App\Entity\AppUser", mappedBy="project")
      */
     private $appUsers;
 
     /**
+     * @Groups({"project"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Promotion", inversedBy="projects")
      */
     private $promotion;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "project"})
      * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="project")
      */
     private $images;
 
     /**
+     * @Groups({"project"})
      * @ORM\ManyToMany(targetEntity="App\Entity\Competence", inversedBy="projects")
      */
     private $competences;
