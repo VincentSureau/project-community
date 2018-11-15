@@ -9,7 +9,7 @@ import React from 'react';
 // Components
 
 // Styles
-import './memberedit.scss';
+import './memberEdit.scss';
 
 /**
  * Code
