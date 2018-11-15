@@ -33,7 +33,13 @@ $theme-colors: (
 
   //OTHER COLOR THEME
   custom-button: #fdf1cd,
-  white: #fdf1cd
+  white: #fdf1cd,
+  hometext: lighten(#007C84, 5%),
+  memberstext: lighten(#C77B7A, 5%),
+  membertext: lighten(#598DC5, 5%),
+  projectstext: lighten(#D8B177, 5%),
+  projecttext: lighten(#877EA5, 5%),
+  logintext: lighten(#8D3131, 5%),
 
 ) !default;
 
