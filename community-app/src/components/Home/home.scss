@@ -1,1 +1,17 @@
+@import 'src/styles/vars';
 
+#home {
+  &-presentation {
+    width: 100%;
+    height: 100vh;
+    background-color: $bg-color-presentation;
+
+    &-text {
+      color: $text-color-presentation;
+      font-size: 1.3em;
+      max-width: 40%;
+      text-align: center;
+      padding: 3em 0;
+    }
+  }
+}
