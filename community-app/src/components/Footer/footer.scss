@@ -2,8 +2,6 @@
 
 #footer {
   width: 100%;
-  position: absolute;
-  bottom: 0;
   text-align: center;
   padding: 2em 0;
   border-top: 1px solid $color-copyright;
@@ -11,6 +9,7 @@
   &-img {
     // width: 10%;
     text-align: center;
+    
     margin-bottom: 1em;
   }
 
