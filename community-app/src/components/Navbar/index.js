@@ -44,7 +44,7 @@ class Navbar extends React.Component {
             <ul className="navbar-nav">
               <NavLink activeClassName="" className="nav-item nav-link text-white" exact to="/projects">Projets</NavLink>
               <NavLink activeClassName="" className="nav-item nav-link text-white" exact to="/members">Etudiants</NavLink>
-              <NavLink activeClassName="" className="btn btn-outline-white mx-3" exact to="/login">Me connecter</NavLink>
+              <NavLink activeClassName="" className="btn btn-outline-white mx-3 btn-border-radius" exact to="/login">Me connecter</NavLink>
             </ul>
           </div>
         </nav>
