@@ -22,17 +22,17 @@ const Specialities = () => (
       <div className="d-flex flex-column col-12 col-md-4 mt-7 mt-md-0">
         <img src="src/images/OClockCommunity-LogoWordPress.svg" alt="" />
         <h4>WordPress</h4>
-        <button type="button" className="btn btn-lg bg-custom-button text-uppercase mt-2">Consulter</button>
+        <button type="button" className="btn btn-outline-white mx-3 btn-border-radius text-uppercase mt-2">Consulter</button>
       </div>
       <div className="d-flex flex-column col-12 col-md-4 mt-7 mt-md-0">
         <img src="src/images/OClockCommunity-LogoReact.svg" alt="" />
         <h4>React</h4>
-        <button type="button" className="btn btn-lg bg-custom-button text-uppercase mt-2">Consulter</button>
+        <button type="button" className="btn btn-outline-white mx-3 btn-border-radius text-uppercase mt-2">Consulter</button>
       </div>
       <div className="d-flex flex-column col-12 col-md-4 mt-7 mt-md-0">
         <img src="src/images/OClockCommunity-LogoSymfony.svg" alt="" />
         <h4>Symfony</h4>
-        <button type="button" className="btn btn-lg bg-custom-button text-uppercase mt-2">Consulter</button>
+        <button type="button" className="btn btn-outline-white mx-3 btn-border-radius text-uppercase mt-2">Consulter</button>
       </div>
     </div>
   </section>
