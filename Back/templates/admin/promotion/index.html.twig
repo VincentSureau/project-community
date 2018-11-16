@@ -27,7 +27,7 @@
                 <td>
                     <a  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('promotion_show', {'id': promotion.id}) }}"><i class="fas fa-search"></i></a>
                     <a  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('promotion_edit', {'id': promotion.id}) }}"><i class="fas fa-edit"></i></a>
-                    <a  data-toggle="tooltip" data-placement="top" title="delete" href="{{ path('promotion_delete', {'id': promotion.id}) }}"><i class="fas fa-trash-alt"></i></a>
+                    <a class='delete-link' data-toggle="tooltip" data-placement="top" title="delete" href="{{ path('promotion_delete', {'id': promotion.id}) }}"><i class="fas fa-trash-alt"></i></a>
                 </td>
             </tr>
         {% else %}
