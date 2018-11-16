@@ -23,7 +23,7 @@ class ProfessionalStatus
     private $id;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "AppUserList"})
      * @ORM\Column(type="string", length=100)
      */
     private $name;

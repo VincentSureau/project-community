@@ -1,1 +1,82 @@
+@import '../../styles/vars';
 
+#projects {
+  & h1 {
+    font-size: 6em;
+    font-weight: bold;
+  }
+  & h3 {
+    font-size: 1.5em;
+    padding: 0 0 2em 0;
+    font-weight: normal;
+  }
+  &-presentation {
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  &-list {
+    margin: 0;
+    padding: 3em 10em;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  &-form {
+    width: 80%;
+    padding: 0 10em;
+    & #selectinput {
+      border-color: darken($color-projects, 20%);
+    }
+    
+    & #textinput {
+      border-color: darken($color-projects, 20%);
+      &-input::placeholder {
+        color: $text-color;
+      }
+    }
+  }
+
+
+}
+
+
+
+#projectitem {
+  min-width: 600px;
+  height: 500px;
+  padding: 1em 3em;
+  &-photo {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    object-position: top;
+  }
+  & h1 {
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: -10px;
+  }
+
+  &-prom {
+    font-size: 2em;
+    font-weight: bold;
+    color: darken($color-projects, 20%);
+    margin-top: -5px;
+    margin-bottom: 5px;
+  }
+
+  & .projectitem-tag {
+    font-size: 1em;
+    font-weight: normal;
+    color: darken($color-projects, 40%);
+    margin: 0 2px;
+    padding: 5px 10px;
+    border: 1px solid darken($color-projects, 40%);
+    border-radius: 5px;
+  }
+}
+
+.no-blue-on-link:hover{
+  text-decoration: none;
+}

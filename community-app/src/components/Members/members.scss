@@ -17,25 +17,27 @@
 
   &-list {
     margin: 0;
-    padding: 3em;
+    padding: 3em 10em;
     width: 100%;
     min-height: 100vh;
   }
 
   &-form {
     width: 80%;
+    padding: 0 10em;
+    & #selectinput {
+      border-color: darken($color-members, 20%);
+    }
+    
+    & #textinput {
+      border-color: darken($color-members, 20%);
+      &-input::placeholder {
+        color: $text-color;
+      }
+    }
   }
 
 
 }
 
-#selectinput {
-  border-color: darken($color-members, 20%);
-}
 
-#textinput {
-  border-color: darken($color-members, 20%);
-  &-input::placeholder {
-    color: $text-color;
-  }
-}
