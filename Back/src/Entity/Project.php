@@ -21,8 +21,9 @@ use App\Controller\ProjectCustom;
  *             "method"="GET",
  *             "path"="/projects/list",
  *             "controller"=ProjectCustom::class,
- *             "normalization_context"={"groups"={"list"}}
- *         }
+ *             "normalization_context"={"groups"={"list"}},
+ *         },
+ *     "post"
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")

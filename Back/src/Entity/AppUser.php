@@ -22,7 +22,8 @@ use App\Controller\AppUserCustom;
  *             "controller"=AppUserCustom::class,
  *             "normalization_context"={"groups"={"AppUserList"}}
  *         },
- *         "get"
+ *         "get",
+ *         "post"
  *     }
  * )
 
