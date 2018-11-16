@@ -23,7 +23,7 @@ class Specialisation
     private $id;
 
     /**
-     * @Groups({"user", "project"})
+     * @Groups({"user", "project", "AppUserList"})
      * @ORM\Column(type="string", length=100)
      */
     private $name;

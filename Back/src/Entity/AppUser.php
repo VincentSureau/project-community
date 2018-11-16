@@ -8,13 +8,24 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Controller\AppUserCustom;
 
 /**
  * @ApiResource(
  *     attributes={
  *         "normalization_context"={"groups"={"user"}}
+ *     },
+ *     collectionOperations={
+ *         "list"={
+ *             "method"="GET",
+ *             "path"="/app_users/list",
+ *             "controller"=AppUserCustom::class,
+ *             "normalization_context"={"groups"={"AppUserList"}}
+ *         },
+ *         "get"
  *     }
  * )
+
  * @ORM\Entity(repositoryClass="App\Repository\AppUserRepository")
  */
 class AppUser implements UserInterface
@@ -40,13 +51,13 @@ class AppUser implements UserInterface
     private $password;
 
     /**
-     * @Groups({"project"})
+     * @Groups({"project", "AppUserList"})
      * @ORM\Column(type="string", length=80, nullable=true)
      */
     private $firstname;
 
     /**
-     * @Groups({"project"})
+     * @Groups({"project", "AppUserList"})
      * @ORM\Column(type="string", length=80, nullable=true)
      */
     private $lastname;
@@ -57,6 +68,7 @@ class AppUser implements UserInterface
     private $birthdate;
 
     /**
+     * @Groups({"AppUserList"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $profilePicture;
@@ -112,19 +124,19 @@ class AppUser implements UserInterface
     private $role;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "AppUserList"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Promotion", inversedBy="appUsers")
      */
     private $promotion;
 
     /**
-     * @Groups({"user", "project"})
+     * @Groups({"user", "project", "AppUserList"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Specialisation", inversedBy="appUsers")
      */
     private $specialisation;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "AppUserList"})
      * @ORM\ManyToOne(targetEntity="App\Entity\ProfessionalStatus", inversedBy="appUsers")
      */
     private $professionalStatus;
