@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit ProfessionalStatus{% endblock %}
+
+{% block body %}
+    <h1>Edit ProfessionalStatus</h1>
+
+    {{ include('admin/professional_status/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('professional_status_index') }}">back to list</a>
+
+    {{ include('admin/professional_status/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProfessionalStatus{% endblock %}
+
+{% block body %}
+    <h1>ProfessionalStatus</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ professional_status.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ professional_status.name }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ professional_status.slug }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('professional_status_index') }}">back to list</a>
+
+    <a href="{{ path('professional_status_edit', {'id': professional_status.id}) }}">edit</a>
+
+    {{ include('admin/professional_status/_delete_form.html.twig') }}
+{% endblock %}

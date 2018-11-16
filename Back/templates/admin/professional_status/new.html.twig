@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ProfessionalStatus{% endblock %}
+
+{% block body %}
+    <h1>Create new ProfessionalStatus</h1>
+
+    {{ include('admin/professional_status/_form.html.twig') }}
+
+    <a href="{{ path('professional_status_index') }}">back to list</a>
+{% endblock %}

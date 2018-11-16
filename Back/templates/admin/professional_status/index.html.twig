@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ProfessionalStatus index{% endblock %}
+
+{% block body %}
+    <h1>ProfessionalStatus index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Slug</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for professional_status in professional_statuses %}
+            <tr>
+                <td>{{ professional_status.id }}</td>
+                <td>{{ professional_status.name }}</td>
+                <td>{{ professional_status.slug }}</td>
+                <td>
+                    <a href="{{ path('professional_status_show', {'id': professional_status.id}) }}">show</a>
+                    <a href="{{ path('professional_status_edit', {'id': professional_status.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('professional_status_new') }}">Create new</a>
+{% endblock %}
