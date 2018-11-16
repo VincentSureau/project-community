@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Competence;
 use App\Form\CompetenceType;
@@ -20,7 +20,7 @@ class CompetenceController extends AbstractController
      */
     public function index(CompetenceRepository $competenceRepository): Response
     {
-        return $this->render('competence/index.html.twig', ['competences' => $competenceRepository->findAll()]);
+        return $this->render('admin/competence/index.html.twig', ['competences' => $competenceRepository->findAll()]);
     }
 
     /**
@@ -40,7 +40,7 @@ class CompetenceController extends AbstractController
             return $this->redirectToRoute('competence_index');
         }
 
-        return $this->render('competence/new.html.twig', [
+        return $this->render('admin/competence/new.html.twig', [
             'competence' => $competence,
             'form' => $form->createView(),
         ]);
@@ -51,7 +51,7 @@ class CompetenceController extends AbstractController
      */
     public function show(Competence $competence): Response
     {
-        return $this->render('competence/show.html.twig', ['competence' => $competence]);
+        return $this->render('admin/competence/show.html.twig', ['competence' => $competence]);
     }
 
     /**
@@ -68,7 +68,7 @@ class CompetenceController extends AbstractController
             return $this->redirectToRoute('competence_index', ['id' => $competence->getId()]);
         }
 
-        return $this->render('competence/edit.html.twig', [
+        return $this->render('admin/competence/edit.html.twig', [
             'competence' => $competence,
             'form' => $form->createView(),
         ]);
