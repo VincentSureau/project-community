@@ -20,7 +20,7 @@ import './member.scss';
  */
 const Member = () => (
   <div id="member">
-    <section id="member-info" className="bg-member">
+    <section id="member-info" className="d-flex flex-column justify-content-center align-items-center bg-member">
       <SingleMember />
       <ContactBar />
     </section>

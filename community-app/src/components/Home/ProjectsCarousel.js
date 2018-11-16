@@ -8,7 +8,7 @@ import {
 
 const items = [
   {
-    src: 'https://picsum.photos/800/800?image=450',
+    src: 'https://picsum.photos/800/800?image=861',
     altText: 'Slide 1',
     caption: 'Slide 1',
   },
@@ -18,7 +18,7 @@ const items = [
     caption: 'Slide 2',
   },
   {
-    src: 'https://picsum.photos/800/500?image=1069',
+    src: 'https://picsum.photos/800/800?image=1069',
     altText: 'Slide 3',
     caption: 'Slide 3',
   },

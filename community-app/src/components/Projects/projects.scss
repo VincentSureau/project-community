@@ -67,8 +67,9 @@
   }
 
   & .projectitem-tag {
-    font-size: 1em;
+    font-size: 0.8em;
     font-weight: normal;
+    text-transform: uppercase;
     color: darken($color-projects, 40%);
     margin: 0 2px;
     padding: 5px 10px;
