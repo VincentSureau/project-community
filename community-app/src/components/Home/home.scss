@@ -20,7 +20,9 @@
   &-presentation {
     width: 100%;
     background-color: $bg-color-presentation;
-    min-height: 100vh;
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
 
     &-text {
       font-size: 1.3em;

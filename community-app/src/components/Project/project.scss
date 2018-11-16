@@ -1,1 +1,108 @@
+@import '../../styles/vars';
 
+#project {
+  & h1 {
+    font-size: 3em;
+    font-weight: bold;
+  }
+  &-presentation {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 700px;
+    
+  }
+
+  &-project-pc {
+    background: url(../../images/mbp.svg) no-repeat;
+    background-size: 100%;
+    width: 680px;
+    height: 402px;
+    position: relative;
+    -moz-osx-font-smoothing: initial;
+    -webkit-font-smoothing: initial;
+    text-align: left;
+    &-screen {
+      width: 502px;
+      height: 314px;
+      position: absolute;
+      top: 37px;
+      left: 89px;
+      & img {
+        width: 100%;
+        height: 314px;
+        object-fit: cover;
+        object-position: center top;
+      }
+    }
+  }
+
+  &-teamtech {
+    margin: 0;
+    padding: 10em;
+    width: 100%;
+    min-height: 100vh;
+    text-align: center;
+
+    & #project-team {
+      &-logo {
+        width: 300px;
+        height: 100%;
+        margin-bottom: 1em;
+      }
+      &-list {
+        padding: 3em;
+      }
+    }
+
+    & #project-tech {
+      margin-top: 5em;
+      &-title{
+        color: darken($color-project, 25%);
+        font-weight: bold;
+      }
+      & .project-tech-tag {
+        border: 1px solid #fdf1cd;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: .9em;
+        padding: .5em;
+        margin: .5em .5em;
+        border-radius: 5px;
+      }
+    }
+
+
+    h1 {
+      font-weight: bold;
+      font-size: 2.2em;
+      margin-bottom: 0;
+    }
+
+
+  }
+
+  &-gallery{
+    height: 100vh;
+    min-height: 750px;
+    &-wrapper{
+      width: 80%;
+      height: 60%;
+
+      & .carousel {
+        width: 100%;
+        height: 100%;
+        &-inner {
+          width: 100%;
+          height: 100%;
+        }
+        &-item {
+          width: 80%;
+          height: 60%;
+          object-fit: cover;
+          object-position: center top;
+        }
+      }
+    }
+  }
+}
