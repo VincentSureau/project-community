@@ -28,6 +28,7 @@ const Members = () => (
 
         <SelectInput />
         <SelectInput />
+        <SelectInput />
         <TextInput />
 
       </div>
