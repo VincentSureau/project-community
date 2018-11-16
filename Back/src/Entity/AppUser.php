@@ -52,13 +52,13 @@ class AppUser implements UserInterface
     private $password;
 
     /**
-     * @Groups({"project", "AppUserList"})
+     * @Groups({"project", "AppUserList", "ProjectList"})
      * @ORM\Column(type="string", length=80, nullable=true)
      */
     private $firstname;
 
     /**
-     * @Groups({"project", "AppUserList"})
+     * @Groups({"project", "AppUserList", "ProjectList"})
      * @ORM\Column(type="string", length=80, nullable=true)
      */
     private $lastname;
@@ -131,7 +131,7 @@ class AppUser implements UserInterface
     private $promotion;
 
     /**
-     * @Groups({"user", "project", "AppUserList"})
+     * @Groups({"user", "project", "AppUserList", "ProjectList"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Specialisation", inversedBy="appUsers")
      */
     private $specialisation;

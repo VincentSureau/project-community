@@ -21,7 +21,7 @@ use App\Controller\ProjectCustom;
  *             "method"="GET",
  *             "path"="/projects/list",
  *             "controller"=ProjectCustom::class,
- *             "normalization_context"={"groups"={"list"}},
+ *             "normalization_context"={"groups"={"ProjectList"}},
  *         },
  *     "post"
  *     }
@@ -38,7 +38,7 @@ class Project
     private $id;
 
     /**
-     * @Groups({"user", "list"})
+     * @Groups({"user", "ProjectList"})
      * @ORM\Column(type="string", length=120)
      */
     private $name;
@@ -49,7 +49,7 @@ class Project
     private $description;
 
     /**
-     * @Groups({"list"})
+     * @Groups({"ProjectList"})
      * @ORM\Column(type="boolean")
      */
     private $isActive;
@@ -76,19 +76,19 @@ class Project
     private $linkVideo;
 
     /**
-     * @Groups({"project", "list"})
+     * @Groups({"project", "ProjectList"})
      * @ORM\OneToMany(targetEntity="App\Entity\AppUser", mappedBy="project")
      */
     private $appUsers;
 
     /**
-     * @Groups({"project","list"})
+     * @Groups({"project","ProjectList"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Promotion", inversedBy="projects")
      */
     private $promotion;
 
     /**
-     * @Groups({"user", "project", "list"})
+     * @Groups({"user", "project", "ProjectList"})
      * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="project")
      */
     private $images;

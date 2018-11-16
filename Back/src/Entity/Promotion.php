@@ -23,7 +23,7 @@ class Promotion
     private $id;
 
     /**
-     * @Groups({"user","project", "AppUserList"})
+     * @Groups({"user","project", "AppUserList", "ProjectList"})
      * @ORM\Column(type="string", length=100)
      */
     private $name;

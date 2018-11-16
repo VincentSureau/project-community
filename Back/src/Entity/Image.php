@@ -21,12 +21,12 @@ class Image
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"user","project"})
+     * @Groups({"user","project", "ProjectList"})
      */
     private $imageLink;
 
     /**
-     * @Groups({"user","project"})
+     * @Groups({"user","project", "ProjectList"})
      * @ORM\Column(type="boolean")
      */
     private $isHero;
