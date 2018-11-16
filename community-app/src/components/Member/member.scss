@@ -1,1 +1,35 @@
+#member {
+  &-info {
+    margin: 0;
+    padding: 10em 10em 2em 10em;
+    width: 100%;
+    min-height: 100vh;
+
+    img {
+      width: 300px;
+    }
+    .singlemember-name {
+      font-size: 4em;
+    }
+
+    &-contactbar {
+      margin-top: 5em;
+      svg {
+        font-size: 1.8em;
+        margin: .2em;
+      }
+
+      #arrowdown {
+        position: static;
+      }
+
+      &-localisation {
+        text-transform: uppercase;
+        font-size: 1.6em;
+        margin-top: .1em;
+      }
+    }
+  }
+  
+}
 

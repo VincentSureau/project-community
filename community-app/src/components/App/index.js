@@ -35,7 +35,7 @@ const App = () => (
       <Route path="/projects" exact render={() => <Projects />} />
       <Route path="/members" exact render={() => <Members />} />
       {/* <Route path="/oclock" exact render={() => <Oclock />} /> */}
-      <Route path="/members/nom-prenom-1" exact render={() => <Member />} />
+      <Route path="/members/marc-dubois-1234567890" exact render={() => <Member />} />
       <Route path="/projects/titre-1" exact render={() => <Project />} />
       <Route path="/members/nom-prenom-1/edit" exact render={() => <MemberEdit />} />
       <Route path="/projects/titre-1/edit" exact render={() => <ProjectEdit />} />

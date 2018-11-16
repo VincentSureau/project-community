@@ -37,7 +37,7 @@ class Footer extends React.Component {
 
     return (
       <footer id="footer" className={classcolor}>
-        <img id="footer-img" className="img-fluid w-10" src="src/images/logo_oclock_community.svg" alt="" />
+        <img id="footer-img" className="img-fluid w-10" src="/src/images/logo_oclock_community.svg" alt="" />
         <p id="footer-copyright" className={classcolortext} >2018 &copy; <a className={classcolortext} href="https://www.linkedin.com/in/elodiechiarani/">Elodie Chiarani</a> / <a className={classcolortext} href="https://www.linkedin.com/in/thibault-garnier/">Thibault Garnier</a> / <a className={classcolortext} href="https://www.linkedin.com/in/tristantouchain/">Tristan Touchain</a> / <a className={classcolortext} href="https://www.linkedin.com/in/vincentsureau/">Vincent Sureau</a></p>
       </footer>
     );
