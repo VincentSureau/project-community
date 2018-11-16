@@ -9,6 +9,7 @@ import React from 'react';
 // Components
 import SingleMember from 'src/components/SingleMember';
 import ContactBar from './ContactBar';
+import Biography from './Biography';
 
 // Styles
 import './member.scss';
@@ -22,6 +23,7 @@ const Member = () => (
       <SingleMember />
       <ContactBar />
     </section>
+    <Biography />
   </div>
 
 );
