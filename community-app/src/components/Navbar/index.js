@@ -38,7 +38,7 @@ class Navbar extends React.Component {
             </ul>
           </div>
           <div className="col-4 d-flex justify-content-center">
-            <NavLink activeClassName="" className="w-25 h-25" exact to="/"><img src="src/images/logo_oclock_community_navbar.svg" alt="Logo Community" /></NavLink>
+            <NavLink activeClassName="" className="w-25 h-25" exact to="/"><img src="/src/images/logo_oclock_community_navbar.svg" alt="Logo Community" /></NavLink>
           </div>
           <div className="col-4 d-flex justify-content-end">
             <ul className="navbar-nav">
