@@ -4,7 +4,6 @@
   width: 100%;
   text-align: center;
   padding: 2em 0;
-  border-top: 1px solid $color-copyright;
   
   &-img {
     text-align: center;
@@ -12,10 +11,7 @@
   }
 
   &-copyright {
-    color: $color-copyright;
-
     & > a {
-      color: $color-copyright;
       text-decoration: underline;
     }
   }
