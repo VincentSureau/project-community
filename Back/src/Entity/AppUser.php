@@ -9,7 +9,17 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @ApiResource()
+ * @ApiResource(itemOperations={
+ *     "list"={
+ *         "method"="GET",
+ *         "path"="/app_users/list",
+ *         "controller"=AppUserCustom::class,
+ *         "normalization_context"={"groups"={"AppUserHom"}}
+ *     },
+ *     "get",
+ *     "put",
+ *     "delete"
+ * })
  * @ORM\Entity(repositoryClass="App\Repository\AppUserRepository")
  */
 class AppUser implements UserInterface

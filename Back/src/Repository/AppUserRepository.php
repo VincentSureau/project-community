@@ -47,4 +47,18 @@ class AppUserRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findAllList(): array
+    {
+    $entityManager = $this->getEntityManager();
+
+    $query = $entityManager->createQuery(
+        'SELECT p.id, p.firstname, p.lastname, p.promotion_id, p.specialisation_id, p.professional_status_id, p.profile_picture
+        FROM App\Entity\AppUser p
+        ORDER BY p.id ASC'
+    )->setParameter('price', 1000);
+
+    // returns an array of Product objects
+    return $query->execute();
+    }
 }
