@@ -15,14 +15,17 @@ use App\Controller\ProjectCustom;
  *     attributes={
  *         "normalization_context"={"groups"={"project"}}
  *     },
+ *     
  *     collectionOperations={
- *         "get",
  *         "list"={
+ *             "method"="GET",
  *             "method"="GET",
  *             "path"="/projects/list",
  *             "controller"=ProjectCustom::class,
  *             "normalization_context"={"groups"={"list"}}
- *         }
+ *         },
+ *        "post"
+ *  
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")
