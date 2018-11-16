@@ -62,7 +62,8 @@ class AppUserRepository extends ServiceEntityRepository
         ->from('App\Entity\AppUser', 'u')
         ->join('u.promotion', 'p')
         ->join('u.specialisation', 's')
-        ->join('u.professionalStatus', 'ps');
+        ->join('u.professionalStatus', 'ps')
+        ->where('u.isActive = true');
     
     $query = $qb->getQuery();
     
