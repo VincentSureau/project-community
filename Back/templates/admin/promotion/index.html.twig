@@ -25,8 +25,9 @@
                 <td>{{ promotion.startDate ? promotion.startDate|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ promotion.endDate ? promotion.endDate|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('promotion_show', {'id': promotion.id}) }}">show</a>
-                    <a href="{{ path('promotion_edit', {'id': promotion.id}) }}">edit</a>
+                    <a  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('promotion_show', {'id': promotion.id}) }}"><i class="fas fa-search"></i></a>
+                    <a  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('promotion_edit', {'id': promotion.id}) }}"><i class="fas fa-edit"></i></a>
+                    <a class='delete-link' data-toggle="tooltip" data-placement="top" title="delete" href="{{ path('promotion_delete', {'id': promotion.id}) }}"><i class="fas fa-trash-alt"></i></a>
                 </td>
             </tr>
         {% else %}

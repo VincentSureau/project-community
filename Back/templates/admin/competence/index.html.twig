@@ -21,8 +21,9 @@
                 <td>{{ competence.name }}</td>
                 <td>{{ competence.slug }}</td>
                 <td>
-                    <a href="{{ path('competence_show', {'id': competence.id}) }}">show</a>
-                    <a href="{{ path('competence_edit', {'id': competence.id}) }}">edit</a>
+                    <a class="btn btn-link"  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('competence_show', {'id': competence.id}) }}"><i class="fas fa-search"></i></a>
+                    <a class="btn btn-link"  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('competence_edit', {'id': competence.id}) }}"><i class="fas fa-edit"></i></a>
+                    {{ include('admin/competence/_delete_link.html.twig') }}
                 </td>
             </tr>
         {% else %}

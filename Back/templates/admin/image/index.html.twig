@@ -21,8 +21,9 @@
                 <td>{{ image.imageLink }}</td>
                 <td>{{ image.isHero ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('image_show', {'id': image.id}) }}">show</a>
-                    <a href="{{ path('image_edit', {'id': image.id}) }}">edit</a>
+                    <a  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('image_show', {'id': image.id}) }}"><i class="fas fa-search"></i></a>
+                    <a  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('image_edit', {'id': image.id}) }}"><i class="fas fa-edit"></i></a>
+                    <a class='delete-link' data-toggle="tooltip" data-placement="top" title="delete" href="{{ path('image_delete', {'id': image.id}) }}"><i class="fas fa-trash-alt"></i></a>
                 </td>
             </tr>
         {% else %}

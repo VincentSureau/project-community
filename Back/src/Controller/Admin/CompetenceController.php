@@ -83,6 +83,7 @@ class CompetenceController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->remove($competence);
             $em->flush();
+            
         }
 
         return $this->redirectToRoute('competence_index');
