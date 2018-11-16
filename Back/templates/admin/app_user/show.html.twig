@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AppUser{% endblock %}
+
+{% block body %}
+    <h1>AppUser</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ app_user.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ app_user.email }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ app_user.password }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ app_user.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ app_user.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Birthdate</th>
+                <td>{{ app_user.birthdate ? app_user.birthdate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>ProfilePicture</th>
+                <td>{{ app_user.profilePicture }}</td>
+            </tr>
+            <tr>
+                <th>PhoneNumber</th>
+                <td>{{ app_user.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ app_user.city }}</td>
+            </tr>
+            <tr>
+                <th>Zipcode</th>
+                <td>{{ app_user.zipcode }}</td>
+            </tr>
+            <tr>
+                <th>LinkLinkedin</th>
+                <td>{{ app_user.linkLinkedin }}</td>
+            </tr>
+            <tr>
+                <th>LinkGithub</th>
+                <td>{{ app_user.linkGithub }}</td>
+            </tr>
+            <tr>
+                <th>LinkPersonal</th>
+                <td>{{ app_user.linkPersonal }}</td>
+            </tr>
+            <tr>
+                <th>IsActive</th>
+                <td>{{ app_user.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>CreatedDate</th>
+                <td>{{ app_user.createdDate ? app_user.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ app_user.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_user_index') }}">back to list</a>
+
+    <a href="{{ path('app_user_edit', {'id': app_user.id}) }}">edit</a>
+
+    {{ include('admin/app_user/_delete_form.html.twig') }}
+{% endblock %}
