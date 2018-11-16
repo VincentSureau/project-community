@@ -8,11 +8,21 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Controller\ProjectCustom;
 
 /**
  * @ApiResource(
  *     attributes={
  *         "normalization_context"={"groups"={"project"}}
+ *     },
+ *     collectionOperations={
+ *         "get",
+ *         "list"={
+ *             "method"="GET",
+ *             "path"="/projects/list",
+ *             "controller"=ProjectCustom::class,
+ *             "normalization_context"={"groups"={"list"}}
+ *         }
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")
@@ -27,7 +37,7 @@ class Project
     private $id;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "list"})
      * @ORM\Column(type="string", length=120)
      */
     private $name;
@@ -38,6 +48,7 @@ class Project
     private $description;
 
     /**
+     * @Groups({"list"})
      * @ORM\Column(type="boolean")
      */
     private $isActive;
@@ -64,19 +75,19 @@ class Project
     private $linkVideo;
 
     /**
-     * @Groups({"project"})
+     * @Groups({"project", "list"})
      * @ORM\OneToMany(targetEntity="App\Entity\AppUser", mappedBy="project")
      */
     private $appUsers;
 
     /**
-     * @Groups({"project"})
+     * @Groups({"project","list"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Promotion", inversedBy="projects")
      */
     private $promotion;
 
     /**
-     * @Groups({"user", "project"})
+     * @Groups({"user", "project", "list"})
      * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="project")
      */
     private $images;
