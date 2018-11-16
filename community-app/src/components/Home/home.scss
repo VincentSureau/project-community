@@ -34,9 +34,35 @@
     padding: 10em;
   }
   &-projects {
+    margin: 0;
+    padding: 10em;
     &-carousel {
       margin-bottom: 3em !important;
     }
+    & .carousel {
+      width: 724px;
+      height: 452px;
+      position: absolute;
+      top: 53px;
+      left: 128px;
+      &-item {
+        width: 100%;
+        height: 452px;
+        object-fit: cover;
+        object-position: top;
+      }
+    }
+    &-pc {
+      background: url(../../images/mbp.svg) no-repeat;
+      background-size: 100%;
+      width: 980px;
+      height: 580px;
+      position: relative;
+      -moz-osx-font-smoothing: initial;
+      -webkit-font-smoothing: initial;
+      text-align: left;
+    }
+
   }
 }
 
