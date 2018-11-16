@@ -1,0 +1,95 @@
+@font-face {
+    font-family: 'Brando';
+    src: url("../fonts/Brandon_med.otf") format("opentype");
+}
+
+@font-face {
+    font-family: GraublauWeb;
+    font-weight: bold;
+    src: url("../fonts/Brandon_bld.otf") format("opentype");
+}
+
+ul, a{
+    list-style-type: none; 
+    text-decoration: inherit!important;
+    color: inherit!important;
+}
+body {
+    background-color: #16878f;
+    font-family: 'Brando';
+}
+
+/* Navigation */
+.navbar{
+    background-color: #10676d!important;
+    height: 60px;
+}
+
+.container-nav-link{
+    margin: 0;
+    padding: 0;
+}
+.nav-link{
+    padding: 20px;
+    text-transform: uppercase;
+    color: #fdf1cd;
+    font-size: 0.9em;
+}
+.nav-link > a:hover{
+    color: #cfc5a7!important;
+}
+
+.logo-community {
+    height: 30px;
+}
+/*container home*/
+.page-admin{
+    height: calc(100vh - 280px);
+    flex-direction: column;
+}
+
+.welcome-title{
+    padding: 15px;
+    color:#fdf1cd;
+    text-transform: uppercase;
+    font-size: 5em;
+    word-spacing: 30px;
+}
+
+.button-choice-admin {
+    padding: 5px 10px;
+    margin: 0 20px;
+    color: #fdf1cd!important;
+    background-color: #10676d;
+    border-radius: 20px;
+    transition-duration: 0.7s; 
+}
+
+.button-choice-admin:hover {
+    background-color:#fdf1cd!important;
+    color: #10676d!important;
+}
+
+.page-admin-buttons{
+    padding: 15px 0;
+    margin: 0;
+}
+
+/*footer*/
+
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 2em 0;
+}    
+    &-img {
+      text-align: center;
+      margin-bottom: 1em;
+    }
+  
+    &-copyright {
+      & > a {
+        text-decoration: underline;
+      }
+    }
+  }

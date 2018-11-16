@@ -3,5 +3,38 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <h1>Admin Index</h1>
+
+    {{ include('admin/partials/__header.html.twig') }}
+
+    <main>
+        <div class="container-fluid d-flex justify-content-center page-admin">
+            <div class="page-admin-description">
+                <h3 class="welcome-title d-flex justify-content-center">Welcome admin</h3>
+            </div>
+            <div class="page-admin-list d-flex justify-content-center">
+                <ul class="page-admin-buttons d-flex">
+                    <li>
+                        <a class="button-choice-admin" href="">Liste des étudiants</a>
+                    </li>
+                    <li>
+                        <a class="button-choice-admin" href="">Liste des projets</a>
+                    </li>
+                    <li>
+                        <a class="button-choice-admin" href="">Liste des promotions</a>
+                    </li>
+                    <li>
+                        <a class="button-choice-admin" href="">Liste des spécialisation</a>
+                    </li>
+                    <li>
+                        <a class="button-choice-admin" href="">Liste des compétences</a>
+                    </li>
+                    <li>
+                        <a class="button-choice-admin" href="">Liste des images</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    {{ include('admin/partials/__footer.html.twig') }}
 {% endblock %}
