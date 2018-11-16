@@ -3,24 +3,23 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\AppUserRepository;
 use App\Entity\AppUser;
 
-class AppUserCustom
+class AppUserCustom extends AbstractController
 {
-    private $myService;
+    private $repo;
 
     public function __construct(AppUserRepository $repo)
     {
         $this->repo = $repo;
     }
 
-    public function __invoke(AppUser $data): AppUser
+    public function __invoke(AppUserRepository $repo): Array
     {
-        dump('test');
-        dump($this->repo->findAll());
-        die();
+        $data = $this->repo->findAll();
 
-        return 'test';
+        return $data;
     }
 }
