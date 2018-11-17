@@ -61,46 +61,45 @@ $font-family-base: "Oclock";
 
 $theme-colors: (
   // HOME
-  home: #007C84,
-  home-darker: darken(#007C84, 5%),
-  home-navfoot: darken(#007C84, 8%),
+  home: $color-home,
+  home-darker: darken($color-home, 5%),
+  home-navfoot: darken($color-home, 8%),
+  home-lighter: lighten($color-home, 5%),
 
   // MEMBERS PAGE
-  members: #C77B7A,
-  members-darker: darken(#C77B7A, 5%),
-  members-navfoot: darken(#C77B7A, 8%),
+  members: $color-members,
+  members-darker: darken($color-members, 5%),
+  members-navfoot: darken($color-members, 8%),
+  members-lighter: lighten($color-members, 5%),
 
   // MEMBER PAGE
-  member: #598DC5,
-  member-darker: darken(#598DC5, 5%),
-  member-navfoot: darken(#598DC5, 8%),
+  member: $color-member,
+  member-darker: darken($color-member, 5%),
+  member-navfoot: darken($color-member, 8%),
+  member-lighter: lighten($color-member, 15%),
 
   // PROJECTS PAGE
-  projects: #D8B177,
-  projects-darker: darken(#D8B177, 5%),
-  projects-navfoot: darken(#D8B177, 8%),
+  projects: $color-projects,
+  projects-darker: darken($color-projects, 5%),
+  projects-navfoot: darken($color-projects, 8%),
+  projects-lighter: lighten($color-projects, 5%),
 
   // PROJECT PAGE   
-  project: #877EA5,
-  project-darker: darken(#877EA5, 5%),
-  project-navfoot: darken(#877EA5, 8%),
+  project: $color-project,
+  project-darker: darken($color-project, 5%),
+  project-navfoot: darken($color-project, 8%),
+  project-lighter: lighten($color-project, 5%),
 
   // LOGIN PAGE
-  login: #8D3131,
-  login-darker: darken(#8D3131, 5%),
-  login-navfoot: darken(#8D3131, 8%),
+  login: $color-login,
+  login-darker: darken($color-login, 5%),
+  login-navfoot: darken($color-login, 8%),
+  login-lighter: lighten($color-login, 5%),
 
   //OTHER COLOR THEME
-  custom-button: #fdf1cd,
-  white: #fdf1cd,
-  hometext: lighten(#007C84, 5%),
-  memberstext: lighten(#C77B7A, 5%),
-  membertext: lighten(#598DC5, 15%),
-  projectstext: lighten(#D8B177, 5%),
-  projecttext: lighten(#877EA5, 5%),
-  logintext: lighten(#8D3131, 5%),
-  loginsubtitle: darken(#8D3131, 8%),
-
+  custom-button: $text-color,
+  white: $text-color,
+  
 ) !default;
 
 /* remove rounding from cards, buttons and inputs */
