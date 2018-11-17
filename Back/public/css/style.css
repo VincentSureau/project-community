@@ -158,6 +158,15 @@ footer {
     color:#fdf1cd;
 }
 
+/*List image*/
+.image_for_list{
+    height: 60px;
+}
+
+td {
+    vertical-align: middle!important;
+}
+
 /*****************************************/
 /**************Media Queries**************/
 /*****************************************/
