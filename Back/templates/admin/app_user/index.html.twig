@@ -11,7 +11,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Email</th>
-                    <th>Password</th>
+                    <!--<th>Password</th>-->
                     <th>Firstname</th>
                     <th>Lastname</th>
                     <th>Birthdate</th>
@@ -19,12 +19,12 @@
                     <th>PhoneNumber</th>
                     <th>City</th>
                     <th>Zipcode</th>
-                    <th>LinkLinkedin</th>
-                    <th>LinkGithub</th>
-                    <th>LinkPersonal</th>
+                    <!--<th>LinkLinkedin</th>-->
+                    <!--<th>LinkGithub</th>-->
+                    <!--<th>LinkPersonal</th>-->
                     <th>IsActive</th>
                     <th>CreatedDate</th>
-                    <th>Description</th>
+                    <!--<th>Description</th>-->
                     <th>actions</th>
                 </tr>
             </thead>
@@ -33,20 +33,20 @@
                 <tr>
                     <td>{{ app_user.id }}</td>
                     <td>{{ app_user.email }}</td>
-                    <td>{{ app_user.password }}</td>
+                     <!--<td>{{ app_user.password }}</td>-->
                     <td>{{ app_user.firstname }}</td>
                     <td>{{ app_user.lastname }}</td>
                     <td>{{ app_user.birthdate ? app_user.birthdate|date('Y-m-d H:i:s') : '' }}</td>
-                    <td>{{ app_user.profilePicture }}</td>
+                    <td><img class="image_for_list" src="{{ app_user.profilePicture }}" alt=""></td>
                     <td>{{ app_user.phoneNumber }}</td>
                     <td>{{ app_user.city }}</td>
                     <td>{{ app_user.zipcode }}</td>
-                    <td>{{ app_user.linkLinkedin }}</td>
-                    <td>{{ app_user.linkGithub }}</td>
-                    <td>{{ app_user.linkPersonal }}</td>
+                    <!--<td>{{ app_user.linkLinkedin }}</td>-->
+                    <!--<td>{{ app_user.linkGithub }}</td>-->
+                    <!--<td>{{ app_user.linkPersonal }}</td>-->
                     <td>{{ app_user.isActive ? 'Yes' : 'No' }}</td>
-                    <td>{{ app_user.createdDate ? app_user.createdDate|date('Y-m-d H:i:s') : '' }}</td>
-                    <td>{{ app_user.description }}</td>
+                    <td>{{ app_user.createdDate ? app_user.createdDate|date('d-m-Y') : '' }}</td>
+                     <!--<td>{{ app_user.description }}</td>-->
                     <td>
                         <a  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('app_user_show', {'id': app_user.id}) }}"><i class="fas fa-search"></i></a>
                         <a  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('app_user_edit', {'id': app_user.id}) }}"><i class="fas fa-edit"></i></a>

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}}Liste des promotions - Admin{% endblock %}
+{% block title %}Liste des promotions - Admin{% endblock %}
 
 {% block body %}
     <div class="container-fluid container_table_list">
@@ -11,7 +11,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
-                    <th>Slug</th>
+                    <!--<th>Slug</th>-->
                     <th>StartDate</th>
                     <th>EndDate</th>
                     <th>actions</th>
@@ -22,9 +22,9 @@
                 <tr>
                     <td>{{ promotion.id }}</td>
                     <td>{{ promotion.name }}</td>
-                    <td>{{ promotion.slug }}</td>
-                    <td>{{ promotion.startDate ? promotion.startDate|date('Y-m-d H:i:s') : '' }}</td>
-                    <td>{{ promotion.endDate ? promotion.endDate|date('Y-m-d H:i:s') : '' }}</td>
+                    <!--<td>{{ promotion.slug }}</td>-->
+                    <td>{{ promotion.startDate ? promotion.startDate|date('d-m-Y') : '' }}</td>
+                    <td>{{ promotion.endDate ? promotion.endDate|date('d-m-Y') : '' }}</td>
                     <td>
                         <a  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('promotion_show', {'id': promotion.id}) }}"><i class="fas fa-search"></i></a>
                         <a  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('promotion_edit', {'id': promotion.id}) }}"><i class="fas fa-edit"></i></a>

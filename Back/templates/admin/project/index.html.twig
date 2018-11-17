@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}}Liste des projets - Admin{% endblock %}
+{% block title %}Liste des projets - Admin{% endblock %}
 
 {% block body %}
     <div class="container-fluid container_table_list">
@@ -11,12 +11,12 @@
                 <tr>
                     <th>Id</th>
                     <th>Name</th>
-                    <th>Description</th>
+                    <!--<th>Description</th>-->
                     <th>IsActive</th>
                     <th>CreatedDate</th>
-                    <th>Slug</th>
-                    <th>LinkProject</th>
-                    <th>LinkVideo</th>
+                    <!--<th>Slug</th>-->
+                    <!--<th>LinkProject</th>-->
+                    <!--<th>LinkVideo</th>-->
                     <th>actions</th>
                 </tr>
             </thead>
@@ -25,12 +25,12 @@
                 <tr>
                     <td>{{ project.id }}</td>
                     <td>{{ project.name }}</td>
-                    <td>{{ project.description }}</td>
+                    <!--<td>{{ project.description }}</td>-->
                     <td>{{ project.isActive ? 'Yes' : 'No' }}</td>
-                    <td>{{ project.createdDate ? project.createdDate|date('Y-m-d H:i:s') : '' }}</td>
-                    <td>{{ project.slug }}</td>
-                    <td>{{ project.linkProject }}</td>
-                    <td>{{ project.linkVideo }}</td>
+                    <td>{{ project.createdDate ? project.createdDate|date('d-m-Y') : '' }}</td>
+                    <!--<td>{{ project.slug }}</td>-->
+                    <!--<td>{{ project.linkProject }}</td>-->
+                    <!--<td>{{ project.linkVideo }}</td>-->
                     <td>
                         <a  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('project_show', {'id': project.id}) }}"><i class="fas fa-search"></i></a>
                         <a  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('project_edit', {'id': project.id}) }}"><i class="fas fa-edit"></i></a>
