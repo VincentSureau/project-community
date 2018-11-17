@@ -1,64 +1,66 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}AppUser index{% endblock %}
+{% block title %}Liste des membres - Admin{% endblock %}
 
 {% block body %}
-    <h1>AppUser index</h1>
+    <div class="container-fluid container_table_list">
+        <h2 class="title-category" >Liste des utilisateurs</h2>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Email</th>
-                <th>Password</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Birthdate</th>
-                <th>ProfilePicture</th>
-                <th>PhoneNumber</th>
-                <th>City</th>
-                <th>Zipcode</th>
-                <th>LinkLinkedin</th>
-                <th>LinkGithub</th>
-                <th>LinkPersonal</th>
-                <th>IsActive</th>
-                <th>CreatedDate</th>
-                <th>Description</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for app_user in app_users %}
-            <tr>
-                <td>{{ app_user.id }}</td>
-                <td>{{ app_user.email }}</td>
-                <td>{{ app_user.password }}</td>
-                <td>{{ app_user.firstname }}</td>
-                <td>{{ app_user.lastname }}</td>
-                <td>{{ app_user.birthdate ? app_user.birthdate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ app_user.profilePicture }}</td>
-                <td>{{ app_user.phoneNumber }}</td>
-                <td>{{ app_user.city }}</td>
-                <td>{{ app_user.zipcode }}</td>
-                <td>{{ app_user.linkLinkedin }}</td>
-                <td>{{ app_user.linkGithub }}</td>
-                <td>{{ app_user.linkPersonal }}</td>
-                <td>{{ app_user.isActive ? 'Yes' : 'No' }}</td>
-                <td>{{ app_user.createdDate ? app_user.createdDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ app_user.description }}</td>
-                <td>
-                    <a  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('app_user_show', {'id': app_user.id}) }}"><i class="fas fa-search"></i></a>
-                    <a  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('app_user_edit', {'id': app_user.id}) }}"><i class="fas fa-edit"></i></a>
-                    <a class='delete-link' data-toggle="tooltip" data-placement="top" title="delete" href="{{ path('app_user_delete', {'id': app_user.id}) }}"><i class="fas fa-trash-alt"></i></a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="17">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="table table-striped table_list">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Birthdate</th>
+                    <th>ProfilePicture</th>
+                    <th>PhoneNumber</th>
+                    <th>City</th>
+                    <th>Zipcode</th>
+                    <th>LinkLinkedin</th>
+                    <th>LinkGithub</th>
+                    <th>LinkPersonal</th>
+                    <th>IsActive</th>
+                    <th>CreatedDate</th>
+                    <th>Description</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for app_user in app_users %}
+                <tr>
+                    <td>{{ app_user.id }}</td>
+                    <td>{{ app_user.email }}</td>
+                    <td>{{ app_user.password }}</td>
+                    <td>{{ app_user.firstname }}</td>
+                    <td>{{ app_user.lastname }}</td>
+                    <td>{{ app_user.birthdate ? app_user.birthdate|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ app_user.profilePicture }}</td>
+                    <td>{{ app_user.phoneNumber }}</td>
+                    <td>{{ app_user.city }}</td>
+                    <td>{{ app_user.zipcode }}</td>
+                    <td>{{ app_user.linkLinkedin }}</td>
+                    <td>{{ app_user.linkGithub }}</td>
+                    <td>{{ app_user.linkPersonal }}</td>
+                    <td>{{ app_user.isActive ? 'Yes' : 'No' }}</td>
+                    <td>{{ app_user.createdDate ? app_user.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ app_user.description }}</td>
+                    <td>
+                        <a  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('app_user_show', {'id': app_user.id}) }}"><i class="fas fa-search"></i></a>
+                        <a  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('app_user_edit', {'id': app_user.id}) }}"><i class="fas fa-edit"></i></a>
+                        <a class='delete-link' data-toggle="tooltip" data-placement="top" title="delete" href="{{ path('app_user_delete', {'id': app_user.id}) }}"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="17">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_user_new') }}">Create new</a>
+        <a href="{{ path('app_user_new') }}">Create new</a>
+    </div>
 {% endblock %}

@@ -1,38 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ProfessionalStatus index{% endblock %}
+{% block title %}}Liste des statuts professionels - Admin{% endblock %}
 
 {% block body %}
-    <h1>ProfessionalStatus index</h1>
+    <div class="container-fluid container_table_list">
+        <h2 class="title-category" >Liste des statuts professionnels</h2>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Slug</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for professional_status in professional_statuses %}
-            <tr>
-                <td>{{ professional_status.id }}</td>
-                <td>{{ professional_status.name }}</td>
-                <td>{{ professional_status.slug }}</td>
-                <td>
-                    <a  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('professional_status_show', {'id': professional_status.id}) }}"><i class="fas fa-search"></i></a>
-                    <a  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('professional_status_edit', {'id': professional_status.id}) }}"><i class="fas fa-edit"></i></a>
-                    <a class='delete-link' data-toggle="tooltip" data-placement="top" title="delete" href="{{ path('professional_status_delete', {'id': professional_status.id}) }}"><i class="fas fa-trash-alt"></i></a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="table table-striped table_list">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Slug</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for professional_status in professional_statuses %}
+                <tr>
+                    <td>{{ professional_status.id }}</td>
+                    <td>{{ professional_status.name }}</td>
+                    <td>{{ professional_status.slug }}</td>
+                    <td>
+                        <a  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('professional_status_show', {'id': professional_status.id}) }}"><i class="fas fa-search"></i></a>
+                        <a  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('professional_status_edit', {'id': professional_status.id}) }}"><i class="fas fa-edit"></i></a>
+                        <a class='delete-link' data-toggle="tooltip" data-placement="top" title="delete" href="{{ path('professional_status_delete', {'id': professional_status.id}) }}"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('professional_status_new') }}">Create new</a>
+        <a href="{{ path('professional_status_new') }}">Create new</a>
+    </div>
 {% endblock %}

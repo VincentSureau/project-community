@@ -1,48 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Project index{% endblock %}
+{% block title %}}Liste des projets - Admin{% endblock %}
 
 {% block body %}
-    <h1>Project index</h1>
+    <div class="container-fluid container_table_list">
+        <h2 class="title-category" >Liste des projets</h2>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>IsActive</th>
-                <th>CreatedDate</th>
-                <th>Slug</th>
-                <th>LinkProject</th>
-                <th>LinkVideo</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for project in projects %}
-            <tr>
-                <td>{{ project.id }}</td>
-                <td>{{ project.name }}</td>
-                <td>{{ project.description }}</td>
-                <td>{{ project.isActive ? 'Yes' : 'No' }}</td>
-                <td>{{ project.createdDate ? project.createdDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ project.slug }}</td>
-                <td>{{ project.linkProject }}</td>
-                <td>{{ project.linkVideo }}</td>
-                <td>
-                    <a  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('project_show', {'id': project.id}) }}"><i class="fas fa-search"></i></a>
-                    <a  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('project_edit', {'id': project.id}) }}"><i class="fas fa-edit"></i></a>
-                    <a class='delete-link' data-toggle="tooltip" data-placement="top" title="delete" href="{{ path('project_delete', {'id': project.id}) }}"><i class="fas fa-trash-alt"></i></a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="9">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <table class="table table-striped table_list">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>IsActive</th>
+                    <th>CreatedDate</th>
+                    <th>Slug</th>
+                    <th>LinkProject</th>
+                    <th>LinkVideo</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for project in projects %}
+                <tr>
+                    <td>{{ project.id }}</td>
+                    <td>{{ project.name }}</td>
+                    <td>{{ project.description }}</td>
+                    <td>{{ project.isActive ? 'Yes' : 'No' }}</td>
+                    <td>{{ project.createdDate ? project.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ project.slug }}</td>
+                    <td>{{ project.linkProject }}</td>
+                    <td>{{ project.linkVideo }}</td>
+                    <td>
+                        <a  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('project_show', {'id': project.id}) }}"><i class="fas fa-search"></i></a>
+                        <a  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('project_edit', {'id': project.id}) }}"><i class="fas fa-edit"></i></a>
+                        <a class='delete-link' data-toggle="tooltip" data-placement="top" title="delete" href="{{ path('project_delete', {'id': project.id}) }}"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
 
-    <a href="{{ path('project_new') }}">Create new</a>
+        <a href="{{ path('project_new') }}">Create new</a>
+    </div>
 {% endblock %}
