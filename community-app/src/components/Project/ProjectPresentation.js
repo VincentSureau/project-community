@@ -19,7 +19,7 @@ const ProjectPresentation = () => (
   <div id="project-teamtech" className="bg-project-darker">
     <section id="project-team">
       <img id="project-team-logo" src="/src/images/user-astronaut-solid.png" alt="" />
-      <h1 className="text-uppercase text-white">La team</h1>
+      <h1 className="text-white">La team</h1>
       <div id="project-team-list" className="row">
         <SingleMember />
         <SingleMember />
@@ -28,7 +28,7 @@ const ProjectPresentation = () => (
       </div>
     </section>
     <section id="project-tech">
-      <h3 id="project-tech-title" className="text-uppercase">Technologies utilisées</h3>
+      <h3 id="project-tech-title">Technologies utilisées</h3>
       <div className="mt-3 d-flex flex-wrap justify-content-center">
         <span className="project-tech-tag">HTML5</span>
         <span className="project-tech-tag">CSS</span>

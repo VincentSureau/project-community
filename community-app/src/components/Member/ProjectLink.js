@@ -17,8 +17,8 @@ import './member.scss';
  */
 const ProjectLink = () => (
   <section id="member-projectlink" className="bg-member d-flex align-items-center flex-column">
-    <h2 className="text-uppercase">Mon Projet <br />de fin d'étude</h2>
-    <h3 className="text-uppercase">Productimize</h3>
+    <h2>Mon Projet <br />de fin d'étude</h2>
+    <h3>Productimize</h3>
     <NavLink exact to="/projects/title-1234567890" className="no-blue-on-link d-flex flex-column align-items-center">
       <div id="member-project-pc">
         <div id="member-project-pc-screen">

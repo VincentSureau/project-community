@@ -16,8 +16,8 @@ import './home.scss';
  */
 const Specialities = () => (
   <section id="home-specialities" className="d-flex flex-column justify-content-center align-items-center full-height bg-home-darker">
-    <h2 id="home-specialities-title" className="text-uppercase">Les spécialités</h2>
-    <h3 id="home-specialities-subtitle" className="text-uppercase">Consultez les profils de nos étudiants selon leur spécialité</h3>
+    <h2 id="home-specialities-title">Les spécialités</h2>
+    <h3 id="home-specialities-subtitle">Consultez les profils de nos étudiants selon leur spécialité</h3>
     <div id="home-specialities-list" className="d-flex justify-content-around flex-wrap col-9 col-md-9 col-xl-6">
       <div className="d-flex flex-column col-12 col-md-4 mt-7 mt-md-0">
         <img src="src/images/OClockCommunity-LogoWordPress.svg" alt="" />

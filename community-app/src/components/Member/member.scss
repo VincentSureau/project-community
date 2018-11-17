@@ -1,3 +1,5 @@
+@import 'src/styles/vars';
+
 #member {
   &-info {
     margin: 0;
@@ -42,8 +44,6 @@
     min-height: 100vh;
 
     h2 {
-      text-transform: uppercase;
-      font-weight: bold;
       font-size: 2.2em;
       margin-bottom: 0;
     }
@@ -85,7 +85,7 @@
         }
 
         &-tech {
-          border: 1px solid #fdf1cd;
+          border: 1px solid $text-color;
           text-transform: uppercase;
           font-weight: bold;
           font-size: .9em;
@@ -105,16 +105,7 @@
     min-height: 100vh;
     text-align: center;
 
-    h2 {
-      font-size: 3.2em;
-      font-weight: bold;
-      text-align: center;
-      line-height: 1;
-    }
-
     h3 {
-      text-align: center;
-      font-size: 1.6em;
       margin: 1em 0 2em 0;
     }
   }
