@@ -16,13 +16,12 @@ import './project.scss';
  * Code
  */
 const ProjectGallery = () => (
-  <div id="project-gallery" className="bg-project d-flex justify-content-center align-items-center">
-    <div id="project-gallery-wrapper">
+  <div id="project-gallery" className="bg-project-darker d-flex justify-content-center align-items-center">
+    <section id="project-gallery-wrapper">
+      <h1 className="text-uppercase text-white">Le projet en images</h1>
       <ProjectsCarousel />
-    </div>
+    </section>
   </div>
-
-
 );
 
 /**
