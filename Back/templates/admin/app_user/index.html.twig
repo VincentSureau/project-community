@@ -38,7 +38,19 @@
                     <td>{{ app_user.firstname }}</td>
                     <td>{{ app_user.lastname }}</td>
                     <td>{{ app_user.birthdate ? app_user.birthdate|date('d-m-Y') : '' }}</td>
-                    <td><img class="image_for_list" src="{{ app_user.profilePicture }}" alt=""></td>
+                    <td><img class="image_for_list" src="{{ app_user.profilePicture }}" alt="" data-toggle="modal" data-target="#modal-{{ app_user.id }}"></td>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal-{{ app_user.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body d-flex justify-content-center">
+                                        <img src="{{ app_user.profilePicture }}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     <td>{{ app_user.phoneNumber }}</td>
                     <td>{{ app_user.city }}</td>
                     <td>{{ app_user.zipcode }}</td>
