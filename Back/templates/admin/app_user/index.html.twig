@@ -7,29 +7,30 @@
         <h2 class="title-category" >Liste des utilisateurs</h2>
 
         <table class="table table-striped table_list">
+         
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Email</th>
+                    <th {% if pagination.isSorted('id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Id', 'id') }}</th>
+                    <th {% if pagination.isSorted('email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Email', 'email') }}</th>
                     <!--<th>Password</th>-->
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Birthdate</th>
+                    <th {% if pagination.isSorted('firstname') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Firstname', 'firstname') }}</th>
+                    <th {% if pagination.isSorted('lastname') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Lastname', 'lastname') }}</th>
+                    <th {% if pagination.isSorted('birthDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'BirthDate', 'birthDate') }}</th>
                     <th>ProfilePicture</th>
                     <th>PhoneNumber</th>
-                    <th>City</th>
-                    <th>Zipcode</th>
+                    <th {% if pagination.isSorted('city') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'City', 'city') }}</th>
+                    <th {% if pagination.isSorted('zipcode') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Zipcode', 'zipcode') }}</th>
                     <!--<th>LinkLinkedin</th>-->
                     <!--<th>LinkGithub</th>-->
                     <!--<th>LinkPersonal</th>-->
-                    <th>IsActive</th>
-                    <th>CreatedDate</th>
+                    <th {% if pagination.isSorted('isactive') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'IsActive', 'isactive') }}</th>
+                    <th {% if pagination.isSorted('createdDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'CreatedDate', 'createdDate') }}</th>
                     <!--<th>Description</th>-->
                     <th>actions</th>
                 </tr>
             </thead>
             <tbody>
-            {% for app_user in app_users %}
+            {% for app_user in pagination %}
                 <tr>
                     <td>{{ app_user.id }}</td>
                     <td>{{ app_user.email }}</td>
@@ -62,5 +63,8 @@
         </table>
 
         <a href="{{ path('app_user_new') }}">Create new</a>
+    
+        {{ include('admin/partials/__pagination.html.twig') }}
     </div>
+
 {% endblock %}

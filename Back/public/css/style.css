@@ -171,6 +171,10 @@ footer {
     color:#fdf1cd;
 }
 
+.table-striped tbody tr:nth-of-type(odd){
+    background-color: rgba(0,0,0,.15);
+}
+
 /*List image*/
 .image_for_list{
     height: 60px;

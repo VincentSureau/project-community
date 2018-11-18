@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 /**
  * @Route("/image")
@@ -18,9 +19,15 @@ class ImageController extends AbstractController
     /**
      * @Route("/", name="image_index", methods="GET")
      */
-    public function index(ImageRepository $imageRepository): Response
+    public function index(ImageRepository $imageRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        return $this->render('admin/image/index.html.twig', ['images' => $imageRepository->findAll()]);
+        $query = $imageRepository->findAll();
+        $pagination = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            4/*limit per page*/
+        );
+        return $this->render('admin/image/index.html.twig', ['pagination' => $pagination]);
     }
 
     /**
