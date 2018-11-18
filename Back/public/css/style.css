@@ -171,6 +171,34 @@ footer {
     color:#fdf1cd;
 }
 
+.fa-trash-alt {
+    color:#fdf1cd;
+}
+
+.fa-trash-alt:hover {
+    color:#cfc5a7;
+}
+
+.btn-link:hover {
+    color:#cfc5a7!important;
+}
+
+.add-element {
+    padding: 5px 10px;
+    border: 1px solid #fdf1cd;
+    border-radius: 20px;
+    color: #fdf1cd!important;
+}
+
+.add-element:hover {
+    color: #1d6682!important;
+    background-color: #fdf1cd!important;
+}
+
+table {
+    margin-top: 20px; 
+}
+
 /*List image*/
 .image_for_list{
     height: 60px;
