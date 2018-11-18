@@ -1,12 +1,7 @@
 @import '../../styles/vars';
 
 #projects {
-  & h1 {
-    font-size: 6em;
-    font-weight: bold;
-  }
   & h3 {
-    font-size: 1.5em;
     padding: 0 0 2em 0;
     font-weight: normal;
   }
@@ -56,7 +51,6 @@
   }
   & h1 {
     font-size: 3em;
-    font-weight: bold;
     margin-bottom: -10px;
   }
 

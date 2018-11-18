@@ -6,10 +6,24 @@
 // Bootstrap library
 @import '../../node_modules/bootstrap/scss/bootstrap';
 
-body {
-  background-color: #eaeaea;
-}
-
 p, h1, h2, h3, h4, span {
   color: $text-color;
+}
+
+h1, h2, h3 {
+  text-transform: uppercase;
+  line-height: 1;
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 6em;
+}
+
+h2 {
+  font-size: 3.2em;
+}
+
+h3 {
+  font-size: 1.6em;
 }

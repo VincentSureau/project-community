@@ -27,12 +27,12 @@ class Footer extends React.Component {
     );
 
     const classcolortext = ClassNames(
-      { 'text-hometext': window.location.pathname === '/' },
-      { 'text-memberstext': window.location.pathname === '/members' },
-      { 'text-projectstext': window.location.pathname === '/projects' },
-      { 'text-logintext': window.location.pathname === '/login' },
-      { 'text-membertext': window.location.pathname.includes('/members/') },
-      { 'text-projecttext': window.location.pathname.includes('/projects/') },
+      { 'text-home-lighter': window.location.pathname === '/' },
+      { 'text-members-lighter': window.location.pathname === '/members' },
+      { 'text-projects-lighter': window.location.pathname === '/projects' },
+      { 'text-login-lighter': window.location.pathname === '/login' },
+      { 'text-member-lighter': window.location.pathname.includes('/members/') },
+      { 'text-project-lighter': window.location.pathname.includes('/projects/') },
     );
 
     return (

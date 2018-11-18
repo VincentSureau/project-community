@@ -20,7 +20,7 @@ import './project.scss';
 const Project = () => (
   <div id="project">
     <section id="project-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-project">
-      <h1 className="text-uppercase">Productize</h1>
+      <h1>Productize</h1>
       <div id="project-project-pc">
         <div id="project-project-pc-screen">
           <img src="/src/images/project1.png" alt="" />
