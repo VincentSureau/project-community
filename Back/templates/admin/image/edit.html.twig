@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Image{% endblock %}
+{% block title %}}Modifier l'image - Admin{% endblock %}
 
 {% block body %}
-    <h1>Edit Image</h1>
+    <div class="container-form container_table_list">
+        <h2 class="show-title">Modifier l'image</h2>
+        <img class="image_for_list" src="{{ image.imageLink }}" alt="">
+        {{ include('admin/image/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('admin/image/_form.html.twig', {'button_label': 'Update'}) }}
+        <a class="btn btn-light" href="{{ path('image_index') }}">back to list</a>
 
-    <a href="{{ path('image_index') }}">back to list</a>
-
-    {{ include('admin/image/_delete_form.html.twig') }}
+        {{ include('admin/image/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

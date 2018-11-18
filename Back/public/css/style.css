@@ -83,7 +83,7 @@ hr {
 /*container home*/
 
 .page-admin{
-    height: calc(100vh - 203px);
+    height: calc(100vh - 200px);
     min-height: 404px;
     flex-direction: column;
 }
@@ -171,10 +171,6 @@ footer {
     color:#fdf1cd;
 }
 
-<<<<<<< HEAD
-.table-striped tbody tr:nth-of-type(odd){
-    background-color: rgba(0,0,0,.15);
-=======
 .fa-trash-alt {
     color:#fdf1cd;
 }
@@ -199,9 +195,12 @@ footer {
     background-color: #fdf1cd!important;
 }
 
+.table-striped tbody tr:nth-of-type(odd){
+    background-color: rgba(0,0,0,.15);
+} 
+
 table {
     margin-top: 20px; 
->>>>>>> 4fa20e281de013dc84af178949267d5be0647da4
 }
 
 /*List image*/
@@ -218,6 +217,19 @@ td {
 .show-title {
     color: #fdf1cd;
     margin-top: 10px;
+}
+
+/*Editer*/
+
+.container-form{
+    width: 40%;
+    margin: auto;
+}
+
+/*Pagination*/
+
+.pagination {
+    justify-content:center;
 }
 
 /*****************************************/

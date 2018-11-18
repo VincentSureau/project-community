@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit ProfessionalStatus{% endblock %}
+{% block title %}Modifier le statut pro - Admin{% endblock %}
 
 {% block body %}
-    <h1>Edit ProfessionalStatus</h1>
+    <div class="container-form container_table_list">
+        <h2 class="show-title">Modifier le statut professionnel</h2>
 
-    {{ include('admin/professional_status/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('admin/professional_status/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('professional_status_index') }}">back to list</a>
+        <a class="btn btn-light" href="{{ path('professional_status_index') }}">back to list</a>
 
-    {{ include('admin/professional_status/_delete_form.html.twig') }}
+        {{ include('admin/professional_status/_delete_form.html.twig') }}
+    </div>
 {% endblock %}
