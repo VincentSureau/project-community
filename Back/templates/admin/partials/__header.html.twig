@@ -1,53 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-md navbar-light">
-
-    <button class="navbar-toggler menu-burger" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    <span class="menu-burger-text">Menu</span>
-    </button>
-
-    <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
-        <div class="left-nav-container">
-            <ul class="d-flex container-nav-link">
-                <!--
-                <li class="nav-link">
-                <a href="{{ path('app_user_index') }}">Les étudiants</a> 
-                </li>
-                <li class="nav-link">
-                    <a href="{{ path('project_index') }}">Les projets</a>
-                </li>
-                <li class="nav-link">
-                    <a href="{{ path('promotion_index') }}">Les promotions</a>
-                </li>
-                <li class="nav-link">
-                    <a href="{{ path('professional_status_index') }}">Les statuts professionels</a>
-                </li> 
-                -->
-                <li class="nav-link">
-                    <a href="{{ path('admin_index') }}">Accueil</a> 
-                </li>
-            </ul>
-        </div>
-        <a href="{{ path('admin_index') }}"><img class="logo-community" src="{{ asset('images/logoOcommunity.svg')}}" alt="logo O'clock community"></a>
-        <div class="right-nav-container">
-            <ul class="d-flex container-nav-link">
-                <!--
-                <li class="nav-link">
-                    <a href="{{ path('specialisation_index') }}">Les spécialisations</a>
-                </li>
-                <li class="nav-link">
-                    <a href="{{ path('competence_index') }}">Les compétences</a>
-                </li>
-                <li class="nav-link">
-                    <a href="{{ path('image_index') }}">Les images</a>
-                </li>
-                -->
-                <li class="nav-link nav-link_disconnect">
-                    <a href="">Déconnexion</a>
-                </li>
-                
-            </ul>
-        </div>
-    </div>
-    </nav>
+{{ include('admin/partials/__navbar1.html.twig') }}
+<hr>
+{{ include('admin/partials/__navbar2.html.twig') }}
 </header>

@@ -22,9 +22,18 @@ body {
 }
 
 /* Navigation */
+
+.text-creme {
+    color: #fdf1cd!important;
+}
+
+hr {
+    border-color: #fdf1cd;
+}
+
 .navbar{
     background-color: #194d61!important;
-    height: 62px;
+    /* height: 62px; */
     width: 100%;
 }
 
@@ -37,7 +46,7 @@ body {
     padding: 0;
 }
 
-.nav-link>a{
+.nav-link>a, .dropdown {
     display: flex;
     text-align: center;
     padding: 10px 20px;
@@ -65,6 +74,10 @@ body {
 
 .logo-community {
     height: 30px;
+}
+
+.navbar-nav {
+    flex-grow: 1;
 }
 
 /*container home*/
