@@ -21,7 +21,7 @@
                     <td>{{ professional_status.id }}</td>
                     <td>{{ professional_status.name }}</td>
                     <td>{{ professional_status.slug }}</td>
-                    <td0
+                    <td>
                         <a class="btn btn-link p-0"  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('professional_status_show', {'id': professional_status.id}) }}"><i class="fas fa-search"></i></a>
                         <a class="btn btn-link p-0"  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('professional_status_edit', {'id': professional_status.id}) }}"><i class="fas fa-edit"></i></a>
                         {{ include('admin/professional_status/_delete_link.html.twig') }}
