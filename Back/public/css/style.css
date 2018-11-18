@@ -208,6 +208,13 @@ td {
     vertical-align: middle!important;
 }
 
+/*Show*/
+
+.show-title {
+    color: #fdf1cd;
+    margin-top: 10px;
+}
+
 /*****************************************/
 /**************Media Queries**************/
 /*****************************************/
