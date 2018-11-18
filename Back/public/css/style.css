@@ -171,8 +171,37 @@ footer {
     color:#fdf1cd;
 }
 
+<<<<<<< HEAD
 .table-striped tbody tr:nth-of-type(odd){
     background-color: rgba(0,0,0,.15);
+=======
+.fa-trash-alt {
+    color:#fdf1cd;
+}
+
+.fa-trash-alt:hover {
+    color:#cfc5a7;
+}
+
+.btn-link:hover {
+    color:#cfc5a7!important;
+}
+
+.add-element {
+    padding: 5px 10px;
+    border: 1px solid #fdf1cd;
+    border-radius: 20px;
+    color: #fdf1cd!important;
+}
+
+.add-element:hover {
+    color: #1d6682!important;
+    background-color: #fdf1cd!important;
+}
+
+table {
+    margin-top: 20px; 
+>>>>>>> 4fa20e281de013dc84af178949267d5be0647da4
 }
 
 /*List image*/
@@ -182,6 +211,13 @@ footer {
 
 td {
     vertical-align: middle!important;
+}
+
+/*Show*/
+
+.show-title {
+    color: #fdf1cd;
+    margin-top: 10px;
 }
 
 /*****************************************/

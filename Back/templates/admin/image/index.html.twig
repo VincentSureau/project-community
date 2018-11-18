@@ -6,6 +6,7 @@
 
     <div class="container-fluid container_table_list">
         <h2 class="title-category" >Liste des images</h2>
+        <a href="{{ path('image_new') }}" class="add-element"><i class="fas fa-plus"></i> Ajouter une image</a>
 
         <table class="table table-striped table_list">
             <thead>
@@ -36,8 +37,11 @@
             </tbody>
         </table>
 
+<<<<<<< HEAD
         <a href="{{ path('image_new') }}">Create new</a>
 
         {{ include('admin/partials/__pagination.html.twig') }}
+=======
+>>>>>>> 4fa20e281de013dc84af178949267d5be0647da4
     </div>
 {% endblock %}

@@ -23,10 +23,10 @@ class AppUserController extends AbstractController
     {
         $query = $appUserRepository->findAll();
         $pagination = $paginator->paginate(
-        $query, /* query NOT result */
-        $request->query->getInt('page', 1)/*page number*/,
-        4/*limit per page*/
-    );
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1)/*page number*/,
+            4/*limit per page*/
+        );
         return $this->render('admin/app_user/index.html.twig', ['pagination' => $pagination]);
     }
 

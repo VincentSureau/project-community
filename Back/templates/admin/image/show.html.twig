@@ -3,9 +3,14 @@
 {% block title %}Image{% endblock %}
 
 {% block body %}
-    <h1>Image</h1>
+    <div class="container-fluid container_table_list">
+        <h2 class="show-title">Image : </h2>
 
-    <table class="table">
+    <a class="btn btn-light" href="{{ path('image_index') }}">back to list</a>
+    <a class="btn btn-success" href="{{ path('image_edit', {'id': image.id}) }}">edit</a>
+    {{ include('admin/image/_delete_form.html.twig') }}
+
+    <table class="table table-striped table_list">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -13,7 +18,7 @@
             </tr>
             <tr>
                 <th>ImageLink</th>
-                <td>{{ image.imageLink }}</td>
+                <td><img class="image_for_list" src="{{ image.imageLink }}" alt=""></td>
             </tr>
             <tr>
                 <th>IsHero</th>
@@ -22,9 +27,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('image_index') }}">back to list</a>
-
-    <a href="{{ path('image_edit', {'id': image.id}) }}">edit</a>
-
-    {{ include('admin/image/_delete_form.html.twig') }}
 {% endblock %}

@@ -3,28 +3,29 @@
 {% block title %}ProfessionalStatus{% endblock %}
 
 {% block body %}
-    <h1>ProfessionalStatus</h1>
+    <div class="container-fluid container_table_list">
+        <h2 class="show-title">Statut Professionnel : {{ professional_status.name }}</h2>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ professional_status.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ professional_status.name }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ professional_status.slug }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <a class="btn btn-light" href="{{ path('professional_status_index') }}">back to list</a>
+        <a class="btn btn-success" href="{{ path('professional_status_edit', {'id': professional_status.id}) }}">edit</a>
+        {{ include('admin/professional_status/_delete_form.html.twig') }}
 
-    <a href="{{ path('professional_status_index') }}">back to list</a>
+        <table class="table table-striped table_list">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ professional_status.id }}</td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>{{ professional_status.name }}</td>
+                </tr>
+                <tr>
+                    <th>Slug</th>
+                    <td>{{ professional_status.slug }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <a href="{{ path('professional_status_edit', {'id': professional_status.id}) }}">edit</a>
-
-    {{ include('admin/professional_status/_delete_form.html.twig') }}
 {% endblock %}
