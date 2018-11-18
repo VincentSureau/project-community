@@ -153,4 +153,14 @@
       margin: .2em;
     }
   }
+
+  &-link {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    &-icons {
+      & a {
+        font-size: 4em;
+      }
+    }
+  }
 }
