@@ -10,8 +10,12 @@ import React from 'react';
 import ArrowDown from '../ArrowDown';
 import ProjectPresentation from './ProjectPresentation';
 import ProjectGallery from './ProjectGallery';
+import ProjectDescript from './ProjectDescrip';
+import ProjectLink from './ProjectLink';
+
 // Styles
 import './project.scss';
+
 
 
 /**
@@ -29,7 +33,9 @@ const Project = () => (
       <ArrowDown />
     </section>
     <ProjectPresentation />
+    <ProjectDescript />
     <ProjectGallery />
+    <ProjectLink />
   </div>
 
 );
