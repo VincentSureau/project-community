@@ -32,9 +32,9 @@
                     <!--<td>{{ project.linkProject }}</td>-->
                     <!--<td>{{ project.linkVideo }}</td>-->
                     <td>
-                        <a  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('project_show', {'id': project.id}) }}"><i class="fas fa-search"></i></a>
-                        <a  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('project_edit', {'id': project.id}) }}"><i class="fas fa-edit"></i></a>
-                        <a class='delete-link' data-toggle="tooltip" data-placement="top" title="delete" href="{{ path('project_delete', {'id': project.id}) }}"><i class="fas fa-trash-alt"></i></a>
+                        <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('project_show', {'id': project.id}) }}"><i class="fas fa-search"></i></a>
+                        <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('project_edit', {'id': project.id}) }}"><i class="fas fa-edit"></i></a>
+                        {{ include('admin/project/_delete_link.html.twig') }}
                     </td>
                 </tr>
             {% else %}

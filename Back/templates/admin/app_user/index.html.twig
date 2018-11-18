@@ -48,9 +48,9 @@
                     <td>{{ app_user.createdDate ? app_user.createdDate|date('d-m-Y') : '' }}</td>
                      <!--<td>{{ app_user.description }}</td>-->
                     <td>
-                        <a  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('app_user_show', {'id': app_user.id}) }}"><i class="fas fa-search"></i></a>
-                        <a  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('app_user_edit', {'id': app_user.id}) }}"><i class="fas fa-edit"></i></a>
-                        <a class='delete-link' data-toggle="tooltip" data-placement="top" title="delete" href="{{ path('app_user_delete', {'id': app_user.id}) }}"><i class="fas fa-trash-alt"></i></a>
+                        <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('app_user_show', {'id': app_user.id}) }}"><i class="fas fa-search"></i></a>
+                        <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('app_user_edit', {'id': app_user.id}) }}"><i class="fas fa-edit"></i></a>
+                        {{ include('admin/app_user/_delete_link.html.twig') }}
                     </td>
                 </tr>
             {% else %}

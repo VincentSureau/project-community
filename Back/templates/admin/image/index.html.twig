@@ -23,9 +23,9 @@
                     <td><img class="image_for_list" src="{{ image.imageLink }}" alt=""></td>
                     <td>{{ image.isHero ? 'Yes' : 'No' }}</td>
                     <td>
-                        <a  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('image_show', {'id': image.id}) }}"><i class="fas fa-search"></i></a>
-                        <a  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('image_edit', {'id': image.id}) }}"><i class="fas fa-edit"></i></a>
-                        <a class='delete-link' data-toggle="tooltip" data-placement="top" title="delete" href="{{ path('image_delete', {'id': image.id}) }}"><i class="fas fa-trash-alt"></i></a>
+                        <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('image_show', {'id': image.id}) }}"><i class="fas fa-search"></i></a>
+                        <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('image_edit', {'id': image.id}) }}"><i class="fas fa-edit"></i></a>
+                        {{ include('admin/image/_delete_link.html.twig') }}
                     </td>
                 </tr>
             {% else %}

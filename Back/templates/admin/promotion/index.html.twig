@@ -26,9 +26,9 @@
                     <td>{{ promotion.startDate ? promotion.startDate|date('d-m-Y') : '' }}</td>
                     <td>{{ promotion.endDate ? promotion.endDate|date('d-m-Y') : '' }}</td>
                     <td>
-                        <a  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('promotion_show', {'id': promotion.id}) }}"><i class="fas fa-search"></i></a>
-                        <a  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('promotion_edit', {'id': promotion.id}) }}"><i class="fas fa-edit"></i></a>
-                        <a class='delete-link' data-toggle="tooltip" data-placement="top" title="delete" href="{{ path('promotion_delete', {'id': promotion.id}) }}"><i class="fas fa-trash-alt"></i></a>
+                        <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('promotion_show', {'id': promotion.id}) }}"><i class="fas fa-search"></i></a>
+                        <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('promotion_edit', {'id': promotion.id}) }}"><i class="fas fa-edit"></i></a>
+                        {{ include('admin/promotion/_delete_link.html.twig') }}
                     </td>
                 </tr>
             {% else %}
