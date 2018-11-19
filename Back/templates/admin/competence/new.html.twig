@@ -3,9 +3,12 @@
 {% block title %}Ajouter une compétence - Admin{% endblock %}
 
 {% block body %}
-    <h2>Créer une nouvelle compétence</h2>
+    <div class="container-form container_table_list">
+        <h2 class="show-title">Créer une nouvelle compétence</h2>
 
-    {{ include('admin/competence/_form.html.twig') }}
+        {{ include('admin/competence/_form.html.twig') }}
 
-    <a href="{{ path('competence_index') }}">Retour à la liste</a>
+        <br>
+        <a class="btn btn-light" href="{{ path('competence_index') }}">Retour à la liste</a>
+    </div>
 {% endblock %}
