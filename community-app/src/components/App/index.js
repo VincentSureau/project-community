@@ -13,7 +13,7 @@ import Home from 'src/components/Home';
 import Login from 'src/components/Login';
 import Member from 'src/components/Member';
 import MemberEdit from 'src/components/MemberEdit';
-import Members from 'src/components/Members';
+import Members from 'src/containers/Members';
 import Project from 'src/components/Project';
 import ProjectEdit from 'src/components/ProjectEdit';
 import Projects from 'src/components/Projects';
