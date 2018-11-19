@@ -13,7 +13,6 @@ class ProfessionalStatusType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('slug')
         ;
     }
 

@@ -6,6 +6,7 @@ use App\Entity\Promotion;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class PromotionType extends AbstractType
 {
@@ -13,9 +14,16 @@ class PromotionType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('slug')
-            ->add('startDate')
-            ->add('endDate')
+            ->add('startDate', DateType::class, [
+                'placeholder' => [
+                    'year'=>'Année', 'month' => 'Mois', 'day' => 'Jour' 
+                ]
+            ])
+            ->add('endDate', DateType::class, [
+                'placeholder' => [
+                    'year'=>'Année', 'month' => 'Mois', 'day' => 'Jour' 
+                ]
+            ])
         ;
     }
 

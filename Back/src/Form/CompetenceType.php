@@ -13,9 +13,6 @@ class CompetenceType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('slug')
-            ->add('appUsers')
-            ->add('projects')
         ;
     }
 
