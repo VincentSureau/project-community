@@ -11,6 +11,16 @@
     & input {
       color: $text-color;
     }
+    &-gallery {
+      width: 100%;
+      &-imagechange {
+        margin: 2em 0;
+        width: 100%;
+        & img {
+          width:100%;
+        }
+      }
+    }
     &-info {
       width: 500px;
       & p {
@@ -66,9 +76,3 @@ button {
   }
 }
 
-.button-deleteProfile {
-    appearance: none;
-    background-color: $text-color;
-    color:darken(red, 20%);
-    border: 3px solid darken(red, 20%);
-}

@@ -18,13 +18,28 @@ const ProjectEdit = () => (
   <div id="projectEdit">
     <form>
       <section id="projectedit-form" className="d-flex flex-column justify-content-center align-items-center bg-project">
-        <h1>Productize</h1>
+
         <div id="project-project-pc">
           <div id="project-project-pc-screen">
             <img src="/src/images/project1.png" alt="" />
           </div>
         </div>
-        <input className="mx-2" type="file" name="profile_pic" accept=".jpg, .jpeg, .png" />
+        <h1>Productize</h1>
+        <input className="mx-2" type="file" name="project-heroimage" accept=".jpg, .jpeg, .png" />
+        <div id="projectedit-form-gallery" className="row">
+          <div id="projectedit-form-gallery-imagechange" className="col-4">
+            <img src="/src/images/project1.png" alt="" />
+            <input className="" type="file" name="project-image1" accept=".jpg, .jpeg, .png" />
+          </div>
+          <div id="projectedit-form-gallery-imagechange" className="col-4">
+            <img src="/src/images/project1.png" alt="" />
+            <input className="" type="file" name="project-image1" accept=".jpg, .jpeg, .png" />
+          </div>
+          <div id="projectedit-form-gallery-imagechange" className="col-4">
+            <img src="/src/images/project1.png" alt="" />
+            <input className="" type="file" name="project-image1" accept=".jpg, .jpeg, .png" />
+          </div>
+        </div>
         <div id="projectedit-form-info" className="row justify-content-center">
           <p className="label col-5">Lien site: </p>
           <input className="col-5 input-text" type="text" name="web" placeholder="http://productize.com" />
