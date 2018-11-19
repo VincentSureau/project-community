@@ -182,18 +182,13 @@ footer {
     color:#fdf1cd;
 }
 
+.fa-unlock,
 .fa-trash-alt {
     color:#fdf1cd;
 }
 
-.fa-trash-alt:hover {
-    color:#cfc5a7;
-}
-.fa-unlock-alt {
-    color:#fdf1cd;
-}
-
-.fa-unlock-alt:hover {
+.fa-trash-alt:hover,
+.fa-unlock:hover {
     color:#cfc5a7;
 }
 
