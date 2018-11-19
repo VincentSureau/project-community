@@ -7,5 +7,8 @@
         <h2 class="show-title">Modifier le projet</h2>
         <a class="btn btn-light btn-light_edit" href="{{ path('project_index') }}">Retour à la liste</a>
         {{ include('admin/project/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+        <div class="d-flex justify-content-center container_delete">
+            {{ include('admin/project/_delete_form.html.twig') }}
+        </div>
     </div>
 {% endblock %}
