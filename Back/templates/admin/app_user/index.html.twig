@@ -10,21 +10,21 @@
          
             <thead>
                 <tr>
-                    <th {% if pagination.isSorted('id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Id', 'id') }}</th>
-                    <th {% if pagination.isSorted('email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Email', 'email') }}</th>
+                    <th class="hide_content_phone"> {% if pagination.isSorted('id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Id', 'id') }}</th>
+                    <th class="hide_content_phone" {% if pagination.isSorted('email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Email', 'email') }}</th>
                     <!--<th>Password</th>-->
                     <th {% if pagination.isSorted('firstname') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Prénom', 'firstname') }}</th>
                     <th {% if pagination.isSorted('lastname') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nom', 'lastname') }}</th>
-                    <th {% if pagination.isSorted('birthDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de naissance', 'birthDate') }}</th>
-                    <th>Photo de profil</th>
-                    <th>Numéro de tél.</th>
-                    <th {% if pagination.isSorted('city') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Ville', 'city') }}</th>
-                    <th {% if pagination.isSorted('zipcode') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Code postal', 'zipcode') }}</th>
+                    <th class="hide_content_tab"{% if pagination.isSorted('birthDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de naissance', 'birthDate') }}</th>
+                    <th class="hide_content_phone" >Photo de profil</th>
+                    <th class="hide_content_phone" >Numéro de tél.</th>
+                    <th class="hide_content_phone">{% if pagination.isSorted('city') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Ville', 'city') }}</th>
+                    <th  class="hide_content_tab" {% if pagination.isSorted('zipcode') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Code postal', 'zipcode') }}</th>
                     <!--<th>LinkLinkedin</th>-->
                     <!--<th>LinkGithub</th>-->
                     <!--<th>LinkPersonal</th>-->
                     <th {% if pagination.isSorted('isactive') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Actif', 'isactive') }}</th>
-                    <th {% if pagination.isSorted('createdDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de création', 'createdDate') }}</th>
+                    <th class="hide_content_tab" {% if pagination.isSorted('createdDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de création', 'createdDate') }}</th>
                     <!--<th>Description</th>-->
                     <th>Actions</th>
                 </tr>
@@ -32,13 +32,13 @@
             <tbody>
             {% for app_user in pagination %}
                 <tr>
-                    <td>{{ app_user.id }}</td>
-                    <td>{{ app_user.email }}</td>
+                    <td class="hide_content_phone">{{ app_user.id }}</td>
+                    <td class="hide_content_phone">{{ app_user.email }}</td>
                      <!--<td>{{ app_user.password }}</td>-->
                     <td>{{ app_user.firstname }}</td>
                     <td>{{ app_user.lastname }}</td>
-                    <td>{{ app_user.birthdate ? app_user.birthdate|date('d-m-Y') : '' }}</td>
-                    <td><img class="image_for_list" src="{{ app_user.profilePicture }}" alt="" data-toggle="modal" data-target="#modal-{{ app_user.id }}"></td>
+                    <td class="hide_content_tab">{{ app_user.birthdate ? app_user.birthdate|date('d-m-Y') : '' }}</td>
+                    <td class="hide_content_phone"><img class="image_for_list" src="{{ app_user.profilePicture }}" alt="" data-toggle="modal" data-target="#modal-{{ app_user.id }}"></td>
 
                         <!-- Modal -->
                         <div class="modal fade" id="modal-{{ app_user.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -51,14 +51,14 @@
                             </div>
                         </div>
 
-                    <td>{{ app_user.phoneNumber }}</td>
-                    <td>{{ app_user.city }}</td>
-                    <td>{{ app_user.zipcode }}</td>
+                    <td class="hide_content_phone">{{ app_user.phoneNumber }}</td>
+                    <td class="hide_content_phone">>{{ app_user.city }}</td>
+                    <td  class="hide_content_tab">{{ app_user.zipcode }}</td>
                     <!--<td>{{ app_user.linkLinkedin }}</td>-->
                     <!--<td>{{ app_user.linkGithub }}</td>-->
                     <!--<td>{{ app_user.linkPersonal }}</td>-->
                     <td>{{ app_user.isActive ? 'Oui' : 'Non' }}</td>
-                    <td>{{ app_user.createdDate ? app_user.createdDate|date('d-m-Y') : '' }}</td>
+                    <td class="hide_content_tab">{{ app_user.createdDate ? app_user.createdDate|date('d-m-Y') : '' }}</td>
                      <!--<td>{{ app_user.description }}</td>-->
                     <td>
                         <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="afficher" href="{{ path('app_user_show', {'id': app_user.id}) }}"><i class="fas fa-search"></i></a>

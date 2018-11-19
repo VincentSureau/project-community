@@ -10,7 +10,7 @@
         <table class="table table-striped table_list">
             <thead>
                 <tr>
-                    <th {% if pagination.isSorted('id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Id', 'id') }}</th>
+                    <th class="hide_content_phone" {% if pagination.isSorted('id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Id', 'id') }}</th>
                     <th {% if pagination.isSorted('name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nom', 'name') }}</th>
                     <th {% if pagination.isSorted('slug') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Slug', 'slug') }}</th>
                     <th>Actions</th>
@@ -19,7 +19,7 @@
             <tbody>
             {% for competence in pagination %}
                 <tr>
-                    <td>{{ competence.id }}</td>
+                    <td class="hide_content_phone">{{ competence.id }}</td>
                     <td>{{ competence.name }}</td>
                     <td>{{ competence.slug }}</td>
                     <td>

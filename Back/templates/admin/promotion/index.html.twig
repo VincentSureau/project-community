@@ -10,22 +10,22 @@
         <table class="table table-striped table_list">
             <thead>
                 <tr>
-                    <th {% if pagination.isSorted('id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Id', 'id') }}</th>
+                    <th  class="hide_content_phone" {% if pagination.isSorted('id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Id', 'id') }}</th>
                     <th {% if pagination.isSorted('name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nom', 'name') }}</th>
                     <!--<th>Slug</th>-->
-                    <th {% if pagination.isSorted('startDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de début', 'startDate') }}</th>
-                    <th {% if pagination.isSorted('endDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de fin', 'endDate') }}</th>
+                    <th class="hide_content_phone" {% if pagination.isSorted('startDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de début', 'startDate') }}</th>
+                    <th class="hide_content_phone" {% if pagination.isSorted('endDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de fin', 'endDate') }}</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
             {% for promotion in pagination %}
                 <tr>
-                    <td>{{ promotion.id }}</td>
+                    <td class="hide_content_phone">{{ promotion.id }}</td>
                     <td>{{ promotion.name }}</td>
                     <!--<td>{{ promotion.slug }}</td>-->
-                    <td>{{ promotion.startDate ? promotion.startDate|date('d-m-Y') : '' }}</td>
-                    <td>{{ promotion.endDate ? promotion.endDate|date('d-m-Y') : '' }}</td>
+                    <td class="hide_content_phone">{{ promotion.startDate ? promotion.startDate|date('d-m-Y') : '' }}</td>
+                    <td class="hide_content_phone">{{ promotion.endDate ? promotion.endDate|date('d-m-Y') : '' }}</td>
                     <td>
                         <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="Afficher" href="{{ path('promotion_show', {'id': promotion.id}) }}"><i class="fas fa-search"></i></a>
                         <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="Modifier" href="{{ path('promotion_edit', {'id': promotion.id}) }}"><i class="fas fa-edit"></i></a>
