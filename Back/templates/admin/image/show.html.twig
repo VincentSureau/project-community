@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Image{% endblock %}
+{% block title %}Afficher un image{% endblock %}
 
 {% block body %}
     <div class="container-fluid container_table_list">
         <h2 class="show-title">Image : </h2>
 
-    <a class="btn btn-light" href="{{ path('image_index') }}">back to list</a>
-    <a class="btn btn-success" href="{{ path('image_edit', {'id': image.id}) }}">edit</a>
+    <a class="btn btn-light" href="{{ path('image_index') }}">Retour à la liste</a>
+    <a class="btn btn-success" href="{{ path('image_edit', {'id': image.id}) }}">Modifier</a>
     {{ include('admin/image/_delete_form.html.twig') }}
 
     <table class="table table-striped table_list">
@@ -17,12 +17,12 @@
                 <td>{{ image.id }}</td>
             </tr>
             <tr>
-                <th>ImageLink</th>
+                <th>Image</th>
                 <td><img class="image_for_list" src="{{ image.imageLink }}" alt=""></td>
             </tr>
             <tr>
-                <th>IsHero</th>
-                <td>{{ image.isHero ? 'Yes' : 'No' }}</td>
+                <th>Image de couverture</th>
+                <td>{{ image.isHero ? 'Oui' : 'Non' }}</td>
             </tr>
         </tbody>
     </table>
