@@ -25,7 +25,7 @@ class ProjectController extends AbstractController
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1)/*page number*/,
-            8/*limit per page*/
+            15/*limit per page*/
         );
         return $this->render('admin/project/index.html.twig', ['pagination' => $pagination]);
     }

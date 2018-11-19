@@ -3,9 +3,11 @@
 {% block title %}Ajouter une spécialité - Admin{% endblock %}
 
 {% block body %}
-    <h2>Créer une nouvelle spécialisation</h2>
+    <div class="container-form container_table_list">
+        <h2 class="show-title">Créer une nouvelle spécialisation</h2>
 
-    {{ include('admin/specialisation/_form.html.twig') }}
-
-    <a href="{{ path('specialisation_index') }}">Retour à la liste</a>
+        {{ include('admin/specialisation/_form.html.twig') }}
+        <br>
+        <a class="btn btn-light" href="{{ path('specialisation_index') }}">Retour à la liste</a>
+    </div>
 {% endblock %}

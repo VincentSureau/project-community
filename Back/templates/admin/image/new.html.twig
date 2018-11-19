@@ -3,9 +3,11 @@
 {% block title %}Ajouter une image - Admin{% endblock %}
 
 {% block body %}
-    <h2>Créer une nouvelle image</h2>
+    <div class="container-form container_table_list">
+        <h2 class="show-title">Créer une nouvelle image</h2>
 
-    {{ include('admin/image/_form.html.twig') }}
-
-    <a href="{{ path('image_index') }}">Retour à la liste</a>
+        {{ include('admin/image/_form.html.twig') }}
+        <br>
+        <a class="btn btn-light" href="{{ path('image_index') }}">Retour à la liste</a>
+    </div>
 {% endblock %}
