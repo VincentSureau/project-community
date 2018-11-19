@@ -106,8 +106,8 @@ class AppUserController extends AbstractController
             $appUser->setPassword($passwordFactory->generate());
             $em = $this->getDoctrine()->getManager();
             // $em->persist($appUser);
-            $em->flush();
             $mailGenerator->resetPassword($appUser);
+            $em->flush();
         }
 
         return $this->redirectToRoute('app_user_index');
