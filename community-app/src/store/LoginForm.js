@@ -9,7 +9,8 @@ import Form from '../components/Login/LoginForm';
 
 // === State (données) ===
 const mapStateToProps = state => ({
-  inputValue: state.input,
+  email: state.email,
+  password: state.password,
 });
 
 // === Dispatch (actions) ===

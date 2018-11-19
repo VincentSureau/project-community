@@ -1,5 +1,8 @@
 // initial state
-const initialState = {};
+const initialState = {
+  email: '',
+  password: '',
+};
 
 // Types
 const CHANGE_INPUT = 'CHANGE_INPUT';

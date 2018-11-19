@@ -41,7 +41,7 @@ class LoginForm extends React.Component {
           className="form-control login-article-form-textinput"
           id="inputPassword"
           placeholder="Mot de passe"
-          value={bcrypt.hashSync(password, 10)}
+          value={bcrypt.hashSync(password)}
           onChange={this.handleChange}
         />
         <button
