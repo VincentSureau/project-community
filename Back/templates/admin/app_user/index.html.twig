@@ -10,21 +10,21 @@
          
             <thead>
                 <tr>
-                    <th class="hide_content_phone" {% if pagination.isSorted('id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Id', 'id') }}</th>
-                    <th class="hide_content_phone" {% if pagination.isSorted('email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Email', 'email') }}</th>
+                    <th class="hide_content_phone sortable-icon" {% if pagination.isSorted('id') %} class="sorted"{% endif %}></i>{{ knp_pagination_sortable(pagination, 'Id' , 'id') }}</th>
+                    <th class="hide_content_phone" {% if pagination.isSorted('email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Email' , 'email') }}</th>
                     <!--<th>Password</th>-->
-                    <th {% if pagination.isSorted('firstname') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Prénom', 'firstname') }}</th>
-                    <th {% if pagination.isSorted('lastname') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nom', 'lastname') }}</th>
+                    <th {% if pagination.isSorted('firstname') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Prénom' , 'firstname') }}</th>
+                    <th {% if pagination.isSorted('lastname') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nom' , 'lastname') }}</th>
                     <th class="hide_content_tab"{% if pagination.isSorted('birthDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de naissance', 'birthDate') }}</th>
                     <th class="hide_content_phone" >Photo de profil</th>
                     <th class="hide_content_phone" >Numéro de tél.</th>
-                    <th class="hide_content_phone" {% if pagination.isSorted('city') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Ville', 'city') }}</th>
-                    <th  class="hide_content_tab" {% if pagination.isSorted('zipcode') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Code postal', 'zipcode') }}</th>
+                    <th class="hide_content_phone" {% if pagination.isSorted('city') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Ville' , 'city') }}</th>
+                    <th  class="hide_content_tab" {% if pagination.isSorted('zipcode') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Code postal' , 'zipcode') }}</th>
                     <!--<th>LinkLinkedin</th>-->
                     <!--<th>LinkGithub</th>-->
                     <!--<th>LinkPersonal</th>-->
-                    <th {% if pagination.isSorted('isactive') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Actif', 'isactive') }}</th>
-                    <th class="hide_content_tab" {% if pagination.isSorted('createdDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de création', 'createdDate') }}</th>
+                    <th {% if pagination.isSorted('isactive') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Actif' , 'isactive') }}</th>
+                    <th class="hide_content_tab" {% if pagination.isSorted('createdDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de création' , 'createdDate') }}</th>
                     <!--<th>Description</th>-->
                     <th>Actions</th>
                 </tr>
