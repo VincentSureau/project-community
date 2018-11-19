@@ -39,6 +39,7 @@ class AppUser implements UserInterface
     private $id;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
@@ -52,69 +53,79 @@ class AppUser implements UserInterface
     private $password;
 
     /**
-     * @Groups({"project", "AppUserList", "ProjectList"})
+     * @Groups({"project", "AppUserList", "ProjectList", "user"})
      * @ORM\Column(type="string", length=80, nullable=true)
      */
     private $firstname;
 
     /**
-     * @Groups({"project", "AppUserList", "ProjectList"})
+     * @Groups({"project", "AppUserList", "ProjectList", "user"})
      * @ORM\Column(type="string", length=80, nullable=true)
      */
     private $lastname;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $birthdate;
 
     /**
-     * @Groups({"AppUserList"})
+     * @Groups({"AppUserList", "user"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $profilePicture;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="string", length=25, nullable=true)
      */
     private $phoneNumber;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $city;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="integer", nullable=true)
      */
     private $zipcode;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="string", length=150, nullable=true)
      */
     private $linkLinkedin;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="string", length=150, nullable=true)
      */
     private $linkGithub;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="string", length=150, nullable=true)
      */
     private $linkPersonal;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="boolean")
      */
     private $isActive;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="datetime")
      */
     private $createdDate;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
@@ -125,7 +136,7 @@ class AppUser implements UserInterface
     private $role;
 
     /**
-     * @Groups({"user", "AppUserList"})
+     * @Groups({"user", "AppUserList", "user"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Promotion", inversedBy="appUsers")
      */
     private $promotion;
@@ -155,7 +166,7 @@ class AppUser implements UserInterface
     private $competences;
 
     /**
-     * @Groups({"AppUserList"})
+     * @Groups({"AppUserList", "user"})
      * @ORM\Column(type="string", length=120, nullable=true)
      */
     private $slug;

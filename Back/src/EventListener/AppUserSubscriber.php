@@ -15,6 +15,10 @@ final class AppUserSubscriber implements EventSubscriber
 
     private $twig;
 
+    private $passwordEncoder;
+
+    private $em;
+
     public function __construct(\Swift_Mailer $mail, \Twig_Environment $twig, UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->mailer = $mail;
@@ -27,8 +31,7 @@ final class AppUserSubscriber implements EventSubscriber
         return [
             Events::prePersist,
             Events::preUpdate,
-            Events::postPersist,
-            Events::postUpdate,
+            Events::postPersist
         ];
     }
 
@@ -41,11 +44,6 @@ final class AppUserSubscriber implements EventSubscriber
     {
         $this->sendMail($args);
         $this->encryptPassword($args);
-    }
-
-    public function postUpdate(LifecycleEventArgs $args)
-    {
-        $this->setSlug($args);
     }
 
     public function postPersist(LifecycleEventArgs $args)
@@ -80,7 +78,7 @@ final class AppUserSubscriber implements EventSubscriber
         if ($user instanceof AppUser) {
             $slug = $user->getFirstname() . '-' . $user->getLastname() . '-' . $user->getId();
             $user->setSlug($slug);
-            $em = $this->getDoctrine()->getManager();
+            $em = $args->getObjectManager();
             $em->flush();          
         }
     }
