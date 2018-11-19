@@ -25,7 +25,7 @@
                     <td>
                         <a class="btn btn-link p-0"  data-toggle="tooltip" data-placement="top" title="Afficher" href="{{ path('specialisation_show', {'id': specialisation.id}) }}"><i class="fas fa-search"></i></a>
                         <a class="btn btn-link p-0"  data-toggle="tooltip" data-placement="top" title="Modifier" href="{{ path('specialisation_edit', {'id': specialisation.id}) }}"><i class="fas fa-edit"></i></a>
-                        <div class="hide_content_phone">
+                        <div class="hide_content_phone hide_content_phone_button">
                             {{ include('admin/specialisation/_delete_link.html.twig') }}
                         </div>
                     </td>
