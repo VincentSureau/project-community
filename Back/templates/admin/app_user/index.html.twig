@@ -18,7 +18,7 @@
                     <th class="hide_content_tab"{% if pagination.isSorted('birthDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de naissance', 'birthDate') }}</th>
                     <th class="hide_content_phone" >Photo de profil</th>
                     <th class="hide_content_phone" >Numéro de tél.</th>
-                    <th class="hide_content_phone">{% if pagination.isSorted('city') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Ville', 'city') }}</th>
+                    <th class="hide_content_phone" {% if pagination.isSorted('city') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Ville', 'city') }}</th>
                     <th  class="hide_content_tab" {% if pagination.isSorted('zipcode') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Code postal', 'zipcode') }}</th>
                     <!--<th>LinkLinkedin</th>-->
                     <!--<th>LinkGithub</th>-->
@@ -52,7 +52,7 @@
                         </div>
 
                     <td class="hide_content_phone">{{ app_user.phoneNumber }}</td>
-                    <td class="hide_content_phone">>{{ app_user.city }}</td>
+                    <td class="hide_content_phone">{{ app_user.city }}</td>
                     <td  class="hide_content_tab">{{ app_user.zipcode }}</td>
                     <!--<td>{{ app_user.linkLinkedin }}</td>-->
                     <!--<td>{{ app_user.linkGithub }}</td>-->
@@ -63,8 +63,10 @@
                     <td>
                         <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="afficher" href="{{ path('app_user_show', {'id': app_user.id}) }}"><i class="fas fa-search"></i></a>
                         <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="modifier" href="{{ path('app_user_edit', {'id': app_user.id}) }}"><i class="fas fa-edit"></i></a>
-                        {{ include('admin/app_user/_delete_link.html.twig') }}
-                        {{ include('admin/app_user/_reset_password_link.html.twig') }}
+                        <div class="hide_content_phone">
+                            {{ include('admin/app_user/_delete_link.html.twig') }}
+                            {{ include('admin/app_user/_reset_password_link.html.twig') }}
+                        </div>
                     </td>
                 </tr>
             {% else %}

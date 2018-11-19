@@ -25,7 +25,9 @@
                     <td>
                         <a class="btn btn-link p-0"  data-toggle="tooltip" data-placement="top" title="Afficher" href="{{ path('specialisation_show', {'id': specialisation.id}) }}"><i class="fas fa-search"></i></a>
                         <a class="btn btn-link p-0"  data-toggle="tooltip" data-placement="top" title="Modifier" href="{{ path('specialisation_edit', {'id': specialisation.id}) }}"><i class="fas fa-edit"></i></a>
-                        {{ include('admin/specialisation/_delete_link.html.twig') }}
+                        <div class="hide_content_phone">
+                            {{ include('admin/specialisation/_delete_link.html.twig') }}
+                        </div>
                     </td>
                 </tr>
             {% else %}

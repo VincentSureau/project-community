@@ -35,7 +35,9 @@
                     <td>
                         <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="Afficher" href="{{ path('project_show', {'id': project.id}) }}"><i class="fas fa-search"></i></a>
                         <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="Modifer" href="{{ path('project_edit', {'id': project.id}) }}"><i class="fas fa-edit"></i></a>
-                        {{ include('admin/project/_delete_link.html.twig') }}
+                        <div class="hide_content_phone">
+                            {{ include('admin/project/_delete_link.html.twig') }}
+                        </div>
                     </td>
                 </tr>
             {% else %}
