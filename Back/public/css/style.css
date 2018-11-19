@@ -216,6 +216,10 @@ table {
     margin-top: 20px; 
 }
 
+.hide_content_phone_button{
+    display: inline-block;
+}
+
 /*List image*/
 .image_for_list{
     height: 60px;
@@ -276,6 +280,13 @@ td {
     border-color: #3b96b8!important;
 }
 
+.btn-light_edit {
+    margin: 10px 0;
+}
+
+.button_container{
+    margin: 20px 0;
+}
 /*Modal*/
 .modal-dialog {
     display: flex;
@@ -327,9 +338,15 @@ td {
     .hide_content_tab{
         display: none;
     }
+    .container-form{
+        width: 60%;
+    }
 } 
 @media screen and (max-width: 950px) {
     .hide_content_phone{
         display: none;
+    }
+    .container-form{
+        width: 90%;
     }
 }

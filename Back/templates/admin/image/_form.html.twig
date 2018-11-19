@@ -1,4 +1,7 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+    <div class="d-flex justify-content-around button_container">
+        <button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+        {{ include('admin/image/_delete_form.html.twig') }}
+    </div>
 {{ form_end(form) }}

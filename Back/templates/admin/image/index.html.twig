@@ -26,7 +26,7 @@
                     <td>
                         <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="Afficher" href="{{ path('image_show', {'id': image.id}) }}"><i class="fas fa-search"></i></a>
                         <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="Modifier" href="{{ path('image_edit', {'id': image.id}) }}"><i class="fas fa-edit"></i></a>
-                        <div class="hide_content_phone">
+                        <div class="hide_content_phone hide_content_phone_button">
                             {{ include('admin/image/_delete_link.html.twig') }}
                         </div>
                     </td>

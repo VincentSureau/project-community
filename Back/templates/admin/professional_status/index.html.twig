@@ -25,7 +25,7 @@
                     <td>
                         <a class="btn btn-link p-0"  data-toggle="tooltip" data-placement="top" title="Afficher" href="{{ path('professional_status_show', {'id': professional_status.id}) }}"><i class="fas fa-search"></i></a>
                         <a class="btn btn-link p-0"  data-toggle="tooltip" data-placement="top" title="Modifier" href="{{ path('professional_status_edit', {'id': professional_status.id}) }}"><i class="fas fa-edit"></i></a>
-                        <div class="hide_content_phone">
+                        <div class="hide_content_phone hide_content_phone_button">
                             {{ include('admin/professional_status/_delete_link.html.twig') }}
                         </div>
                     </td>
