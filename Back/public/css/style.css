@@ -9,6 +9,18 @@
     font-weight: bold;
     src: url("../fonts/Brandon_bld.otf") format("opentype");
 }
+html, body {
+    height: 100%;
+    min-height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: 1 0 auto;
+}
 
 ul, a{
     list-style-type: none; 
@@ -137,6 +149,7 @@ hr {
 /*footer*/
 
 footer {
+    flex-shrink: 0;
     width: 95%;
     margin: auto;
     border-top: solid 1px #fdf1cd;
@@ -155,10 +168,9 @@ footer {
 
 
 /*Lists*/
-/*.container_table_list {
-    height: 100vh;
-    overflow-y: auto;
-}*/
+.container_table_list {
+    overflow-x: auto ;
+}
 .title-category {
     padding: 15px 0;
     margin: 0;
@@ -175,6 +187,13 @@ footer {
 }
 
 .fa-trash-alt:hover {
+    color:#cfc5a7;
+}
+.fa-unlock-alt {
+    color:#fdf1cd;
+}
+
+.fa-unlock-alt:hover {
     color:#cfc5a7;
 }
 
@@ -282,7 +301,7 @@ td {
       height:130px;
     }
     .container_table_list{
-        height: 100vh;
+       overflow-x: auto ;
     }
 }
 
