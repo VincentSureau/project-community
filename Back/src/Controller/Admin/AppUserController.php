@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Knp\Component\Pager\PaginatorInterface;
 use App\Utils\GeneratePassword;
+use App\Utils\SendMail;
 
 /**
  * @Route("/user")
@@ -99,13 +100,14 @@ class AppUserController extends AbstractController
     /**
      * @Route("/{id}/reset-password", name="app_user_password", methods="POST")
      */
-    public function resetPassword(Request $request, AppUser $appUser, GeneratePassword $passwordFactory): Response
+    public function resetPassword(Request $request, AppUser $appUser, GeneratePassword $passwordFactory, SendMail $mailGenerator): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$appUser->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('reset-password'.$appUser->getId(), $request->request->get('_token'))) {
             $appUser->setPassword($passwordFactory->generate());
             $em = $this->getDoctrine()->getManager();
             // $em->persist($appUser);
             $em->flush();
+            $mailGenerator->resetPassword($appUser);
         }
 
         return $this->redirectToRoute('app_user_index');

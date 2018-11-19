@@ -64,6 +64,7 @@
                         <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="afficher" href="{{ path('app_user_show', {'id': app_user.id}) }}"><i class="fas fa-search"></i></a>
                         <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="modifier" href="{{ path('app_user_edit', {'id': app_user.id}) }}"><i class="fas fa-edit"></i></a>
                         {{ include('admin/app_user/_delete_link.html.twig') }}
+                        {{ include('admin/app_user/_reset_password_link.html.twig') }}
                     </td>
                 </tr>
             {% else %}

@@ -24,10 +24,10 @@ class SendMail
 
   public function resetPassword($user)
   {
-    $message = (new \Swift_Message('Bienvenue sur Oclock Community'))
+    $message = (new \Swift_Message('Ton nouveau mot de passe'))
         ->setFrom('etudiant@oclock.io')
         ->setTo($user->getEmail())
-        ->setBody($this->twig->render('email/registration.html.twig', ['user' => $user]), 'text/html');
+        ->setBody($this->twig->render('email/resetpassword.html.twig', ['user' => $user]), 'text/html');
 
     return $this->mailer->send($message);
   }
