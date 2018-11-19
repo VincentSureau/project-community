@@ -37,7 +37,6 @@ class AppUserType extends AbstractType
                          ]
                      ])
                      ->add('profilePicture')
-                     ->add('password')
                      ->add('phoneNumber')
                      ->add('city')
                      ->add('zipcode')
