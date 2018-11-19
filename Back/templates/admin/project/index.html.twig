@@ -37,6 +37,7 @@
                         <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="Modifer" href="{{ path('project_edit', {'id': project.id}) }}"><i class="fas fa-edit"></i></a>
                         <div class="hide_content_phone hide_content_phone_button">
                             {{ include('admin/project/_delete_link.html.twig') }}
+                            {{ include('admin/project/_moderate_link.html.twig') }}
                         </div>
                     </td>
                 </tr>

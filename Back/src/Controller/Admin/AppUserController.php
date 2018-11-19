@@ -105,8 +105,25 @@ class AppUserController extends AbstractController
         if ($this->isCsrfTokenValid('reset-password'.$appUser->getId(), $request->request->get('_token'))) {
             $appUser->setPassword($passwordFactory->generate());
             $em = $this->getDoctrine()->getManager();
-            // $em->persist($appUser);
             $mailGenerator->resetPassword($appUser);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('app_user_index');
+    }
+
+    /**
+     * @Route("/{id}/moderate", name="app_user_moderate", methods="POST")
+     */
+    public function moderate(Request $request, AppUser $appUser): Response
+    {
+        if ($this->isCsrfTokenValid('moderate'.$appUser->getId(), $request->request->get('_token'))) {
+            if($appUser->getIsActive()) {
+                $appUser->setIsActive(false);
+            } else {
+                $appUser->setIsActive(true);
+            }
+            $em = $this->getDoctrine()->getManager();
             $em->flush();
         }
 
