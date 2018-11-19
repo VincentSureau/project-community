@@ -4,16 +4,19 @@ namespace App\EventListener;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
-use App\Entity\AppUser;
 use Doctrine\ORM\Events;
+use App\Entity\AppUser;
+use App\Utils\SendMail;
 
 final class UserMailSubscriber implements EventSubscriber
 {
     private $mailer;
 
-    public function __construct(\Swift_Mailer $mailer, \Twig_Environment $twig)
+    private $twig;
+
+    public function __construct(\Swift_Mailer $mail, \Twig_Environment $twig)
     {
-        $this->mailer = $mailer;
+        $this->mailer = $mail;
         $this->twig = $twig;
     }
 
@@ -21,13 +24,7 @@ final class UserMailSubscriber implements EventSubscriber
     {
         return [
             Events::postPersist,
-            Events::postUpdate
         ];
-    }
-
-    public function postUpdate(LifecycleEventArgs $args)
-    {
-        $this->sendMail($args);
     }
 
     public function postPersist(LifecycleEventArgs $args)
@@ -38,14 +35,10 @@ final class UserMailSubscriber implements EventSubscriber
     public function sendMail(LifecycleEventArgs $args)
     {
         $user = $args->getObject();
-        // perhaps you only want to act on some "Product" entity
-        if ($user instanceof AppUser) {
-            $message = (new \Swift_Message('Bienvenue sur Oclock Community'))
-                ->setFrom('etudiants@oclock.io')
-                ->setTo($user->getEmail())
-                ->setBody($this->twig->render('email/registration.html.twig', ['user' => $user]), 'text/html');
 
-            $this->mailer->send($message);
+        if ($user instanceof AppUser) {
+            $mailSender = new SendMail($this->mailer,  $this->twig);
+            $mailSender->newUser($user);
         }
 
 

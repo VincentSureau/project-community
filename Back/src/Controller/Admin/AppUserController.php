@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Knp\Component\Pager\PaginatorInterface;
+use App\Utils\GeneratePassword;
 
 /**
  * @Route("/user")
@@ -89,6 +90,21 @@ class AppUserController extends AbstractController
         if ($this->isCsrfTokenValid('delete'.$appUser->getId(), $request->request->get('_token'))) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($appUser);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('app_user_index');
+    }
+
+    /**
+     * @Route("/{id}/reset-password", name="app_user_password", methods="POST")
+     */
+    public function resetPassword(Request $request, AppUser $appUser, GeneratePassword $passwordFactory): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$appUser->getId(), $request->request->get('_token'))) {
+            $appUser->setPassword($passwordFactory->generate());
+            $em = $this->getDoctrine()->getManager();
+            // $em->persist($appUser);
             $em->flush();
         }
 
