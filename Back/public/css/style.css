@@ -243,6 +243,10 @@ td {
     margin: auto;
 }
 
+.container_delete {
+    margin: 20px 0;
+}
+
 /*Pagination*/
 
 .pagination {
