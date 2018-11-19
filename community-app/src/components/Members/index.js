@@ -27,7 +27,7 @@ class Members extends React.Component {
   }
 
   render() {
-    const { members } = this.props;
+    const { listMembers } = this.props;
     // console.log(members);
     return (
       <div id="members">
@@ -45,7 +45,7 @@ class Members extends React.Component {
           <ArrowDown />
         </section>
         <section id="members-list" className="bg-members-darker justify-content-center row">
-          {members.map(member => (<SingleMember {...member} key={member['@id']} />))}
+          {listMembers.map(member => (<SingleMember {...member} key={member['@id']} />))}
         </section>
       </div>
     );
@@ -53,7 +53,7 @@ class Members extends React.Component {
 }
 
 Members.propTypes = {
-  members: PropTypes.array.isRequired,
+  listMembers: PropTypes.array.isRequired,
   getMembers: PropTypes.func.isRequired,
 };
 

@@ -2,6 +2,7 @@
  * NPM import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Local import
@@ -18,17 +19,36 @@ import './member.scss';
 /**
  * Code
  */
-const Member = () => (
-  <div id="member">
-    <section id="member-info" className="d-flex flex-column justify-content-center align-items-center bg-member">
-      <SingleMember />
-      <ContactBar />
-    </section>
-    <Biography />
-    <ProjectLink />
-  </div>
+class Member extends React.Component {
 
-);
+  componentDidMount() {
+    const { getMemberWithId, id } = this.props;
+    getMemberWithId(id);
+  }
+
+  render() {
+    // const { name } = this.props.member.promotion;
+    const { member } = this.props;
+    
+
+    return (
+      <div id="member">
+        <section id="member-info" className="d-flex flex-column justify-content-center align-items-center bg-member">
+          {/* <SingleMember /> */}
+          <ContactBar />
+        </section>
+        <Biography />
+        <ProjectLink />
+      </div>
+    );
+  }
+}
+
+Member.propTypes = {
+  promotion: PropTypes.objectOf(
+    PropTypes.string.isRequired,
+  ).isRequired,
+};
 
 /**
  * Export
