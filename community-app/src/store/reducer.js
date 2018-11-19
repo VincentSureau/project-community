@@ -1,34 +1,18 @@
 // initial state
 const initialState = {
-  members: [
-    {
-      lastname: 'nom1',
-      firstname: 'prenom1',
-    },
-    {
-      lastname: 'nom2',
-      firstname: 'prenom2',
-    },
-    {
-      lastname: 'nom3',
-      firstname: 'prenom3',
-    },
-    {
-      lastname: 'nom4',
-      firstname: 'prenom4',
-    },
-  ],
+  members: [],
 };
 
 // Types
-export const RECEIVE_MEMBERS = 'RECEIVE_MEMBERS';
+export const GET_MEMBERS = 'RECEIVE_MEMBERS';
 
 // reducer
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case RECEIVE_MEMBERS:
+    case GET_MEMBERS:
       return {
         ...state,
+        members: [...state.members, action.members],
       };
     // Action non-reconnue
     default:
@@ -37,9 +21,9 @@ const reducer = (state = initialState, action = {}) => {
 };
 
 // Actions creators
-export const receiveMembers = payload => ({
-  type: RECEIVE_MEMBERS,
-  payload,
+export const getMembers = members => ({
+  type: GET_MEMBERS,
+  members,
 });
 
 // export
