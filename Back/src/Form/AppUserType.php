@@ -9,22 +9,27 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use App\Utils\GeneratePassword;
 
 class AppUserType extends AbstractType
 {
+    private $passwordFactory;
+
+    public function __construct(GeneratePassword $passwordFactory)
+    {
+        $this->passwordFactory = $passwordFactory;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('email')
             ->add('firstname')
-            ->add('lastname')
-            ->add('isActive') // to generate automatically
-            ->add('password'); // to remove once password is generated automatically
+            ->add('lastname');
 
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             $user = $event->getData();
             $form = $event->getForm();
-            dump($user);
             if ($user && $user->getId() !== null) {
                 $form->add('birthdate', BirthdayType::class, [
                      'placeholder' => [
@@ -32,6 +37,7 @@ class AppUserType extends AbstractType
                          ]
                      ])
                      ->add('profilePicture')
+                     ->add('password')
                      ->add('phoneNumber')
                      ->add('city')
                      ->add('zipcode')
@@ -45,9 +51,24 @@ class AppUserType extends AbstractType
                      ->add('specialisation')
                      ->add('professionalStatus')
                      ->add('project')
-                     ->add('competences');
+                     ->add('competences')
+                    ;
             }
         });
+
+        $builder->addEventListener(
+            FormEvents::POST_SUBMIT,
+            function(FormEvent $event) {
+                $form = $event->getForm();
+                $user = $event->getData();
+
+                if ($user && $user->getId() == null) {
+                    $user->setIsActive(false);
+                    $user->setPassword($this->passwordFactory->generate());
+                }
+            }
+
+        );
 
     }
 
