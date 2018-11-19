@@ -33,11 +33,11 @@ const ProjectEdit = () => (
           </div>
           <div id="projectedit-form-gallery-imagechange" className="col-4">
             <img src="/src/images/project1.png" alt="" />
-            <input className="" type="file" name="project-image1" accept=".jpg, .jpeg, .png" />
+            <input className="" type="file" name="project-image2" accept=".jpg, .jpeg, .png" />
           </div>
           <div id="projectedit-form-gallery-imagechange" className="col-4">
             <img src="/src/images/project1.png" alt="" />
-            <input className="" type="file" name="project-image1" accept=".jpg, .jpeg, .png" />
+            <input className="" type="file" name="project-image3" accept=".jpg, .jpeg, .png" />
           </div>
         </div>
         <div id="projectedit-form-info" className="row justify-content-center">
