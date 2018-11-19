@@ -8,4 +8,3 @@ bin/console doctrine:database:create | crée la table dans la BDD
 bin/console doctrine:schema:update --force | Effectue la mise à jour des tables de la BDD (uniquement en Dev)
 bin/console doctrine:fixtures:load | Créer un jeu de données factices dans la BDD
 bin/console server:run | lance un server virtuel dans le terminal (ctrl + C pour quitter)
-
