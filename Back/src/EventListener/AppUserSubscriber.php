@@ -31,7 +31,8 @@ final class AppUserSubscriber implements EventSubscriber
         return [
             Events::prePersist,
             Events::preUpdate,
-            Events::postPersist
+            Events::postPersist,
+            Events::postUpdate,
         ];
     }
 
@@ -47,6 +48,11 @@ final class AppUserSubscriber implements EventSubscriber
     }
 
     public function postPersist(LifecycleEventArgs $args)
+    {
+        $this->setSlug($args);
+    }
+
+    public function postUpdate(LifecycleEventArgs $args)
     {
         $this->setSlug($args);
     }
