@@ -5,9 +5,7 @@
 {% block body %}
     <div class="container-form container_table_list">
         <h2 class="show-title">Créer une nouvelle image</h2>
-
+        <a class="btn btn-light btn-light_edit" href="{{ path('image_index') }}">Retour à la liste</a>
         {{ include('admin/image/_form.html.twig') }}
-        <br>
-        <a class="btn btn-light" href="{{ path('image_index') }}">Retour à la liste</a>
     </div>
 {% endblock %}

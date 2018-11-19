@@ -5,9 +5,7 @@
 {% block body %}
     <div class="container-form container_table_list">
         <h2 class="show-title">Créer un nouveau statut professionnel</h2>
-
+        <a class="btn btn-light btn-light_edit" href="{{ path('professional_status_index') }}">Retour à la liste</a>
         {{ include('admin/professional_status/_form.html.twig') }}
-        <br>
-        <a class="btn btn-light" href="{{ path('professional_status_index') }}">Retour à la liste</a>
     </div
 {% endblock %}
