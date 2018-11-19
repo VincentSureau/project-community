@@ -13,20 +13,20 @@
                     <th {% if pagination.isSorted('id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Id', 'id') }}</th>
                     <th {% if pagination.isSorted('email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Email', 'email') }}</th>
                     <!--<th>Password</th>-->
-                    <th {% if pagination.isSorted('firstname') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Firstname', 'firstname') }}</th>
-                    <th {% if pagination.isSorted('lastname') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Lastname', 'lastname') }}</th>
-                    <th {% if pagination.isSorted('birthDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'BirthDate', 'birthDate') }}</th>
-                    <th>ProfilePicture</th>
-                    <th>PhoneNumber</th>
-                    <th {% if pagination.isSorted('city') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'City', 'city') }}</th>
-                    <th {% if pagination.isSorted('zipcode') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Zipcode', 'zipcode') }}</th>
+                    <th {% if pagination.isSorted('firstname') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Prénom', 'firstname') }}</th>
+                    <th {% if pagination.isSorted('lastname') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nom', 'lastname') }}</th>
+                    <th {% if pagination.isSorted('birthDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de naissance', 'birthDate') }}</th>
+                    <th>Photo de profil</th>
+                    <th>Numéro de tél.</th>
+                    <th {% if pagination.isSorted('city') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Ville', 'city') }}</th>
+                    <th {% if pagination.isSorted('zipcode') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Code postal', 'zipcode') }}</th>
                     <!--<th>LinkLinkedin</th>-->
                     <!--<th>LinkGithub</th>-->
                     <!--<th>LinkPersonal</th>-->
-                    <th {% if pagination.isSorted('isactive') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'IsActive', 'isactive') }}</th>
-                    <th {% if pagination.isSorted('createdDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'CreatedDate', 'createdDate') }}</th>
+                    <th {% if pagination.isSorted('isactive') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Actif', 'isactive') }}</th>
+                    <th {% if pagination.isSorted('createdDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de création', 'createdDate') }}</th>
                     <!--<th>Description</th>-->
-                    <th>actions</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -61,14 +61,14 @@
                     <td>{{ app_user.createdDate ? app_user.createdDate|date('d-m-Y') : '' }}</td>
                      <!--<td>{{ app_user.description }}</td>-->
                     <td>
-                        <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('app_user_show', {'id': app_user.id}) }}"><i class="fas fa-search"></i></a>
-                        <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('app_user_edit', {'id': app_user.id}) }}"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="afficher" href="{{ path('app_user_show', {'id': app_user.id}) }}"><i class="fas fa-search"></i></a>
+                        <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="modifier" href="{{ path('app_user_edit', {'id': app_user.id}) }}"><i class="fas fa-edit"></i></a>
                         {{ include('admin/app_user/_delete_link.html.twig') }}
                     </td>
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="17">no records found</td>
+                    <td colspan="17">Aucune donnée trouvée</td>
                 </tr>
             {% endfor %}
             </tbody>

@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}AppUser{% endblock %}
+{% block title %}Afficher un utilisateur - Admin{% endblock %}
 
 {% block body %}
     <div class="container-fluid container_table_list">
         <h2 class="show-title">Profil de {{ app_user.firstname }} {{ app_user.lastname }}</h2>
 
         <a class="btn btn-light" href="{{ path('app_user_index') }}">Retour à la liste</a>
-        <a class="btn btn-success" href="{{ path('app_user_edit', {'id': app_user.id}) }}">edit</a>
+        <a class="btn btn-success" href="{{ path('app_user_edit', {'id': app_user.id}) }}">Modifier</a>
         {{ include('admin/app_user/_delete_form.html.twig') }}
 
         <table class="table table-striped table_list">
@@ -21,52 +21,52 @@
                     <td>{{ app_user.email }}</td>
                 </tr>
                 <tr>
-                    <th>Firstname</th>
+                    <th>Prénom</th>
                     <td>{{ app_user.firstname }}</td>
                 </tr>
                 <tr>
-                    <th>Lastname</th>
+                    <th>Nom</th>
                     <td>{{ app_user.lastname }}</td>
                 </tr>
                 <tr>
-                    <th>Birthdate</th>
+                    <th>Date de naissance</th>
                     <td>{{ app_user.birthdate ? app_user.birthdate|date('Y-m-d H:i:s') : '' }}</td>
                 </tr>
                 <tr>
-                    <th>ProfilePicture</th>
+                    <th>Photo de profil</th>
                     <td><img class="image_for_list" src="{{ app_user.profilePicture }}" alt=""></td>
                 </tr>
                 <tr>
-                    <th>PhoneNumber</th>
+                    <th>Numéro de téléphone</th>
                     <td>{{ app_user.phoneNumber }}</td>
                 </tr>
                 <tr>
-                    <th>City</th>
+                    <th>Ville</th>
                     <td>{{ app_user.city }}</td>
                 </tr>
                 <tr>
-                    <th>Zipcode</th>
+                    <th>Code postal</th>
                     <td>{{ app_user.zipcode }}</td>
                 </tr>
                 <tr>
-                    <th>LinkLinkedin</th>
+                    <th>Lien Linkedin</th>
                     <td>{{ app_user.linkLinkedin }}</td>
                 </tr>
                 <tr>
-                    <th>LinkGithub</th>
+                    <th>Lien Github</th>
                     <td>{{ app_user.linkGithub }}</td>
                 </tr>
                 <tr>
-                    <th>LinkPersonal</th>
+                    <th>Lien Personnel</th>
                     <td>{{ app_user.linkPersonal }}</td>
                 </tr>
                 <tr>
-                    <th>IsActive</th>
+                    <th>Actif</th>
                     <td>{{ app_user.isActive ? 'Yes' : 'No' }}</td>
                 </tr>
                 <tr>
-                    <th>CreatedDate</th>
-                    <td>{{ app_user.createdDate ? app_user.createdDate|date('Y-m-d H:i:s') : '' }}</td>
+                    <th>Date de création</th>
+                    <td>{{ app_user.createdDate ? app_user.createdDate|date('d-m-Y') : '' }}</td>
                 </tr>
                 <tr>
                     <th>Description</th>
