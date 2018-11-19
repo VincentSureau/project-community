@@ -11,9 +11,9 @@
             <thead>
                 <tr>
                     <th {% if pagination.isSorted('id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Id', 'id') }}</th>
-                    <th {% if pagination.isSorted('name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Name', 'name') }}</th>
+                    <th {% if pagination.isSorted('name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nom', 'name') }}</th>
                     <th {% if pagination.isSorted('slug') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Slug', 'slug') }}</th>
-                    <th>actions</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,14 +23,14 @@
                     <td>{{ specialisation.name }}</td>
                     <td>{{ specialisation.slug }}</td>
                     <td>
-                        <a class="btn btn-link p-0"  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('specialisation_show', {'id': specialisation.id}) }}"><i class="fas fa-search"></i></a>
-                        <a class="btn btn-link p-0"  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('specialisation_edit', {'id': specialisation.id}) }}"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-link p-0"  data-toggle="tooltip" data-placement="top" title="Afficher" href="{{ path('specialisation_show', {'id': specialisation.id}) }}"><i class="fas fa-search"></i></a>
+                        <a class="btn btn-link p-0"  data-toggle="tooltip" data-placement="top" title="Modifier" href="{{ path('specialisation_edit', {'id': specialisation.id}) }}"><i class="fas fa-edit"></i></a>
                         {{ include('admin/specialisation/_delete_link.html.twig') }}
                     </td>
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="4">no records found</td>
+                    <td colspan="4">Aucune donnée trouvée</td>
                 </tr>
             {% endfor %}
             </tbody>

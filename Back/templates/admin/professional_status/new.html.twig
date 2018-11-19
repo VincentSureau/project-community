@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New ProfessionalStatus{% endblock %}
+{% block title %}Ajouter un statut professionnel - Admin{% endblock %}
 
 {% block body %}
-    <h1>Create new ProfessionalStatus</h1>
+    <h2>Créer un nouveau statut professionnel</h2>
 
     {{ include('admin/professional_status/_form.html.twig') }}
 
-    <a href="{{ path('professional_status_index') }}">back to list</a>
+    <a href="{{ path('professional_status_index') }}">Retour à la liste</a>
 {% endblock %}

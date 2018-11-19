@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}}Modifier le projet - Admin{% endblock %}
+{% block title %}Modifier le projet - Admin{% endblock %}
 
 {% block body %}
     <div class="container-form">
         <h2 class="show-title">Modifier le projet</h2>
 
-        {{ include('admin/project/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('admin/project/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-        <a class="btn btn-light" href="{{ path('project_index') }}">back to list</a>
+        <a class="btn btn-light" href="{{ path('project_index') }}">Retour à la liste</a>
 
         {{ include('admin/project/_delete_form.html.twig') }}
     </div>

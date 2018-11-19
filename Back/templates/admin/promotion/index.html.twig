@@ -11,11 +11,11 @@
             <thead>
                 <tr>
                     <th {% if pagination.isSorted('id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Id', 'id') }}</th>
-                    <th {% if pagination.isSorted('name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Name', 'name') }}</th>
+                    <th {% if pagination.isSorted('name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nom', 'name') }}</th>
                     <!--<th>Slug</th>-->
-                    <th {% if pagination.isSorted('startDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'StartDate', 'startDate') }}</th>
-                    <th {% if pagination.isSorted('endDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'EndDate', 'endDate') }}</th>
-                    <th>actions</th>
+                    <th {% if pagination.isSorted('startDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de début', 'startDate') }}</th>
+                    <th {% if pagination.isSorted('endDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de fin', 'endDate') }}</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,14 +27,14 @@
                     <td>{{ promotion.startDate ? promotion.startDate|date('d-m-Y') : '' }}</td>
                     <td>{{ promotion.endDate ? promotion.endDate|date('d-m-Y') : '' }}</td>
                     <td>
-                        <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="show" href="{{ path('promotion_show', {'id': promotion.id}) }}"><i class="fas fa-search"></i></a>
-                        <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="edit" href="{{ path('promotion_edit', {'id': promotion.id}) }}"><i class="fas fa-edit"></i></a>
+                        <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="Afficher" href="{{ path('promotion_show', {'id': promotion.id}) }}"><i class="fas fa-search"></i></a>
+                        <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="Modifier" href="{{ path('promotion_edit', {'id': promotion.id}) }}"><i class="fas fa-edit"></i></a>
                         {{ include('admin/promotion/_delete_link.html.twig') }}
                     </td>
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="6">no records found</td>
+                    <td colspan="6">Aucune donnée trouvée</td>
                 </tr>
             {% endfor %}
             </tbody>

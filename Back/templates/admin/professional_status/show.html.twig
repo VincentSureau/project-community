@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ProfessionalStatus{% endblock %}
+{% block title %}Afficher un statut professionnel - Admin{% endblock %}
 
 {% block body %}
     <div class="container-fluid container_table_list">
         <h2 class="show-title">Statut Professionnel : {{ professional_status.name }}</h2>
 
-        <a class="btn btn-light" href="{{ path('professional_status_index') }}">back to list</a>
-        <a class="btn btn-success" href="{{ path('professional_status_edit', {'id': professional_status.id}) }}">edit</a>
+        <a class="btn btn-light" href="{{ path('professional_status_index') }}">Retour à la liste</a>
+        <a class="btn btn-success" href="{{ path('professional_status_edit', {'id': professional_status.id}) }}">Modifier</a>
         {{ include('admin/professional_status/_delete_form.html.twig') }}
 
         <table class="table table-striped table_list">
@@ -17,7 +17,7 @@
                     <td>{{ professional_status.id }}</td>
                 </tr>
                 <tr>
-                    <th>Name</th>
+                    <th>Nom</th>
                     <td>{{ professional_status.name }}</td>
                 </tr>
                 <tr>

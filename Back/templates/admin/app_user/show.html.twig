@@ -30,7 +30,7 @@
                 </tr>
                 <tr>
                     <th>Date de naissance</th>
-                    <td>{{ app_user.birthdate ? app_user.birthdate|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ app_user.birthdate ? app_user.birthdate|date('d-m-Y') : '' }}</td>
                 </tr>
                 <tr>
                     <th>Photo de profil</th>
@@ -62,7 +62,7 @@
                 </tr>
                 <tr>
                     <th>Actif</th>
-                    <td>{{ app_user.isActive ? 'Yes' : 'No' }}</td>
+                    <td>{{ app_user.isActive ? 'Oui' : 'Non' }}</td>
                 </tr>
                 <tr>
                     <th>Date de création</th>
