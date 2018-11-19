@@ -3,9 +3,11 @@
 {% block title %}Ajouter un projet - Admin{% endblock %}
 
 {% block body %}
-    <h2>Créer un nouveau projet</h2>
+    <div class="container-form container_table_list">
+        <h2>Créer un nouveau projet</h2>
 
-    {{ include('admin/project/_form.html.twig') }}
-
-    <a href="{{ path('project_index') }}">Retour à la liste</a>
+        {{ include('admin/project/_form.html.twig') }}
+        <br>
+        <a class="btn btn-light" href="{{ path('project_index') }}">Retour à la liste</a>
+    </div>
 {% endblock %}

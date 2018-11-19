@@ -140,7 +140,6 @@ footer {
     width: 95%;
     margin: auto;
     border-top: solid 1px #fdf1cd;
-    height: 140px;
     text-align: center;
     color:#fdf1cd;
 }
@@ -156,10 +155,10 @@ footer {
 
 
 /*Lists*/
-.container_table_list {
-    height: calc(100vh - 204px);
-    overflow: auto;
-}
+/*.container_table_list {
+    height: 100vh;
+    overflow-y: auto;
+}*/
 .title-category {
     padding: 15px 0;
     margin: 0;
@@ -231,6 +230,47 @@ td {
 .pagination {
     justify-content:center;
 }
+
+/*Bouton*/
+.btn-danger {
+    background-color: #8F2E42!important;
+    border-color: #8F2E42;
+    color: white!important;
+}
+.btn-danger:hover {
+    background-color: #822A3C!important;
+    border-color: #822A3C!important;
+}
+
+.btn-success {
+    background-color: #37a259!important;
+    border-color: #37a259;
+    color: white!important;
+}
+.btn-success:hover {
+    background-color: #31904f!important;
+    border-color: #31904f!important;
+}
+
+.btn-light {
+    background-color: #43A8CE!important;
+    border-color: #43A8CE;
+    color: white!important;
+}
+.btn-light:hover {
+    background-color: #3b96b8!important;
+    border-color: #3b96b8!important;
+}
+
+/*Modal*/
+.modal-dialog {
+    display: flex;
+    justify-content: center;
+}
+.modal-content {
+    width: auto;
+}
+
 
 /*****************************************/
 /**************Media Queries**************/

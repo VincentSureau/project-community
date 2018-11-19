@@ -3,9 +3,11 @@
 {% block title %}Ajouter une promotion - Admin{% endblock %}
 
 {% block body %}
-    <h2>Créer une nouvelle promotion</h2>
+    <div class="container-form container_table_list">
+        <h2>Créer une nouvelle promotion</h2>
 
-    {{ include('admin/promotion/_form.html.twig') }}
-
-    <a href="{{ path('promotion_index') }}">Retour à la liste</a>
+        {{ include('admin/promotion/_form.html.twig') }}
+        <br>
+        <a class="btn btn-light" href="{{ path('promotion_index') }}">Retour à la liste</a>
+    </div>
 {% endblock %}
