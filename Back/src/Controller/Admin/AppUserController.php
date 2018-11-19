@@ -42,6 +42,7 @@ class AppUserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $appUser->setProfilePicture('https://api.adorable.io/avatars/285/'. $appUser->getEmail() . '.png');
             $em = $this->getDoctrine()->getManager();
             $em->persist($appUser);
             $em->flush();
