@@ -18,7 +18,19 @@
             </tr>
             <tr>
                 <th>Image</th>
-                <td><img class="image_for_list" src="{{ image.imageLink }}" alt=""></td>
+                <td><img class="image_for_list" src="{{ image.imageLink }}" alt="project_image" data-toggle="modal" data-target="#modal-{{ image.id }}"></td>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal-{{ image.id }}" tabindex="-1" role="dialog" aria-labelledby="view_picture" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body d-flex justify-content-center">
+                                        <img src="{{ image.imageLink }}" alt="project_image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
             </tr>
             <tr>
                 <th>Image de couverture</th>

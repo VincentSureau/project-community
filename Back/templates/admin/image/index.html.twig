@@ -21,7 +21,19 @@
             {% for image in pagination %}
                 <tr>
                     <td class="hide_content_phone">{{ image.id }}</td>
-                    <td><img class="image_for_list" src="{{ image.imageLink }}" alt=""></td>
+                    <td><img class="image_for_list" src="{{ image.imageLink }}" alt="project_image" data-toggle="modal" data-target="#modal-{{ image.id }}"></td>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="modal-{{ image.id }}" tabindex="-1" role="dialog" aria-labelledby="view_picture" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body d-flex justify-content-center">
+                                        <img src="{{ image.imageLink }}" alt="project_image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     <td>{{ image.isHero ? 'Oui' : 'Non' }}</td>
                     <td>
                         <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="Afficher" href="{{ path('image_show', {'id': image.id}) }}"><i class="fas fa-search"></i></a>
