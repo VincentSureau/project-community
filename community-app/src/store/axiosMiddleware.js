@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 // Types
-import { GET_MEMBERS, getMembers } from 'src/store/reducer';
+import { GET_MEMBERS, membersReceived } from 'src/store/reducer';
 
 const API_URL = 'http://127.0.0.1:8001';
 
@@ -12,22 +12,22 @@ const API_URL = 'http://127.0.0.1:8001';
 
 const ajax = store => next => (action) => {
   switch (action.type) {
-    case GET_MEMBERS: {
-      const state = store.getState();
-      // ...
-      axios.get(`${API_URL}/app_users/list`)
+    case GET_MEMBERS:
+      axios({
+        method: 'get',
+        url: `${API_URL}/app_users/list`,
+        responseType: 'json',
+      })
         // succes
         .then((response) => {
-          console.log(response.data);
           const members = response.data['hydra:member'];
-          // const members = [];
-          store.dispatch(getMembers(members));
+          console.log(members);
+          store.dispatch(membersReceived(members));
         })
         // echec
         .catch((error) => {
           console.error(error);
         });
-    }
 
       break;
 

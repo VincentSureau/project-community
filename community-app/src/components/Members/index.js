@@ -22,8 +22,8 @@ import './members.scss';
  */
 class Members extends React.Component {
   componentDidMount() {
-    const { getMembers, members } = this.props;
-    getMembers(members);
+    const { getMembers } = this.props;
+    getMembers();
   }
 
   render() {
@@ -45,7 +45,7 @@ class Members extends React.Component {
           <ArrowDown />
         </section>
         <section id="members-list" className="bg-members-darker justify-content-center row">
-          {members.slice(0, 10).map(member => (<div key={member.lastname}><SingleMember /></div>))}
+          {members.map(member => (<SingleMember {...member} key={member['@id']} />))}
         </section>
       </div>
     );
@@ -53,7 +53,7 @@ class Members extends React.Component {
 }
 
 Members.propTypes = {
-  members: PropTypes.any.isRequired,
+  members: PropTypes.array.isRequired,
   getMembers: PropTypes.func.isRequired,
 };
 

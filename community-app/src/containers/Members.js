@@ -14,8 +14,8 @@ const mapStateToProps = state => ({
 
 // == dispacth ==
 const mapDispatchToProps = dispatch => ({
-  getMembers: (member) => {
-    dispatch(getMembers(member));
+  getMembers: () => {
+    dispatch(getMembers());
   },
 });
 

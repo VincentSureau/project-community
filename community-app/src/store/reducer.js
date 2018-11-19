@@ -5,11 +5,16 @@ const initialState = {
 
 // Types
 export const GET_MEMBERS = 'GET_MEMBERS';
+export const MEMBERS_RECEIVED = 'MEMBERS_RECEIVED';
 
 // reducer
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case GET_MEMBERS:
+      return {
+        ...state,
+      };
+    case MEMBERS_RECEIVED:
       return {
         ...state,
         members: action.members,
@@ -21,8 +26,12 @@ const reducer = (state = initialState, action = {}) => {
 };
 
 // Actions creators
-export const getMembers = members => ({
+export const getMembers = () => ({
   type: GET_MEMBERS,
+});
+
+export const membersReceived = members => ({
+  type: MEMBERS_RECEIVED,
   members,
 });
 
