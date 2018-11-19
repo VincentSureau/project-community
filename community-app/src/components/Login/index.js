@@ -7,7 +7,7 @@ import React from 'react';
  * Local import
  */
 // Components
-import Form from './Form';
+import LoginForm from '../../store/LoginForm';
 
 // Styles
 import './login.scss';
@@ -21,7 +21,7 @@ const Login = () => (
     <div className="d-flex">
       <article className="login-article w-50 d-flex flex-column align-items-center">
         <h2 className="login-article-title text-login-navfoot">Je suis inscrit</h2>
-        <Form />
+        <LoginForm />
       </article>
       <article className="login-article w-50 d-flex flex-column align-items-center">
         <h2 className="login-article-title text-login-navfoot">Je ne suis pas inscrit</h2>
