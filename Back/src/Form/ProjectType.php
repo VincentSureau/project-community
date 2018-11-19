@@ -16,7 +16,6 @@ class ProjectType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('isActive') // to set by default
             ->add('promotion')
             ->add('appUsers')
             
@@ -29,10 +28,26 @@ class ProjectType extends AbstractType
             if ($project && $project->getId() !== null) {
                 $form->add('linkProject')
                      ->add('linkVideo')
-                     ->add('competences');
+                     ->add('competences')
+                     ->add('isActive')
+                     ;
 
             }
         });
+
+        $builder->addEventListener(
+            FormEvents::POST_SUBMIT,
+            function(FormEvent $event) {
+                $form = $event->getForm();
+                $project = $event->getData();
+
+                if ($project && $project->getId() == null) {
+                    $project->setIsActive(false);
+                }
+            }
+
+        );
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
