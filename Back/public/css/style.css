@@ -323,3 +323,13 @@ td {
     }
 
 }
+@media screen and (max-width: 1795px) {
+    .hide_content_tab{
+        display: none;
+    }
+} 
+@media screen and (max-width: 950px) {
+    .hide_content_phone{
+        display: none;
+    }
+}
