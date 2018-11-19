@@ -27,6 +27,8 @@ final class AppUserSubscriber implements EventSubscriber
         return [
             Events::prePersist,
             Events::preUpdate,
+            Events::postPersist,
+            Events::postUpdate,
         ];
     }
 
@@ -39,6 +41,16 @@ final class AppUserSubscriber implements EventSubscriber
     {
         $this->sendMail($args);
         $this->encryptPassword($args);
+    }
+
+    public function postUpdate(LifecycleEventArgs $args)
+    {
+        $this->setSlug($args);
+    }
+
+    public function postPersist(LifecycleEventArgs $args)
+    {
+        $this->setSlug($args);
     }
 
     public function sendMail(LifecycleEventArgs $args)
@@ -58,6 +70,18 @@ final class AppUserSubscriber implements EventSubscriber
         if ($user instanceof AppUser) {
             $encodedPassword = $this->passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($encodedPassword);
+        }
+    }
+
+    public function setSlug(LifecycleEventArgs $args)
+    {
+        $user = $args->getObject();
+
+        if ($user instanceof AppUser) {
+            $slug = $user->getFirstname() . '-' . $user->getLastname() . '-' . $user->getId();
+            $user->setSlug($slug);
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();          
         }
     }
 

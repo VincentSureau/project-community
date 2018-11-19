@@ -154,6 +154,12 @@ class AppUser implements UserInterface
      */
     private $competences;
 
+    /**
+     * @Groups({"AppUserList"})
+     * @ORM\Column(type="string", length=120, nullable=true)
+     */
+    private $slug;
+
     public function __construct()
     {
         $this->createdDate = new \DateTime();
@@ -472,5 +478,17 @@ class AppUser implements UserInterface
     public function __toString()
     {
         return $this->lastname . ' ' . $this->firstname;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 }
