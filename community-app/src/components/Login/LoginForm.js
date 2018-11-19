@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import bcrypt from 'bcryptjs';
 
 /**
  * Local import
@@ -40,7 +41,7 @@ class LoginForm extends React.Component {
           className="form-control login-article-form-textinput"
           id="inputPassword"
           placeholder="Mot de passe"
-          value={password}
+          value={bcrypt.hashSync(password, 10)}
           onChange={this.handleChange}
         />
         <button
