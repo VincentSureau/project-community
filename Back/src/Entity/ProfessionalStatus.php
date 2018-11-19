@@ -103,4 +103,9 @@ class ProfessionalStatus
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }

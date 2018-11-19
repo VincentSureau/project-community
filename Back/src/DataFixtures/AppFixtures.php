@@ -189,7 +189,7 @@ class AppFixtures extends Fixture
                     $user = new AppUser();
                     $user->setEmail($faker->safeEmail);
                     $user->setRole($roleUser);
-                    $user->setPassword($this->passwordEncoder->encodePassword($user, 'user'));
+                    $user->setPassword('user');
                     $user->setFirstname($faker->firstName());
                     $user->setLastname($faker->lastName);
                     $user->setBirthdate($faker->dateTimeInInterval($startDate = '-60 years', $interval = '-16 years'));

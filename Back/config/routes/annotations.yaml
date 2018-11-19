@@ -1,3 +1,4 @@
 controllers:
-    resource: ../../src/Controller/
+    resource: ../../src/Controller/Admin/
     type: annotation
+    prefix: /admin

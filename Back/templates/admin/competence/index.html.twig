@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des compétences - Admin{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h2 class="title-category" >Liste des compétences</h2>
+        <a href="{{ path('competence_new') }}" class="add-element"><i class="fas fa-plus"></i> Ajouter une compétence</a>
+
+        <table class="table table-striped table_list">
+            <thead>
+                <tr>
+                    <th class="hide_content_phone" {% if pagination.isSorted('id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Id', 'id') }}</th>
+                    <th {% if pagination.isSorted('name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nom', 'name') }}</th>
+                    <th {% if pagination.isSorted('slug') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Slug', 'slug') }}</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for competence in pagination %}
+                <tr>
+                    <td class="hide_content_phone">{{ competence.id }}</td>
+                    <td>{{ competence.name }}</td>
+                    <td>{{ competence.slug }}</td>
+                    <td>
+                        <a class="btn btn-link p-0"  data-toggle="tooltip" data-placement="top" title="Afficher" href="{{ path('competence_show', {'id': competence.id}) }}"><i class="fas fa-search"></i></a>
+                        <a class="btn btn-link p-0"  data-toggle="tooltip" data-placement="top" title="Modifier" href="{{ path('competence_edit', {'id': competence.id}) }}"><i class="fas fa-edit"></i></a>
+                        <div class="hide_content_phone hide_content_phone_button">
+                            {{ include('admin/competence/_delete_link.html.twig') }}
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucune donnée trouvée</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {{ include('admin/partials/__pagination.html.twig') }}
+    </div>
+{% endblock %}

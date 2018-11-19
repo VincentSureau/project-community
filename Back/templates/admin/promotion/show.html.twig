@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Afficher une promotion - Admin{% endblock %}
+
+{% block body %}
+    <div class="container-fluid container_table_list">
+        <h2 class="show-title">Promotion : {{ promotion.name }}</h2>
+
+        <a class="btn btn-light" href="{{ path('promotion_index') }}">Retour à la liste</a>
+        <a class="btn btn-success" href="{{ path('promotion_edit', {'id': promotion.id}) }}">Modifier</a>
+        {{ include('admin/promotion/_delete_form.html.twig') }}
+
+        <table class="table table-striped table_list">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ promotion.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ promotion.name }}</td>
+                </tr>
+                <tr>
+                    <th>Slug</th>
+                    <td>{{ promotion.slug }}</td>
+                </tr>
+                <tr>
+                    <th>Date de début</th>
+                    <td>{{ promotion.startDate ? promotion.startDate|date('d-m-Y') : '' }}</td>
+                </tr>
+                <tr>
+                    <th>Date de fin</th>
+                    <td>{{ promotion.endDate ? promotion.endDate|date('d-m-Y') : '' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

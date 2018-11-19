@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des projets - Admin{% endblock %}
+
+{% block body %}
+    <div class="container-fluid container_table_list">
+        <h2 class="title-category" >Liste des projets</h2>
+        <a href="{{ path('project_new') }}" class="add-element"><i class="fas fa-plus"></i> Ajouter un projet</a>
+
+        <table class="table table-striped table_list">
+            <thead>
+                <tr>
+                    <th class="hide_content_phone" {% if pagination.isSorted('id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Id', 'id') }}</th>
+                    <th {% if pagination.isSorted('name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nom', 'name') }}</th>
+                    <!--<th>Description</th>-->
+                    <th {% if pagination.isSorted('isactive') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Actif', 'isactive') }}</th>
+                    <th class="hide_content_phone" {% if pagination.isSorted('createdDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de création', 'createdDate') }}</th>
+                    <!--<th>Slug</th>-->
+                    <!--<th>LinkProject</th>-->
+                    <!--<th>LinkVideo</th>-->
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for project in pagination %}
+                <tr>
+                    <td class="hide_content_phone">{{ project.id }}</td>
+                    <td>{{ project.name }}</td>
+                    <!--<td>{{ project.description }}</td>-->
+                    <td>{{ project.isActive ? 'Oui' : 'Non' }}</td>
+                    <td  class="hide_content_phone">{{ project.createdDate ? project.createdDate|date('d-m-Y') : '' }}</td>
+                    <!--<td>{{ project.slug }}</td>-->
+                    <!--<td>{{ project.linkProject }}</td>-->
+                    <!--<td>{{ project.linkVideo }}</td>-->
+                    <td>
+                        <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="Afficher" href="{{ path('project_show', {'id': project.id}) }}"><i class="fas fa-search"></i></a>
+                        <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="Modifer" href="{{ path('project_edit', {'id': project.id}) }}"><i class="fas fa-edit"></i></a>
+                        <div class="hide_content_phone hide_content_phone_button">
+                            {{ include('admin/project/_delete_link.html.twig') }}
+                        </div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="9">Aucune donnée trouvée</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {{ include('admin/partials/__pagination.html.twig') }}
+    </div>
+{% endblock %}

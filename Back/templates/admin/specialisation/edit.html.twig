@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier la spécialité - Admin{% endblock %}
+
+{% block body %}
+    <div class="container-form container_table_list">
+        <h2 class="show-title">Modifier la spécialité</h2>
+        <a class="btn btn-light btn-light_edit" href="{{ path('specialisation_index') }}">Retour à la liste</a>
+        {{ include('admin/specialisation/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+        <div class="d-flex justify-content-center container_delete">
+            {{ include('admin/specialisation/_delete_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}
