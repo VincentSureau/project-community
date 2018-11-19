@@ -1,1 +1,73 @@
+@import '../../styles/vars';
 
+#memberedit {
+  &-form {
+    margin: 0;
+    padding: 5em 10em;
+    width: 100%;
+    height: 100%;
+    min-height: 650px;
+    & input {
+      color: $text-color;
+    }
+    &-info {
+      width: 500px;
+      & p {
+        text-align: end;
+        margin: 1em 0 1em 1em;
+        margin-bottom: 0;
+      }
+      & .input-text ,.input-textarea {
+        text-align: start;
+        padding: 0;
+        margin: 1em 2em 1em 0;
+        border: none;
+        background-color: transparent;
+        color: $text-color;
+        border-bottom: 2px solid $text-color;
+        &::placeholder{
+          color: $text-color;
+          opacity: 0.5;
+        }
+      }
+      & .input-textarea {
+        height: 10em;
+        border: 2px solid $text-color;
+        padding: 0 10px;
+      }
+      & .multiselection {
+        height: 110px;
+        overflow-y: auto;
+        margin: 1em 2em 1em 0;
+        padding-left: 10px;
+        border-left: 2px solid $text-color;
+        color: $text-color;
+      }
+
+    }
+  }
+}
+
+.form-check-label {
+  display: block;
+}
+
+button {
+  border: none;
+  color: $text-color;
+  background: none;
+  border-radius: 20px;
+  border: 1px solid $text-color;
+  padding: 5px;
+  margin: 10px;
+  &:focus {
+    outline:none;
+  }
+}
+
+.button-deleteProfile {
+    appearance: none;
+    background-color: $text-color;
+    color:darken(red, 20%);
+    border: 3px solid darken(red, 20%);
+}
