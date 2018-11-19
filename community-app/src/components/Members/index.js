@@ -28,6 +28,7 @@ class Members extends React.Component {
 
   render() {
     const { members } = this.props;
+    // console.log(members);
     return (
       <div id="members">
         <section id="members-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-members">
@@ -49,7 +50,7 @@ class Members extends React.Component {
       </div>
     );
   }
-} 
+}
 
 Members.propTypes = {
   members: PropTypes.any.isRequired,

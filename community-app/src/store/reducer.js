@@ -4,7 +4,7 @@ const initialState = {
 };
 
 // Types
-export const GET_MEMBERS = 'RECEIVE_MEMBERS';
+export const GET_MEMBERS = 'GET_MEMBERS';
 
 // reducer
 const reducer = (state = initialState, action = {}) => {
@@ -12,7 +12,7 @@ const reducer = (state = initialState, action = {}) => {
     case GET_MEMBERS:
       return {
         ...state,
-        members: [...state.members, action.members],
+        members: action.members,
       };
     // Action non-reconnue
     default:

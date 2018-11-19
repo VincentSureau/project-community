@@ -18,8 +18,9 @@ const ajax = store => next => (action) => {
       axios.get(`${API_URL}/app_users/list`)
         // succes
         .then((response) => {
-          console.log(response);
+          console.log(response.data);
           const members = response.data['hydra:member'];
+          // const members = [];
           store.dispatch(getMembers(members));
         })
         // echec
