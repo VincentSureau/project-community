@@ -13,7 +13,6 @@ class SpecialisationType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('slug')
         ;
     }
 

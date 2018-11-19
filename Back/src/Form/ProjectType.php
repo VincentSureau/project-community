@@ -18,6 +18,7 @@ class ProjectType extends AbstractType
             ->add('description')
             ->add('isActive') // to set by default
             ->add('promotion')
+            ->add('appUsers')
             
         ;
 
