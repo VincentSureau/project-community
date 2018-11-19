@@ -5,9 +5,7 @@
 {% block body %}
     <div class="container-form container_table_list">
         <h2 class="show-title">Créer un nouvel utilisateur</h2>
-
+        <a class="btn btn-light btn-light_edit" href="{{ path('app_user_index') }}">Retour à la liste</a>
         {{ include('admin/app_user/_form.html.twig') }}
-        <br>
-        <a class="btn btn-light" href="{{ path('app_user_index') }}">Retour à la liste</a>
     </div>
 {% endblock %}

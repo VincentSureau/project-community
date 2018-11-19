@@ -2,6 +2,8 @@
     {{ form_widget(form) }}
     <div class="d-flex justify-content-around button_container">
         <button class="btn btn-success ">{{ button_label|default('Enregistrer') }}</button>
-        {{ include('admin/specialisation/_delete_form.html.twig') }}
+        {% if (specialisation.id) %}
+            {{ include('admin/specialisation/_delete_form.html.twig') }}
+        {% endif %} 
     </div>
 {{ form_end(form) }}

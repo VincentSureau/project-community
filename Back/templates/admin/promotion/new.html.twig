@@ -5,9 +5,7 @@
 {% block body %}
     <div class="container-form container_table_list">
         <h2 class="show-title">Créer une nouvelle promotion</h2>
-
+        <a class="btn btn-light btn-light_edit" href="{{ path('promotion_index') }}">Retour à la liste</a>
         {{ include('admin/promotion/_form.html.twig') }}
-        <br>
-        <a class="btn btn-light" href="{{ path('promotion_index') }}">Retour à la liste</a>
     </div>
 {% endblock %}
