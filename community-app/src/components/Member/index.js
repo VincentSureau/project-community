@@ -38,7 +38,7 @@ class Member extends React.Component {
     const professionalstatus = this.getNestedObject(member, ['professionalStatus', 'name']);
     const spename = this.getNestedObject(member, ['specialisation', 'name']);
     const projectname = this.getNestedObject(member, ['project', 'name']);
-    const projectid = this.getNestedObject(member, ['project', 'id']);
+    const projectid = this.getNestedObject(member, ['project', '@id']);
     const projectimages = this.getNestedObject(member, ['project', 'images']);
     const { member: { competences } } = this.props;
 
