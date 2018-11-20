@@ -27,7 +27,7 @@ const SingleMember = ({
       <img src={profilePicture} className="singlemember-photo" alt="" />
       <p className="singlemember-name">{firstname}</p>
       <p className="singlemember-name name-to-disapear">{lastname}</p>
-      <p className="singlemember-prom">#{promotion.name} #{specialisation.name}</p>
+      <p className="singlemember-prom">#{promotion} #{specialisation}</p>
     </NavLink>
   </div>
 

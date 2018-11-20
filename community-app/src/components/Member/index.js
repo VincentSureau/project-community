@@ -19,33 +19,44 @@ import './member.scss';
 /**
  * Code
  */
-class Member extends React.Component {
 
+class Member extends React.Component {
   componentDidMount() {
     const { getMemberWithId, id } = this.props;
     getMemberWithId(id);
   }
 
-  render() {
-    // const { name } = this.props.member.promotion;
-    if (this.props.member !== null) {
-      const { promotion } = this.props.member;
-      // var { bar: { bas } } = foo; // Effectively `var bas = foo.bar.bas;`
-      // const { member: {promotion: { name }} } = this.props; // Effectively `var bas = foo.bar.bas;`
-      console.log(promotion);
-      // console.log(promotion.name);
-    }
+  getNestedObject = (nestedObj, pathArr) => {
+    return pathArr.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
+  };
 
+  render() {
+    const { member } = this.props;
+    const promoname = this.getNestedObject(member, ['promotion', 'name']);
+    const spename = this.getNestedObject(member, ['specialisation', 'name']);
+    console.log(name);
 
     return (
       <div id="member">
-        <section id="member-info" className="d-flex flex-column justify-content-center align-items-center bg-member">
-          {/* <SingleMember /> */}
-          <ContactBar />
-          
-        </section>
-        <Biography />
-        <ProjectLink />
+        { (member != null)
+          ? (
+            <div>
+              <section id="member-info" className="d-flex flex-column justify-content-center align-items-center bg-member">
+                <SingleMember
+                  firstname={member.firstname}
+                  lastname={member.lastname}
+                  promotion={promoname}
+                  specialisation={spename}
+                  profilePicture={member.profilePicture}
+                />
+                <ContactBar />
+              </section>
+              <Biography />
+              <ProjectLink />
+            </div>
+          )
+          : <p>Loading</p>
+        }
       </div>
     );
   }
