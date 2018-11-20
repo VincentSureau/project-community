@@ -64,14 +64,11 @@ class Member extends React.Component {
                 promoEndDate={promoend}
                 professionalStatus={professionalstatus}
                 competences={competences}
-                projectImages={projectimages}
               />
               <ProjectLink
                 projectName={projectname}
                 projectId={projectid}
-                promotion={promoname}
-                promoStartDate={promostart}
-                promoEndDate={promoend}
+                projectImages={projectimages}
               />
             </div>
           )

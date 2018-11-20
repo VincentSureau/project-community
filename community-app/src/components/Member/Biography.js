@@ -23,7 +23,6 @@ const Biography = ({
   promoEndDate,
   professionalStatus,
   competences,
-  // images,
 }) => {
   if (competences != null) {
     const promostartdate = new Date(promoStartDate);
@@ -35,7 +34,7 @@ const Biography = ({
     const monthStart = monthNames[promostartdate.getMonth()];
     const yearEnd = promoenddate.getFullYear();
     const monthEnd = monthNames[promoenddate.getMonth()];
-    
+
     return (
       <section id="member-biography" className="bg-member-darker d-flex justify-content-center align-items-center row">
         <article className="biography-article col-4 mr-5">
@@ -82,7 +81,6 @@ Biography.propTypes = {
   promoEndDate: PropTypes.string.isRequired,
   professionalStatus: PropTypes.string.isRequired,
   competences: PropTypes.array.isRequired,
-  images: PropTypes.array.isRequired,
 };
 
 /**
