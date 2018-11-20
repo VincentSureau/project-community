@@ -18,7 +18,6 @@ class SendMail
         ->setFrom('etudiants@oclock.io')
         ->setTo($user->getEmail())
         ->setBody($this->twig->render('email/registration.html.twig', ['user' => $user]), 'text/html');
-
     return $this->mailer->send($message);
   }
 
