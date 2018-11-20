@@ -59,7 +59,7 @@ const ajax = store => next => (action) => {
     case GET_HOME:
       axios({
         method: 'get',
-        url: `${API_URL}/app_users/home`,
+        url: `${API_URL}/app_users/random_home`,
         responseType: 'json',
       })
         // succes
