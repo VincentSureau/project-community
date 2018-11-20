@@ -9,8 +9,8 @@ import PropTypes from 'prop-types';
  */
 // Components
 import SingleMember from 'src/components/SingleMember';
-import ContactBar from './ContactBar';
 import Biography from './Biography';
+import ContactBar from './ContactBar';
 import ProjectLink from './ProjectLink';
 
 // Styles
@@ -39,7 +39,8 @@ class Member extends React.Component {
     const spename = this.getNestedObject(member, ['specialisation', 'name']);
     const projectname = this.getNestedObject(member, ['project', 'name']);
     const projectid = this.getNestedObject(member, ['project', 'id']);
-    // const competences = this.props.member.competences;
+    const projectimages = this.getNestedObject(member, ['project', 'images']);
+    const { member: { competences } } = this.props;
 
     return (
       <div id="member">
@@ -62,7 +63,8 @@ class Member extends React.Component {
                 promoStartDate={promostart}
                 promoEndDate={promoend}
                 professionalStatus={professionalstatus}
-                // competences={competences}
+                competences={competences}
+                projectImages={projectimages}
               />
               <ProjectLink
                 projectName={projectname}

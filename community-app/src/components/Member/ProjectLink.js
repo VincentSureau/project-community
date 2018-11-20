@@ -2,6 +2,7 @@
  * NPM import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 /**
@@ -33,6 +34,11 @@ const ProjectLink = ({
   </section>
 
 );
+
+ProjectLink.propTypes = {
+  projectName: PropTypes.string.isRequired,
+  projectId: PropTypes.string.isRequired,
+};
 
 /**
  * Export
