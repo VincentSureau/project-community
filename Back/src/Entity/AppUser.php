@@ -10,6 +10,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use App\Controller\AppUserCustom;
 use App\Controller\AppUserHomeCustom;
+use App\Controller\AppUserRandomHomeCustom;
 
 /**
  * @ApiResource(
@@ -27,6 +28,12 @@ use App\Controller\AppUserHomeCustom;
  *             "method"="GET",
  *             "path"="/app_users/home",
  *             "controller"=AppUserHomeCustom::class,
+ *             "normalization_context"={"groups"={"AppUserList"}}
+ *         },
+ *         "RandomHome"={
+ *             "method"="GET",
+ *             "path"="/app_users/random_home",
+ *             "controller"=AppUserRandomHomeCustom::class,
  *             "normalization_context"={"groups"={"AppUserList"}}
  *         },
  *         "get",

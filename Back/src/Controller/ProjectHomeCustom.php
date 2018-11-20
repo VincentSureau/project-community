@@ -13,12 +13,12 @@ class ProjectHomeCustom extends AbstractController
 
    public function __construct(ProjectRepository $repo)
    {
-       $this->repo = $repo;
+        $this->repo = $repo;
    }
 
    public function __invoke()
    {
-       $data = $this->repo->findBy(['isActive' => true],['createdDate' => 'DESC'],3);
-       return $data;
+        $data = $this->repo->findRandom(3);
+        return $data;
    }
 }

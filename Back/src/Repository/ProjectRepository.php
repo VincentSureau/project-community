@@ -47,4 +47,25 @@ class ProjectRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+    *  @method Project[] return a random number($limit) of projects 
+    */
+
+    public function findRandom($limit)
+    {
+        $entityManager = $this->getEntityManager();
+        $qb = $entityManager->createQueryBuilder();
+        $qb->select('p')
+            ->addSelect('RAND() as HIDDEN rand')
+            ->from('App\Entity\Project', 'p')
+            ->where('p.isActive = true')
+            ->orderBy('rand')
+            ->setMaxResults($limit)
+            ;
+        
+        $query = $qb->getQuery();
+        
+        return $query->execute();
+    }
 }
