@@ -7,8 +7,6 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-let items = [];
-
 class ProjectsCarousel extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +16,7 @@ class ProjectsCarousel extends Component {
     this.goToIndex = this.goToIndex.bind(this);
     this.onExiting = this.onExiting.bind(this);
     this.onExited = this.onExited.bind(this);
+    this.items = [];
   }
 
   componentDidUpdate() {
