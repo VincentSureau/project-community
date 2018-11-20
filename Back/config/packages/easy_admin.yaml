@@ -11,7 +11,7 @@ easy_admin:
       datetime: 'd/m/Y'
     entities:
             # List the entity class name you want to manage
-        Customer:
+        Membres:
             class: App\Entity\AppUser
             label: 'Membres'
             list:
@@ -31,3 +31,8 @@ easy_admin:
           class: App\Entity\Specialisation
         Roles:
           class: App\Entity\Role
+    list:
+        actions:
+            - { name: 'show', icon: 'search', label: 'Voir', title: 'Search' }
+            - { name: 'edit', icon: 'pencil', label: 'Editer', title: 'Edit' }
+            - { name: 'delete', icon: 'trash', label: 'Supprimer', title: 'Edit' }
