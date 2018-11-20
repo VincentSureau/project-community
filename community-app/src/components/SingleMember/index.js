@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 /**
  * Local import
  */
@@ -14,18 +15,36 @@ import './singlemember.scss';
 /**
  * Code
  */
-const SingleMember = () => (
+const SingleMember = ({
+  firstname,
+  lastname,
+  promotion,
+  specialisation,
+  profilePicture,
+}) => (
   <div id="singlemember" className="singlemember col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex flex-column align-items-center justify-content-center text-center">
-    <NavLink activeClassName="" className="no-blue-on-link" exact to="/members/marc-dubois-1234567890">
-      <img src="/src/components/SingleMember/pict.jpg" className="singlemember-photo" alt="" />
-      <p className="singlemember-name">Marc</p>
-      <p className="singlemember-name name-to-disapear">Dubois</p>
-      <p className="singlemember-prom">#Krypton #React</p>
+    <NavLink activeClassName="" className="no-blue-on-link" exact to="/members/300">
+      <img src={profilePicture} className="singlemember-photo" alt="" />
+      <p className="singlemember-name">{firstname}</p>
+      <p className="singlemember-name name-to-disapear">{lastname}</p>
+      <p className="singlemember-prom">#{promotion.name} #{specialisation.name}</p>
     </NavLink>
   </div>
 
 
 );
+
+SingleMember.propTypes = {
+  firstname: PropTypes.string.isRequired,
+  lastname: PropTypes.string.isRequired,
+  promotion: PropTypes.objectOf(
+    PropTypes.string.isRequired,
+  ).isRequired,
+  specialisation: PropTypes.objectOf(
+    PropTypes.string.isRequired,
+  ).isRequired,
+  profilePicture: PropTypes.string.isRequired,
+};
 
 /**
  * Export

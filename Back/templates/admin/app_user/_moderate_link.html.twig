@@ -1,0 +1,5 @@
+<form class="d-inline" method="post" action="{{ path('app_user_moderate', {'id': app_user.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir rendre cet utilisateur inactif?');">
+    <input type="hidden" name="_method" value="POST">
+    <input type="hidden" name="_token" value="{{ csrf_token('moderate' ~ app_user.id) }}">
+    <button data-toggle="tooltip" data-placement="top" title="{{ (app_user.isActive)? 'Désactiver' : 'Activer' }}" class="btn btn-link p-0"><i class="fas {{ (app_user.isActive)? 'fa-user-alt-slash' : 'fa-user-check' }}"></i></button>
+</form>

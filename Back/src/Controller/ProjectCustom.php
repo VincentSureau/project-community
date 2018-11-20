@@ -9,16 +9,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ProjectCustom extends AbstractController
 {
-   private $myService;
+   private $repo;
 
    public function __construct(ProjectRepository $repo)
    {
        $this->repo = $repo;
    }
 
-   public function __invoke(ProjectRepository $repo)
+   public function __invoke()
    {
-       $data = $repo->findByIsActive(true);
+       $data = $this->repo->findByIsActive(true);
        return $data;
    }
 }

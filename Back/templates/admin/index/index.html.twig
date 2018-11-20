@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil Admin{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid d-flex justify-content-center page-admin">
+        <div class="page-admin-description d-flex flex-column ">
+            <h3 class="welcome-title d-flex justify-content-center">Welcome admin</h3>
+            <p class="welcome-presentation d-flex justify-content-center">Cliquez sur l'un des onglets ci-dessous pour modifier leur contenu !</p>
+        </div>
+        <div class="page-admin-list d-flex justify-content-center">
+            <ul class="page-admin-buttons d-flex">
+                <div class="row d-flex justify-content-center buttons_container">
+                    <li>
+                        <a class="button-choice-admin" href="{{ path('app_user_index') }}">Liste des étudiants</a>
+                    </li>
+                    <li>
+                        <a class="button-choice-admin" href="{{ path('project_index') }}">Liste des projets</a>
+                    </li>
+                    <li>
+                        <a class="button-choice-admin" href="{{ path('promotion_index') }}">Liste des promotions</a>
+                    </li>
+                    <li>
+                        <a class="button-choice-admin" href="{{ path('professional_status_index') }}">Liste des statuts professionnels</a>
+                    </li>
+                
+                    <li>
+                        <a class="button-choice-admin" href="{{ path('specialisation_index') }}">Liste des spécialisations</a>
+                    </li>
+                    <li>
+                        <a class="button-choice-admin" href="{{ path('competence_index') }}">Liste des compétences</a>
+                    </li>
+                    <li>
+                        <a class="button-choice-admin" href="{{ path('image_index') }}">Liste des images</a>
+                    </li>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

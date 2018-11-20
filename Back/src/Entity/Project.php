@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Serializer\Annotation\Groups;
 use App\Controller\ProjectCustom;
+use App\Controller\ProjectHomeCustom;
 
 /**
  * @ApiResource(
@@ -23,7 +24,13 @@ use App\Controller\ProjectCustom;
  *             "controller"=ProjectCustom::class,
  *             "normalization_context"={"groups"={"ProjectList"}},
  *         },
- *     "post"
+ *         "home"={
+ *             "method"="GET",
+ *             "path"="/projects/home",
+ *             "controller"=ProjectHomeCustom::class,
+ *             "normalization_context"={"groups"={"ProjectList"}},
+ *         },
+ *         "post"
  *     }
  * )
  * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")
@@ -38,39 +45,44 @@ class Project
     private $id;
 
     /**
-     * @Groups({"user", "ProjectList"})
+     * @Groups({"user", "ProjectList", "project"})
      * @ORM\Column(type="string", length=120)
      */
     private $name;
 
     /**
+     * @Groups({"project"})
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
     /**
-     * @Groups({"ProjectList"})
+     * @Groups({"ProjectList", "project"})
      * @ORM\Column(type="boolean")
      */
     private $isActive;
 
     /**
+     * @Groups({"project"})
      * @ORM\Column(type="datetime")
      */
     private $createdDate;
 
     /**
+     * @Groups({"project"})
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(type="string", length=150, nullable=true)
      */
     private $slug;
 
     /**
+     * @Groups({"project"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $linkProject;
 
     /**
+     * @Groups({"project"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $linkVideo;
@@ -294,5 +306,10 @@ class Project
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

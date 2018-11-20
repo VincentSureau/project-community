@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use App\Controller\AppUserCustom;
+use App\Controller\AppUserHomeCustom;
 
 /**
  * @ApiResource(
@@ -22,9 +23,15 @@ use App\Controller\AppUserCustom;
  *             "controller"=AppUserCustom::class,
  *             "normalization_context"={"groups"={"AppUserList"}}
  *         },
+ *         "home"={
+ *             "method"="GET",
+ *             "path"="/app_users/home",
+ *             "controller"=AppUserHomeCustom::class,
+ *             "normalization_context"={"groups"={"AppUserList"}}
+ *         },
  *         "get",
  *         "post"
- *     }
+ *     },
  * )
 
  * @ORM\Entity(repositoryClass="App\Repository\AppUserRepository")
@@ -39,6 +46,7 @@ class AppUser implements UserInterface
     private $id;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
@@ -52,69 +60,79 @@ class AppUser implements UserInterface
     private $password;
 
     /**
-     * @Groups({"project", "AppUserList", "ProjectList"})
+     * @Groups({"project", "AppUserList", "ProjectList", "user"})
      * @ORM\Column(type="string", length=80, nullable=true)
      */
     private $firstname;
 
     /**
-     * @Groups({"project", "AppUserList", "ProjectList"})
+     * @Groups({"project", "AppUserList", "ProjectList", "user"})
      * @ORM\Column(type="string", length=80, nullable=true)
      */
     private $lastname;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $birthdate;
 
     /**
-     * @Groups({"AppUserList"})
+     * @Groups({"AppUserList", "user"})
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $profilePicture;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="string", length=25, nullable=true)
      */
     private $phoneNumber;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $city;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="integer", nullable=true)
      */
     private $zipcode;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="string", length=150, nullable=true)
      */
     private $linkLinkedin;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="string", length=150, nullable=true)
      */
     private $linkGithub;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="string", length=150, nullable=true)
      */
     private $linkPersonal;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="boolean")
      */
     private $isActive;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="datetime")
      */
     private $createdDate;
 
     /**
+     * @Groups({"user"})
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
@@ -125,7 +143,7 @@ class AppUser implements UserInterface
     private $role;
 
     /**
-     * @Groups({"user", "AppUserList"})
+     * @Groups({"user", "AppUserList", "user"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Promotion", inversedBy="appUsers")
      */
     private $promotion;
@@ -153,6 +171,12 @@ class AppUser implements UserInterface
      * @ORM\ManyToMany(targetEntity="App\Entity\Competence", inversedBy="appUsers")
      */
     private $competences;
+
+    /**
+     * @Groups({"AppUserList", "user"})
+     * @ORM\Column(type="string", length=120, nullable=true)
+     */
+    private $slug;
 
     public function __construct()
     {
@@ -465,6 +489,23 @@ class AppUser implements UserInterface
         if ($this->competences->contains($competence)) {
             $this->competences->removeElement($competence);
         }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->lastname . ' ' . $this->firstname;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(?string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
