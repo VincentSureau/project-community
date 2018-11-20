@@ -57,4 +57,3 @@ easy_admin:
             - { name: 'show', icon: 'search', label: 'Voir', title: 'Search' }
             - { name: 'edit', icon: 'pencil', label: 'Editer', title: 'Edit' }
             - { name: 'delete', icon: 'trash', label: 'Supprimer', title: 'Edit' }
-
