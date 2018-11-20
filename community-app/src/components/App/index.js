@@ -40,7 +40,7 @@ const App = () => (
         exact
         render={(matchData) => {
           const { slug } = matchData.match.params;
-          // console.log(slug);
+          console.log(slug);
           return <Member id={slug} />;
         }}
       />

@@ -23,7 +23,7 @@ import './member.scss';
 class Member extends React.Component {
   componentDidMount() {
     const { getMemberWithId, id } = this.props;
-    getMemberWithId(id);
+    getMemberWithId(id.split('-')[2]);
   }
 
   getNestedObject = (nestedObj, pathArr) => {
