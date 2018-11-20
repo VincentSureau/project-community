@@ -94,4 +94,22 @@ class ProjectController extends AbstractController
 
         return $this->redirectToRoute('project_index');
     }
+
+    /**
+     * @Route("/{id}/moderate", name="project_moderate", methods="POST")
+    */
+    public function moderate(Request $request, Project $project): Response
+    {
+        if ($this->isCsrfTokenValid('moderate'.$project->getId(), $request->request->get('_token'))) {
+            if($project->getIsActive()) {
+                $project->setIsActive(false);
+            } else {
+                $project->setIsActive(true);
+            }
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('project_index');
+    }
 }

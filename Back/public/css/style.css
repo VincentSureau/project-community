@@ -183,13 +183,23 @@ footer {
 }
 
 .fa-unlock,
-.fa-trash-alt {
-    color:#fdf1cd;
+.fa-trash-alt,
+.fa-minus-circle,
+.fa-check-circle,
+.fa-user-alt-slash,
+.fa-user-check
+ {
+    color:#fdf1cd!important;
 }
 
 .fa-trash-alt:hover,
-.fa-unlock:hover {
-    color:#cfc5a7;
+.fa-unlock:hover,
+.fa-minus-circle:hover,
+.fa-check-circle:hover,
+.fa-user-alt-slash:hover,
+.fa-user-check:hover
+ {
+    color:#cfc5a7!important;
 }
 
 .btn-link:hover {
@@ -291,6 +301,7 @@ td {
 .button_container{
     margin: 20px 0;
 }
+
 /*Modal*/
 .modal-dialog {
     display: flex;

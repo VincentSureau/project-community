@@ -1,0 +1,5 @@
+<form class="d-inline" method="post" action="{{ path('project_moderate', {'id': project.id}) }}" onsubmit="return confirm('Etes-vous sûr de vouloir rendre ce projet inactif?');">
+    <input type="hidden" name="_method" value="POST">
+    <input type="hidden" name="_token" value="{{ csrf_token('moderate' ~ project.id) }}">
+    <button data-toggle="tooltip" data-placement="top" title="{{ (project.isActive)? 'Désactiver' : 'Activer' }}" class="btn btn-link p-0"><i class="fas {{ (project.isActive)? 'fa-minus-circle' : 'fa-check-circle' }}"></i></button>
+</form>
