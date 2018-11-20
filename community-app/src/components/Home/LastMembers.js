@@ -34,6 +34,7 @@ class LastMembers extends React.Component {
                 promotion={member.promotion.name}
                 specialisation={member.specialisation.name}
                 profilePicture={member.profilePicture}
+                slug={member.slug}
               />)))
             : <p>Loading</p>
           }

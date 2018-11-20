@@ -47,11 +47,13 @@ class Members extends React.Component {
         <section id="members-list" className="bg-members-darker justify-content-center row">
           {listMembers.map(member => (
             <SingleMember
+              key={member.slug}
               firstname={member.firstname}
               lastname={member.lastname}
               promotion={member.promotion.name}
               specialisation={member.specialisation.name}
               profilePicture={member.profilePicture}
+              slug={member.slug}
             />))}
         </section>
       </div>
