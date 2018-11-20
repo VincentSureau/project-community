@@ -151,10 +151,28 @@ class AppFixtures extends Fixture
 
 
         //Promotions
+        $promotion_list= [
+            'Big-Bang',
+            'Cosmos',
+            'Discovery',
+            'Explorer',
+            'Fusion',
+            'Galaxy',
+            'Hyperspace',
+            'Invaders',
+            'Journey',
+            'Krypton',
+            'Lunar',
+            'Meteor',
+            'Nova',
+            'Omega',
+            'Pluton'
+        ];
+
         $promotions = [];
-        for($promotion_index = 1; $promotion_index < 15; $promotion_index++) {
+        foreach($promotion_list as $promotion_name) {
             $promotion = new Promotion();
-            $promotion->setName($faker->Name);
+            $promotion->setName($promotion_name);
             $promotion->setStartDate($faker->dateTimeBetween('-2 years', '-5 month'));
             $promotion->setEndDate($faker->dateTimeBetween($promotion->getStartDate(), 'now'));
             $manager->persist($promotion);
