@@ -7,7 +7,7 @@ use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
-class ProjectCustom extends AbstractController
+class ProjectHomeCustom extends AbstractController
 {
    private $repo;
 
@@ -18,7 +18,7 @@ class ProjectCustom extends AbstractController
 
    public function __invoke()
    {
-       $data = $this->repo->findByIsActive(true);
+       $data = $this->repo->findBy(['isActive' => true],['createdDate' => 'DESC'],3);
        return $data;
    }
 }

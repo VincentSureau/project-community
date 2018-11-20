@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\AppUserRepository;
 use App\Entity\AppUser;
 
-class AppUserCustom extends AbstractController
+class AppUserHomeCustom extends AbstractController
 {
     private $repo;
 
@@ -18,7 +18,7 @@ class AppUserCustom extends AbstractController
 
     public function __invoke(): Array
     {
-        $data = $this->repo->findBy(['isActive' => true]);
+        $data = $this->repo->findBy(['isActive' => true], ['createdDate' => 'DESC'],8);
 
         return $data;
     }

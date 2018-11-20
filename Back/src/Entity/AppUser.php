@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use App\Controller\AppUserCustom;
+use App\Controller\AppUserHomeCustom;
 
 /**
  * @ApiResource(
@@ -22,9 +23,15 @@ use App\Controller\AppUserCustom;
  *             "controller"=AppUserCustom::class,
  *             "normalization_context"={"groups"={"AppUserList"}}
  *         },
+ *         "home"={
+ *             "method"="GET",
+ *             "path"="/app_users/home",
+ *             "controller"=AppUserHomeCustom::class,
+ *             "normalization_context"={"groups"={"AppUserList"}}
+ *         },
  *         "get",
  *         "post"
- *     }
+ *     },
  * )
 
  * @ORM\Entity(repositoryClass="App\Repository\AppUserRepository")
