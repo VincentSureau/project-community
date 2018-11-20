@@ -10,9 +10,13 @@ easy_admin:
       time:     'H:i'
       datetime: 'd/m/Y'
     entities:
-        # List the entity class name you want to manage
-        Membres:
-          class: App\Entity\AppUser
+            # List the entity class name you want to manage
+        Customer:
+            class: App\Entity\AppUser
+            label: 'Membres'
+            list:
+                title: "Liste des étudiants"
+
         Competences:
           class: App\Entity\Competence
         Images:
