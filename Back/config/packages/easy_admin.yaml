@@ -27,21 +27,18 @@ easy_admin:
                 title: "Liste des étudiants"
             form:
               fields:
-                  - { type: 'group', css_class: 'col-sm-6', label: 'Basic informations' }
+                  - { type: 'tab' , label: 'Informations personnelles', icon: 'user' }
                   - lastname
                   - firstname
                   - birthdate
                   - profile_picture
-
-                  - { type: 'group', css_class: 'col-sm-6', label: 'Contact localisation' }
+                  - { type: 'tab' , label: 'Informations de localisation', icon: 'home' }
                   - city
                   - zipcode
-
-                  - { type: 'group', css_class: 'col-sm-6', label: 'Contact information' }
+                  - { type: 'tab', label: 'Contacts', icon: 'envelope-o' }
                   - email
                   - phone_number
-
-                  - { type: 'group', css_class: 'col-sm-6', label: 'Link information' }
+                  - { type: 'tab', label: 'Liens Github,linkedin et personnel', icon: 'link' }
                   - link_linkedin
                   - link_github
                   - link_personal
