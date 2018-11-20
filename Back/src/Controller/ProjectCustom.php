@@ -16,7 +16,7 @@ class ProjectCustom extends AbstractController
        $this->repo = $repo;
    }
 
-   public function __invoke(ProjectRepository $repo)
+   public function __invoke()
    {
        $data = $this->repo->findByIsActive(true);
        return $data;

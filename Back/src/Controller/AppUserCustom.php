@@ -16,7 +16,7 @@ class AppUserCustom extends AbstractController
         $this->repo = $repo;
     }
 
-    public function __invoke(AppUserRepository $repo): Array
+    public function __invoke(): Array
     {
         $data = $this->repo->findBy(['isActive' => true]);
 

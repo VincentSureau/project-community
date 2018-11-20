@@ -16,7 +16,7 @@ class ProjectHomeCustom extends AbstractController
        $this->repo = $repo;
    }
 
-   public function __invoke(ProjectRepository $repo)
+   public function __invoke()
    {
        $data = $this->repo->findBy(['isActive' => true],['createdDate' => 'DESC'],3);
        return $data;
