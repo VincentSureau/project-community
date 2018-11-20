@@ -36,8 +36,11 @@ services:
 
             
     admin.category:
-        class: App\Admin\CategoryAdmin
-        arguments: [~, App\Entity\Competence, ~]
+        class: App\Admin\CompetenceAdmin
+        arguments: 
+            - ~
+            - App\Entity\Competence
+            - ~
         tags:
-            - { name: sonata.admin, manager_type: orm, label: Category }
+            - { name: sonata.admin, manager_type: orm, label: Competence }
         public: true
