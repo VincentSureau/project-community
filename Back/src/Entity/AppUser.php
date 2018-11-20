@@ -31,7 +31,7 @@ use App\Controller\AppUserHomeCustom;
  *         },
  *         "get",
  *         "post"
- *     }
+ *     },
  * )
 
  * @ORM\Entity(repositoryClass="App\Repository\AppUserRepository")
