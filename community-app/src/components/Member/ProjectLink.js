@@ -15,10 +15,13 @@ import './member.scss';
 /**
  * Code
  */
-const ProjectLink = () => (
+const ProjectLink = ({
+  projectName,
+  projectId,
+}) => (
   <section id="member-projectlink" className="bg-member d-flex align-items-center flex-column">
     <h2>Mon Projet <br />de fin d'étude</h2>
-    <h3>Productimize</h3>
+    <h3>{projectName}</h3>
     <NavLink exact to="/projects/title-1234567890" className="no-blue-on-link d-flex flex-column align-items-center">
       <div id="member-project-pc">
         <div id="member-project-pc-screen">

@@ -33,8 +33,13 @@ class Member extends React.Component {
   render() {
     const { member } = this.props;
     const promoname = this.getNestedObject(member, ['promotion', 'name']);
+    const promostart = this.getNestedObject(member, ['promotion', 'startDate']);
+    const promoend = this.getNestedObject(member, ['promotion', 'endDate']);
+    const professionalstatus = this.getNestedObject(member, ['professionalStatus', 'name']);
     const spename = this.getNestedObject(member, ['specialisation', 'name']);
-    console.log(name);
+    const projectname = this.getNestedObject(member, ['project', 'name']);
+    const projectid = this.getNestedObject(member, ['project', 'id']);
+    // const competences = this.props.member.competences;
 
     return (
       <div id="member">
@@ -49,10 +54,23 @@ class Member extends React.Component {
                   specialisation={spename}
                   profilePicture={member.profilePicture}
                 />
-                <ContactBar />
+                <ContactBar {...member} />
               </section>
-              <Biography />
-              <ProjectLink />
+              <Biography
+                description={member.description}
+                promotion={promoname}
+                promoStartDate={promostart}
+                promoEndDate={promoend}
+                professionalStatus={professionalstatus}
+                // competences={competences}
+              />
+              <ProjectLink
+                projectName={projectname}
+                projectId={projectid}
+                promotion={promoname}
+                promoStartDate={promostart}
+                promoEndDate={promoend}
+              />
             </div>
           )
           : <p>Loading</p>

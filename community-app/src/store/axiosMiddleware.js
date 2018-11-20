@@ -4,7 +4,7 @@ import axios from 'axios';
 // Types
 import { GET_MEMBERS, membersReceived, GET_MEMBER, memberReceived } from 'src/store/reducer';
 
-const API_URL = 'http://127.0.0.1:8000';
+const API_URL = 'http://127.0.0.1:8001';
 
 /**
  * Middleware de gestion axios
