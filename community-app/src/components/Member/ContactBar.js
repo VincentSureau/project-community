@@ -36,19 +36,20 @@ const ContactBar = ({
 
   <div id="member-info-contactbar" className="row mx-auto">
     <div className="col-4 d-flex justify-content-end align-items-end pb-4">
-      <a href={`mailto:${email}`}><FaRegEnvelope className="text-white" /></a>
-      <a href={`tel:${phoneNumber}`}><FaPhone className="text-white" /></a>
-      <a href={linkGithub}><FaGithub className="text-white" /></a>
-      <a href={linkLinkedin}><FaLinkedinIn className="text-white" /></a>
-      <a href={linkPersonal}><FaDesktop className="text-white" /></a>
+      {email != null && <a href={`mailto:${email}`}><FaRegEnvelope className="text-white" /></a>}
+      {phoneNumber != null && <a href={`tel:${phoneNumber}`}><FaPhone className="text-white" /></a>}
+      {linkGithub != null && <a href={linkGithub}><FaGithub className="text-white" /></a>}
+      {linkLinkedin != null && <a href={linkLinkedin}><FaLinkedinIn className="text-white" /></a>}
+      {linkPersonal != null && <a href={linkPersonal}><FaDesktop className="text-white" /></a>}
     </div>
     <div className="col-4">
       <ArrowDown />
     </div>
+    {(city != null && zipcode != null) && (
     <div className="d-flex justify-content-start col-4 align-items-end pb-4">
       <FaMapMarkerAlt className="text-white" />
-      <span id="member-info-contactbar-localisation" className="text-white">{`${city}, ${zipcode}`}</span>
-    </div>
+      <span id="member-info-contactbar-localisation" className="text-white">{`${city}, ${zipcode != null}`}</span>
+    </div>)}
   </div>
 
 );
