@@ -9,11 +9,11 @@ easy_admin:
          - { entity: 'Membres', icon: 'user' }
          - { entity: 'Competences', icon: 'tags' }
          - { entity: 'Images', icon: 'image' }
-         - { entity: 'Statuts_professionnels', icon: 'image' }
-         - { entity: 'Projets', icon: 'image' }
-         - { entity: 'Promotions', icon: 'project' }
-         - { entity: 'Specialisation', icon: 'image' }
-         - { entity: 'Roles', icon: 'image' }
+         - { entity: 'Statuts_professionnels', icon: 'briefcase' }
+         - { entity: 'Projets', icon: 'tasks' }
+         - { entity: 'Promotions', icon: 'education' }
+         - { entity: 'Specialisation', icon: 'console' }
+         - { entity: 'Roles', icon: 'cog' }
     formats:
       date:     'd/m/Y'
       time:     'H:i'
