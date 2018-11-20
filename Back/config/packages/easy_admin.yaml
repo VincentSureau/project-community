@@ -7,7 +7,7 @@ easy_admin:
       form_theme: 'vertical'
       menu:
          - { entity: 'Membres', icon: 'user' }
-         - { entity: 'Competences', icon: 'image' }
+         - { entity: 'Competences', icon: 'tags' }
          - { entity: 'Images', icon: 'image' }
          - { entity: 'Statuts_professionnels', icon: 'image' }
          - { entity: 'Projets', icon: 'image' }
