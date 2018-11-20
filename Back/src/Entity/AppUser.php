@@ -19,7 +19,7 @@ use App\Controller\AppUserHomeCustom;
  *     collectionOperations={
  *         "list"={
  *             "method"="GET",
- *             "path"="/app_users/list",
+ *             "path"="/user/list",
  *             "controller"=AppUserCustom::class,
  *             "normalization_context"={"groups"={"AppUserList"}}
  *         },
