@@ -28,27 +28,27 @@ easy_admin:
             list:
                 title: "Liste des Images"
         Statuts_professionnels:
-          class: App\Entity\ProfessionalStatus
-              label: 'Statuts_professionnels'
-              list:
+            class: App\Entity\ProfessionalStatus
+            label: 'Statuts_professionnels'
+            list:
                 title: "Liste des statuts professionnels"
         Projets:
-          class: App\Entity\Project
-              label: 'Projets'
-              list:
+            class: App\Entity\Project
+            label: 'Projets'
+            list:
                 title: "Liste des projets"
         Promotions:
-          class: App\Entity\Promotion
-              label: 'Promotions'
-              list:
+            class: App\Entity\Promotion
+            label: 'Promotions'
+            list:
                 title: "Liste des promotions"
         Specialisation:
-          class: App\Entity\Specialisation
-              label: 'Spécialisation'
-              list:
+            class: App\Entity\Specialisation
+            label: 'Spécialisation'
+            list:
                 title: "Liste des spécialisation"
         Roles:
-          class: App\Entity\Role
-              label: 'Roles'
-              list:
+            class: App\Entity\Role
+            label: 'Roles'
+            list:
                 title: "Liste des roles"
