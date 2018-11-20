@@ -48,8 +48,7 @@ easy_admin:
             list:
                 title: "Liste des spécialisation"
         Roles:
-<<<<<<< HEAD
-          class: App\Entity\Role
+            class: App\Entity\Role
             label: 'Roles'
             list:
                 title: "Liste des roles"
@@ -58,4 +57,3 @@ easy_admin:
             - { name: 'show', icon: 'search', label: 'Voir', title: 'Search' }
             - { name: 'edit', icon: 'pencil', label: 'Editer', title: 'Edit' }
             - { name: 'delete', icon: 'trash', label: 'Supprimer', title: 'Edit' }
-
