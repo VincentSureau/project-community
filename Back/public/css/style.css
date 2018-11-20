@@ -239,6 +239,15 @@ td {
     vertical-align: middle!important;
 }
 
+.bg-creme {
+    background-color: #fdf1cd !important;
+}
+
+.modal-image{
+    width: 350px;
+    height: 350px;
+}
+
 /*Show*/
 
 .show-title {

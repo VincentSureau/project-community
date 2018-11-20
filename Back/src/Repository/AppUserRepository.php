@@ -69,4 +69,25 @@ class AppUserRepository extends ServiceEntityRepository
     
     return $query->execute();
     }
+
+    /**
+    *  @method App_User[] return a random number($limit) of users 
+    */
+
+    public function findRandom($limit)
+    {
+        $entityManager = $this->getEntityManager();
+        $qb = $entityManager->createQueryBuilder();
+        $qb->select('u')
+            ->addSelect('RAND() as HIDDEN rand')
+            ->from('App\Entity\AppUser', 'u')
+            ->where('u.isActive = true')
+            ->orderBy('rand')
+            ->setMaxResults($limit)
+            ;
+        
+        $query = $qb->getQuery();
+        
+        return $query->execute();
+    }
 }

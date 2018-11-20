@@ -151,10 +151,28 @@ class AppFixtures extends Fixture
 
 
         //Promotions
+        $promotion_list= [
+            'Big-Bang',
+            'Cosmos',
+            'Discovery',
+            'Explorer',
+            'Fusion',
+            'Galaxy',
+            'Hyperspace',
+            'Invaders',
+            'Journey',
+            'Krypton',
+            'Lunar',
+            'Meteor',
+            'Nova',
+            'Omega',
+            'Pluton'
+        ];
+
         $promotions = [];
-        for($promotion_index = 1; $promotion_index < 15; $promotion_index++) {
+        foreach($promotion_list as $promotion_name) {
             $promotion = new Promotion();
-            $promotion->setName($faker->Name);
+            $promotion->setName($promotion_name);
             $promotion->setStartDate($faker->dateTimeBetween('-2 years', '-5 month'));
             $promotion->setEndDate($faker->dateTimeBetween($promotion->getStartDate(), 'now'));
             $manager->persist($promotion);
@@ -187,13 +205,18 @@ class AppFixtures extends Fixture
                 //Creation de users
                 for($k = 1; $k < mt_rand(3,5); $k++) {
                     $user = new AppUser();
+                    $gender = ($k % 2 == 0)? 'male' : 'female';
                     $user->setEmail($faker->safeEmail);
                     $user->setRole($roleUser);
                     $user->setPassword('user');
-                    $user->setFirstname($faker->firstName());
+                    if($gender == 'male'){
+                        $user->setFirstname($faker->firstNameMale());
+                    } else {
+                        $user->setFirstname($faker->firstNameFemale());
+                    }
                     $user->setLastname($faker->lastName);
                     $user->setBirthdate($faker->dateTimeInInterval($startDate = '-60 years', $interval = '-16 years'));
-                    $user->setProfilePicture('https://api.adorable.io/avatars/285/'. $user->getEmail() . '.png');
+                    $user->setProfilePicture('https://avatars.dicebear.com/v2/'. $gender . '/' . $user->getEmail() . '.svg');
                     $user->setPhoneNumber($faker->mobileNumber);
                     $user->setCity($faker->city);
                     $user->setZipcode(intval($faker->postCode));
@@ -209,7 +232,7 @@ class AppFixtures extends Fixture
                     for($competence_index = 0; $competence_index < mt_rand(8, 12); $competence_index++) {
                         $user->addCompetence($competences[array_rand($competences)]);
                     }
-                    $manager->persist($user);   
+                    $manager->persist($user);  
                 }
             }
 

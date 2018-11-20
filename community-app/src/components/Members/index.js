@@ -34,24 +34,26 @@ class Members extends React.Component {
         <section id="members-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-members">
           <h1>Étudiants</h1>
           <h3>Vous êtes prêts ? Eux oui !</h3>
-          {/* <div id="members-form" className="row w-100">
+          <div id="members-form" className="row w-100">
     
             <SelectInput />
             <SelectInput />
             <SelectInput />
             <TextInput />
     
-          </div> */}
+          </div>
           <ArrowDown />
         </section>
         <section id="members-list" className="bg-members-darker justify-content-center row">
           {listMembers.map(member => (
             <SingleMember
+              key={member.slug}
               firstname={member.firstname}
               lastname={member.lastname}
               promotion={member.promotion.name}
               specialisation={member.specialisation.name}
               profilePicture={member.profilePicture}
+              slug={member.slug}
             />))}
         </section>
       </div>

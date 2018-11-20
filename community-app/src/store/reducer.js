@@ -4,14 +4,19 @@ const initialState = {
   password: '',
   listMembers: [],
   member: {},
+  membersHome: [],
+  projectsHome: [],
 };
 
 // Types
-const CHANGE_INPUT = 'CHANGE_INPUT';
+export const CHANGE_INPUT = 'CHANGE_INPUT';
 export const GET_MEMBERS = 'GET_MEMBERS';
 export const MEMBERS_RECEIVED = 'MEMBERS_RECEIVED';
 export const GET_MEMBER = 'GET_MEMBER';
 export const MEMBER_RECEIVED = 'MEMBER_RECEIVED';
+export const GET_HOME = 'GET_HOME';
+export const MEMBERS_HOME_RECEIVED = 'MEMBERS_HOME_RECEIVED';
+export const PROJECTS_HOME_RECEIVED = 'PROJECTS_HOME_RECEIVED';
 
 // reducer
 const reducer = (state = initialState, action = {}) => {
@@ -40,6 +45,20 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         listMembers: [],
         member: action.member,
+      };
+    case GET_HOME:
+      return {
+        ...state,
+      };
+    case MEMBERS_HOME_RECEIVED:
+      return {
+        ...state,
+        membersHome: action.membersHome,
+      };
+    case PROJECTS_HOME_RECEIVED:
+      return {
+        ...state,
+        projectsHome: action.projectsHome,
       };
     // Action non-reconnue
     default:
@@ -71,6 +90,20 @@ export const getMember = id => ({
 export const memberReceived = member => ({
   type: MEMBER_RECEIVED,
   member,
+});
+
+export const getHomeData = () => ({
+  type: GET_HOME,
+});
+
+export const membersForHomeReceived = data => ({
+  type: MEMBERS_HOME_RECEIVED,
+  membersHome: data,
+});
+
+export const projectsForHomeReceived = data => ({
+  type: PROJECTS_HOME_RECEIVED,
+  projectsHome: data,
 });
 
 // export

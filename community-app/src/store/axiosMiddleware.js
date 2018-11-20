@@ -2,7 +2,15 @@
 import axios from 'axios';
 
 // Types
-import { GET_MEMBERS, membersReceived, GET_MEMBER, memberReceived } from 'src/store/reducer';
+import {
+  GET_MEMBERS,
+  membersReceived,
+  GET_MEMBER,
+  memberReceived,
+  GET_HOME,
+  membersForHomeReceived,
+  projectsForHomeReceived,
+} from 'src/store/reducer';
 
 const API_URL = 'http://127.0.0.1:8001';
 
@@ -39,8 +47,40 @@ const ajax = store => next => (action) => {
         // succes
         .then((response) => {
           const member = response.data;
-          console.log(member);
           store.dispatch(memberReceived(member));
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      break;
+
+    case GET_HOME:
+      axios({
+        method: 'get',
+        url: `${API_URL}/app_users/random_home`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          const membersForHome = response.data['hydra:member'];
+          store.dispatch(membersForHomeReceived(membersForHome));
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      axios({
+        method: 'get',
+        url: `${API_URL}/projects/home`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          const projectForHome = response.data['hydra:member'];
+          store.dispatch(projectsForHomeReceived(projectForHome));
         })
         // echec
         .catch((error) => {
