@@ -1,9 +1,9 @@
 easy_admin:
-    site_name: 'O clock<em style="font-size: 80%;"> Community</em>'
+    site_name: '<img src="/images/logoOclockCommunity.svg">'
     design:
       brand_color: '#0ac3a7'
       assets:
-        favicon: '/public/images/oclock-fav.png'
+        favicon: '/images/oclock-fav.png'
     entities:
         # List the entity class name you want to manage
         Membres:
