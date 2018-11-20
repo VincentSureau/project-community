@@ -33,3 +33,11 @@ services:
     App\EventListener\AppUserSubscriber:
         tags:
             - { name: doctrine.event_subscriber, connection: default }
+
+            
+    admin.category:
+        class: App\Admin\CategoryAdmin
+        arguments: [~, App\Entity\Competence, ~]
+        tags:
+            - { name: sonata.admin, manager_type: orm, label: Category }
+        public: true
