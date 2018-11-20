@@ -18,21 +18,44 @@ easy_admin:
                 title: "Liste des étudiants"
 
         Competences:
-          class: App\Entity\Competence
+            class: App\Entity\Competence
+            label: 'Competences'
+            list:
+                title: "Liste des compétences"
         Images:
-          class: App\Entity\Image
+            class: App\Entity\Image
+            label: 'Images'
+            list:
+                title: "Liste des Images"
         Statuts_professionnels:
-          class: App\Entity\ProfessionalStatus
+            class: App\Entity\ProfessionalStatus
+            label: 'Statuts_professionnels'
+            list:
+                title: "Liste des statuts professionnels"
         Projets:
-          class: App\Entity\Project
+            class: App\Entity\Project
+            label: 'Projets'
+            list:
+                title: "Liste des projets"
         Promotions:
-          class: App\Entity\Promotion
+            class: App\Entity\Promotion
+            label: 'Promotions'
+            list:
+                title: "Liste des promotions"
         Specialisation:
-          class: App\Entity\Specialisation
+            class: App\Entity\Specialisation
+            label: 'Spécialisation'
+            list:
+                title: "Liste des spécialisation"
         Roles:
+<<<<<<< HEAD
           class: App\Entity\Role
+            label: 'Roles'
+            list:
+                title: "Liste des roles"
     list:
         actions:
             - { name: 'show', icon: 'search', label: 'Voir', title: 'Search' }
             - { name: 'edit', icon: 'pencil', label: 'Editer', title: 'Edit' }
             - { name: 'delete', icon: 'trash', label: 'Supprimer', title: 'Edit' }
+
