@@ -11,23 +11,44 @@ easy_admin:
       datetime: 'd/m/Y'
     entities:
             # List the entity class name you want to manage
-        Customer:
+        Membres:
             class: App\Entity\AppUser
             label: 'Membres'
             list:
                 title: "Liste des étudiants"
 
         Competences:
-          class: App\Entity\Competence
+            class: App\Entity\Competence
+            label: 'Competences'
+            list:
+                title: "Liste des compétences"
         Images:
-          class: App\Entity\Image
+            class: App\Entity\Image
+            label: 'Images'
+            list:
+                title: "Liste des Images"
         Statuts_professionnels:
           class: App\Entity\ProfessionalStatus
+              label: 'Statuts_professionnels'
+              list:
+                title: "Liste des statuts professionnels"
         Projets:
           class: App\Entity\Project
+              label: 'Projets'
+              list:
+                title: "Liste des projets"
         Promotions:
           class: App\Entity\Promotion
+              label: 'Promotions'
+              list:
+                title: "Liste des promotions"
         Specialisation:
           class: App\Entity\Specialisation
+              label: 'Spécialisation'
+              list:
+                title: "Liste des spécialisation"
         Roles:
           class: App\Entity\Role
+              label: 'Roles'
+              list:
+                title: "Liste des roles"
