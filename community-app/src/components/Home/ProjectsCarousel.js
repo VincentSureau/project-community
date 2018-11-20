@@ -5,24 +5,9 @@ import {
   CarouselControl,
   CarouselIndicators,
 } from 'reactstrap';
+import PropTypes from 'prop-types';
 
-const items = [
-  {
-    src: 'https://picsum.photos/800/800?image=861',
-    altText: 'Slide 1',
-    caption: 'Slide 1',
-  },
-  {
-    src: 'https://picsum.photos/800/800?image=1080',
-    altText: 'Slide 2',
-    caption: 'Slide 2',
-  },
-  {
-    src: 'https://picsum.photos/800/800?image=1069',
-    altText: 'Slide 3',
-    caption: 'Slide 3',
-  },
-];
+let items = [];
 
 class ProjectsCarousel extends Component {
   constructor(props) {
@@ -33,6 +18,10 @@ class ProjectsCarousel extends Component {
     this.goToIndex = this.goToIndex.bind(this);
     this.onExiting = this.onExiting.bind(this);
     this.onExited = this.onExited.bind(this);
+  }
+
+  componentDidUpdate() {
+
   }
 
   onExiting() {
@@ -46,14 +35,14 @@ class ProjectsCarousel extends Component {
   next() {
     const { activeIndex } = this.state;
     if (this.animating) return;
-    const nextIndex = activeIndex === items.length - 1 ? 0 : activeIndex + 1;
+    const nextIndex = activeIndex === this.items.length - 1 ? 0 : activeIndex + 1;
     this.setState({ activeIndex: nextIndex });
   }
 
   previous() {
     const { activeIndex } = this.state;
     if (this.animating) return;
-    const nextIndex = activeIndex === 0 ? items.length - 1 : activeIndex - 1;
+    const nextIndex = activeIndex === 0 ? this.items.length - 1 : activeIndex - 1;
     this.setState({ activeIndex: nextIndex });
   }
 
@@ -63,38 +52,53 @@ class ProjectsCarousel extends Component {
   }
 
   render() {
-    const { activeIndex } = this.state;
+    const { projects } = this.props;
 
-    const slides = items.map((item) => {
-      return (
+    if (projects != null) {
+      this.items = Object.entries(projects).map((project, i) => (
+        {
+          key: i,
+          src: project.slice(1)[0].images.slice(1, 2)[0].imageLink,
+          altText: ''.concat('Slide ', (i + 1)),
+          caption: ''.concat('Slide ', (i + 1)),
+        }));
+      const { activeIndex } = this.state;
+
+      const slides = this.items.map(item => (
         <CarouselItem
           onExiting={this.onExiting}
           onExited={this.onExited}
-          key={item.src}
+          key={item.key}
         >
           <img src={item.src} alt={item.altText} />
         </CarouselItem>
-      );
-    });
-
-    return (
-      <Carousel
-        activeIndex={activeIndex}
-        next={this.next}
-        previous={this.previous}
-      >
-        <CarouselIndicators
-          items={items}
+      ));
+      return (
+        <Carousel
           activeIndex={activeIndex}
-          onClickHandler={this.goToIndex}
-        />
-        {slides}
-        <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-        <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
-      </Carousel>
+          next={this.next}
+          previous={this.previous}
+        >
+          <CarouselIndicators
+            items={this.items}
+            activeIndex={activeIndex}
+            onClickHandler={this.goToIndex}
+          />
+          {slides}
+          <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
+          <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
+        </Carousel>
+      );
+    }
+    return (
+      <p>Loading</p>
     );
   }
 }
 
+
+ProjectsCarousel.propTypes = {
+  projects: PropTypes.array.isRequired,
+};
 
 export default ProjectsCarousel;

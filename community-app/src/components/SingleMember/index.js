@@ -37,12 +37,8 @@ const SingleMember = ({
 SingleMember.propTypes = {
   firstname: PropTypes.string.isRequired,
   lastname: PropTypes.string.isRequired,
-  promotion: PropTypes.objectOf(
-    PropTypes.string.isRequired,
-  ).isRequired,
-  specialisation: PropTypes.objectOf(
-    PropTypes.string.isRequired,
-  ).isRequired,
+  promotion: PropTypes.string.isRequired,
+  specialisation: PropTypes.string.isRequired,
   profilePicture: PropTypes.string.isRequired,
 };
 

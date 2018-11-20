@@ -9,7 +9,7 @@ import { Route, Switch } from 'react-router-dom';
  */
 // Components
 import Navbar from 'src/components/Navbar';
-import Home from 'src/components/Home';
+import Home from 'src/containers/Home';
 import Login from 'src/components/Login';
 import Member from 'src/containers/Member';
 import MemberEdit from 'src/components/MemberEdit';
