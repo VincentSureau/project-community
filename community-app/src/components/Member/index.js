@@ -9,8 +9,8 @@ import PropTypes from 'prop-types';
  */
 // Components
 import SingleMember from 'src/components/SingleMember';
-import ContactBar from './ContactBar';
 import Biography from './Biography';
+import ContactBar from './ContactBar';
 import ProjectLink from './ProjectLink';
 
 // Styles
@@ -33,8 +33,14 @@ class Member extends React.Component {
   render() {
     const { member } = this.props;
     const promoname = this.getNestedObject(member, ['promotion', 'name']);
+    const promostart = this.getNestedObject(member, ['promotion', 'startDate']);
+    const promoend = this.getNestedObject(member, ['promotion', 'endDate']);
+    const professionalstatus = this.getNestedObject(member, ['professionalStatus', 'name']);
     const spename = this.getNestedObject(member, ['specialisation', 'name']);
-    console.log(name);
+    const projectname = this.getNestedObject(member, ['project', 'name']);
+    const projectid = this.getNestedObject(member, ['project', '@id']);
+    const projectimages = this.getNestedObject(member, ['project', 'images']);
+    const { member: { competences } } = this.props;
 
     return (
       <div id="member">
@@ -49,10 +55,21 @@ class Member extends React.Component {
                   specialisation={spename}
                   profilePicture={member.profilePicture}
                 />
-                <ContactBar />
+                <ContactBar {...member} />
               </section>
-              <Biography />
-              <ProjectLink />
+              <Biography
+                description={member.description}
+                promotion={promoname}
+                promoStartDate={promostart}
+                promoEndDate={promoend}
+                professionalStatus={professionalstatus}
+                competences={competences}
+              />
+              <ProjectLink
+                projectName={projectname}
+                projectId={projectid}
+                projectImages={projectimages}
+              />
             </div>
           )
           : <p>Loading</p>
