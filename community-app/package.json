@@ -60,6 +60,7 @@
     "react-redux": "*",
     "react-router-dom": "^4.3.1",
     "reactstrap": "^6.5.0",
-    "redux": "*"
+    "redux": "*",
+    "uuid": "^3.3.2"
   }
 }

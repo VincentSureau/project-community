@@ -26,7 +26,7 @@ class Projects extends React.Component {
 
   render() {
     const { listProjects } = this.props;
-    console.log(listProjects);
+    // console.log(listProjects);
     return (
       <div id="projects">
         <section id="projects-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-projects">
@@ -43,8 +43,12 @@ class Projects extends React.Component {
           {listProjects.map(project => (
             <ProjectItem
               key={project['@id']}
+              title={project.name}
+              promotion={project.promotion.name}
+              images={project.images}
+              id={project['@id']}
+              members={project.appUsers}
             />))}
-
         </section>
       </div>
 
