@@ -1,10 +1,13 @@
 // initial state
 const initialState = {
+  email: '',
+  password: '',
   listMembers: [],
   member: {},
 };
 
 // Types
+const CHANGE_INPUT = 'CHANGE_INPUT';
 export const GET_MEMBERS = 'GET_MEMBERS';
 export const MEMBERS_RECEIVED = 'MEMBERS_RECEIVED';
 export const GET_MEMBER = 'GET_MEMBER';
@@ -13,6 +16,10 @@ export const MEMBER_RECEIVED = 'MEMBER_RECEIVED';
 // reducer
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case CHANGE_INPUT:
+      return {
+        ...state,
+        [action.name]: action.value,
     case GET_MEMBERS:
       return {
         ...state,
@@ -39,7 +46,13 @@ const reducer = (state = initialState, action = {}) => {
   }
 };
 
-// Actions creators
+
+// action creator
+export const changeInput = (value, name) => ({
+  type: CHANGE_INPUT,
+  name,
+  value,
+});
 export const getMembers = () => ({
   type: GET_MEMBERS,
 });

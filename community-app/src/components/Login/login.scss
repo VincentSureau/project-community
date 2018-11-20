@@ -1,4 +1,4 @@
-@import 'src/styles/vars';
+@import '../../styles/vars';
 
 .login {
   padding: 8em 20em;
@@ -30,6 +30,11 @@
         border-bottom: 1px solid $text-color;
         height: 3.5em;
         margin: 1em 0;
+        color: $text-color;
+        &:focus {
+          color: $text-color;
+          outline: none;
+        }
 
         &::placeholder {
           text-transform: uppercase;
