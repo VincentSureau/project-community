@@ -5,6 +5,15 @@ easy_admin:
       assets:
         favicon: '/images/oclock-fav.png'
       form_theme: 'vertical'
+      menu:
+         - { entity: 'Membres', icon: 'user' }
+         - { entity: 'Competences', icon: 'image' }
+         - { entity: 'Images', icon: 'image' }
+         - { entity: 'Statuts_professionnels', icon: 'image' }
+         - { entity: 'Projets', icon: 'image' }
+         - { entity: 'Promotions', icon: 'project' }
+         - { entity: 'Specialisation', icon: 'image' }
+         - { entity: 'Roles', icon: 'image' }
     formats:
       date:     'd/m/Y'
       time:     'H:i'
