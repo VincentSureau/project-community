@@ -28,14 +28,21 @@ class Member extends React.Component {
 
   render() {
     // const { name } = this.props.member.promotion;
-    const { member } = this.props;
-    
+    if (this.props.member !== null) {
+      const { promotion } = this.props.member;
+      // var { bar: { bas } } = foo; // Effectively `var bas = foo.bar.bas;`
+      // const { member: {promotion: { name }} } = this.props; // Effectively `var bas = foo.bar.bas;`
+      console.log(promotion);
+      // console.log(promotion.name);
+    }
+
 
     return (
       <div id="member">
         <section id="member-info" className="d-flex flex-column justify-content-center align-items-center bg-member">
           {/* <SingleMember /> */}
           <ContactBar />
+          
         </section>
         <Biography />
         <ProjectLink />
