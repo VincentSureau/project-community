@@ -17,6 +17,7 @@ export const MEMBER_RECEIVED = 'MEMBER_RECEIVED';
 export const GET_HOME = 'GET_HOME';
 export const MEMBERS_HOME_RECEIVED = 'MEMBERS_HOME_RECEIVED';
 export const PROJECTS_HOME_RECEIVED = 'PROJECTS_HOME_RECEIVED';
+export const SET_MEMBER_ID = 'SET_MEMBER_ID';
 
 // reducer
 const reducer = (state = initialState, action = {}) => {
@@ -59,6 +60,11 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         projectsHome: action.projectsHome,
+      };
+    case SET_MEMBER_ID:
+      return {
+        ...state,
+        memberID: action.id,
       };
     // Action non-reconnue
     default:
@@ -104,6 +110,11 @@ export const membersForHomeReceived = data => ({
 export const projectsForHomeReceived = data => ({
   type: PROJECTS_HOME_RECEIVED,
   projectsHome: data,
+});
+
+export const setMemberID = id => ({
+  type: SET_MEMBER_ID,
+  id,
 });
 
 // export
