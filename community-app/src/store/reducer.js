@@ -20,6 +20,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         [action.name]: action.value,
+      };
     case GET_MEMBERS:
       return {
         ...state,
