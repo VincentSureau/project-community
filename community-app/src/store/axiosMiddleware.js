@@ -12,6 +12,8 @@ import {
   projectsForHomeReceived,
   GET_PROJECTS,
   projectsReceived,
+  GET_PROJECT,
+  projectReceived,
 } from 'src/store/reducer';
 
 const API_URL = 'http://127.0.0.1:8000';
@@ -101,6 +103,24 @@ const ajax = store => next => (action) => {
         .then((response) => {
           const projects = response.data['hydra:member'];
           store.dispatch(projectsReceived(projects));
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      break;
+
+    case GET_PROJECT:
+      axios({
+        method: 'get',
+        url: `${API_URL}/projects/${action.id}`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          const project = response.data;
+          store.dispatch(projectReceived(project));
         })
         // echec
         .catch((error) => {
