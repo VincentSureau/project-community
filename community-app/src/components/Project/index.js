@@ -54,7 +54,7 @@ class Project extends React.Component {
           />
           <ProjectDescript description={project.description} />
           <ProjectGallery />
-          <ProjectLink />
+          <ProjectLink projectLink={project.linkProject} projectVideo={project.linkVideo} />
         </div>
       );
     }
