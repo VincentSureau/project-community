@@ -1,10 +1,11 @@
 easy_admin:
     site_name: '<img src="/images/logoOclockCommunity.svg">'
     design:
+      form_theme: 'vertical'
+    #   form_theme: '@App/easy_admin/form.html.twig'
       brand_color: '#194d61'
       assets:
         favicon: '/images/oclock-fav.png'
-      form_theme: 'vertical'
       menu:
          - { entity: 'Membres', icon: 'user' }
          - { entity: 'Competences', icon: 'tags' }
@@ -42,7 +43,7 @@ easy_admin:
                   - { type: 'tab', label: 'Liens Github,linkedin et personnel', icon: 'link' }
                   - link_linkedin
                   - link_github
-                  - link_personal
+                  - link_personal                
 
         Competences:
             class: App\Entity\Competence
