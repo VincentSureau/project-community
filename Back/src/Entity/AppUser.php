@@ -191,6 +191,7 @@ class AppUser implements UserInterface
         $this->competences = new ArrayCollection();
     }
 
+    // return id
     public function getId(): ?int
     {
         return $this->id;
