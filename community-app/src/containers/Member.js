@@ -10,6 +10,7 @@ import { getMember } from 'src/store/reducer';
 // == state ==
 const mapStateToProps = state => ({
   member: state.member,
+  memberID: state.memberID,
 });
 
 // == dispacth ==

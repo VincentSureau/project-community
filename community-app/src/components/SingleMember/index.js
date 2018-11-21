@@ -2,7 +2,7 @@
  * NPM import
  */
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 /**
  * Local import
@@ -20,11 +20,10 @@ class SingleMember extends React.Component {
     return pathArr.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
   }
 
-  handleClick() {
-    console.log('click');
+  handleClick(history) {
     const { setMemberIDfromSM, slug, id } = this.props;
-    setMemberIDfromSM(id.split('/')[1]);
-    window.location.href = ''.concat('/members/', slug);
+    setMemberIDfromSM(id.split('/')[2]);
+    history.push(''.concat('/members/', slug));
   }
 
   render() {
@@ -39,12 +38,18 @@ class SingleMember extends React.Component {
     } = this.props;
     return (
       <div id="singlemember" className="singlemember col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex flex-column align-items-center justify-content-center text-center">
-        <button type="button" className="no-blue-on-link" onClick={this.handleClick}>
-          <img src={profilePicture} className="singlemember-photo" alt="" />
-          <p className="singlemember-name">{firstname}</p>
-          <p className="singlemember-name name-to-disapear">{lastname}</p>
-          <p className="singlemember-prom">#{promotion} #{specialisation}</p>
-        </button>
+        <Route render={
+          ({ history }) => (
+            <button type="button" className="no-blue-on-link border-0" onClick={() => this.handleClick(history)}>
+              <img src={profilePicture} className="singlemember-photo" alt="" />
+              <p className="singlemember-name">{firstname}</p>
+              <p className="singlemember-name name-to-disapear">{lastname}</p>
+              <p className="singlemember-prom">#{promotion} #{specialisation}</p>
+            </button>
+          )
+        }
+
+        />
       </div>
     );
   }

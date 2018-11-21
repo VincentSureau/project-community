@@ -6,6 +6,7 @@ const initialState = {
   member: {},
   membersHome: [],
   projectsHome: [],
+  memberID: '',
 };
 
 // Types
