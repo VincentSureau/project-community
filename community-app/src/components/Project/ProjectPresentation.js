@@ -2,6 +2,7 @@
  * NPM import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Local import
@@ -15,33 +16,39 @@ import './project.scss';
 /**
  * Code
  */
-const ProjectPresentation = () => (
+const ProjectPresentation = ({ members, promotion, competences }) => (
   <div id="project-teamtech" className="bg-project-darker">
     <section id="project-team">
       <img id="project-team-logo" src="/src/images/user-astronaut-solid.png" alt="" />
       <h1 className="text-white">La team</h1>
       <div id="project-team-list" className="row">
-        <SingleMember />
-        <SingleMember />
-        <SingleMember />
-        <SingleMember />
+        {members.map(member => (
+          <SingleMember
+            firstname={member.firstname}
+            lastname={member.lastname}
+            promotion={promotion}
+            specialisation={member.specialisation.name}
+            profilePicture={member.profilePicture}
+          />
+        ))}
+
       </div>
     </section>
     <section id="project-tech">
       <h3 id="project-tech-title">Technologies utilisées</h3>
       <div className="mt-3 d-flex flex-wrap justify-content-center">
-        <span className="project-tech-tag">HTML5</span>
-        <span className="project-tech-tag">CSS</span>
-        <span className="project-tech-tag">Bootstrap</span>
-        <span className="project-tech-tag">Git</span>
-        <span className="project-tech-tag">Javascript</span>
-        <span className="project-tech-tag">PHP</span>
+        {competences.map(competence => <span className="project-tech-tag">{competence.name}</span>)}
       </div>
     </section>
   </div>
 
-
 );
+
+ProjectPresentation.propTypes = {
+  members: PropTypes.array.isRequired,
+  promotion: PropTypes.string.isRequired,
+  competences: PropTypes.array.isRequired,
+};
 
 /**
  * Export

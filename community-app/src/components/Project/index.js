@@ -25,10 +25,17 @@ class Project extends React.Component {
     getProjectWithId(id);
   }
 
+  // getNestedObject = (nestedObj, pathArr) => {
+  //   return pathArr.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
+  // };
+
   render() {
     const { project } = this.props;
-    if (project != null) {
-      console.log(project.name);
+    if (project != null && project.images != null) {
+      const { images } = project;
+      // const images = this.getNestedObject(project, ['images']);
+      // const heroImage = images.filter(projectImage => projectImage.isHero === true);
+      console.log(project.appUsers);
       return (
         <div id="project">
           <section id="project-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-project">
@@ -40,7 +47,11 @@ class Project extends React.Component {
             </div>
             <ArrowDown />
           </section>
-          <ProjectPresentation />
+          <ProjectPresentation
+            members={project.appUsers}
+            promotion={project.promotion.name}
+            competences={project.competences}
+          />
           <ProjectDescript />
           <ProjectGallery />
           <ProjectLink />
