@@ -25,24 +25,18 @@ class Project extends React.Component {
     getProjectWithId(id);
   }
 
-  // getNestedObject = (nestedObj, pathArr) => {
-  //   return pathArr.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
-  // };
-
   render() {
     const { project } = this.props;
     if (project != null && project.images != null) {
-      const { images } = project;
-      // const images = this.getNestedObject(project, ['images']);
-      // const heroImage = images.filter(projectImage => projectImage.isHero === true);
-      console.log(project.appUsers);
+      const heroImage = project.images.filter(projectImage => projectImage.isHero === true);
+
       return (
         <div id="project">
           <section id="project-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-project">
             <h1>{project.name}</h1>
             <div id="project-project-pc">
               <div id="project-project-pc-screen">
-                <img src="/src/images/project1.png" alt="" />
+                <img src={heroImage[0].imageLink} alt="" />
               </div>
             </div>
             <ArrowDown />
@@ -53,7 +47,7 @@ class Project extends React.Component {
             competences={project.competences}
           />
           <ProjectDescript description={project.description} />
-          <ProjectGallery />
+          <ProjectGallery images={project.images} />
           <ProjectLink projectLink={project.linkProject} projectVideo={project.linkVideo} />
         </div>
       );
