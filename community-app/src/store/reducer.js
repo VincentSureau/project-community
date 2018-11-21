@@ -70,6 +70,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         memberID: action.id,
+      };
     case GET_PROJECTS:
       return {
         ...state,
