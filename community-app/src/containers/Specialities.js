@@ -2,33 +2,29 @@
 import { connect } from 'react-redux';
 
 // local import
-import Members from 'src/components/Members';
+import Specialities from 'src/components/Home/Specialities';
 
 // action creators
-import { getMembers } from 'src/store/reducer';
+import { getMembersWordpress } from 'src/store/reducer';
 
 // == state ==
 const mapStateToProps = state => ({
   listMembers: state.listMembers,
-  filterSpe: state.filterSpe,
 });
 
 // == dispacth ==
 const mapDispatchToProps = dispatch => ({
-  getMembers: () => {
-    dispatch(getMembers());
-  },
   getMembersWordpress: () => {
-    dispatch(getMembers());
+    dispatch(getMembersWordpress());
   },
 });
 
 
 // Container
-const MembersContainer = connect(
+const SpecialitiesContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Members);
+)(Specialities);
 
 // Export
-export default MembersContainer;
+export default SpecialitiesContainer;

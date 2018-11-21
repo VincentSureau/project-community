@@ -9,11 +9,13 @@ const initialState = {
   memberID: '',
   listProjects: [],
   project: {},
+  filterSpe: '',
 };
 
 // Types
 export const CHANGE_INPUT = 'CHANGE_INPUT';
 export const GET_MEMBERS = 'GET_MEMBERS';
+export const GET_MEMBERS_WORDPRESS = 'GET_MEMBERS_WORDPRESS';
 export const MEMBERS_RECEIVED = 'MEMBERS_RECEIVED';
 export const GET_MEMBER = 'GET_MEMBER';
 export const MEMBER_RECEIVED = 'MEMBER_RECEIVED';
@@ -24,6 +26,7 @@ export const GET_PROJECTS = 'GET_PROJECTS';
 export const PROJECTS_RECEIVED = 'PROJECTS_RECEIVED';
 export const GET_PROJECT = 'GET_PROJECT';
 export const PROJECT_RECEIVED = 'PROJECT_RECEIVED';
+
 
 // reducer
 const reducer = (state = initialState, action = {}) => {
@@ -37,6 +40,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
       };
+    case GET_MEMBERS_WORDPRESS: {
+      return {
+        ...state,
+        filterSpe: 'wordpress',
+      };
+    }
     case MEMBERS_RECEIVED:
       return {
         ...state,
@@ -105,6 +114,10 @@ export const changeInput = (value, name) => ({
 
 export const getMembers = () => ({
   type: GET_MEMBERS,
+});
+
+export const getMembersWordpress = () => ({
+  type: GET_MEMBERS_WORDPRESS,
 });
 
 export const membersReceived = members => ({
