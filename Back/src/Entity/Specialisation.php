@@ -26,7 +26,11 @@ class Specialisation
     /**
      * @Groups({"user", "project", "AppUserList", "ProjectList"})
      * @ORM\Column(type="string", length=100)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
+     * @Assert\Length(
+     *      max = 100,
+     *      maxMessage = "Le nom de la spécialisation ne doit pas avoir plus de {{ limit }} caractères"
+     * )
      */
     private $name;
 

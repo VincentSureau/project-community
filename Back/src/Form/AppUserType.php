@@ -25,7 +25,8 @@ class AppUserType extends AbstractType
         $builder
             ->add('email')
             ->add('firstname')
-            ->add('lastname');
+            ->add('lastname')
+            ->add('promotion');
 
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             $user = $event->getData();

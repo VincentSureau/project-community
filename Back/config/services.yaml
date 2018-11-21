@@ -33,3 +33,19 @@ services:
     App\EventListener\AppUserSubscriber:
         tags:
             - { name: doctrine.event_subscriber, connection: default }
+
+    # project.search_filter:
+    #     parent: 'api_platform.doctrine.orm.search_filter'
+    #     arguments: [ { slug: ~ } ]
+    #     tags:  [ { name: 'api_platform.filter' , slug: 'project.search' }]
+    #     autowire: true
+    #     autoconfigure: false
+    #     public: false
+
+    # appuser.search_filter:
+    #     parent: 'api_platform.doctrine.orm.search_filter'
+    #     arguments: [ { id: ~ } ]
+    #     tags:  [ { name: 'api_platform.filter' , id: 'appuser.search' }]
+    #     autowire: true
+    #     autoconfigure: false
+    #     public: false
