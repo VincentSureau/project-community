@@ -139,10 +139,13 @@ class MemberEdit extends React.Component {
             </div>
           </section>
         </form>
-        <Route render={
-           ({ history }) => (<button className="col-2 button-deleteProfile" type="button" onClick={() => this.handleDeleteMember(member.id, history)}>Supprimer mon profil</button>)
-         }
-        />
+        <div className="d-flex flex-column justify-content-center align-items-center bg-member">
+          <Route render={
+            ({ history }) => (<button className="col-2 button-deleteProfile" type="button" onClick={() => this.handleDeleteMember(member.id, history)}>Supprimer mon profil</button>)
+          }
+          />
+        </div>
+
       </div>
     );
   }
