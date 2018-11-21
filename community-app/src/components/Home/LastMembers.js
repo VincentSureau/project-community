@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
  * Local import
  */
 // Components
-import SingleMember from 'src/containers/SingleMember';
+import SingleMember from '../SingleMember';
 
 // Styles
 import './home.scss';
@@ -29,7 +29,6 @@ class LastMembers extends React.Component {
             (members.map(member => (
               <SingleMember
                 key={member.slug}
-                id={member['@id']}
                 firstname={member.firstname}
                 lastname={member.lastname}
                 promotion={member.promotion.name}

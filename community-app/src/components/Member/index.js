@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
  * Local import
  */
 // Components
-import SingleMember from 'src/components/SingleMember';
+import SingleMember from '../SingleMember';
 import Biography from './Biography';
 import ContactBar from './ContactBar';
 import ProjectLink from './ProjectLink';
@@ -22,8 +22,8 @@ import './member.scss';
 
 class Member extends React.Component {
   componentDidMount() {
-    const { getMemberWithId, memberID } = this.props;
-    getMemberWithId(memberID);
+    const { getMemberWithId, id } = this.props;
+    getMemberWithId(id.split('-')[2]);
   }
 
   getNestedObject = (nestedObj, pathArr) => {

@@ -20,7 +20,6 @@ export const MEMBER_RECEIVED = 'MEMBER_RECEIVED';
 export const GET_HOME = 'GET_HOME';
 export const MEMBERS_HOME_RECEIVED = 'MEMBERS_HOME_RECEIVED';
 export const PROJECTS_HOME_RECEIVED = 'PROJECTS_HOME_RECEIVED';
-export const SET_MEMBER_ID = 'SET_MEMBER_ID';
 export const GET_PROJECTS = 'GET_PROJECTS';
 export const PROJECTS_RECEIVED = 'PROJECTS_RECEIVED';
 
@@ -65,11 +64,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         projectsHome: action.projectsHome,
-      };
-    case SET_MEMBER_ID:
-      return {
-        ...state,
-        memberID: action.id,
       };
     case GET_PROJECTS:
       return {
@@ -126,11 +120,6 @@ export const membersForHomeReceived = data => ({
 export const projectsForHomeReceived = data => ({
   type: PROJECTS_HOME_RECEIVED,
   projectsHome: data,
-});
-
-export const setMemberID = id => ({
-  type: SET_MEMBER_ID,
-  id,
 });
 
 export const getProjects = () => ({
