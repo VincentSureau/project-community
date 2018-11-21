@@ -18,7 +18,7 @@ class ProjectHomeCustom extends AbstractController
 
    public function __invoke()
    {
-        $data = $this->repo->findRandom(3);
+        $data = $this->repo->findRandom($limit = 3);
         return $data;
    }
 }

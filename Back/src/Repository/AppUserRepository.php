@@ -51,43 +51,21 @@ class AppUserRepository extends ServiceEntityRepository
     /**
      * @return AppUser[] Returns an array of AppUser objects with only fields needeed in page list
      */
-    public function findAllList(): array
+    public function findRandom($limit = null): array
     {
     $entityManager = $this->getEntityManager();
     $qb = $entityManager->createQueryBuilder();
-    $qb->select('u.id, u.firstname, u.lastname, (u.promotion) AS promotion_id, (u.specialisation) AS specialisation_id, (u.professionalStatus) professional_status_id, u.profilePicture')
-        ->addSelect('(s.name) AS specialisation_name')
-        ->addSelect('(p.name) AS promotion_name')
-        ->addSelect('(ps.name) AS professional_status_name')
-        ->from('App\Entity\AppUser', 'u')
-        ->join('u.promotion', 'p')
-        ->join('u.specialisation', 's')
-        ->join('u.professionalStatus', 'ps')
-        ->where('u.isActive = true');
+    $qb->select('u')
+    ->addSelect('RAND() as HIDDEN rand')
+    ->from('App\Entity\AppUser', 'u')
+    ->where('u.isActive = true')
+    ->orderBy('rand');
+    if($limit !== null){
+        $qb->setMaxResults($limit);
+    }
     
     $query = $qb->getQuery();
     
     return $query->execute();
-    }
-
-    /**
-    *  @method App_User[] return a random number($limit) of users 
-    */
-
-    public function findRandom($limit)
-    {
-        $entityManager = $this->getEntityManager();
-        $qb = $entityManager->createQueryBuilder();
-        $qb->select('u')
-            ->addSelect('RAND() as HIDDEN rand')
-            ->from('App\Entity\AppUser', 'u')
-            ->where('u.isActive = true')
-            ->orderBy('rand')
-            ->setMaxResults($limit)
-            ;
-        
-        $query = $qb->getQuery();
-        
-        return $query->execute();
     }
 }
