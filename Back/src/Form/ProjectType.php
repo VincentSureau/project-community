@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Project;
 use App\Entity\AppUser;
+use App\Entity\Competence;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -40,6 +41,16 @@ class ProjectType extends AbstractType
                 $form->add('linkProject')
                      ->add('linkVideo')
                      ->add('competences')
+                     ->add('competences', EntityType::class, [
+                        'class' => Competence::class,
+                        'multiple' => true,
+                        'required' => false,
+                        'label' => 'Compétences',
+                        'attr' =>
+                            ['class' => 'chosen-select',
+                            'data-placeholder' => 'Choisir une compétence'],
+                        ]
+                        )
                      ->add('isActive')
                      ;
 

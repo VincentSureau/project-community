@@ -3,12 +3,14 @@
 namespace App\Form;
 
 use App\Entity\AppUser;
+use App\Entity\Competence;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Utils\GeneratePassword;
 
 class AppUserType extends AbstractType
@@ -50,7 +52,16 @@ class AppUserType extends AbstractType
                      ->add('specialisation')
                      ->add('professionalStatus')
                      ->add('project')
-                     ->add('competences')
+                     ->add('competences', EntityType::class, [
+                        'class' => Competence::class,
+                        'multiple' => true,
+                        'required' => false,
+                        'label' => 'Compétences',
+                        'attr' =>
+                            ['class' => 'chosen-select',
+                            'data-placeholder' => 'Choisir une compétence'],
+                        ]
+                        )
                     ;
             }
         });
