@@ -82,7 +82,9 @@ final class AppUserSubscriber implements EventSubscriber
         $user = $args->getObject();
 
         if ($user instanceof AppUser) {
-            $slug = $user->getFirstname() . '-' . $user->getLastname() . '-' . $user->getId();
+            $firstname = strtolower(iconv('utf-8', 'ascii//TRANSLIT', $user->getFirstname()));
+            $lastname = strtolower(iconv('utf-8', 'ascii//TRANSLIT', $user->getLastname()));
+            $slug = $firstname . '-' . $lastname . '-' . $user->getId();
             $user->setSlug($slug);
             $em = $args->getObjectManager();
             $em->flush();          

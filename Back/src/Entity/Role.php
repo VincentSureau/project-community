@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource()
@@ -22,11 +23,17 @@ class Role
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
      */
     private $code;
 
     /**
      * @ORM\Column(type="string", length=40)
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
+     * @Assert\Length(
+     *      max = 40,
+     *      maxMessage = "Le role ne doit pas dépasser {{ limit }} caractères"
+     * )
      */
     private $name;
 
