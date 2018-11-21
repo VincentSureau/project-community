@@ -25,7 +25,7 @@ const Navbar = () => {
     { 'member-navfoot': window.location.pathname.includes('/members/') },
     { 'project-navfoot': window.location.pathname.includes('/projects/') },
   );
-  const classNavBar = ''.concat('navbar fixed-top navbar-expand navbar-dark bg-', classcolor, ' row');
+  const classNavBar = `navbar fixed-top navbar-expand navbar-dark row bg-${classcolor}`;
   return (
     <div id="navbar">
       <nav className={classNavBar}>
