@@ -298,7 +298,7 @@ class AppUser implements UserInterface
     {
         return $this->profilePicture;
     }
-
+        
     public function setProfilePicture(?string $profilePicture): self
     {
         $this->profilePicture = $profilePicture;

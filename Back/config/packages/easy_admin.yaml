@@ -10,9 +10,9 @@ easy_admin:
          - { entity: 'Competences', icon: 'tags' }
          - { entity: 'Images', icon: 'image' }
          - { entity: 'Statuts_professionnels', icon: 'briefcase' }
-         - { entity: 'Projets', icon: 'tasks' }
-         - { entity: 'Promotions', icon: 'education' }
-         - { entity: 'Specialisation', icon: 'console' }
+         - { entity: 'Projets', icon: 'book' }
+         - { entity: 'Promotions', icon: 'tasks' }
+         - { entity: 'Specialisation', icon: 'list' }
          - { entity: 'Roles', icon: 'cog' }
     formats:
       date:     'd/m/Y'
