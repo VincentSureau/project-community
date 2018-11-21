@@ -63,8 +63,10 @@ class AppUserType extends AbstractType
                 $user = $event->getData();
 
                 if ($user && $user->getId() == null) {
+                    $roleUser= $this->getDoctrine()->getRespository(Role::class)->findOneByCode('ROLE_COMMUNITY_USER');
                     $user->setIsActive(false);
                     $user->setPassword($this->passwordFactory->generate());
+                    $user->setRole($roleUser);
                 }
             }
 

@@ -66,7 +66,6 @@ class AppUser implements UserInterface
      * )
      * @Assert\Email(
      *     message = "L'email '{{ value }}' n'est pas valide.",
-     *     checkMX = true
      * )
      */
     private $email;
