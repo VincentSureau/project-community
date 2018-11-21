@@ -44,7 +44,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *         "post"
  *     },
  * )
- * @ApiFilter(SearchFilter::class, properties={"id": "iexact"})
+ * @ApiFilter(SearchFilter::class, properties={"slug": "iexact"})
  * @ORM\Entity(repositoryClass="App\Repository\AppUserRepository")
  * @UniqueEntity("email")
  */
