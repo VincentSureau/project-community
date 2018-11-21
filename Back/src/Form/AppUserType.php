@@ -46,7 +46,6 @@ class AppUserType extends AbstractType
                      ->add('linkPersonal')
                      ->add('isActive')
                      ->add('description')
-                     ->add('role')
                      ->add('promotion')
                      ->add('specialisation')
                      ->add('professionalStatus')
