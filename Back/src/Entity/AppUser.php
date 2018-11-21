@@ -76,14 +76,8 @@ class AppUser implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\Length(
-     *      min = 8,
-     *      max = 15,
-     *      minMessage = "Le mot de passe doit comporter au moins {{ limit }} caractères",
-     *      maxMessage = "Le mot de passe ne peux pas comporter plus de {{ limit }} caractères"
-     * )
      * @Assert\Regex(
-     *     pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&])"),
+     *     pattern="~^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{10,15}~"),
      *     match=true,
      *     message="Ton mot de passe doit contenir au minimum une majuscule, une minuscule, un chiffre, un caractère spécial et faire entre 8 et 15 caractères",
      */
