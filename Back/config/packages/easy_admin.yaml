@@ -15,9 +15,9 @@ easy_admin:
          - { entity: 'Specialisation', icon: 'list' }
          - { entity: 'Roles', icon: 'cog' }
     formats:
-      date:     'd/m/Y'
-      time:     'H:i'
-      datetime: 'd/m/Y'
+        date:     'd/m/Y'
+        time:     'H:i'
+        datetime: 'd-m-Y'
     entities:
             # List the entity class name you want to manage
         Membres:
@@ -31,7 +31,7 @@ easy_admin:
                   - { type: 'tab' , label: 'Informations personnelles', icon: 'user' }
                   - lastname
                   - firstname
-                  - { property: 'birthdate', type: 'datetime', label: 'birthdate' }
+                  - { property: 'birthdate', type: 'date', label: 'birthdate' }
                   - profile_picture
                   - { type: 'tab' , label: 'Informations de localisation', icon: 'home' }
                   - city
