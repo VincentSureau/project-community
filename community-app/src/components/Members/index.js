@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import SelectInput from '../SelectInput';
 import TextInput from '../TextInput';
 import ArrowDown from '../ArrowDown';
-import SingleMember from '../SingleMember';
+import SingleMember from '../../containers/SingleMember';
 
 // Styles
 import './members.scss';
@@ -48,6 +48,7 @@ class Members extends React.Component {
           {listMembers.map(member => (
             <SingleMember
               key={member.slug}
+              id={member['@id']}
               firstname={member.firstname}
               lastname={member.lastname}
               promotion={member.promotion.name}

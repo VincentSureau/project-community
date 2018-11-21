@@ -40,11 +40,19 @@ const App = () => (
         exact
         render={(matchData) => {
           const { slug } = matchData.match.params;
-          console.log(slug);
+          // console.log(slug);
           return <Member id={slug} />;
         }}
       />
-      <Route path="/projects/title-1234567890" exact render={() => <Project />} />
+      <Route
+        path="/projects/:slug"
+        exact
+        render={(matchData) => {
+          const { slug } = matchData.match.params;
+          // console.log(slug);
+          return <Project id={slug} />;
+        }}
+      />
       <Route path="/members/marc-dubois-1234567890/edit" exact render={() => <MemberEdit />} />
       <Route path="/projects/titre-1/edit" exact render={() => <ProjectEdit />} />
     </Switch>

@@ -2,30 +2,29 @@
 import { connect } from 'react-redux';
 
 // local import
-import Member from 'src/components/Member';
+import Project from 'src/components/Project';
 
 // action creators
-import { getMember } from 'src/store/reducer';
+import { getProject } from 'src/store/reducer';
 
 // == state ==
 const mapStateToProps = state => ({
-  member: state.member,
-  memberID: state.memberID,
+  project: state.project,
 });
 
 // == dispacth ==
 const mapDispatchToProps = dispatch => ({
-  getMemberWithId: (id) => {
-    dispatch(getMember(id));
+  getProject: (id) => {
+    dispatch(getProject(id));
   },
 });
 
 
 // Container
-const MemberContainer = connect(
+const PrrojectContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Member);
+)(Project);
 
 // Export
-export default MemberContainer;
+export default PrrojectContainer;
