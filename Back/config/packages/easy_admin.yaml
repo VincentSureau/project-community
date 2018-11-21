@@ -31,7 +31,7 @@ easy_admin:
                   - { type: 'tab' , label: 'Informations personnelles', icon: 'user' }
                   - lastname
                   - firstname
-                  - birthdate
+                  - { property: 'birthdate', type: 'datetime', label: 'birthdate' }
                   - profile_picture
                   - { type: 'tab' , label: 'Informations de localisation', icon: 'home' }
                   - city
@@ -69,6 +69,12 @@ easy_admin:
             label: 'Promotions'
             list:
                 title: "Liste des promotions"
+            form:
+              fields:
+                  - id
+                  - Name
+                  - { property: 'StartDate', type: 'datetime', label: 'StartDate' }
+                  - { property: 'EndDate', type: 'datetime', label: 'EndDate' }
         Specialisation:
             class: App\Entity\Specialisation
             label: 'Spécialisation'
