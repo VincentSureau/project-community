@@ -10,9 +10,11 @@ import {
   GET_HOME,
   membersForHomeReceived,
   projectsForHomeReceived,
+  GET_PROJECTS,
+  projectsReceived,
 } from 'src/store/reducer';
 
-const API_URL = 'http://127.0.0.1:8000';
+const API_URL = 'http://127.0.0.1:8001';
 
 /**
  * Middleware de gestion axios
@@ -81,6 +83,24 @@ const ajax = store => next => (action) => {
         .then((response) => {
           const projectForHome = response.data['hydra:member'];
           store.dispatch(projectsForHomeReceived(projectForHome));
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      break;
+
+    case GET_PROJECTS:
+      axios({
+        method: 'get',
+        url: `${API_URL}/projects/list`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          const projects = response.data['hydra:member'];
+          store.dispatch(projectsReceived(projects));
         })
         // echec
         .catch((error) => {

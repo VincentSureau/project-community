@@ -46,6 +46,7 @@ use App\Controller\AppUserRandomHomeCustom;
 class AppUser implements UserInterface
 {
     /**
+     * @Groups({"user", "AppUserList", "project", "ProjectList"})
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -180,7 +181,7 @@ class AppUser implements UserInterface
     private $competences;
 
     /**
-     * @Groups({"AppUserList", "user"})
+     * @Groups({"user", "AppUserList", "project", "ProjectList"})
      * @ORM\Column(type="string", length=120, nullable=true)
      */
     private $slug;
@@ -191,6 +192,7 @@ class AppUser implements UserInterface
         $this->competences = new ArrayCollection();
     }
 
+    // return id
     public function getId(): ?int
     {
         return $this->id;

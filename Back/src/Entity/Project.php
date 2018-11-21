@@ -38,6 +38,7 @@ use App\Controller\ProjectHomeCustom;
 class Project
 {
     /**
+     * @Groups({"project"})
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -69,7 +70,7 @@ class Project
     private $createdDate;
 
     /**
-     * @Groups({"project"})
+     * @Groups({"project", "AppUserList", "ProjectList"})
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(type="string", length=150, nullable=true)
      */

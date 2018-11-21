@@ -16,7 +16,7 @@ import MemberEdit from 'src/components/MemberEdit';
 import Members from 'src/containers/Members';
 import Project from 'src/components/Project';
 import ProjectEdit from 'src/components/ProjectEdit';
-import Projects from 'src/components/Projects';
+import Projects from 'src/containers/Projects';
 // import Oclock from 'src/components/Oclock';
 import Footer from 'src/components/Footer';
 
