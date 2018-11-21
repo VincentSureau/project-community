@@ -15,7 +15,7 @@ use App\Controller\AppUserHomeCustom;
 use App\Controller\AppUserRandomHomeCustom;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity; 
 /**
  * @ApiResource(
  *     attributes={
@@ -76,21 +76,20 @@ class AppUser implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(
-     *     message = "Le champ mot de passe ne peux pas être vide."
+     * @Assert\Length(
+     *      min = 8,
+     *      max = 15,
+     *      minMessage = "Le mot de passe doit comporter au moins {{ limit }} caractères",
+     *      maxMessage = "Le mot de passe ne peux pas comporter plus de {{ limit }} caractères"
      * )
      * @Assert\Regex(
-     *     pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{8,15}$"),
+     *     pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&])"),
      *     match=true,
      *     message="Ton mot de passe doit contenir au minimum une majuscule, une minuscule, un chiffre, un caractère spécial et faire entre 8 et 15 caractères",
      */
     private $password;
 
-    /**
-     * @SecurityAssert\UserPassword(
-     *     message = "Le mot de passe est erroné"
-     * )
-     */
+
     protected $oldPassword;
 
     /**
@@ -100,8 +99,8 @@ class AppUser implements UserInterface
      *     message = "Le champ prénom ne peux pas être vide."
      * )
      * @Assert\Regex(
-     *     pattern="/\d/",
-     *     match=false,
+     *     pattern="/^\w/",
+     *     match=true,
      *     message="Le prénom ne peut pas contenir de chiffres"
      * )
      * @Assert\Length(
@@ -122,8 +121,8 @@ class AppUser implements UserInterface
      *     message = "Le champ nom ne peux pas être vide."
      * )
      * @Assert\Regex(
-     *     pattern="/\d/",
-     *     match=false,
+     *     pattern="/^\w/",
+     *     match=true,
      *     message="Le nom ne peut pas contenir de chiffres"
      * )
      * @Assert\Length(
@@ -143,7 +142,7 @@ class AppUser implements UserInterface
     private $birthdate;
 
     /**
-     * @Groups({"AppUserList", "user"})
+     * @Groups({"AppUserList", "user", "project"})
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Url(
      *     message = "L'url '{{ value }}  n'est pas une url valide",
