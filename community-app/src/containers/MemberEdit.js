@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import MemberEdit from 'src/components/MemberEdit';
 
 // action creators
-import { getMemberEdit, changeInputForm, getCompetences } from 'src/store/reducer';
+import { getMemberEdit, changeInputForm, getCompetences, putMember, deleteMember } from 'src/store/reducer';
 
 // == state ==
 const mapStateToProps = state => ({
@@ -26,6 +26,14 @@ const mapDispatchToProps = dispatch => ({
 
   getCompetences: () => {
     dispatch(getCompetences());
+  },
+
+  postChangeMember: (data, id) => {
+    dispatch(putMember(id, data));
+  },
+
+  deleteMember: (id) => {
+    dispatch(deleteMember(id));
   },
 
 });

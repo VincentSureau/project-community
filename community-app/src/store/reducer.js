@@ -30,6 +30,8 @@ export const GET_COMPETENCES = 'GET_COMPETENCES';
 export const COMPETENCES_RECEIVED = 'COMPETENCES_RECEIVED';
 export const GET_PROJECT = 'GET_PROJECT';
 export const PROJECT_RECEIVED = 'PROJECT_RECEIVED';
+export const PUT_MEMBER = 'PUT_MEMBER';
+export const DELETE_MEMBER = 'DELETE_MEMBER';
 
 // reducer
 const reducer = (state = initialState, action = {}) => {
@@ -118,6 +120,28 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         competences: action.competences,
+      };
+
+    case PUT_MEMBER:
+      return {
+        ...state,
+      };
+    
+    case GET_PROJECT:
+      return {
+        ...state,
+      };
+    
+    case PROJECT_RECEIVED:
+      return {
+        ...state,
+        listProjects: [],
+        project: action.project,
+      };
+
+    case DELETE_MEMBER:
+      return {
+        ...state,
       };
     // Action non-reconnue
     default:
@@ -211,6 +235,18 @@ export const projectReceived = project => ({
   type: PROJECT_RECEIVED,
   project,
 });
+
+export const putMember = (id, data) => ({
+  type: PUT_MEMBER,
+  id,
+  data,
+});
+
+export const deleteMember = (id) => ({
+  type: DELETE_MEMBER,
+  id,
+});
+
 
 // export
 export default reducer;

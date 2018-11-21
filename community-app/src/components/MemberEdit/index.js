@@ -2,8 +2,7 @@
  * NPM import
  */
 import React from 'react';
-import { Formik, Field } from 'formik';
-
+import { Route } from 'react-router-dom';
 /**
  * Local import
  */
@@ -11,8 +10,6 @@ import { Formik, Field } from 'formik';
 
 // Styles
 import './memberedit.scss';
-import { getCompetences } from '../../store/reducer';
-import { FaFlagCheckered } from 'react-icons/fa';
 
 /**
  * Code
@@ -25,46 +22,71 @@ class MemberEdit extends React.Component {
     getMemberWithId(id.split('-')[2]);
     getCompetences();
   }
-  
-  formToJSON = elements => [].reduce.call(elements, (data, element) => {
-  
-    data[element.name] = element.value;
-    return data;
-  
-  }, {});
-  
-  getNestedObject = (nestedObj, pathArr) => {
-    return pathArr.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
-  };
+
 
   onChangeInput(evt) {
     const { onChangeInput } = this.props;
     onChangeInput(evt.target.name, evt.target.value);
   }
 
+  onChangeCheckbox(evt) {
+    const { onChangeInput } = this.props;
+    onChangeInput(evt.target.name, evt.target.checked);
+  }
+
+  getNestedObject = (nestedObj, pathArr) => {
+    return pathArr.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
+  }
+
+  formToJSON = elements => [].reduce.call(elements, (data, element) => {
+    if (element.name === 'profile_pic') {
+      if (element.value !== '') {
+        data[element.name] = element.value;
+      }
+      else {
+        data[''] = '';
+      }
+    }
+    if (element.name.search('/competences/') >= 0) {
+      data[element.name] = element.checked;
+    }
+    else {
+      data[element.name] = element.value;
+    }
+    return data;
+  }, {})
+
   handleSubmit(event) {
     event.preventDefault();
     const data = this.formToJSON(event.target);
     console.log(data);
+    const { postChangeMember } = this.props;
+    postChangeMember(data, data.id);
+  }
+
+  handleDeleteMember(id, history) {
+    console.log(id);
+    const { deleteMember, member } = this.props;
+    switch (window.prompt('ATTENTION: Tu vas supprimer ton profil. Si tu souhaite le recréer, pense à passer par un admin. Tu devras tout refaire. Es-tu sûr à 10000% ? Si oui, ecris ton prénom en dessous')) {
+      case member.firstname:
+        deleteMember(id);
+        history.push('/');
+        break;
+
+      default:
+        break;
+    }
   }
 
   render() {
     const { member, value, competences } = this.props;
     const promoname = this.getNestedObject(member, ['promotion', 'name']);
-    console.log(value);
-    const promostart = this.getNestedObject(member, ['promotion', 'startDate']);
-    const promoend = this.getNestedObject(member, ['promotion', 'endDate']);
-    const professionalstatus = this.getNestedObject(member, ['professionalStatus', 'name']);
     const spename = this.getNestedObject(member, ['specialisation', 'name']);
-    const projectname = this.getNestedObject(member, ['project', 'name']);
-    const projectid = this.getNestedObject(member, ['project', '@id']);
-    const projectimages = this.getNestedObject(member, ['project', 'images']);
     const competencesMember = this.getNestedObject(member, ['competences']);
-    console.log('compMember ', competencesMember);
-
     return (
       <div id="memberedit">
         <form onSubmit={e => this.handleSubmit(e)}>
+          <input className="d-none" type="text" name="id" value={member.id} />
           <section id="memberedit-form" className="d-flex flex-column justify-content-center align-items-center bg-member">
             <div className="row justify-content-center align-items-center">
               <img src={member.profilePicture} className="singlemember-photo" alt="" />
@@ -100,9 +122,8 @@ class MemberEdit extends React.Component {
                       <div className="form-check-label">
                         <input
                           name={this.getNestedObject(competence, ['@id'])}
-                          defaultValue={(competencesMember.map(competenceMember => (competenceMember['@id'] === this.getNestedObject(competence, ['@id']))).filter(response => response === true)[0])}
+                          onChange={e => this.onChangeCheckbox(e)}
                           defaultChecked={(competencesMember.map(competenceMember => (competenceMember['@id'] === this.getNestedObject(competence, ['@id']))).filter(response => response === true)[0])}
-                          value=""
                           type="checkbox"
                           className="form-check-input"
                         />
@@ -118,10 +139,10 @@ class MemberEdit extends React.Component {
             </div>
           </section>
         </form>
-        <form className="d-flex flex-column justify-content-center align-items-center bg-member">
-          <button className="col-2 button-deleteProfile" type="button">Supprimer mon profil</button>
-        </form>
-
+        <Route render={
+           ({ history }) => (<button className="col-2 button-deleteProfile" type="button" onClick={() => this.handleDeleteMember(member.id, history)}>Supprimer mon profil</button>)
+         }
+        />
       </div>
     );
   }

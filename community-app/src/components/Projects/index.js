@@ -43,6 +43,7 @@ class Projects extends React.Component {
           {listProjects.map(project => (
             <ProjectItem
               key={project['@id']}
+              slug={project.slug}
               title={project.name}
               promotion={project.promotion.name}
               images={project.images}
