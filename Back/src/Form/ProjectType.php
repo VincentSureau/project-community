@@ -24,6 +24,8 @@ class ProjectType extends AbstractType
                 'class' => AppUser::class,
                 'multiple' => true,
                 'group_by' => 'promotion',
+                'required' => false,
+                'label' => 'Membres'
                 ]
             )
         ;
