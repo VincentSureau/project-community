@@ -70,7 +70,7 @@ class Project
     private $createdDate;
 
     /**
-     * @Groups({"project", "AppUserList"})
+     * @Groups({"project", "AppUserList", "ProjectList"})
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(type="string", length=150, nullable=true)
      */
