@@ -21,36 +21,42 @@ import './project.scss';
  */
 class Project extends React.Component {
   componentDidMount() {
-    const { getProject, id } = this.props;
-    getProject(id);
+    const { getProjectWithId, id } = this.props;
+    getProjectWithId(id);
   }
 
   render() {
     const { project } = this.props;
-    return (
-      <div id="project">
-        <section id="project-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-project">
-          <h1>Productize</h1>
-          <div id="project-project-pc">
-            <div id="project-project-pc-screen">
-              <img src="/src/images/project1.png" alt="" />
+    if (project != null) {
+      console.log(project.name);
+      return (
+        <div id="project">
+          <section id="project-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-project">
+            <h1>{project.name}</h1>
+            <div id="project-project-pc">
+              <div id="project-project-pc-screen">
+                <img src="/src/images/project1.png" alt="" />
+              </div>
             </div>
-          </div>
-          <ArrowDown />
-        </section>
-        <ProjectPresentation />
-        <ProjectDescript />
-        <ProjectGallery />
-        <ProjectLink />
-      </div>
+            <ArrowDown />
+          </section>
+          <ProjectPresentation />
+          <ProjectDescript />
+          <ProjectGallery />
+          <ProjectLink />
+        </div>
+      );
+    }
+    return (
+      <p>loading</p>
     );
   }
 }
 
 Project.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   project: PropTypes.array.isRequired,
-  getProject: PropTypes.func.isRequired,
+  getProjectWithId: PropTypes.func.isRequired,
 };
 
 /**

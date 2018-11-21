@@ -23,6 +23,8 @@ export const PROJECTS_HOME_RECEIVED = 'PROJECTS_HOME_RECEIVED';
 export const SET_MEMBER_ID = 'SET_MEMBER_ID';
 export const GET_PROJECTS = 'GET_PROJECTS';
 export const PROJECTS_RECEIVED = 'PROJECTS_RECEIVED';
+export const GET_PROJECT = 'GET_PROJECT';
+export const PROJECT_RECEIVED = 'PROJECT_RECEIVED';
 
 // reducer
 const reducer = (state = initialState, action = {}) => {
@@ -80,6 +82,18 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         listProjects: action.projects,
         project: {},
+      };
+      
+    case GET_PROJECT:
+      return {
+        ...state,
+      };
+
+    case PROJECT_RECEIVED:
+      return {
+        ...state,
+        listProjects: [],
+        project: action.project,
       };
     // Action non-reconnue
     default:
@@ -140,6 +154,16 @@ export const getProjects = () => ({
 export const projectsReceived = projects => ({
   type: PROJECTS_RECEIVED,
   projects,
+});
+
+export const getProject = id => ({
+  type: GET_PROJECT,
+  id,
+});
+
+export const projectReceived = project => ({
+  type: PROJECT_RECEIVED,
+  project,
 });
 
 // export
