@@ -52,7 +52,7 @@ class Project extends React.Component {
             promotion={project.promotion.name}
             competences={project.competences}
           />
-          <ProjectDescript />
+          <ProjectDescript description={project.description} />
           <ProjectGallery />
           <ProjectLink />
         </div>
