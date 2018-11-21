@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource()
@@ -25,6 +26,11 @@ class Promotion
     /**
      * @Groups({"user","project", "AppUserList", "ProjectList"})
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
+     * @Assert\Length(
+     *      max = 100,
+     *      maxMessage = "Le nom du projet ne doit pas avoir plus de {{ limit }} caractères"
+     * )
      */
     private $name;
 
@@ -37,12 +43,16 @@ class Promotion
     /**
      * @Groups({"user"})
      * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\NotBlank(message="Tu dois indiquer une date de début")
+     * @Assert\DateTime(message="Tu dois indiquer une date valide")
      */
     private $startDate;
 
     /**
      * @Groups({"user"})
      * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\NotBlank(message="Tu dois indiquer une date de fin")
+     * @Assert\DateTime(message="Tu dois indiquer une date valide")
      */
     private $endDate;
 

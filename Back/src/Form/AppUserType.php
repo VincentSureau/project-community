@@ -25,7 +25,8 @@ class AppUserType extends AbstractType
         $builder
             ->add('email')
             ->add('firstname')
-            ->add('lastname');
+            ->add('lastname')
+            ->add('promotion');
 
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             $user = $event->getData();
@@ -45,7 +46,6 @@ class AppUserType extends AbstractType
                      ->add('linkPersonal')
                      ->add('isActive')
                      ->add('description')
-                     ->add('role')
                      ->add('promotion')
                      ->add('specialisation')
                      ->add('professionalStatus')
@@ -62,8 +62,11 @@ class AppUserType extends AbstractType
                 $user = $event->getData();
 
                 if ($user && $user->getId() == null) {
+                    $roleUser= $this->getDoctrine()->getRespository(Role::class)->findOneByCode('ROLE_COMMUNITY_USER');
                     $user->setIsActive(false);
                     $user->setPassword($this->passwordFactory->generate());
+                    $user->setRole($roleUser);
+                    $user->setProfilePicture('https://avatars.dicebear.com/v2/male/'. $user->getEmail() . '.svg');
                 }
             }
 

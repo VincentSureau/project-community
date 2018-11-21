@@ -21,36 +21,47 @@ import './project.scss';
  */
 class Project extends React.Component {
   componentDidMount() {
-    const { getProject, id } = this.props;
-    getProject(id);
+    const { getProjectWithId, id } = this.props;
+    getProjectWithId(id);
   }
 
   render() {
     const { project } = this.props;
-    return (
-      <div id="project">
-        <section id="project-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-project">
-          <h1>Productize</h1>
-          <div id="project-project-pc">
-            <div id="project-project-pc-screen">
-              <img src="/src/images/project1.png" alt="" />
+    if (project != null && project.images != null) {
+      const heroImage = project.images.filter(projectImage => projectImage.isHero === true);
+
+      return (
+        <div id="project">
+          <section id="project-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-project">
+            <h1>{project.name}</h1>
+            <div id="project-project-pc">
+              <div id="project-project-pc-screen">
+                <img src={heroImage[0].imageLink} alt="" />
+              </div>
             </div>
-          </div>
-          <ArrowDown />
-        </section>
-        <ProjectPresentation />
-        <ProjectDescript />
-        <ProjectGallery />
-        <ProjectLink />
-      </div>
+            <ArrowDown />
+          </section>
+          <ProjectPresentation
+            members={project.appUsers}
+            promotion={project.promotion.name}
+            competences={project.competences}
+          />
+          <ProjectDescript description={project.description} />
+          <ProjectGallery images={project.images} />
+          <ProjectLink projectLink={project.linkProject} projectVideo={project.linkVideo} />
+        </div>
+      );
+    }
+    return (
+      <p>loading</p>
     );
   }
 }
 
 Project.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   project: PropTypes.array.isRequired,
-  getProject: PropTypes.func.isRequired,
+  getProjectWithId: PropTypes.func.isRequired,
 };
 
 /**

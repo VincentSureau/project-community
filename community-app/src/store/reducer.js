@@ -28,6 +28,8 @@ export const MEMBER_EDIT_RECEIVED = 'MEMBER_EDIT_RECEIVED';
 export const CHANGE_INPUT_FORM = 'CHANGE_INPUT_FORM';
 export const GET_COMPETENCES = 'GET_COMPETENCES';
 export const COMPETENCES_RECEIVED = 'COMPETENCES_RECEIVED';
+export const GET_PROJECT = 'GET_PROJECT';
+export const PROJECT_RECEIVED = 'PROJECT_RECEIVED';
 
 // reducer
 const reducer = (state = initialState, action = {}) => {
@@ -111,7 +113,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
       };
-    
+
     case COMPETENCES_RECEIVED:
       return {
         ...state,
@@ -199,6 +201,16 @@ export const competencesReveived = competences => ({
   competences,
 });
 
+
+export const getProject = id => ({
+  type: GET_PROJECT,
+  id,
+});
+
+export const projectReceived = project => ({
+  type: PROJECT_RECEIVED,
+  project,
+});
 
 // export
 export default reducer;

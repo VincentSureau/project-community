@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource()
@@ -25,6 +26,11 @@ class Competence
     /**
      * @Groups({"user", "project"})
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
+     * @Assert\Length(
+     *      max = 100,
+     *      maxMessage = "Le nom de la spécialisation ne doit pas dépasser {{ limit }} caractères"
+     * )
      */
     private $name;
 

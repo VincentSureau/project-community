@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource()
@@ -21,6 +22,10 @@ class Image
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Url(
+     *     message = "L'url '{{ value }}  n'est pas une url valide",
+     *     protocols = {"http", "https"}
+     * )
      * @Groups({"user","project", "ProjectList"})
      */
     private $imageLink;

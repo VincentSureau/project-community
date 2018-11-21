@@ -15,8 +15,9 @@ import {
   GET_MEMBER_EDIT,
   memberEditReceived,
   GET_COMPETENCES,
-  competencesReveived
+  competencesReveived,
 } from 'src/store/reducer';
+import { GET_PROJECT, projectReceived } from './reducer';
 
 const API_URL = 'http://127.0.0.1:8000';
 
@@ -131,6 +132,7 @@ const ajax = store => next => (action) => {
 
       break;
 
+
     case GET_COMPETENCES:
       axios({
         method: 'get',
@@ -141,6 +143,24 @@ const ajax = store => next => (action) => {
         .then((response) => {
           const competences = response.data['hydra:member'];
           store.dispatch(competencesReveived(competences));
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      break;
+
+    case GET_PROJECT:
+      axios({
+        method: 'get',
+        url: `${API_URL}/projects/${action.id}`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          const project = response.data;
+          store.dispatch(projectReceived(project));
         })
         // echec
         .catch((error) => {
