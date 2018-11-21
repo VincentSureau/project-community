@@ -1,0 +1,86 @@
+easy_admin:
+    site_name: '<img src="/images/logoOclockCommunity.svg">'
+    design:
+      brand_color: '#194d61'
+      assets:
+        favicon: '/images/oclock-fav.png'
+      form_theme: 'vertical'
+      menu:
+         - { entity: 'Membres', icon: 'user' }
+         - { entity: 'Competences', icon: 'tags' }
+         - { entity: 'Images', icon: 'image' }
+         - { entity: 'Statuts_professionnels', icon: 'briefcase' }
+         - { entity: 'Projets', icon: 'book' }
+         - { entity: 'Promotions', icon: 'tasks' }
+         - { entity: 'Specialisation', icon: 'list' }
+         - { entity: 'Roles', icon: 'cog' }
+    formats:
+      date:     'd/m/Y'
+      time:     'H:i'
+      datetime: 'd/m/Y'
+    entities:
+            # List the entity class name you want to manage
+        Membres:
+            class: App\Entity\AppUser
+            label: 'Membres'
+            list:
+                fields: ['id', 'email', 'firstname', 'lastname', 'birthdate', Phone number, isActive]
+                title: "Liste des étudiants"
+            form:
+              fields:
+                  - { type: 'tab' , label: 'Informations personnelles', icon: 'user' }
+                  - lastname
+                  - firstname
+                  - birthdate
+                  - profile_picture
+                  - { type: 'tab' , label: 'Informations de localisation', icon: 'home' }
+                  - city
+                  - zipcode
+                  - { type: 'tab', label: 'Contacts', icon: 'envelope-o' }
+                  - email
+                  - phone_number
+                  - { type: 'tab', label: 'Liens Github,linkedin et personnel', icon: 'link' }
+                  - link_linkedin
+                  - link_github
+                  - link_personal
+
+        Competences:
+            class: App\Entity\Competence
+            label: 'Competences'
+            list:
+                title: "Liste des compétences"
+        Images:
+            class: App\Entity\Image
+            label: 'Images'
+            list:
+                title: "Liste des Images"
+        Statuts_professionnels:
+            class: App\Entity\ProfessionalStatus
+            label: 'Statuts_professionnels'
+            list:
+                title: "Liste des statuts professionnels"
+        Projets:
+            class: App\Entity\Project
+            label: 'Projets'
+            list:
+                title: "Liste des projets"
+        Promotions:
+            class: App\Entity\Promotion
+            label: 'Promotions'
+            list:
+                title: "Liste des promotions"
+        Specialisation:
+            class: App\Entity\Specialisation
+            label: 'Spécialisation'
+            list:
+                title: "Liste des spécialisation"
+        Roles:
+            class: App\Entity\Role
+            label: 'Roles'
+            list:
+                title: "Liste des roles"
+    list:
+        actions:
+            - { name: 'show', icon: 'search', label: 'Voir', title: 'Search' }
+            - { name: 'edit', icon: 'pencil', label: 'Editer', title: 'Edit' }
+            - { name: 'delete', icon: 'trash', label: 'Supprimer', title: 'Edit' }
