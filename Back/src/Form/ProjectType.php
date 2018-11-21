@@ -25,10 +25,12 @@ class ProjectType extends AbstractType
                 'multiple' => true,
                 'group_by' => 'promotion',
                 'required' => false,
-                'label' => 'Membres'
+                'label' => 'Membres',
+                'attr' =>
+                    ['class' => 'chosen-select',
+                    'data-placeholder' => 'Choisir un membre'],
                 ]
-            )
-        ;
+                );
 
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             $project = $event->getData();
