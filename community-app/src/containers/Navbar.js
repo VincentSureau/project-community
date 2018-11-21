@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 
 // local import
-import Specialities from 'src/components/Home/Specialities';
+import Navbar from 'src/components/Navbar';
 
 // action creators
 import { getMembersSpe } from 'src/store/reducer';
@@ -21,10 +21,10 @@ const mapDispatchToProps = dispatch => ({
 
 
 // Container
-const SpecialitiesContainer = connect(
+const NavbarContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Specialities);
+)(Navbar);
 
 // Export
-export default SpecialitiesContainer;
+export default NavbarContainer;

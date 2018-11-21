@@ -15,7 +15,7 @@ const initialState = {
 // Types
 export const CHANGE_INPUT = 'CHANGE_INPUT';
 export const GET_MEMBERS = 'GET_MEMBERS';
-export const GET_MEMBERS_WORDPRESS = 'GET_MEMBERS_WORDPRESS';
+export const GET_MEMBERS_SPE = 'GET_MEMBERS_SPE';
 export const MEMBERS_RECEIVED = 'MEMBERS_RECEIVED';
 export const GET_MEMBER = 'GET_MEMBER';
 export const MEMBER_RECEIVED = 'MEMBER_RECEIVED';
@@ -40,10 +40,10 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
       };
-    case GET_MEMBERS_WORDPRESS: {
+    case GET_MEMBERS_SPE: {
       return {
         ...state,
-        filterSpe: 'wordpress',
+        filterSpe: action.spe,
       };
     }
     case MEMBERS_RECEIVED:
@@ -116,8 +116,9 @@ export const getMembers = () => ({
   type: GET_MEMBERS,
 });
 
-export const getMembersWordpress = () => ({
-  type: GET_MEMBERS_WORDPRESS,
+export const getMembersSpe = spe => ({
+  type: GET_MEMBERS_SPE,
+  spe,
 });
 
 export const membersReceived = members => ({
