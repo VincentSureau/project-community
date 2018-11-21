@@ -42,7 +42,6 @@ class AppUserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $appUser->setProfilePicture('https://avatars.dicebear.com/v2/male/'. $appUser->getEmail() . '.svg');
             $em = $this->getDoctrine()->getManager();
             $em->persist($appUser);
             $em->flush();

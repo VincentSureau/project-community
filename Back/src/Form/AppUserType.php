@@ -64,6 +64,7 @@ class AppUserType extends AbstractType
                 if ($user && $user->getId() == null) {
                     $user->setIsActive(false);
                     $user->setPassword($this->passwordFactory->generate());
+                    $user->setProfilePicture('https://avatars.dicebear.com/v2/male/'. $user->getEmail() . '.svg');
                 }
             }
 
