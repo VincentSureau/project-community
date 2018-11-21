@@ -24,7 +24,8 @@ class ProjectType extends AbstractType
                 'class' => AppUser::class,
                 'multiple' => true,
                 'group_by' => 'promotion',
-            ])
+                ]
+            )
         ;
 
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {

@@ -111,10 +111,6 @@ class Project
     /**
      * @Groups({"project", "ProjectList"})
      * @ORM\OneToMany(targetEntity="App\Entity\AppUser", mappedBy="project")
-     * @Assert\Url(
-     *     message = "L'url '{{ value }}  n'est pas une url valide",
-     *     protocols = {"http", "https"}
-     * )
      */
     private $appUsers;
 
