@@ -298,8 +298,8 @@ class AppUser implements UserInterface
 
     public function getProfilePicture(): ?string
     {
-    "user", "AppUserList", "project", "ProjectList"    return $this->profilePicture;
-    "user", "AppUserList", "project", "ProjectList"}
+        return $this->profilePicture;
+    }
 
     public function setProfilePicture(?string $profilePicture): self
     {
