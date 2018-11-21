@@ -46,6 +46,7 @@ use App\Controller\AppUserRandomHomeCustom;
 class AppUser implements UserInterface
 {
     /**
+     * @Groups({"user", "AppUserList", "project", "ProjectList"})
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -180,7 +181,7 @@ class AppUser implements UserInterface
     private $competences;
 
     /**
-     * @Groups({"AppUserList", "user"})
+     * @Groups({"user", "AppUserList", "project", "ProjectList"})
      * @ORM\Column(type="string", length=120, nullable=true)
      */
     private $slug;
@@ -296,8 +297,8 @@ class AppUser implements UserInterface
 
     public function getProfilePicture(): ?string
     {
-        return $this->profilePicture;
-    }
+    "user", "AppUserList", "project", "ProjectList"    return $this->profilePicture;
+    "user", "AppUserList", "project", "ProjectList"}
 
     public function setProfilePicture(?string $profilePicture): self
     {
