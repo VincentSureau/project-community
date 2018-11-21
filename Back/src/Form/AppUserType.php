@@ -46,7 +46,6 @@ class AppUserType extends AbstractType
                      ->add('linkPersonal')
                      ->add('isActive')
                      ->add('description')
-                     ->add('role')
                      ->add('promotion')
                      ->add('specialisation')
                      ->add('professionalStatus')
@@ -67,6 +66,7 @@ class AppUserType extends AbstractType
                     $user->setIsActive(false);
                     $user->setPassword($this->passwordFactory->generate());
                     $user->setRole($roleUser);
+                    $user->setProfilePicture('https://avatars.dicebear.com/v2/male/'. $user->getEmail() . '.svg');
                 }
             }
 
