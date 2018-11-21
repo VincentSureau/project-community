@@ -24,6 +24,7 @@ const ProjectPresentation = ({ members, promotion, competences }) => (
       <div id="project-team-list" className="row">
         {members.map(member => (
           <SingleMember
+            key={member.id}
             firstname={member.firstname}
             lastname={member.lastname}
             promotion={promotion}
@@ -37,7 +38,7 @@ const ProjectPresentation = ({ members, promotion, competences }) => (
     <section id="project-tech">
       <h3 id="project-tech-title">Technologies utilisées</h3>
       <div className="mt-3 d-flex flex-wrap justify-content-center">
-        {competences.map(competence => <span className="project-tech-tag">{competence.name}</span>)}
+        {competences.map(competence => <span key={competence['@id']} className="project-tech-tag">{competence.name}</span>)}
       </div>
     </section>
   </div>
