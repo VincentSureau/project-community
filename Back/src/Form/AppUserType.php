@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\AppUser;
+use App\Repository\RoleRepository;
 use App\Entity\Competence;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,9 +18,12 @@ class AppUserType extends AbstractType
 {
     private $passwordFactory;
 
-    public function __construct(GeneratePassword $passwordFactory)
+    private $userRepo;
+
+    public function __construct(GeneratePassword $passwordFactory, RoleRepository $roleRepo)
     {
         $this->passwordFactory = $passwordFactory;
+        $this->roleRepo = $roleRepo;
     }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -73,7 +77,7 @@ class AppUserType extends AbstractType
                 $user = $event->getData();
 
                 if ($user && $user->getId() == null) {
-                    $roleUser= $this->getDoctrine()->getRespository(Role::class)->findOneByCode('ROLE_COMMUNITY_USER');
+                    $roleUser= $this->roleRepo->findOneByCode('ROLE_COMMUNITY_USER');
                     $user->setIsActive(false);
                     $user->setPassword($this->passwordFactory->generate());
                     $user->setRole($roleUser);

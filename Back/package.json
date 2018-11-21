@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@api-platform/admin": "^0.5.1",
-    "create-react-app": "^2.1.1"
-  }
-}

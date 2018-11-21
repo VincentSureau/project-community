@@ -196,7 +196,8 @@ class AppFixtures extends Fixture
 
                 for($image_index = 0; $image_index < 4; $image_index++) {
                     $image = new Image;
-                    $image->setImageLink('https://via.placeholder.com/500');
+                    // $image->setImageLink('https://via.placeholder.com/500x750');
+                    $image->setImageLink('https://testinsane.com/blog/wp-content/uploads/2014/11/eCommerce-Testing-at-TestInsane-Technologies.png');
                     $image->setProject($project);
                     $image->setIsHero(($image_index == 0)? true : false);
                     $manager->persist($image);
@@ -219,7 +220,11 @@ class AppFixtures extends Fixture
                     $user->setProfilePicture('https://avatars.dicebear.com/v2/'. $gender . '/' . $user->getEmail() . '.svg');
                     $user->setPhoneNumber($faker->mobileNumber);
                     $user->setCity($faker->city);
-                    $user->setZipcode(intval($faker->postCode));
+                    $postcode = '';
+                    for($x = 0; $x < 5; $x++){
+                        $postcode .= mt_rand(0, 9);
+                    }
+                    $user->setZipcode(intval($postcode));
                     $user->setLinkLinkedin($faker->url);
                     $user->setLinkGithub($faker->url);
                     $user->setLinkPersonal($faker->url);
