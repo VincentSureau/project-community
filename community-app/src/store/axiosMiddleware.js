@@ -12,6 +12,10 @@ import {
   projectsForHomeReceived,
   GET_PROJECTS,
   projectsReceived,
+  GET_MEMBER_EDIT,
+  memberEditReceived,
+  GET_COMPETENCES,
+  competencesReveived
 } from 'src/store/reducer';
 
 const API_URL = 'http://127.0.0.1:8000';
@@ -50,6 +54,24 @@ const ajax = store => next => (action) => {
         .then((response) => {
           const member = response.data;
           store.dispatch(memberReceived(member));
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      break;
+
+    case GET_MEMBER_EDIT:
+      axios({
+        method: 'get',
+        url: `${API_URL}/app_users/${action.id}`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          const member = response.data;
+          store.dispatch(memberEditReceived(member));
         })
         // echec
         .catch((error) => {
@@ -101,6 +123,24 @@ const ajax = store => next => (action) => {
         .then((response) => {
           const projects = response.data['hydra:member'];
           store.dispatch(projectsReceived(projects));
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      break;
+
+    case GET_COMPETENCES:
+      axios({
+        method: 'get',
+        url: `${API_URL}/competences`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          const competences = response.data['hydra:member'];
+          store.dispatch(competencesReveived(competences));
         })
         // echec
         .catch((error) => {
