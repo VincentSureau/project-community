@@ -16,6 +16,8 @@ import {
   memberEditReceived,
   GET_COMPETENCES,
   competencesReveived,
+  PUT_MEMBER,
+  DELETE_MEMBER,
 } from 'src/store/reducer';
 import { GET_PROJECT, projectReceived } from './reducer';
 
@@ -154,13 +156,48 @@ const ajax = store => next => (action) => {
     case GET_PROJECT:
       axios({
         method: 'get',
-        url: `${API_URL}/projects/${action.id}`,
+        url: `${API_URL}/projects?slug=${action.id}`,
         responseType: 'json',
       })
         // succes
         .then((response) => {
-          const project = response.data;
+          const project = response.data['hydra:member'][0];
+          console.log(project);
           store.dispatch(projectReceived(project));
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      break;
+
+    case PUT_MEMBER:
+      axios({
+        method: 'put',
+        url: `${API_URL}/app_users/${action.id}`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          console.log('retour put=>>>  ', response);
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      break;
+
+    case DELETE_MEMBER:
+      axios({
+        method: 'delete',
+        url: `${API_URL}/app_users/${action.id}`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          console.log('DeleteProfil', response);
         })
         // echec
         .catch((error) => {
