@@ -24,6 +24,7 @@ easy_admin:
             class: App\Entity\AppUser
             label: 'Membres'
             list:
+                fields: ['id', 'email', 'firstname', 'lastname', 'birthdate', Phone number, isActive]
                 title: "Liste des étudiants"
             form:
               fields:
