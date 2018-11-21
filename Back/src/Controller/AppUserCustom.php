@@ -18,8 +18,7 @@ class AppUserCustom extends AbstractController
 
     public function __invoke(): Array
     {
-        $data = $this->repo->findBy(['isActive' => true]);
-
+        $data = $this->repo->findRandom();
         return $data;
     }
 }

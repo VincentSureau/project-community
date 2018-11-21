@@ -1,5 +1,5 @@
 <?php
-// api/src/Controller/AppUserCustom.php
+// api/src/Controller/AppUserHomeCustom.php
 
 namespace App\Controller;
 
@@ -18,8 +18,7 @@ class AppUserHomeCustom extends AbstractController
 
     public function __invoke(): Array
     {
-        $data = $this->repo->findBy(['isActive' => true], ['createdDate' => 'DESC'],8);
-
+        $data = $this->repo->findRandom($limit = 8);
         return $data;
     }
 }

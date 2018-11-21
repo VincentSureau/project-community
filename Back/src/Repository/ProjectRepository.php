@@ -52,7 +52,7 @@ class ProjectRepository extends ServiceEntityRepository
     *  @method Project[] return a random number($limit) of projects 
     */
 
-    public function findRandom($limit)
+    public function findRandom($limit = null)
     {
         $entityManager = $this->getEntityManager();
         $qb = $entityManager->createQueryBuilder();
@@ -60,9 +60,10 @@ class ProjectRepository extends ServiceEntityRepository
             ->addSelect('RAND() as HIDDEN rand')
             ->from('App\Entity\Project', 'p')
             ->where('p.isActive = true')
-            ->orderBy('rand')
-            ->setMaxResults($limit)
-            ;
+            ->orderBy('rand');
+            if($limit !== null){
+                $qb->setMaxResults($limit);
+            }
         
         $query = $qb->getQuery();
         
