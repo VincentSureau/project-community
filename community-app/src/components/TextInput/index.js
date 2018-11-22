@@ -22,10 +22,10 @@ class TextInput extends React.Component {
   }
 
   render() {
-    const { type } = this.props;
+    const { type, placeholder } = this.props;
     return (
       <div id="textinput" className="col">
-        <input id="textinput-input" placeholder="Prénom Nom" type="text" name={type} className="text-white w-100" onChange={e => this.onChangeInput(e)} />
+        <input id="textinput-input" placeholder={placeholder} type="text" name={type} className="text-white w-100" onChange={e => this.onChangeInput(e)} />
       </div>
     );
   }

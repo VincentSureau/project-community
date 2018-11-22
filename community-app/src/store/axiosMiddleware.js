@@ -24,6 +24,7 @@ import {
   filterPromoReveived,
   filterSpeReveived,
   filterStatusReveived,
+  GET_FILTERS_PROJECTS,
 } from 'src/store/reducer';
 
 const API_URL = 'http://127.0.0.1:8001';
@@ -251,6 +252,39 @@ const ajax = store => next => (action) => {
         .then((response) => {
           const statusList = response.data['hydra:member'];
           store.dispatch(filterStatusReveived(statusList));
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      break;
+
+    case GET_FILTERS_PROJECTS:
+      axios({
+        method: 'get',
+        url: `${API_URL}/promotions`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          const promoList = response.data['hydra:member'];
+          store.dispatch(filterPromoReveived(promoList));
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      axios({
+        method: 'get',
+        url: `${API_URL}/specialisations`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          const speList = response.data['hydra:member'];
+          store.dispatch(filterSpeReveived(speList));
         })
         // echec
         .catch((error) => {

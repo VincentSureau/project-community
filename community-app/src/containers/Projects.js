@@ -5,17 +5,25 @@ import { connect } from 'react-redux';
 import Projects from 'src/components/Projects';
 
 // action creators
-import { getProjects } from 'src/store/reducer';
+import { getProjects, getFiltersProjects } from 'src/store/reducer';
 
 // == state ==
 const mapStateToProps = state => ({
   listProjects: state.listProjects,
+  filterSpeProjects: state.filterSpeProjects,
+  filterPromoProjects: state.filterPromoProjects,
+  filterTextProjects: state.filterTextProjects,
+  listSpe: state.listSpe,
+  listPromo: state.listPromo,
 });
 
 // == dispacth ==
 const mapDispatchToProps = dispatch => ({
   getProjects: () => {
     dispatch(getProjects());
+  },
+  getFilters: () => {
+    dispatch(getFiltersProjects());
   },
 });
 

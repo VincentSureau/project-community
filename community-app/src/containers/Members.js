@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Members from 'src/components/Members';
 
 // action creators
-import { getMembers, gitFiltersMembers } from 'src/store/reducer';
+import { getMembers, getFiltersMembers } from 'src/store/reducer';
 
 // == state ==
 const mapStateToProps = state => ({
@@ -25,7 +25,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getMembers());
   },
   getFilters: () => {
-    dispatch(gitFiltersMembers());
+    dispatch(getFiltersMembers());
   },
 
 });
