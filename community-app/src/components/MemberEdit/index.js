@@ -4,7 +4,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import uuid from 'uuid/v4';
+
 /**
  * Local import
  */
@@ -121,7 +121,7 @@ class MemberEdit extends React.Component {
                   { ((competences != null) && (competencesMember != null))
 
                     ? competences.map(competence => (
-                      <div className="form-check-label" key={uuid()}>
+                      <div className="form-check-label" key={competence['@id']}>
                         <input
                           name={this.getNestedObject(competence, ['@id'])}
                           onChange={e => this.onChangeCheckbox(e)}
