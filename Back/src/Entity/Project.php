@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -10,6 +12,9 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Serializer\Annotation\Groups;
 use App\Controller\ProjectCustom;
 use App\Controller\ProjectHomeCustom;
+use Symfony\Component\Validator\Constraints as Assert;
+
+
 
 /**
  * @ApiResource(
@@ -33,6 +38,8 @@ use App\Controller\ProjectHomeCustom;
  *         "post"
  *     }
  * )
+ * @ApiFilter(SearchFilter::class, properties={"slug": "iexact"})
+ * 
  * @ORM\Entity(repositoryClass="App\Repository\ProjectRepository")
  */
 class Project
@@ -48,6 +55,11 @@ class Project
     /**
      * @Groups({"user", "ProjectList", "project"})
      * @ORM\Column(type="string", length=120)
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
+     * @Assert\Length(
+     *      max = 120,
+     *      maxMessage = "Le nom du projet ne doit pas dépasser {{ limit }} caractères"
+     * )
      */
     private $name;
 
@@ -70,7 +82,7 @@ class Project
     private $createdDate;
 
     /**
-     * @Groups({"project", "AppUserList", "ProjectList"})
+     * @Groups({"project", "AppUserList", "ProjectList", "user"})
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(type="string", length=150, nullable=true)
      */
@@ -79,12 +91,20 @@ class Project
     /**
      * @Groups({"project"})
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url(
+     *     message = "L'url '{{ value }}  n'est pas une url valide",
+     *     protocols = {"http", "https"}
+     * )
      */
     private $linkProject;
 
     /**
      * @Groups({"project"})
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url(
+     *     message = "L'url '{{ value }}  n'est pas une url valide",
+     *     protocols = {"http", "https"}
+     * )
      */
     private $linkVideo;
 

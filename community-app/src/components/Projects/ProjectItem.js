@@ -22,6 +22,7 @@ const ProjectItem = ({
   images,
   id,
   members,
+  slug,
 }) => {
   const heroImage = images.filter(projectImage => projectImage.isHero === true);
 
@@ -43,7 +44,7 @@ const ProjectItem = ({
 
   return (
     <div id="projectitem" className="col-6">
-      <NavLink activeClassName="" className="no-blue-on-link" exact to={id}>
+      <NavLink activeClassName="" className="no-blue-on-link" exact to={''.concat('/projects/', slug)}>
         <img id="projectitem-photo" src={heroImage[0].imageLink} alt="" />
         <h1 id="projectitem-title">{title}</h1>
         <p id="projectitem-prom" className="text-uppercase">{`#${promotion}`}</p>

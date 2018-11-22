@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -11,7 +13,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use App\Controller\AppUserCustom;
 use App\Controller\AppUserHomeCustom;
 use App\Controller\AppUserRandomHomeCustom;
-
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity; 
 /**
  * @ApiResource(
  *     attributes={
@@ -40,8 +44,9 @@ use App\Controller\AppUserRandomHomeCustom;
  *         "post"
  *     },
  * )
-
+ * @ApiFilter(SearchFilter::class, properties={"slug": "iexact"})
  * @ORM\Entity(repositoryClass="App\Repository\AppUserRepository")
+ * @UniqueEntity("email")
  */
 class AppUser implements UserInterface
 {
@@ -56,6 +61,12 @@ class AppUser implements UserInterface
     /**
      * @Groups({"user"})
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank(
+     *     message = "Le champ email ne peux pas être vide."
+     * )
+     * @Assert\Email(
+     *     message = "L'email '{{ value }}' n'est pas valide.",
+     * )
      */
     private $email;
 
@@ -64,35 +75,82 @@ class AppUser implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\Regex(
+     *     pattern="~^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{10,15}~"),
+     *     match=true,
+     *     message="Ton mot de passe doit contenir au minimum une majuscule, une minuscule, un chiffre, un caractère spécial et faire entre 8 et 15 caractères",
      */
     private $password;
+
+
+    protected $oldPassword;
 
     /**
      * @Groups({"project", "AppUserList", "ProjectList", "user"})
      * @ORM\Column(type="string", length=80, nullable=true)
+     * @Assert\NotBlank(
+     *     message = "Le champ prénom ne peux pas être vide."
+     * )
+     * @Assert\Regex(
+     *     pattern="/^\w/",
+     *     match=true,
+     *     message="Le prénom ne peut pas contenir de chiffres"
+     * )
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 80,
+     *      minMessage = "Le champ prénom doit comporter au moins {{ limit }} caractères",
+     *      maxMessage = "Le champ prénom ne peux pas comporter plus de {{ limit }} caractères"
+     * )
      */
+
+
     private $firstname;
 
     /**
      * @Groups({"project", "AppUserList", "ProjectList", "user"})
      * @ORM\Column(type="string", length=80, nullable=true)
+     * @Assert\NotBlank(
+     *     message = "Le champ nom ne peux pas être vide."
+     * )
+     * @Assert\Regex(
+     *     pattern="/^\w/",
+     *     match=true,
+     *     message="Le nom ne peut pas contenir de chiffres"
+     * )
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 80,
+     *      minMessage = "Le champ nom doit comporter au moins {{ limit }} caractères",
+     *      maxMessage = "Le champ nom ne peux pas comporter plus de {{ limit }} caractères"
+     * )
      */
     private $lastname;
 
     /**
      * @Groups({"user"})
      * @ORM\Column(type="datetime", nullable=true)
+     * @Assert\DateTime(message="Veuillez indiquer une date valide")
      */
     private $birthdate;
 
     /**
-     * @Groups({"AppUserList", "user"})
+     * @Groups({"AppUserList", "user", "project"})
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url(
+     *     message = "L'url '{{ value }}  n'est pas une url valide",
+     *     protocols = {"http", "https"}
+     * )
      */
     private $profilePicture;
 
     /**
      * @Groups({"user"})
+     * @Assert\Regex(
+     *     pattern="^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$",
+     *     match=true,
+     *     message="Le numéro de téléphone saisi n'est pas valide"
+     * )
      * @ORM\Column(type="string", length=25, nullable=true)
      */
     private $phoneNumber;
@@ -106,25 +164,49 @@ class AppUser implements UserInterface
     /**
      * @Groups({"user"})
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=true,
+     *     message="Le code postal doit contenir uniqument des chiffres"
+     * )
+     * @Assert\Length(
+     *      min = 5,
+     *      max = 5,
+     *      minMessage = "Le champ code postal doit comporter au minimum {{ limit }} caractères.",
+     *      maxMessage = "Le champ code postal ne doit pas comporter plus de {{ limit }} caractères"
+     * )
      */
     private $zipcode;
 
     /**
      * @Groups({"user"})
      * @ORM\Column(type="string", length=150, nullable=true)
+     * @Assert\Url(
+     *     message = "L'url '{{ value }}  n'est pas une url valide",
+     *     protocols = {"http", "https"}
+     * )
      */
     private $linkLinkedin;
 
     /**
      * @Groups({"user"})
      * @ORM\Column(type="string", length=150, nullable=true)
+     * @Assert\Url(
+     *     message = "L'url '{{ value }}  n'est pas une url valide",
+     *     protocols = {"http", "https"}
+     * )
      */
     private $linkGithub;
 
     /**
      * @Groups({"user"})
      * @ORM\Column(type="string", length=150, nullable=true)
+     * @Assert\Url(
+     *     message = "L'url '{{ value }}  n'est pas une url valide",
+     *     protocols = {"http", "https"}
+     * )
      */
+    
     private $linkPersonal;
 
     /**
@@ -153,6 +235,9 @@ class AppUser implements UserInterface
     /**
      * @Groups({"user", "AppUserList", "user"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Promotion", inversedBy="appUsers")
+     * @Assert\NotBlank(
+     *     message = "Le champ numéro de téléphone ne peux pas être vide."
+     * )
      */
     private $promotion;
 

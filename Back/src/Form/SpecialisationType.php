@@ -3,9 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Specialisation;
+use App\Entity\AppUser;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class SpecialisationType extends AbstractType
 {
@@ -13,6 +15,16 @@ class SpecialisationType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('AppUsers', EntityType::class, [
+            'class' => AppUser::class,
+            'multiple' => true,
+            'required' => false,
+            'label' => 'Membres',
+            'attr' =>
+                ['class' => 'chosen-select',
+                'data-placeholder' => 'Choisir un membre'],
+            ]
+            )
         ;
     }
 

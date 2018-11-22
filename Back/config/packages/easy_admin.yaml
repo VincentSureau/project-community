@@ -1,10 +1,11 @@
 easy_admin:
     site_name: '<img src="/images/logoOclockCommunity.svg">'
     design:
+      form_theme: 'vertical'
+    #   form_theme: '@App/easy_admin/form.html.twig'
       brand_color: '#194d61'
       assets:
         favicon: '/images/oclock-fav.png'
-      form_theme: 'vertical'
       menu:
          - { entity: 'Membres', icon: 'user' }
          - { entity: 'Competences', icon: 'tags' }
@@ -15,9 +16,9 @@ easy_admin:
          - { entity: 'Specialisation', icon: 'list' }
          - { entity: 'Roles', icon: 'cog' }
     formats:
-      date:     'd/m/Y'
-      time:     'H:i'
-      datetime: 'd/m/Y'
+        date:     'd/m/Y'
+        time:     'H:i'
+        datetime: 'd-m-Y'
     entities:
             # List the entity class name you want to manage
         Membres:
@@ -31,7 +32,7 @@ easy_admin:
                   - { type: 'tab' , label: 'Informations personnelles', icon: 'user' }
                   - lastname
                   - firstname
-                  - birthdate
+                  - { property: 'birthdate', type: 'date', label: 'birthdate' }
                   - profile_picture
                   - { type: 'tab' , label: 'Informations de localisation', icon: 'home' }
                   - city
@@ -42,7 +43,7 @@ easy_admin:
                   - { type: 'tab', label: 'Liens Github,linkedin et personnel', icon: 'link' }
                   - link_linkedin
                   - link_github
-                  - link_personal
+                  - link_personal                
 
         Competences:
             class: App\Entity\Competence
@@ -69,6 +70,12 @@ easy_admin:
             label: 'Promotions'
             list:
                 title: "Liste des promotions"
+            form:
+              fields:
+                  - id
+                  - Name
+                  - { property: 'StartDate', type: 'datetime', label: 'StartDate' }
+                  - { property: 'EndDate', type: 'datetime', label: 'EndDate' }
         Specialisation:
             class: App\Entity\Specialisation
             label: 'Spécialisation'

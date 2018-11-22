@@ -48,7 +48,7 @@ const ContactBar = ({
     {(city != null && zipcode != null) && (
     <div className="d-flex justify-content-start col-4 align-items-end pb-4">
       <FaMapMarkerAlt className="text-white" />
-      <span id="member-info-contactbar-localisation" className="text-white">{`${city}, ${zipcode != null}`}</span>
+      <span id="member-info-contactbar-localisation" className="text-white">{`${city}, ${zipcode}`}</span>
     </div>)}
   </div>
 
