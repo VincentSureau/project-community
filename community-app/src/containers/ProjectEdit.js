@@ -5,36 +5,32 @@ import { connect } from 'react-redux';
 import ProjectEdit from 'src/components/ProjectEdit';
 
 // action creators
-import { getProject, getCompetences } from 'src/store/reducer';
+import { getProjectEdit, getCompetences, changeInputForm, putProject } from 'src/store/reducer';
 
 // == state ==
 const mapStateToProps = state => ({
   project: state.project,
-  // value: state.value,
+  value: state.value,
   competences: state.competences,
 });
 
 // == dispacth ==
 const mapDispatchToProps = dispatch => ({
   getProjectWithId: (id) => {
-    dispatch(getProject(id));
+    dispatch(getProjectEdit(id));
   },
 
-  // onChangeInput: (name, value) => {
-  //   dispatch(changeInputForm(name, value));
-  // },
+  onChangeInput: (name, value) => {
+    dispatch(changeInputForm(name, value));
+  },
 
   getCompetences: () => {
     dispatch(getCompetences());
   },
 
-  // postChangeMember: (data, id) => {
-  //   dispatch(putMember(id, data));
-  // },
-
-  // deleteMember: (id) => {
-  //   dispatch(deleteMember(id));
-  // },
+  postChangeProject: (data, id) => {
+    dispatch(putProject(id, data));
+  },
 
 });
 

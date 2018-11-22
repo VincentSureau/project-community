@@ -38,6 +38,7 @@ export const PUT_MEMBER = 'PUT_MEMBER';
 export const DELETE_MEMBER = 'DELETE_MEMBER';
 export const GET_PROJECT_EDIT = 'GET_PROJECT_EDIT';
 export const PROJECT_EDIT_RECEIVED = 'PROJECT_EDIT_RECEIVED';
+export const PUT_PROJECT = 'PUT_PROJECT';
 
 
 // reducer
@@ -159,6 +160,11 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case PUT_MEMBER:
+      return {
+        ...state,
+      };
+
+    case PUT_PROJECT:
       return {
         ...state,
       };
@@ -298,6 +304,12 @@ export const projectReceived = project => ({
 
 export const putMember = (id, data) => ({
   type: PUT_MEMBER,
+  id,
+  data,
+});
+
+export const putProject = (id, data) => ({
+  type: PUT_PROJECT,
   id,
   data,
 });

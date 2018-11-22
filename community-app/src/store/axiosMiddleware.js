@@ -21,6 +21,7 @@ import {
   GET_PROSTATUS,
   proStatusReceived,
   PUT_MEMBER,
+  PUT_PROJECT,
   DELETE_MEMBER,
   GET_PROJECT,
   projectReceived,
@@ -204,7 +205,6 @@ const ajax = store => next => (action) => {
         // succes
         .then((response) => {
           const project = response.data['hydra:member'][0];
-          console.log(project);
           store.dispatch(projectReceived(project));
         })
         // echec
@@ -218,6 +218,23 @@ const ajax = store => next => (action) => {
       axios({
         method: 'put',
         url: `${API_URL}/app_users/${action.id}`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          console.log('retour put=>>>  ', response);
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      break;
+
+    case PUT_PROJECT:
+      axios({
+        method: 'put',
+        url: `${API_URL}/projects?slug=${action.id}`,
         responseType: 'json',
       })
         // succes
