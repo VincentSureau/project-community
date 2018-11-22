@@ -15,7 +15,7 @@ import Member from 'src/containers/Member';
 import MemberEdit from 'src/containers/MemberEdit';
 import Members from 'src/containers/Members';
 import Project from 'src/containers/Project';
-import ProjectEdit from 'src/components/ProjectEdit';
+import ProjectEdit from 'src/containers/ProjectEdit';
 import Projects from 'src/containers/Projects';
 import NotFound from 'src/components/NotFound';
 // import Oclock from 'src/components/Oclock';
