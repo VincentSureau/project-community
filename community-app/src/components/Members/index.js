@@ -27,20 +27,22 @@ class Members extends React.Component {
   }
 
   render() {
-    const { listMembers } = this.props;
-    // console.log(members);
+    let { listMembers } = this.props;
+    const { filterSpe } = this.props;
+    if (filterSpe !== '' && listMembers !== null) {
+      listMembers = listMembers.filter(member => member.specialisation.name.toLowerCase() === `${filterSpe}`);
+    }
+
     return (
       <div id="members">
         <section id="members-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-members">
           <h1>Étudiants</h1>
           <h3>Vous êtes prêts ? Eux oui !</h3>
           <div id="members-form" className="row w-100">
-    
+            {/* <SelectInput />
             <SelectInput />
             <SelectInput />
-            <SelectInput />
-            <TextInput />
-    
+            <TextInput /> */}
           </div>
           <ArrowDown />
         </section>
@@ -64,8 +66,12 @@ class Members extends React.Component {
 Members.propTypes = {
   listMembers: PropTypes.array.isRequired,
   getMembers: PropTypes.func.isRequired,
+  filterSpe: PropTypes.string,
 };
 
+Members.defaultProps = {
+  filterSpe: '',
+};
 
 /**
  * Export

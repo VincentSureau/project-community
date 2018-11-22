@@ -8,7 +8,7 @@ import { Route, Switch } from 'react-router-dom';
  * Local import
  */
 // Components
-import Navbar from 'src/components/Navbar';
+import Navbar from 'src/containers/Navbar';
 import Home from 'src/containers/Home';
 import Login from 'src/components/Login';
 import Member from 'src/containers/Member';

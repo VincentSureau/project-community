@@ -2,33 +2,29 @@
 import { connect } from 'react-redux';
 
 // local import
-import Members from 'src/components/Members';
+import Navbar from 'src/components/Navbar';
 
 // action creators
-import { getMembers } from 'src/store/reducer';
+import { getMembersSpe } from 'src/store/reducer';
 
 // == state ==
 const mapStateToProps = state => ({
   listMembers: state.listMembers,
-  filterSpe: state.filterSpe,
 });
 
 // == dispacth ==
 const mapDispatchToProps = dispatch => ({
-  getMembers: () => {
-    dispatch(getMembers());
-  },
-  getMembersWordpress: () => {
-    dispatch(getMembers());
+  getMembersSpe: (spe) => {
+    dispatch(getMembersSpe(spe));
   },
 });
 
 
 // Container
-const MembersContainer = connect(
+const NavbarContainer = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Members);
+)(Navbar);
 
 // Export
-export default MembersContainer;
+export default NavbarContainer;
