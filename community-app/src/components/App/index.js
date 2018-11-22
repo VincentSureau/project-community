@@ -52,6 +52,14 @@ const App = () => (
         }}
       />
       <Route
+        path="/projects/:slug/edit"
+        exact
+        render={(matchData) => {
+          const { slug } = matchData.match.params;
+          return <ProjectEdit id={slug} />;
+        }}
+      />
+      <Route
         path="/projects/:slug"
         exact
         render={(matchData) => {
