@@ -12,6 +12,7 @@ const initialState = {
   filterSpeMembers: '',
   filterPromoMembers: '',
   filterStatusMembers: '',
+  filterTextMembers: '',
   listSpe: [],
   listPromo: [],
   listStatus: [],

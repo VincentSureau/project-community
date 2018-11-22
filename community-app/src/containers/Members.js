@@ -13,6 +13,7 @@ const mapStateToProps = state => ({
   filterSpeMembers: state.filterSpeMembers,
   filterPromoMembers: state.filterPromoMembers,
   filterStatusMembers: state.filterStatusMembers,
+  filterTextMembers: state.filterTextMembers,
   listSpe: state.listSpe,
   listPromo: state.listPromo,
   listStatus: state.listStatus,
