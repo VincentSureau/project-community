@@ -3,6 +3,10 @@ security:
         App\Entity\AppUser:
             algorithm: bcrypt
 
+    role_hierarchy:
+        ROLE_COMMUNITY_ADMIN: ROLE_COMMUNITY_USER
+        ROLE_COMMUNITY_SUPER_ADMIN: ROLE_COMMUNITY_ADMIN
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
@@ -14,8 +18,50 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        main:
+
+        login:
+            pattern:  ^/login
             anonymous: true
+            stateless: true
+            provider: app_user_provider
+            json_login:
+                check_path: /login_check
+                username_path: email
+                password_path: password
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+
+        gestion:
+            pattern:   ^/gestion
+            provider: app_user_provider
+            stateless: true
+            anonymous: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+
+        admin:
+            pattern:   ^/admin
+            provider: app_user_provider
+            stateless: true
+            anonymous: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+
+        api:
+            pattern:   ^/
+            provider: app_user_provider
+            stateless: true
+            anonymous: true
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+
+            # form_login:
+            #     login_path: login #nom de la route qui va afficher dans mon security controller le formulaire de saisie
+            #     check_path: login # nom de la route qui va verifier les données saisie
+            #     csrf_token_generator: security.csrf.token_manager
 
             # activate different ways to authenticate
 
@@ -28,5 +74,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/,       roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/gestion, roles: ROLE_COMMUNITY_ADMIN }
+        - { path: ^/admin, roles: ROLE_COMMUNITY_SUPER_ADMIN }
