@@ -220,7 +220,6 @@ const ajax = store => next => (action) => {
         // succes
         .then((response) => {
           const promoList = response.data['hydra:member'];
-          console.log(promoList);
           store.dispatch(filterPromoReveived(promoList));
         })
         // echec
@@ -236,7 +235,6 @@ const ajax = store => next => (action) => {
         // succes
         .then((response) => {
           const speList = response.data['hydra:member'];
-          console.log(speList);
           store.dispatch(filterSpeReveived(speList));
         })
         // echec
@@ -252,7 +250,6 @@ const ajax = store => next => (action) => {
         // succes
         .then((response) => {
           const statusList = response.data['hydra:member'];
-          console.log(statusList);
           store.dispatch(filterStatusReveived(statusList));
         })
         // echec

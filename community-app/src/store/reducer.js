@@ -44,6 +44,7 @@ export const GET_FILTERS_PROJECTS = 'GET_FILTERS_PROJECTS';
 export const RECEIVED_FILTER_SPE = 'RECEIVED_FILTER_SPE';
 export const RECEIVED_FILTER_PROMO = 'RECEIVED_FILTER_PROMO';
 export const RECEIVED_FILTER_STATUS = 'RECEIVED_FILTER_STATUS';
+export const SET_FILTER_MEMBERS = 'SET_FILTER_MEMBERS';
 
 // reducer
 const reducer = (state = initialState, action = {}) => {
@@ -189,6 +190,13 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
       };
+  
+    case SET_FILTER_MEMBERS:
+      console.log('reducer:  ', action);
+      return {
+        ...state,
+        [action.filter]: action.value,
+      };
     // Action non-reconnue
     default:
       return state;
@@ -318,6 +326,12 @@ export const filterPromoReveived = data => ({
 export const filterStatusReveived = data => ({
   type: RECEIVED_FILTER_STATUS,
   data,
+});
+
+export const setFilter = (type, value) => ({
+  type: SET_FILTER_MEMBERS,
+  filter: type,
+  value,
 });
 
 // export

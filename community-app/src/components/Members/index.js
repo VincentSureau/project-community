@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
  * Local import
  */
 // Components
-import SelectInput from '../SelectInput';
+import SelectInput from '../../containers/SelectInput';
 import TextInput from '../TextInput';
 import ArrowDown from '../ArrowDown';
 import SingleMember from '../SingleMember';
@@ -32,11 +32,19 @@ class Members extends React.Component {
       listSpe,
       listPromo,
       listStatus,
-      filterSpeMembers
+      filterSpeMembers,
+      filterPromoMembers,
+      filterStatusMembers,
     } = this.props;
     let { listMembers } = this.props;
     if (filterSpeMembers !== "" && listMembers !== null) {
-      listMembers = listMembers.filter(member => member.specialisation.name.toLowerCase() === `${filterSpeMembers}`);
+      listMembers = listMembers.filter(member => member.specialisation.name === `${filterSpeMembers}`);
+    }
+    if (filterPromoMembers !== "" && listMembers !== null) {
+      listMembers = listMembers.filter(member => member.promotion.name === `${filterPromoMembers}`);
+    }
+    if (filterStatusMembers !== "" && listMembers !== null) {
+      listMembers = listMembers.filter(member => member.professionalStatus.name === `${filterStatusMembers}`);
     }
     return (
       <div id="members">
@@ -44,9 +52,9 @@ class Members extends React.Component {
           <h1>Étudiants</h1>
           <h3>Vous êtes prêts ? Eux oui !</h3>
           <div id="members-form" className="row w-100">
-            { (listSpe !== null) ? <SelectInput type="Spécialisation" list={listSpe} /> : <p>Loading</p> }
-            { (listPromo !== null) ? <SelectInput type="Promotion" list={listPromo} /> : <p>Loading</p> }
-            { (listStatus !== null) ? <SelectInput type="Status Profressionel" list={listStatus} /> : <p>Loading</p> }
+            { (listSpe !== null) ? <SelectInput type="Spécialisation" list={listSpe} page="Members" /> : <p>Loading</p> }
+            { (listPromo !== null) ? <SelectInput type="Promotion" list={listPromo} page="Members" /> : <p>Loading</p> }
+            { (listStatus !== null) ? <SelectInput type="Status Professionnel" list={listStatus} page="Members" /> : <p>Loading</p> }
             {/*<TextInput />*/}
           </div>
           <ArrowDown />

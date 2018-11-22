@@ -11,6 +11,8 @@ import { getMembers, gitFiltersMembers } from 'src/store/reducer';
 const mapStateToProps = state => ({
   listMembers: state.listMembers,
   filterSpeMembers: state.filterSpeMembers,
+  filterPromoMembers: state.filterPromoMembers,
+  filterStatusMembers: state.filterStatusMembers,
   listSpe: state.listSpe,
   listPromo: state.listPromo,
   listStatus: state.listStatus,
