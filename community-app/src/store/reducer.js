@@ -30,10 +30,14 @@ export const MEMBER_EDIT_RECEIVED = 'MEMBER_EDIT_RECEIVED';
 export const CHANGE_INPUT_FORM = 'CHANGE_INPUT_FORM';
 export const GET_COMPETENCES = 'GET_COMPETENCES';
 export const COMPETENCES_RECEIVED = 'COMPETENCES_RECEIVED';
+export const GET_PROSTATUS = 'GET_PROSTATUS';
+export const PROSTATUS_RECEIVED = 'PROSTATUS_RECEIVED';
 export const GET_PROJECT = 'GET_PROJECT';
 export const PROJECT_RECEIVED = 'PROJECT_RECEIVED';
 export const PUT_MEMBER = 'PUT_MEMBER';
 export const DELETE_MEMBER = 'DELETE_MEMBER';
+export const GET_PROJECT_EDIT = 'GET_PROJECT_EDIT';
+export const PROJECT_EDIT_RECEIVED = 'PROJECT_EDIT_RECEIVED';
 
 
 // reducer
@@ -120,15 +124,38 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
 
-    case GET_COMPETENCES:
+    case GET_PROJECT_EDIT:
       return {
         ...state,
       };
+
+    case PROJECT_EDIT_RECEIVED:
+      return {
+        ...state,
+        listProjects: [],
+        project: action.project,
+        value: {
+          linkProject: action.project.linkProject,
+          linkVideo: action.project.linkVideo,
+          description: action.project.description,
+        },
+      };
+
+    // case GET_COMPETENCES:
+    //   return {
+    //     ...state,
+    //   };
 
     case COMPETENCES_RECEIVED:
       return {
         ...state,
         competences: action.competences,
+      };
+
+    case PROSTATUS_RECEIVED:
+      return {
+        ...state,
+        status: action.status,
       };
 
     case PUT_MEMBER:
@@ -230,13 +257,32 @@ export const memberEditReceived = member => ({
   member,
 });
 
+export const getProjectEdit = id => ({
+  type: GET_PROJECT_EDIT,
+  id,
+});
+
+export const projectEditReceived = project => ({
+  type: PROJECT_EDIT_RECEIVED,
+  project,
+});
+
 export const getCompetences = () => ({
   type: GET_COMPETENCES,
 });
 
-export const competencesReveived = competences => ({
+export const competencesReceived = competences => ({
   type: COMPETENCES_RECEIVED,
   competences,
+});
+
+export const getProStatus = () => ({
+  type: GET_PROSTATUS,
+});
+
+export const proStatusReceived = status => ({
+  type: PROSTATUS_RECEIVED,
+  status,
 });
 
 
@@ -256,7 +302,7 @@ export const putMember = (id, data) => ({
   data,
 });
 
-export const deleteMember = (id) => ({
+export const deleteMember = id => ({
   type: DELETE_MEMBER,
   id,
 });

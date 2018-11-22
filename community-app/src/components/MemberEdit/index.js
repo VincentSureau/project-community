@@ -20,9 +20,15 @@ import './memberedit.scss';
 
 class MemberEdit extends React.Component {
   componentDidMount() {
-    const { getMemberWithId, id, getCompetences } = this.props;
+    const {
+      getMemberWithId,
+      id,
+      getCompetences,
+      getProStatus,
+    } = this.props;
     getMemberWithId(id.split('-')[2]);
     getCompetences();
+    getProStatus();
   }
 
 
@@ -81,10 +87,18 @@ class MemberEdit extends React.Component {
   }
 
   render() {
-    const { member, value, competences } = this.props;
+    const {
+      member,
+      value,
+      competences,
+      status,
+    } = this.props;
+
     const promoname = this.getNestedObject(member, ['promotion', 'name']);
     const spename = this.getNestedObject(member, ['specialisation', 'name']);
     const competencesMember = this.getNestedObject(member, ['competences']);
+    const statusMember = this.getNestedObject(member, ['professionalStatus']);
+
     return (
       <div id="memberedit">
         <form onSubmit={e => this.handleSubmit(e)}>
@@ -137,6 +151,29 @@ class MemberEdit extends React.Component {
 
                 </div>
               </div>
+              <p className="label col-5">Status professionnel: </p>
+              <div className="col-5 multiselection">
+                <div className="form-check">
+                  
+                  { (status != null)
+
+                    ? status.map(singleStatus => (
+                      <div className="form-check-label" key={singleStatus['@id']}>
+                        <input
+                          name={this.getNestedObject(singleStatus, ['@id'])}
+                          onChange={e => this.onChangeCheckbox(e)}
+                          defaultChecked={statusMember['@id'] === this.getNestedObject(singleStatus, ['@id'])}
+                          type="checkbox"
+                          className="form-check-input"
+                        />
+                        {this.getNestedObject(singleStatus, ['name'])}
+                      </div>
+                    ))
+                    : <p>Loading</p>
+                  }
+
+                </div>
+              </div>
               <button className="col-6 button-submit" type="submit">Enregistrer</button>
             </div>
           </section>
@@ -157,16 +194,19 @@ MemberEdit.propTypes = {
   id: PropTypes.string.isRequired,
   getMemberWithId: PropTypes.func.isRequired,
   getCompetences: PropTypes.func.isRequired,
+  getProStatus: PropTypes.func.isRequired,
   onChangeInput: PropTypes.func.isRequired,
   postChangeMember: PropTypes.func.isRequired,
   deleteMember: PropTypes.func.isRequired,
   member: PropTypes.object.isRequired,
   value: PropTypes.object.isRequired,
   competences: PropTypes.array,
+  status: PropTypes.array,
 };
 
 MemberEdit.defaultProps = {
   competences: [],
+  status: [],
 };
 
 /**

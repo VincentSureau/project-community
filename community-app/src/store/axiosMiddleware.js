@@ -14,8 +14,12 @@ import {
   projectsReceived,
   GET_MEMBER_EDIT,
   memberEditReceived,
+  GET_PROJECT_EDIT,
+  projectEditReceived,
   GET_COMPETENCES,
-  competencesReveived,
+  competencesReceived,
+  GET_PROSTATUS,
+  proStatusReceived,
   PUT_MEMBER,
   DELETE_MEMBER,
   GET_PROJECT,
@@ -76,6 +80,25 @@ const ajax = store => next => (action) => {
         .then((response) => {
           const member = response.data;
           store.dispatch(memberEditReceived(member));
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      break;
+
+    case GET_PROJECT_EDIT:
+      axios({
+        method: 'get',
+        url: `${API_URL}/projects?slug=${action.id}`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          const project = response.data['hydra:member'][0];
+          console.log(project);
+          store.dispatch(projectEditReceived(project));
         })
         // echec
         .catch((error) => {
@@ -145,7 +168,25 @@ const ajax = store => next => (action) => {
         // succes
         .then((response) => {
           const competences = response.data['hydra:member'];
-          store.dispatch(competencesReveived(competences));
+          store.dispatch(competencesReceived(competences));
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      break;
+
+    case GET_PROSTATUS:
+      axios({
+        method: 'get',
+        url: `${API_URL}/professional_statuses`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          const status = response.data['hydra:member'];
+          store.dispatch(proStatusReceived(status));
         })
         // echec
         .catch((error) => {
