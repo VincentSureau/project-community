@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
  */
 // Components
 import SelectInput from '../../containers/SelectInput';
-import TextInput from '../TextInput';
+import TextInput from '../../containers/TextInput';
 import ArrowDown from '../ArrowDown';
 import SingleMember from '../SingleMember';
 
@@ -35,6 +35,7 @@ class Members extends React.Component {
       filterSpeMembers,
       filterPromoMembers,
       filterStatusMembers,
+      filterTextMembers,
     } = this.props;
     let { listMembers } = this.props;
     if (filterSpeMembers !== "" && listMembers !== null) {
@@ -46,6 +47,9 @@ class Members extends React.Component {
     if (filterStatusMembers !== "" && listMembers !== null) {
       listMembers = listMembers.filter(member => member.professionalStatus.name === `${filterStatusMembers}`);
     }
+    if (filterTextMembers !== "" && listMembers !== null) {
+      listMembers = listMembers.filter(member => (member.firstname.includes(filterTextMembers) || member.lastname.includes(filterTextMembers)));
+    }
     return (
       <div id="members">
         <section id="members-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-members">
@@ -55,7 +59,7 @@ class Members extends React.Component {
             { (listSpe !== null) ? <SelectInput type="Spécialisation" list={listSpe} page="Members" /> : <p>Loading</p> }
             { (listPromo !== null) ? <SelectInput type="Promotion" list={listPromo} page="Members" /> : <p>Loading</p> }
             { (listStatus !== null) ? <SelectInput type="Status Professionnel" list={listStatus} page="Members" /> : <p>Loading</p> }
-            {/*<TextInput />*/}
+            <TextInput type="filterTextMembers" />
           </div>
           <ArrowDown />
         </section>
