@@ -33,11 +33,13 @@ class MemberEdit extends React.Component {
 
 
   onChangeInput(evt) {
+    console.log(evt.target.name, evt.target.value);
     const { onChangeInput } = this.props;
     onChangeInput(evt.target.name, evt.target.value);
   }
 
   onChangeCheckbox(evt) {
+    console.log(evt.target.name, evt.target.checked);
     const { onChangeInput } = this.props;
     onChangeInput(evt.target.name, evt.target.checked);
   }
@@ -68,8 +70,8 @@ class MemberEdit extends React.Component {
     event.preventDefault();
     const data = this.formToJSON(event.target);
     console.log(data);
-    const { postChangeMember } = this.props;
-    postChangeMember(data, data.id);
+    // const { postChangeMember } = this.props;
+    // postChangeMember(data, data.id);
   }
 
   handleDeleteMember(id, history) {
@@ -93,7 +95,7 @@ class MemberEdit extends React.Component {
       competences,
       status,
     } = this.props;
-
+    // console.log('test', value.status);
     const promoname = this.getNestedObject(member, ['promotion', 'name']);
     const spename = this.getNestedObject(member, ['specialisation', 'name']);
     const competencesMember = this.getNestedObject(member, ['competences']);
@@ -154,19 +156,22 @@ class MemberEdit extends React.Component {
               <p className="label col-5">Status professionnel: </p>
               <div className="col-5 multiselection">
                 <div className="form-check">
-                  
-                  { (status != null)
 
+                  { (status != null)
                     ? status.map(singleStatus => (
                       <div className="form-check-label" key={singleStatus['@id']}>
-                        <input
-                          name={this.getNestedObject(singleStatus, ['@id'])}
-                          onChange={e => this.onChangeCheckbox(e)}
-                          defaultChecked={statusMember['@id'] === this.getNestedObject(singleStatus, ['@id'])}
-                          type="checkbox"
-                          className="form-check-input"
-                        />
-                        {this.getNestedObject(singleStatus, ['name'])}
+                        <label htmlFor={singleStatus['@id']}>
+                          <input
+                            type="radio"
+                            id={singleStatus['@id']}
+                            name="status"
+                            onChange={e => this.onChangeInput(e)}
+                            defaultChecked={statusMember['@id'] === this.getNestedObject(singleStatus, ['@id'])}
+                            value={this.getNestedObject(singleStatus, ['name'])}
+                            className="form-check-input"
+                          />
+                          {this.getNestedObject(singleStatus, ['name'])}
+                        </label>
                       </div>
                     ))
                     : <p>Loading</p>
