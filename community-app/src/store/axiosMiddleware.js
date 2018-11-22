@@ -18,10 +18,11 @@ import {
   competencesReveived,
   PUT_MEMBER,
   DELETE_MEMBER,
+  GET_PROJECT,
+  projectReceived,
 } from 'src/store/reducer';
-import { GET_PROJECT, projectReceived } from './reducer';
 
-const API_URL = 'http://127.0.0.1:8001';
+const API_URL = 'http://127.0.0.1:8000';
 
 /**
  * Middleware de gestion axios
