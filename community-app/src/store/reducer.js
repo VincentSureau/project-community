@@ -70,7 +70,7 @@ const reducer = (state = initialState, action = {}) => {
     case GET_MEMBERS_SPE: {
       return {
         ...state,
-        filterSpeMember: action.spe,
+        filterSpeMembers: action.spe,
       };
     }
     case MEMBERS_RECEIVED:

@@ -8,7 +8,13 @@ import SelectInput from 'src/components/SelectInput';
 import { setFilter } from 'src/store/reducer';
 
 // == state ==
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  filterSpeMembers: state.filterSpeMembers,
+  filterPromoMembers: state.filterPromoMembers,
+  filterStatusMembers: state.filterStatusMembers,
+  filterSpeProjects: state.filterSpeProjects,
+  filterPromoProjects: state.filterPromoProjects,
+});
 
 // == dispacth ==
 const mapDispatchToProps = dispatch => ({
