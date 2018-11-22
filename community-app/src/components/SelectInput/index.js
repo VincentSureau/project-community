@@ -14,17 +14,20 @@ import './selectinput.scss';
 /**
  * Code
  */
-const SelectInput = () => (
-  <div id="selectinput" className="col">
-    <select id="selectinput-select" className="w-100 text-white" value="" onChange="">
-      <option value="" disabled selected>Catégorie</option>
-      <option value="grapefruit">Grapefruit</option>
-      <option value="lime">Lime</option>
-      <option value="coconut">Coconut</option>
-      <option value="mango">Mango</option>
-    </select>
-  </div>
-);
+class SelectInput extends React.Component {
+  render() {
+    const { list, type } = this.props;
+    console.log('list ', type,' received by SelectInput',list)
+    return (
+      <div id="selectinput" className="col">
+        <select id="selectinput-select" className="w-100 text-white">
+          <option defaultValue="" disabled selected>{type}</option>
+          {list.map(item => <option key={item['@id']} defaultValue={item['@id']}>{item.name}</option>)}
+        </select>
+      </div>
+    );
+  }
+}
 
 /**
  * Export
