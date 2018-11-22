@@ -24,6 +24,7 @@ const Navbar = () => {
     { 'login-navfoot': window.location.pathname === '/login' },
     { 'member-navfoot': window.location.pathname.includes('/members/') },
     { 'project-navfoot': window.location.pathname.includes('/projects/') },
+
   );
   const classNavBar = `navbar fixed-top navbar-expand navbar-dark row bg-${classcolor}`;
   return (
