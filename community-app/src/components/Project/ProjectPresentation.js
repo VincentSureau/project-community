@@ -30,6 +30,7 @@ const ProjectPresentation = ({ members, promotion, competences }) => (
             promotion={promotion}
             specialisation={member.specialisation.name}
             profilePicture={member.profilePicture}
+            slug={member.slug}
           />
         ))}
 
