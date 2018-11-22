@@ -1,0 +1,26 @@
+@import '../../styles/vars';
+
+.notfound {
+  padding: 8em 20em;
+  text-align: center;
+  min-height: 100vh;
+
+  &-title {
+    font-size: 5em;
+  }
+
+  &-article {
+    margin: 2em 0;
+
+    &-title {
+      font-size: 1.8em;
+    }
+
+    &-text {
+      margin-top: 1em;
+      font-size: 1.25em;
+      width: 55%;
+      text-align: justify;
+    }
+  }
+}
