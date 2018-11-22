@@ -3,6 +3,8 @@
  */
 import React from 'react';
 import { Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import uuid from 'uuid/v4';
 /**
  * Local import
  */
@@ -18,7 +20,7 @@ import './memberedit.scss';
 
 class MemberEdit extends React.Component {
   componentDidMount() {
-    const { getMemberWithId, id, getCompetences} = this.props;
+    const { getMemberWithId, id, getCompetences } = this.props;
     getMemberWithId(id.split('-')[2]);
     getCompetences();
   }
@@ -119,7 +121,7 @@ class MemberEdit extends React.Component {
                   { ((competences != null) && (competencesMember != null))
 
                     ? competences.map(competence => (
-                      <div className="form-check-label">
+                      <div className="form-check-label" key={uuid()}>
                         <input
                           name={this.getNestedObject(competence, ['@id'])}
                           onChange={e => this.onChangeCheckbox(e)}
@@ -151,6 +153,21 @@ class MemberEdit extends React.Component {
   }
 }
 
+MemberEdit.propTypes = {
+  id: PropTypes.string.isRequired,
+  getMemberWithId: PropTypes.func.isRequired,
+  getCompetences: PropTypes.func.isRequired,
+  onChangeInput: PropTypes.func.isRequired,
+  postChangeMember: PropTypes.func.isRequired,
+  deleteMember: PropTypes.func.isRequired,
+  member: PropTypes.object.isRequired,
+  value: PropTypes.object.isRequired,
+  competences: PropTypes.array,
+};
+
+MemberEdit.defaultProps = {
+  competences: [],
+};
 
 /**
  * Export
