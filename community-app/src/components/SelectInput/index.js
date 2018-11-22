@@ -22,7 +22,16 @@ class SelectInput extends React.Component {
   }
   
   render() {
-    const { list, type, handleChange, page } = this.props;
+    const { 
+      list,
+      type,
+      filterSpeMembers,
+      filterPromoMembers,
+      filterStatusMembers,
+      filterSpeProjects,
+      filterPromoProjects,
+      page
+    } = this.props;
     let selectEvery = '';
     let nameSelect = type === 'Spécialisation' ? 'filterSpe' : 'Filt';
     switch (type) {
@@ -42,12 +51,13 @@ class SelectInput extends React.Component {
         break;
     }
     nameSelect = ''.concat(nameSelect, page);
+    console.log(nameSelect, ' - ', filterSpeMembers ,' -> ', eval(nameSelect));
     return (
       <div id="selectinput" className="col">
         <select id="selectinput-select" className="w-100 text-white" name={nameSelect} onChange={e => this.onChange(e)}>
-          <option defaultValue="" selected disabled>{type}</option>
+          <option defaultValue="" selected={eval(nameSelect) === '' ? true : false} disabled>{type}</option>
           <option value="">{selectEvery}</option>
-          {list.map(item => <option key={item['@id']} defaultValue={item['@id']}>{item.name}</option>)}
+          {list.map(item => <option key={item['@id']} defaultValue={item['@id']} selected={eval(nameSelect) === item.name ? true : false}>{item.name}</option>)}
         </select>
       </div>
     );
