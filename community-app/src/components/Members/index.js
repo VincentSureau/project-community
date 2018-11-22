@@ -59,7 +59,7 @@ class Members extends React.Component {
             { (listSpe !== null) ? <SelectInput type="Spécialisation" list={listSpe} page="Members" /> : <p>Loading</p> }
             { (listPromo !== null) ? <SelectInput type="Promotion" list={listPromo} page="Members" /> : <p>Loading</p> }
             { (listStatus !== null) ? <SelectInput type="Status Professionnel" list={listStatus} page="Members" /> : <p>Loading</p> }
-            <TextInput type="filterTextMembers" />
+            <TextInput type="filterTextMembers" placeholder="Prénom Nom" />
           </div>
           <ArrowDown />
         </section>

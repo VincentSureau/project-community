@@ -23,16 +23,20 @@ class SelectInput extends React.Component {
   
   render() {
     const { list, type, handleChange, page } = this.props;
+    let selectEvery = '';
     let nameSelect = type === 'Spécialisation' ? 'filterSpe' : 'Filt';
     switch (type) {
       case 'Spécialisation':
         nameSelect = 'filterSpe';
+        selectEvery = 'Toutes les spécialisations';
         break;
       case 'Promotion':
+        selectEvery = 'Toutes les promotions';
         nameSelect = 'filterPromo';
         break;
       case 'Status Professionnel':
         nameSelect = 'filterStatus';
+        selectEvery = 'Tous les statuts';
         break;
       default:
         break;
@@ -41,7 +45,8 @@ class SelectInput extends React.Component {
     return (
       <div id="selectinput" className="col">
         <select id="selectinput-select" className="w-100 text-white" name={nameSelect} onChange={e => this.onChange(e)}>
-          <option defaultValue="" disabled selected>{type}</option>
+          <option defaultValue="" selected disabled>{type}</option>
+          <option value="">{selectEvery}</option>
           {list.map(item => <option key={item['@id']} defaultValue={item['@id']}>{item.name}</option>)}
         </select>
       </div>

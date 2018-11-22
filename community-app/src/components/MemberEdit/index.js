@@ -115,9 +115,7 @@ class MemberEdit extends React.Component {
               <p className="label col-5">Compétences: </p>
               <div className="col-5 multiselection">
                 <div className="form-check">
-                  
                   { ((competences != null) && (competencesMember != null))
-
                     ? competences.map(competence => (
                       <div className="form-check-label">
                         <input
