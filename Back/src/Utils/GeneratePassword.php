@@ -6,7 +6,7 @@ class GeneratePassword
 {
   public function generate() {
     $chara = '0123456789azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN';
-    $specialChara = '#$^+=!*()@%&';
+    $specialChara = '$+=!*()@%&';
     $password = '';
     for ($passwordIndex = 0; $passwordIndex < 15; $passwordIndex++) {
         if ($passwordIndex % 2 == 0) {
