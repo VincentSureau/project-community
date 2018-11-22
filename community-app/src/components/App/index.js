@@ -17,6 +17,7 @@ import Members from 'src/containers/Members';
 import Project from 'src/containers/Project';
 import ProjectEdit from 'src/components/ProjectEdit';
 import Projects from 'src/containers/Projects';
+import NotFound from 'src/components/NotFound';
 // import Oclock from 'src/components/Oclock';
 import Footer from 'src/components/Footer';
 
@@ -69,6 +70,7 @@ const App = () => (
       />
 
       <Route path="/projects/titre-1/edit" exact render={() => <ProjectEdit />} />
+      <Route component={NotFound} />
     </Switch>
     <Footer />
   </div>

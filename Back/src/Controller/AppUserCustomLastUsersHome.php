@@ -1,5 +1,5 @@
 <?php
-// api/src/Controller/AppUserCustom.php
+// api/src/Controller/AppUserCustomLastUsersHome.php
 
 namespace App\Controller;
 
@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\AppUserRepository;
 use App\Entity\AppUser;
 
-class AppUserCustom extends AbstractController
+class AppUserCustomLastUsersHome extends AbstractController
 {
     private $repo;
 
@@ -18,7 +18,9 @@ class AppUserCustom extends AbstractController
 
     public function __invoke(): Array
     {
-        $data = $this->repo->findRandom();
+
+        $data = $this->repo->findRandomByLastPromo($limit = 8);
+
         return $data;
     }
 }

@@ -68,4 +68,25 @@ class AppUserRepository extends ServiceEntityRepository
     
     return $query->execute();
     }
+
+    /**
+     * @return AppUser[] Returns an array of AppUser objects with only fields needeed in page list
+     */
+    public function findRandomByLastPromo($limit = null): array
+    {
+    $entityManager = $this->getEntityManager();
+    $qb = $entityManager->createQueryBuilder();
+    $qb->select('u')
+    ->addSelect('RAND() as HIDDEN rand')
+    ->from('App\Entity\AppUser', 'u')
+    ->where('u.isActive = true')
+    ->orderBy('u.promotion DESC,rand');
+    if($limit !== null){
+        $qb->setMaxResults($limit);
+    }
+    
+    $query = $qb->getQuery();
+    
+    return $query->execute();
+    }
 }

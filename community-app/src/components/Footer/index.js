@@ -35,10 +35,18 @@ class Footer extends React.Component {
       { 'text-project-lighter': window.location.pathname.includes('/projects/') },
     );
 
+    const classFooter = (classcolor !== '')
+      ? `${classcolor}`
+      : 'bg-notfound-navfoot';
+
+    const classFooterText = (classcolortext !== '')
+      ? `${classcolortext}`
+      : 'text-notfound-lighter';
+
     return (
-      <footer id="footer" className={classcolor}>
+      <footer id="footer" className={classFooter}>
         <img id="footer-img" className="img-fluid w-10" src="/src/images/logo_oclock_community.svg" alt="" />
-        <p id="footer-copyright" className={classcolortext} >2018 &copy; <a className={classcolortext} href="https://www.linkedin.com/in/elodiechiarani/">Elodie Chiarani</a> / <a className={classcolortext} href="https://www.linkedin.com/in/thibault-garnier/">Thibault Garnier</a> / <a className={classcolortext} href="https://www.linkedin.com/in/tristantouchain/">Tristan Touchain</a> / <a className={classcolortext} href="https://www.linkedin.com/in/vincentsureau/">Vincent Sureau</a></p>
+        <p id="footer-copyright" className={classFooterText} >2018 &copy; <a className={classFooterText} href="https://www.linkedin.com/in/elodiechiarani/">Elodie Chiarani</a> / <a className={classFooterText} href="https://www.linkedin.com/in/thibault-garnier/">Thibault Garnier</a> / <a className={classFooterText} href="https://www.linkedin.com/in/tristantouchain/">Tristan Touchain</a> / <a className={classFooterText} href="https://www.linkedin.com/in/vincentsureau/">Vincent Sureau</a></p>
       </footer>
     );
   }

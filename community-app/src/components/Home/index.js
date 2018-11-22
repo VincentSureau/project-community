@@ -9,10 +9,10 @@ import PropTypes from 'prop-types';
  * Local import
  */
 // Components
+import Specialities from 'src/containers/Specialities';
 import LastMembers from './LastMembers';
 import ArrowDown from '../ArrowDown';
 import RandomProjects from './RandomProjects';
-import Specialities from './Specialities';
 
 
 // Styles
@@ -30,6 +30,7 @@ class Home extends React.Component {
 
   render() {
     const { members, projects } = this.props;
+
     return (
       <div id="home">
         <section id="home-presentation" className="d-flex flex-column justify-content-center align-items-center bg-home full-height">

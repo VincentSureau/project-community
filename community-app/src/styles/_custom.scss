@@ -95,6 +95,12 @@ $theme-colors: (
   login-darker: darken($color-login, 5%),
   login-navfoot: darken($color-login, 8%),
   login-lighter: lighten($color-login, 5%),
+  
+  // PROJECT NOTFOUND  
+  notfound: $color-notfound,
+  notfound-darker: darken($color-notfound, 5%),
+  notfound-navfoot: darken($color-notfound, 8%),
+  notfound-lighter: lighten($color-notfound, 5%),
 
   //OTHER COLOR THEME
   custom-button: $text-color,

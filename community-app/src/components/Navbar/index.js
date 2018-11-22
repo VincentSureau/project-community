@@ -25,7 +25,11 @@ const Navbar = () => {
     { 'member-navfoot': window.location.pathname.includes('/members/') },
     { 'project-navfoot': window.location.pathname.includes('/projects/') },
   );
-  const classNavBar = ''.concat('navbar fixed-top navbar-expand navbar-dark bg-', classcolor, ' row');
+
+  const classNavBar = (classcolor !== '')
+    ? `navbar fixed-top navbar-expand navbar-dark row bg-${classcolor}`
+    : 'navbar fixed-top navbar-expand navbar-dark row bg-notfound-navfoot';
+
   return (
     <div id="navbar">
       <nav className={classNavBar}>
@@ -49,7 +53,6 @@ const Navbar = () => {
     </div>
   );
 };
-
 
 /**
  * Export

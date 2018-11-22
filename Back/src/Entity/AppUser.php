@@ -10,9 +10,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
-use App\Controller\AppUserCustom;
-use App\Controller\AppUserHomeCustom;
-use App\Controller\AppUserRandomHomeCustom;
+use App\Controller\AppUserCustomAllUsersRandom;
+use App\Controller\AppUserCustomLastUsersHome;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity; 
@@ -25,19 +24,13 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *         "list"={
  *             "method"="GET",
  *             "path"="/app_users/list",
- *             "controller"=AppUserCustom::class,
- *             "normalization_context"={"groups"={"AppUserList"}}
- *         },
- *         "home"={
- *             "method"="GET",
- *             "path"="/app_users/home",
- *             "controller"=AppUserHomeCustom::class,
+ *             "controller"=AppUserCustomAllUsersRandom::class,
  *             "normalization_context"={"groups"={"AppUserList"}}
  *         },
  *         "RandomHome"={
  *             "method"="GET",
  *             "path"="/app_users/random_home",
- *             "controller"=AppUserRandomHomeCustom::class,
+ *             "controller"=AppUserCustomLastUsersHome::class,
  *             "normalization_context"={"groups"={"AppUserList"}}
  *         },
  *         "get",
