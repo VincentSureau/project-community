@@ -4,6 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'uuid/v4';
+import serialize from 'form-serialize';
 
 /**
  * Local import
@@ -57,10 +58,12 @@ class ProjectEdit extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const data = this.formToJSON(event.target);
+    // const data = this.formToJSON(event.target);
+    const data = serialize(event.target, { hash: true, empty: true, disabled: false });
     console.log(data);
+    console.log(event.target.id.value);
     const { postChangeProject } = this.props;
-    postChangeProject(data, data.id);
+    postChangeProject(data, event.target.id.value);
   }
 
   render() {
@@ -73,6 +76,7 @@ class ProjectEdit extends React.Component {
       return (
         <div id="projectEdit">
           <form onSubmit={e => this.handleSubmit(e)}>
+            <input hidden type="text" name="id" value={project.id} />
             <section id="projectedit-form" className="d-flex flex-column justify-content-center align-items-center bg-project">
 
               <h1>{project.name}</h1>
