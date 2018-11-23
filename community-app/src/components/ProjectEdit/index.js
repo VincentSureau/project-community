@@ -4,6 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'uuid/v4';
+import serialize from 'form-serialize';
 
 /**
  * Local import
@@ -57,10 +58,12 @@ class ProjectEdit extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const data = this.formToJSON(event.target);
+    // const data = this.formToJSON(event.target);
+    const data = serialize(event.target, { hash: true, empty: true, disabled: false });
     console.log(data);
+    console.log(event.target.id.value);
     const { postChangeProject } = this.props;
-    postChangeProject(data, data.id);
+    postChangeProject(data, event.target.id.value);
   }
 
   render() {
@@ -69,10 +72,12 @@ class ProjectEdit extends React.Component {
 
     if (project != null && project.images != null) {
       const heroImage = project.images.filter(projectImage => projectImage.isHero === true);
+      const images = project.images.filter(projectImage => projectImage.isHero !== true);
 
       return (
         <div id="projectEdit">
           <form onSubmit={e => this.handleSubmit(e)}>
+            <input hidden name="id" value={project.id} />
             <section id="projectedit-form" className="d-flex flex-column justify-content-center align-items-center bg-project">
 
               <h1>{project.name}</h1>
@@ -83,7 +88,7 @@ class ProjectEdit extends React.Component {
               </div>
               <input className="mx-2" type="file" name="project-heroimage" accept=".jpg, .jpeg, .png" />
               <div id="projectedit-form-gallery" className="row">
-                {project.images.map((image, i) => (
+                {images.map((image, i) => (
                   <div id="projectedit-form-gallery-imagechange" className="col-4" key={uuid()}>
                     <img src={image.imageLink} alt="" />
                     <input className="" type="file" name={`project-image${i + 1}`} accept=".jpg, .jpeg, .png" />
@@ -92,10 +97,10 @@ class ProjectEdit extends React.Component {
               </div>
               <div id="projectedit-form-info" className="row justify-content-center">
                 <p className="label col-5">Lien site: </p>
-                <input className="col-5 input-text" type="text" name="web" placeholder={project.linkProject} defaultValue={value.linkProject} onChange={e => this.onChangeInput(e)} />
+                <input className="col-5 input-text" type="text" name="linkProject" placeholder={project.linkProject} defaultValue={value.linkProject} onChange={e => this.onChangeInput(e)} />
                 <p className="label col-5">Lien vidéo YouTube: </p>
-                <input className="col-5 input-text" type="text" name="youtube" placeholder={project.linkVideo} defaultValue={value.linkVideo} onChange={e => this.onChangeInput(e)} />
-                <textarea className="col-12 input-textarea" type="textarea" name="bio" row="" placeholder={project.description} defaultValue={value.description} onChange={e => this.onChangeInput(e)} />
+                <input className="col-5 input-text" type="text" name="linkVideo" placeholder={project.linkVideo} defaultValue={value.linkVideo} onChange={e => this.onChangeInput(e)} />
+                <textarea className="col-12 input-textarea" type="textarea" name="description" row="" placeholder={project.description} defaultValue={value.description} onChange={e => this.onChangeInput(e)} />
                 <p className="label col-5">Technologies utilisées: </p>
                 <div className="col-5 multiselection">
                   <div className="form-check">

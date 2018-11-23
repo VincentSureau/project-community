@@ -233,11 +233,7 @@ const ajax = store => next => (action) => {
       break;
 
     case PUT_PROJECT:
-      axios({
-        method: 'put',
-        url: `${API_URL}/projects?slug=${action.id}`,
-        responseType: 'json',
-      })
+      console.log(axios.put(`${API_URL}/projects/${action.id}`, action.data))
         // succes
         .then((response) => {
           console.log('retour put=>>>  ', response);
