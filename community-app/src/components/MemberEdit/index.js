@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { Route } from 'react-router-dom';
+import serialize from 'form-serialize';
 /**
  * Local import
  */
@@ -38,30 +39,12 @@ class MemberEdit extends React.Component {
     return pathArr.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
   }
 
-  formToJSON = elements => [].reduce.call(elements, (data, element) => {
-    if (element.name === 'profile_pic') {
-      if (element.value !== '') {
-        data[element.name] = element.value;
-      }
-      else {
-        data[''] = '';
-      }
-    }
-    if (element.name.search('/competences/') >= 0) {
-      data[element.name] = element.checked;
-    }
-    else {
-      data[element.name] = element.value;
-    }
-    return data;
-  }, {})
-
   handleSubmit(event) {
     event.preventDefault();
-    const data = this.formToJSON(event.target);
+    const data = serialize(event.target, { hash: true, empty: true, disabled: false });
     console.log(data);
     const { postChangeMember } = this.props;
-    postChangeMember(data, data.id);
+    postChangeMember(data, event.target.id.value);
   }
 
   handleDeleteMember(id, history) {
@@ -86,7 +69,7 @@ class MemberEdit extends React.Component {
     return (
       <div id="memberedit">
         <form onSubmit={e => this.handleSubmit(e)}>
-          <input className="d-none" type="text" name="id" value={member.id} />
+          <input className="d-none" disabled type="text" name="id" value={member.id} />
           <section id="memberedit-form" className="d-flex flex-column justify-content-center align-items-center bg-member">
             <div className="row justify-content-center align-items-center">
               <img src={member.profilePicture} className="singlemember-photo" alt="" />
@@ -99,7 +82,7 @@ class MemberEdit extends React.Component {
               <p className="label col-5">Ville: </p>
               <input className="col-5 input-text" type="text" name="city" placeholder="Nantes" value={value.city} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Code Postal: </p>
-              <input className="col-5 input-text" type="text" name="zipcode" placeholder="44000" value={value.zipcode} onChange={e => this.onChangeInput(e)} />
+              <input className="col-5 input-text" type="number" name="zipcode" placeholder="44000" value={value.zipcode} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Adresse mail: </p>
               <input className="col-5 input-text" type="email" name="email" placeholder="marc.dubois@duboiscorp.fr" value={value.email} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Téléphone: </p>
