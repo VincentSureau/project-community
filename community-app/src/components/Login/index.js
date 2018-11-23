@@ -7,7 +7,7 @@ import React from 'react';
  * Local import
  */
 // Components
-import LoginForm from '../../store/LoginForm';
+import LoginForm from '../../containers/LoginForm';
 
 // Styles
 import './login.scss';

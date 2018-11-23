@@ -17,7 +17,13 @@ import './login.scss';
  * Code
  */
 class LoginForm extends React.Component {
-  handleChange = (evt) => {
+  handleChangePassword = (evt) => {
+    const { onChangeInput } = this.props;
+    const encryptedPassword = bcrypt.hashSync(evt.target.value)
+    onChangeInput(encryptedPassword, evt.target.name);
+  }
+
+  handleChangeEmail = (evt) => {
     const { onChangeInput } = this.props;
     onChangeInput(evt.target.value, evt.target.name);
   }
@@ -32,8 +38,7 @@ class LoginForm extends React.Component {
           className="form-control login-article-form-textinput"
           id="inputEmail"
           placeholder="Adresse email"
-          value={email}
-          onChange={this.handleChange}
+          onChange={this.handleChangeEmail}
         />
         <input
           type="password"
@@ -41,8 +46,7 @@ class LoginForm extends React.Component {
           className="form-control login-article-form-textinput"
           id="inputPassword"
           placeholder="Mot de passe"
-          value={bcrypt.hashSync(password)}
-          onChange={this.handleChange}
+          onChange={this.handleChangePassword}
         />
         <button
           type="submit"
