@@ -72,6 +72,7 @@ class ProjectEdit extends React.Component {
 
     if (project != null && project.images != null) {
       const heroImage = project.images.filter(projectImage => projectImage.isHero === true);
+      const images = project.images.filter(projectImage => projectImage.isHero !== true);
 
       return (
         <div id="projectEdit">
@@ -87,7 +88,7 @@ class ProjectEdit extends React.Component {
               </div>
               <input className="mx-2" type="file" name="project-heroimage" accept=".jpg, .jpeg, .png" />
               <div id="projectedit-form-gallery" className="row">
-                {project.images.map((image, i) => (
+                {images.map((image, i) => (
                   <div id="projectedit-form-gallery-imagechange" className="col-4" key={uuid()}>
                     <img src={image.imageLink} alt="" />
                     <input className="" type="file" name={`project-image${i + 1}`} accept=".jpg, .jpeg, .png" />
