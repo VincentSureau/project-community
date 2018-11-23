@@ -57,6 +57,10 @@ class ReactStrapNavbar extends React.Component {
       ? `navbar fixed-top navbar-expand navbar-dark row bg-${classcolor}`
       : 'navbar fixed-top navbar-expand navbar-dark row bg-notfound-navfoot';
 
+    const classNavBarColor = (classcolor !== '')
+      ? `bg-${classcolor}`
+      : 'bg-notfound-navfoot';
+
     const classFooterText = (classcolortext !== '')
       ? `${classcolortext}`
       : 'text-notfound-lighter';
@@ -84,17 +88,17 @@ class ReactStrapNavbar extends React.Component {
                   <DropdownToggle nav caret className="nav-item nav-link text-white">
                     Bonjour Charles
                   </DropdownToggle>
-                  <DropdownMenu right>
-                    <NavLink to="/" exact className={`nav-item nav-link text-center ${classFooterText}`}>
+                  <DropdownMenu right className={classNavBarColor}>
+                    <NavLink to="/" exact className="nav-item nav-link text-center text-white">
                       Mon profil
                     </NavLink>
-                    <NavLink to="/" exact className={`nav-item nav-link text-center ${classFooterText}`}>
+                    <NavLink to="/" exact className="nav-item nav-link text-center text-white">
                       Modifier mon profil
                     </NavLink>
-                    <NavLink to="/" exact className={`nav-item nav-link text-center ${classFooterText}`}>
+                    <NavLink to="/" exact className="nav-item nav-link text-center text-white">
                       Mon projet
                     </NavLink>
-                    <NavLink to="/" exact className={`nav-item nav-link text-center ${classFooterText}`}>
+                    <NavLink to="/" exact className="nav-item nav-link text-center text-white">
                       Modifier mon projet
                     </NavLink>
                   </DropdownMenu>
