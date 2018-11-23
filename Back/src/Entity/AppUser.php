@@ -69,7 +69,7 @@ class AppUser implements UserInterface
      * @var string The hashed password
      * @ORM\Column(type="string")
      * @Assert\Regex(
-     *     pattern="~^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{10,15}~"),
+     *     pattern="~^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$+!*()@%&]).{10,15}~"),
      *     match=true,
      *     message="Ton mot de passe doit contenir au minimum une majuscule, une minuscule, un chiffre, un caractère spécial et faire entre 8 et 15 caractères",
      */
