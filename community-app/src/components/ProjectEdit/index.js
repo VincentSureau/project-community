@@ -76,7 +76,7 @@ class ProjectEdit extends React.Component {
       return (
         <div id="projectEdit">
           <form onSubmit={e => this.handleSubmit(e)}>
-            <input hidden type="text" name="id" value={project.id} />
+            <input hidden name="id" value={project.id} />
             <section id="projectedit-form" className="d-flex flex-column justify-content-center align-items-center bg-project">
 
               <h1>{project.name}</h1>
@@ -96,10 +96,10 @@ class ProjectEdit extends React.Component {
               </div>
               <div id="projectedit-form-info" className="row justify-content-center">
                 <p className="label col-5">Lien site: </p>
-                <input className="col-5 input-text" type="text" name="web" placeholder={project.linkProject} defaultValue={value.linkProject} onChange={e => this.onChangeInput(e)} />
+                <input className="col-5 input-text" type="text" name="linkProject" placeholder={project.linkProject} defaultValue={value.linkProject} onChange={e => this.onChangeInput(e)} />
                 <p className="label col-5">Lien vidéo YouTube: </p>
-                <input className="col-5 input-text" type="text" name="youtube" placeholder={project.linkVideo} defaultValue={value.linkVideo} onChange={e => this.onChangeInput(e)} />
-                <textarea className="col-12 input-textarea" type="textarea" name="bio" row="" placeholder={project.description} defaultValue={value.description} onChange={e => this.onChangeInput(e)} />
+                <input className="col-5 input-text" type="text" name="linkVideo" placeholder={project.linkVideo} defaultValue={value.linkVideo} onChange={e => this.onChangeInput(e)} />
+                <textarea className="col-12 input-textarea" type="textarea" name="description" row="" placeholder={project.description} defaultValue={value.description} onChange={e => this.onChangeInput(e)} />
                 <p className="label col-5">Technologies utilisées: </p>
                 <div className="col-5 multiselection">
                   <div className="form-check">
