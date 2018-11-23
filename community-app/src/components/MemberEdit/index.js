@@ -51,9 +51,8 @@ class MemberEdit extends React.Component {
     event.preventDefault();
     const data = serialize(event.target, { hash: true, empty: true, disabled: false });
     console.log(data);
-    console.log(event.target);
-    // const { postChangeMember } = this.props;
-    // postChangeMember(data, event.target.id.value);
+    const { postChangeMember } = this.props;
+    postChangeMember(data, event.target.id.value);
   }
 
   handleDeleteMember(id, history) {
@@ -84,7 +83,7 @@ class MemberEdit extends React.Component {
     return (
       <div id="memberedit">
         <form onSubmit={e => this.handleSubmit(e)}>
-          <input hidden type="text" name="id" value={member.id} />
+          <input hidden name="id" value={member.id} />
           <section id="memberedit-form" className="d-flex flex-column justify-content-center align-items-center bg-member">
             <div className="row justify-content-center align-items-center">
               <img src={member.profilePicture} className="singlemember-photo" alt="" />
