@@ -4,6 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import bcrypt from 'bcryptjs';
+import serialize from 'form-serialize';
 
 /**
  * Local import
@@ -19,7 +20,8 @@ import './login.scss';
 class LoginForm extends React.Component {
   handleChangePassword = (evt) => {
     const { onChangeInput } = this.props;
-    const encryptedPassword = bcrypt.hashSync(evt.target.value)
+    // const encryptedPassword = bcrypt.hashSync(evt.target.value)
+    const encryptedPassword = evt.target.value;
     onChangeInput(encryptedPassword, evt.target.name);
   }
 
@@ -28,13 +30,20 @@ class LoginForm extends React.Component {
     onChangeInput(evt.target.value, evt.target.name);
   }
 
+  handleSubmit = (evt) => {
+    evt.preventDefault();
+    const { onSubmitLogin, email, password } = this.props;
+    const data = serialize(evt.target, { hash: true });
+    onSubmitLogin(data);
+  }
+
   render() {
     const { email, password } = this.props;
     return (
-      <form className="login-article-form d-flex flex-column align-self-center">
+      <form className="login-article-form d-flex flex-column align-self-center" onSubmit={this.handleSubmit}>
         <input
           type="email"
-          name="email"
+          name="username"
           className="form-control login-article-form-textinput"
           id="inputEmail"
           placeholder="Adresse email"

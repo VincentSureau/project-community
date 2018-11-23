@@ -1,8 +1,9 @@
 // npm import
 import { connect } from 'react-redux';
 
+
 // action creators
-import { changeInput } from 'src/store/reducer';
+import { changeInput, submitLogIn } from 'src/store/reducer';
 
 // composant
 import Form from '../components/Login/LoginForm';
@@ -11,6 +12,7 @@ import Form from '../components/Login/LoginForm';
 const mapStateToProps = state => ({
   email: state.email,
   password: state.password,
+  token: state.token,
 });
 
 // === Dispatch (actions) ===
@@ -20,6 +22,10 @@ const mapDispatchToProps = dispatch => ({
     const action = changeInput(value, name); // -> {type: ..., value: value}
     // Je la dispatch(e?)
     dispatch(action);
+  },
+
+  onSubmitLogin: (data) => {
+    dispatch(submitLogIn(data));
   },
 });
 

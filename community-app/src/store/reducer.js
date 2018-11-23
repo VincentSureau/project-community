@@ -54,6 +54,8 @@ export const RECEIVED_FILTER_SPE = 'RECEIVED_FILTER_SPE';
 export const RECEIVED_FILTER_PROMO = 'RECEIVED_FILTER_PROMO';
 export const RECEIVED_FILTER_STATUS = 'RECEIVED_FILTER_STATUS';
 export const SET_FILTER = 'SET_FILTER';
+export const POST_LOGIN = 'POST_LOGIN';
+export const RECEIVED_TOKEN = 'RECEIVED_TOKEN';
 
 // reducer
 const reducer = (state = initialState, action = {}) => {
@@ -230,11 +232,17 @@ const reducer = (state = initialState, action = {}) => {
       };
   
     case SET_FILTER:
-      console.log('reducer:  ', action);
       return {
         ...state,
         [action.filter]: action.value,
       };
+
+    case RECEIVED_TOKEN:
+      return {
+        ...state,
+        token: action.token,
+      };
+      
     // Action non-reconnue
     default:
       return state;
@@ -394,6 +402,16 @@ export const setFilter = (type, value) => ({
   type: SET_FILTER,
   filter: type,
   value,
+});
+
+export const submitLogIn = data => ({
+  type: POST_LOGIN,
+  data,
+});
+
+export const receivedToken = token => ({
+  type: RECEIVED_TOKEN,
+  token,
 });
 
 // export
