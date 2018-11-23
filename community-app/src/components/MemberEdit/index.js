@@ -3,7 +3,9 @@
  */
 import React from 'react';
 import { Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import serialize from 'form-serialize';
+
 /**
  * Local import
  */
@@ -19,9 +21,15 @@ import './memberedit.scss';
 
 class MemberEdit extends React.Component {
   componentDidMount() {
-    const { getMemberWithId, id, getCompetences} = this.props;
+    const {
+      getMemberWithId,
+      id,
+      getCompetences,
+      getProStatus,
+    } = this.props;
     getMemberWithId(id.split('-')[2]);
     getCompetences();
+    getProStatus();
   }
 
 
@@ -62,10 +70,16 @@ class MemberEdit extends React.Component {
   }
 
   render() {
-    const { member, value, competences } = this.props;
+    const {
+      member,
+      value,
+      competences,
+      status,
+    } = this.props;
     const promoname = this.getNestedObject(member, ['promotion', 'name']);
     const spename = this.getNestedObject(member, ['specialisation', 'name']);
     const competencesMember = this.getNestedObject(member, ['competences']);
+
     return (
       <div id="memberedit">
         <form onSubmit={e => this.handleSubmit(e)}>
@@ -100,7 +114,7 @@ class MemberEdit extends React.Component {
                 <div className="form-check">
                   { ((competences != null) && (competencesMember != null))
                     ? competences.map(competence => (
-                      <div className="form-check-label">
+                      <div className="form-check-label" key={competence['@id']}>
                         <input
                           name={this.getNestedObject(competence, ['@id'])}
                           onChange={e => this.onChangeCheckbox(e)}
@@ -116,6 +130,24 @@ class MemberEdit extends React.Component {
 
                 </div>
               </div>
+              <p className="label col-5">Status professionnel: </p>
+
+              <div>
+                <select id="selectinput-select" className="w-100 text-white" name="status" onChange={e => this.onChangeInput(e)} >
+                  {(status != null)
+                    ? status.map(singleStatus => (
+                      <option
+                        value={this.getNestedObject(singleStatus, ['name'])}
+                        selected={value.status === this.getNestedObject(singleStatus, ['name'])}
+                      >
+                        {this.getNestedObject(singleStatus, ['name'])}
+                      </option>
+                    ))
+                    : <p>Loading</p>
+                  }
+                </select>
+              </div>
+
               <button className="col-6 button-submit" type="submit">Enregistrer</button>
             </div>
           </section>
@@ -132,6 +164,24 @@ class MemberEdit extends React.Component {
   }
 }
 
+MemberEdit.propTypes = {
+  id: PropTypes.string.isRequired,
+  getMemberWithId: PropTypes.func.isRequired,
+  getCompetences: PropTypes.func.isRequired,
+  getProStatus: PropTypes.func.isRequired,
+  onChangeInput: PropTypes.func.isRequired,
+  postChangeMember: PropTypes.func.isRequired,
+  deleteMember: PropTypes.func.isRequired,
+  member: PropTypes.object.isRequired,
+  value: PropTypes.object.isRequired,
+  competences: PropTypes.array,
+  status: PropTypes.array,
+};
+
+MemberEdit.defaultProps = {
+  competences: [],
+  status: [],
+};
 
 /**
  * Export
