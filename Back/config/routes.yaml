@@ -2,5 +2,12 @@
 #    path: /
 #    controller: App\Controller\DefaultController::index
 
+app_login:
+    path: /app_login
+    controller: App\Controller\SecurityController::login
+
+app_logout:
+    path: /logout
+
 api_login_check:
     path: /login_check

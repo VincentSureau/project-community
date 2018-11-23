@@ -8,6 +8,7 @@
 
   <div class="collapse navbar-collapse" id="navbarToggler">
     <ul class="navbar-nav mt-2 mt-lg-0 d-flex justify-content-between">
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
       <li class="nav-item d-lg-none">
         <a class="nav-link text-creme" href="{{ path('app_user_index') }}">Les étudiants</a> 
       </li>
@@ -35,15 +36,25 @@
       <li role="separator" class="divider d-lg-none">
         <hr>
       </li>
-      <li class="nav-item d-lg-none">
-          <a class="nav-link text-creme" href="#">Déconnexion</a>
-      </li> 
 
+
+      <li class="nav-item d-lg-none">
+          <a class="nav-link text-creme" href="{{ path('app_logout') }}">Déconnexion</a>
+      </li> 
+      {% else %}
+      <li class="nav-item d-lg-none">
+          <a class="nav-link text-creme" href="{{ path('app_login') }}">Connexion</a>
+      </li> 
+      {% endif %}
+          
+      
+      {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %} 
       <li class="nav-item dropdown d-none d-lg-flex">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Menu
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">   
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">  
+        
           <a class="dropdown-item" href="{{ path('admin_index') }}">Accueil</a> 
 
           <a class="dropdown-item" href="{{ path('app_user_index') }}">Les étudiants</a> 
@@ -61,18 +72,22 @@
           <a class="dropdown-item" href="{{ path('image_index') }}">Les images</a>
 
           <a class="dropdown-item" href="/admin">ADMIN</a>
-
+        
         </div>
       </li>
+      {% endif %}
 
       <a class="navbar-brand d-lg-flex m-0 d-none" href="{{ path('admin_index') }}"><img class="logo-community" src="{{ asset('images/logoOcommunity.svg')}}" alt="logo O'clock community"></a>
       <li class="nav-link nav-link_disconnect d-none d-lg-flex">
-            <a href="">Déconnexion</a>
+          {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <a href="{{ path('app_logout') }}">Déconnexion</a>
+          {% else %}
+            <a href="{{ path('app_login') }}">Connexion</a>
+          {% endif %}
       </li>
 
     </ul>
 
   </div>
-
 
 </nav>
