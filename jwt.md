@@ -19,6 +19,7 @@ bin/console server:run 8001| Lance le serveur interne de symfony sur le port 800
 
 ## Pour faire une requête:
 
----------|------------
+Ligne|Contenu
+-----|-------
 Header|Content-Type: application/json
 Content|{ "username": "vincentsureau5@gmail.com", "password": "%A!W&x%Z+g&S(e+" }
