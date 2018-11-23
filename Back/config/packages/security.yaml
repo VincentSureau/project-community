@@ -21,12 +21,12 @@ security:
                 success_handler:          lexik_jwt_authentication.handler.authentication_success
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
 
-        api:
-            pattern:   ^/
-            stateless: true
-            guard:
-                authenticators:
-                    - lexik_jwt_authentication.jwt_token_authenticator
+        # api:
+        #     pattern:   ^/
+        #     stateless: true
+        #     guard:
+        #         authenticators:
+        #             - lexik_jwt_authentication.jwt_token_authenticator
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
