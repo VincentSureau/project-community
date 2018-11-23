@@ -48,7 +48,11 @@ class Project extends React.Component {
           />
           <ProjectDescript description={project.description} />
           <ProjectGallery images={project.images} />
-          <ProjectLink projectLink={project.linkProject} projectVideo={project.linkVideo} />
+          {
+            (project.linkVideo !== '' || project.linkProject !== '')
+              ? <ProjectLink projectLink={project.linkProject} projectVideo={project.linkVideo} />
+              : null
+          }
         </div>
       );
     }

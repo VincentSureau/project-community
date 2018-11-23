@@ -21,10 +21,9 @@ const ProjectLink = ({ projectLink, projectVideo }) => (
   <div id="project-link" className="bg-project-darker d-flex flex-column justify-content-center align-items-center">
     <h1>Découvrez-en plus !</h1>
     <div id="project-link-icons" className="m-4">
-      <a href={projectLink} className="text-white m-4"><MdHttp /></a>
-      <a href={projectVideo} className="text-white m-4"><FaYoutube /></a>
+      {projectLink !== '' && <a href={projectLink} className="text-white m-4"><MdHttp /></a>}
+      {projectVideo !== '' && <a href={projectVideo} className="text-white m-4"><FaYoutube /></a>}
     </div>
-
   </div>
 );
 
