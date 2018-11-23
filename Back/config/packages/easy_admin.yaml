@@ -32,7 +32,7 @@ easy_admin:
                   - { type: 'tab' , label: 'Informations personnelles', icon: 'user' }
                   - lastname
                   - firstname
-                  - { property: 'birthdate', type: 'date', label: 'birthdate' }
+                  - { property: 'birthdate', type: 'birthday', label: 'birthdate', type_options: { format: 'dd-MM-yyyy'}}
                   - profile_picture
                   - { type: 'tab' , label: 'Informations de localisation', icon: 'home' }
                   - city

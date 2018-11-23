@@ -9,7 +9,16 @@ const initialState = {
   memberID: '',
   listProjects: [],
   project: {},
-  filterSpe: '',
+  filterSpeMembers: '',
+  filterPromoMembers: '',
+  filterStatusMembers: '',
+  filterTextMembers: '',
+  filterSpeProjects: '',
+  filterPromoProjects: '',
+  filterTextProjects: '',
+  listSpe: [],
+  listPromo: [],
+  listStatus: [],
   value: {},
 };
 
@@ -39,7 +48,12 @@ export const DELETE_MEMBER = 'DELETE_MEMBER';
 export const GET_PROJECT_EDIT = 'GET_PROJECT_EDIT';
 export const PROJECT_EDIT_RECEIVED = 'PROJECT_EDIT_RECEIVED';
 export const PUT_PROJECT = 'PUT_PROJECT';
-
+export const GET_FILTERS_MEMBERS = 'GET_FILTERS_MEMBERS';
+export const GET_FILTERS_PROJECTS = 'GET_FILTERS_PROJECTS';
+export const RECEIVED_FILTER_SPE = 'RECEIVED_FILTER_SPE';
+export const RECEIVED_FILTER_PROMO = 'RECEIVED_FILTER_PROMO';
+export const RECEIVED_FILTER_STATUS = 'RECEIVED_FILTER_STATUS';
+export const SET_FILTER = 'SET_FILTER';
 
 // reducer
 const reducer = (state = initialState, action = {}) => {
@@ -61,7 +75,7 @@ const reducer = (state = initialState, action = {}) => {
     case GET_MEMBERS_SPE: {
       return {
         ...state,
-        filterSpe: action.spe,
+        filterSpeMembers: action.spe,
       };
     }
     case MEMBERS_RECEIVED:
@@ -169,12 +183,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
       };
-    
+      
     case GET_PROJECT:
       return {
         ...state,
       };
-    
+
     case PROJECT_RECEIVED:
       return {
         ...state,
@@ -185,6 +199,41 @@ const reducer = (state = initialState, action = {}) => {
     case DELETE_MEMBER:
       return {
         ...state,
+      };
+
+    case GET_FILTERS_MEMBERS:
+      return {
+        ...state,
+      };
+
+    case RECEIVED_FILTER_SPE:
+      return {
+        ...state,
+        listSpe: action.data,
+      };
+
+    case RECEIVED_FILTER_PROMO:
+      return {
+        ...state,
+        listPromo: action.data,
+      };
+
+    case RECEIVED_FILTER_STATUS:
+      return {
+        ...state,
+        listStatus: action.data,
+      };
+
+    case GET_FILTERS_PROJECTS:
+      return {
+        ...state,
+      };
+  
+    case SET_FILTER:
+      console.log('reducer:  ', action);
+      return {
+        ...state,
+        [action.filter]: action.value,
       };
     // Action non-reconnue
     default:
@@ -200,7 +249,6 @@ export const changeInput = (value, name) => ({
   value,
 });
 
-// action creator
 export const changeInputForm = (name, value) => ({
   type: CHANGE_INPUT_FORM,
   name,
@@ -292,7 +340,6 @@ export const proStatusReceived = status => ({
   status,
 });
 
-
 export const getProject = id => ({
   type: GET_PROJECT,
   id,
@@ -320,6 +367,34 @@ export const deleteMember = id => ({
   id,
 });
 
+export const getFiltersMembers = () => ({
+  type: GET_FILTERS_MEMBERS,
+});
+
+export const getFiltersProjects = () => ({
+  type: GET_FILTERS_PROJECTS,
+});
+
+export const filterSpeReveived = data => ({
+  type: RECEIVED_FILTER_SPE,
+  data,
+});
+
+export const filterPromoReveived = data => ({
+  type: RECEIVED_FILTER_PROMO,
+  data,
+});
+
+export const filterStatusReveived = data => ({
+  type: RECEIVED_FILTER_STATUS,
+  data,
+});
+
+export const setFilter = (type, value) => ({
+  type: SET_FILTER,
+  filter: type,
+  value,
+});
 
 // export
 export default reducer;

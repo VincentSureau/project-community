@@ -8,8 +8,8 @@ import PropTypes from 'prop-types';
  * Local import
  */
 // Components
-import SelectInput from '../SelectInput';
-import TextInput from '../TextInput';
+import SelectInput from '../../containers/SelectInput';
+import TextInput from '../../containers/TextInput';
 import ArrowDown from '../ArrowDown';
 import ProjectItem from './ProjectItem';
 // Styles
@@ -20,22 +20,49 @@ import './projects.scss';
  */
 class Projects extends React.Component {
   componentDidMount() {
-    const { getProjects } = this.props;
+    const { getProjects, getFilters } = this.props;
     getProjects();
+    getFilters();
   }
 
   render() {
-    const { listProjects } = this.props;
-    // console.log(listProjects);
+    const {
+      listSpe,
+      listPromo,
+      filterSpeProjects,
+      filterPromoProjects,
+      filterTextProjects,
+    } = this.props;
+    let { listProjects } = this.props;
+
+    // Function to get only unique value from array
+    // https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
+    function onlyUnique(value, index, self) {
+      return self.indexOf(value) === index;
+    }
+
+    if (filterSpeProjects !== "" && listProjects !== null) {
+      listProjects = listProjects.filter(project => project.appUsers.reduce((acc, curr) => `${acc} ${curr.specialisation.name}`, [])
+        .toString()
+        .split(' ').splice(1)
+        .filter(onlyUnique)
+        .includes(`${filterSpeProjects}`));
+    }
+    if (filterPromoProjects !== "" && listProjects !== null) {
+      listProjects = listProjects.filter(project => project.promotion.name ===`${filterPromoProjects}`);
+    }
+    if (filterTextProjects !== "" && listProjects !== null) {
+      listProjects = listProjects.filter(project => project.name.includes(filterTextProjects));
+    }
     return (
       <div id="projects">
         <section id="projects-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-projects">
           <h1 className="text-uppercase">Projets</h1>
           <h3 className="text-uppercase">Des exploits fait en un mois !</h3>
           <div id="projects-form" className="row w-100">
-            <SelectInput />
-            <SelectInput />
-            <TextInput />
+            { (listSpe !== null) ? <SelectInput type="Spécialisation" list={listSpe} page="Projects" /> : <p>Loading</p> }
+            { (listSpe !== null) ? <SelectInput type="Promotion" list={listPromo} page="Projects" /> : <p>Loading</p> }
+            <TextInput type="filterTextProjects" placeholder="Titre" />
           </div>
           <ArrowDown />
         </section>

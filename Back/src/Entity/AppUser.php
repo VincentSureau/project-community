@@ -69,7 +69,7 @@ class AppUser implements UserInterface
      * @var string The hashed password
      * @ORM\Column(type="string")
      * @Assert\Regex(
-     *     pattern="~^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{10,15}~"),
+     *     pattern="~^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$+!*()@%&]).{10,15}~"),
      *     match=true,
      *     message="Ton mot de passe doit contenir au minimum une majuscule, une minuscule, un chiffre, un caractère spécial et faire entre 8 et 15 caractères",
      */
@@ -140,7 +140,7 @@ class AppUser implements UserInterface
     /**
      * @Groups({"user"})
      * @Assert\Regex(
-     *     pattern="^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$",
+     *     pattern="^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})^",
      *     match=true,
      *     message="Le numéro de téléphone saisi n'est pas valide"
      * )

@@ -25,6 +25,11 @@ import {
   DELETE_MEMBER,
   GET_PROJECT,
   projectReceived,
+  GET_FILTERS_MEMBERS,
+  filterPromoReveived,
+  filterSpeReveived,
+  filterStatusReveived,
+  GET_FILTERS_PROJECTS,
 } from 'src/store/reducer';
 
 const API_URL = 'http://127.0.0.1:8001';
@@ -215,11 +220,7 @@ const ajax = store => next => (action) => {
       break;
 
     case PUT_MEMBER:
-      axios({
-        method: 'put',
-        url: `${API_URL}/app_users/${action.id}`,
-        responseType: 'json',
-      })
+      console.log(axios.put(`${API_URL}/app_users/${action.id}`, action.data))
         // succes
         .then((response) => {
           console.log('retour put=>>>  ', response);
@@ -257,6 +258,87 @@ const ajax = store => next => (action) => {
         // succes
         .then((response) => {
           console.log('DeleteProfil', response);
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      break;
+
+    case GET_FILTERS_MEMBERS:
+      axios({
+        method: 'get',
+        url: `${API_URL}/promotions`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          const promoList = response.data['hydra:member'];
+          store.dispatch(filterPromoReveived(promoList));
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      axios({
+        method: 'get',
+        url: `${API_URL}/specialisations`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          const speList = response.data['hydra:member'];
+          store.dispatch(filterSpeReveived(speList));
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      axios({
+        method: 'get',
+        url: `${API_URL}/professional_statuses`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          const statusList = response.data['hydra:member'];
+          store.dispatch(filterStatusReveived(statusList));
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      break;
+
+    case GET_FILTERS_PROJECTS:
+      axios({
+        method: 'get',
+        url: `${API_URL}/promotions`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          const promoList = response.data['hydra:member'];
+          store.dispatch(filterPromoReveived(promoList));
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      axios({
+        method: 'get',
+        url: `${API_URL}/specialisations`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          const speList = response.data['hydra:member'];
+          store.dispatch(filterSpeReveived(speList));
         })
         // echec
         .catch((error) => {

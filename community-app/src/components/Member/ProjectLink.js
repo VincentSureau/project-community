@@ -20,6 +20,7 @@ const ProjectLink = ({
   projectName,
   projectId,
   projectImages,
+  projectSlug,
 }) => {
   if (projectImages != null) {
     const heroImage = projectImages.filter(projectImage => projectImage.isHero === true);
@@ -28,7 +29,7 @@ const ProjectLink = ({
       <section id="member-projectlink" className="bg-member d-flex align-items-center flex-column">
         <h2>Mon Projet <br />de fin d'étude</h2>
         <h3>{projectName}</h3>
-        <NavLink exact to={projectId} className="no-blue-on-link d-flex flex-column align-items-center">
+        <NavLink exact to={''.concat('/projects/', projectSlug)} className="no-blue-on-link d-flex flex-column align-items-center">
           <div id="member-project-pc">
             <div id="member-project-pc-screen">
               <img src={heroImage[0].imageLink} alt="" />
@@ -48,6 +49,7 @@ ProjectLink.propTypes = {
   projectName: PropTypes.string.isRequired,
   projectId: PropTypes.string.isRequired,
   projectImages: PropTypes.array.isRequired,
+  projectSlug: PropTypes.string.isRequired,
 };
 
 /**
