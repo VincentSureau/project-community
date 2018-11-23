@@ -85,23 +85,23 @@ class ReactStrapNavbar extends React.Component {
                     Bonjour Charles
                   </DropdownToggle>
                   <DropdownMenu right>
-                    <DropdownItem>
-                      <NavLink to="/" exact className={classFooterText}>Mon profil</NavLink>
-                    </DropdownItem>
-                    <DropdownItem>
-                      <NavLink to="/" exact className={classFooterText}>Modifier mon profil</NavLink>
-                    </DropdownItem>
-                    <DropdownItem>
-                      <NavLink to="/" exact className={classFooterText}>Mon projet</NavLink>
-                    </DropdownItem>
-                    <DropdownItem>
-                      <NavLink to="/" exact className={classFooterText}>Modifier mon projet</NavLink>
-                    </DropdownItem>
+                    <NavLink to="/" exact className={`nav-item nav-link text-center ${classFooterText}`}>
+                      Mon profil
+                    </NavLink>
+                    <NavLink to="/" exact className={`nav-item nav-link text-center ${classFooterText}`}>
+                      Modifier mon profil
+                    </NavLink>
+                    <NavLink to="/" exact className={`nav-item nav-link text-center ${classFooterText}`}>
+                      Mon projet
+                    </NavLink>
+                    <NavLink to="/" exact className={`nav-item nav-link text-center ${classFooterText}`}>
+                      Modifier mon projet
+                    </NavLink>
                   </DropdownMenu>
                 </UncontrolledDropdown>
               </Collapse>
             </Nav>
-          </div> 
+          </div>
         </Navbar>
       </div>
     );
