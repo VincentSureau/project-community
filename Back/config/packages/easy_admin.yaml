@@ -25,7 +25,7 @@ easy_admin:
             class: App\Entity\AppUser
             label: 'Membres'
             list:
-                fields: ['id', 'email', 'firstname', 'lastname', 'birthdate', Phone number, isActive]
+                fields: ['id', 'email', 'firstname', 'lastname', 'birthdate', Phone number, role, isActive]
                 title: "Liste des étudiants"
             form:
               fields:
@@ -43,7 +43,10 @@ easy_admin:
                   - { type: 'tab', label: 'Liens Github,linkedin et personnel', icon: 'link' }
                   - link_linkedin
                   - link_github
-                  - link_personal                
+                  - link_personal
+                  - { type: 'tab', label: 'Role', icon: 'link' }
+                  - role
+
 
         Competences:
             class: App\Entity\Competence
