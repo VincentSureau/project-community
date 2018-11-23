@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -18,7 +19,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ApiResource(
  *     attributes={
- *         "normalization_context"={"groups"={"user"}}
+ *         "normalization_context"={"groups"={"user"}},
+ *         "denormalizationContext"={"groups"={"userWrite"}}
  *     },
  *     collectionOperations={
  *         "list"={
@@ -52,7 +54,7 @@ class AppUser implements UserInterface
     private $id;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "userWrite"})
      * @ORM\Column(type="string", length=180, unique=true)
      * @Assert\NotBlank(
      *     message = "Le champ email ne peux pas être vide."
@@ -79,7 +81,7 @@ class AppUser implements UserInterface
     protected $oldPassword;
 
     /**
-     * @Groups({"project", "AppUserList", "ProjectList", "user"})
+     * @Groups({"project", "AppUserList", "ProjectList", "user", "userWrite"})
      * @ORM\Column(type="string", length=80, nullable=true)
      * @Assert\NotBlank(
      *     message = "Le champ prénom ne peux pas être vide."
@@ -101,7 +103,7 @@ class AppUser implements UserInterface
     private $firstname;
 
     /**
-     * @Groups({"project", "AppUserList", "ProjectList", "user"})
+     * @Groups({"project", "AppUserList", "ProjectList", "user", "userWrite"})
      * @ORM\Column(type="string", length=80, nullable=true)
      * @Assert\NotBlank(
      *     message = "Le champ nom ne peux pas être vide."
@@ -121,14 +123,14 @@ class AppUser implements UserInterface
     private $lastname;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "userWrite"})
      * @ORM\Column(type="datetime", nullable=true)
      * @Assert\DateTime(message="Veuillez indiquer une date valide")
      */
     private $birthdate;
 
     /**
-     * @Groups({"AppUserList", "user", "project"})
+     * @Groups({"AppUserList", "user", "project", "userWrite"})
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Url(
      *     message = "L'url '{{ value }}  n'est pas une url valide",
@@ -138,7 +140,7 @@ class AppUser implements UserInterface
     private $profilePicture;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "userWrite"})
      * @Assert\Regex(
      *     pattern="^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})^",
      *     match=true,
@@ -149,13 +151,13 @@ class AppUser implements UserInterface
     private $phoneNumber;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "userWrite"})
      * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $city;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "userWrite"})
      * @ORM\Column(type="integer", nullable=true)
      * @Assert\Regex(
      *     pattern="/\d/",
@@ -172,7 +174,7 @@ class AppUser implements UserInterface
     private $zipcode;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "userWrite"})
      * @ORM\Column(type="string", length=150, nullable=true)
      * @Assert\Url(
      *     message = "L'url '{{ value }}  n'est pas une url valide",
@@ -182,7 +184,7 @@ class AppUser implements UserInterface
     private $linkLinkedin;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "userWrite"})
      * @ORM\Column(type="string", length=150, nullable=true)
      * @Assert\Url(
      *     message = "L'url '{{ value }}  n'est pas une url valide",
@@ -192,7 +194,7 @@ class AppUser implements UserInterface
     private $linkGithub;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "userWrite"})
      * @ORM\Column(type="string", length=150, nullable=true)
      * @Assert\Url(
      *     message = "L'url '{{ value }}  n'est pas une url valide",
@@ -215,7 +217,7 @@ class AppUser implements UserInterface
     private $createdDate;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "userWrite"})
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
@@ -226,10 +228,10 @@ class AppUser implements UserInterface
     private $role;
 
     /**
-     * @Groups({"user", "AppUserList", "user"})
+     * @Groups({"user", "AppUserList"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Promotion", inversedBy="appUsers")
      * @Assert\NotBlank(
-     *     message = "Le champ numéro de téléphone ne peux pas être vide."
+     *     message = "Le champ promotion ne peux pas être vide."
      * )
      */
     private $promotion;
@@ -241,7 +243,7 @@ class AppUser implements UserInterface
     private $specialisation;
 
     /**
-     * @Groups({"user", "AppUserList"})
+     * @Groups({"user", "AppUserList", "userWrite"})
      * @ORM\ManyToOne(targetEntity="App\Entity\ProfessionalStatus", inversedBy="appUsers")
      */
     private $professionalStatus;
@@ -253,8 +255,9 @@ class AppUser implements UserInterface
     private $project;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "userWrite"})
      * @ORM\ManyToMany(targetEntity="App\Entity\Competence", inversedBy="appUsers")
+     * @ApiSubresource
      */
     private $competences;
 
