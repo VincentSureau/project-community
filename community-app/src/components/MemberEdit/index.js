@@ -82,7 +82,7 @@ class MemberEdit extends React.Component {
               <p className="label col-5">Ville: </p>
               <input className="col-5 input-text" type="text" name="city" placeholder="Nantes" value={value.city} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Code Postal: </p>
-              <input className="col-5 input-text" type="number" name="zipcode" placeholder="44000" value={value.zipcode} onChange={e => this.onChangeInput(e)} />
+              {/*<input className="col-5 input-text" type="number" name="zipcode" placeholder="44000" value={value.zipcode} onChange={e => this.onChangeInput(e)} />*/}
               <p className="label col-5">Adresse mail: </p>
               <input className="col-5 input-text" type="email" name="email" placeholder="marc.dubois@duboiscorp.fr" value={value.email} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Téléphone: </p>
