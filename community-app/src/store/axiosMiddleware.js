@@ -179,11 +179,7 @@ const ajax = store => next => (action) => {
       break;
 
     case PUT_MEMBER:
-      axios({
-        method: 'put',
-        url: `${API_URL}/app_users/${action.id}`,
-        responseType: 'json',
-      })
+      console.log(axios.put(`${API_URL}/app_users/${action.id}`, action.data))
         // succes
         .then((response) => {
           console.log('retour put=>>>  ', response);
