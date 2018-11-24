@@ -2,6 +2,7 @@
  * NPM import
  */
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 /**
@@ -23,7 +24,13 @@ const RandomProjects = ({ projects }) => (
     <div id="home-projects-pc">
       <ProjectsCarousel projects={projects} />
     </div>
-    <button type="button" className="btn btn-outline-white mx-3 btn-border-radius text-uppercase mt-7">Voir tous les projets</button>
+    <NavLink
+      className="btn btn-outline-white m-5 btn-border-radius text-uppercase"
+      exact
+      to="/projects"
+    >
+      Voir tous les projets
+    </NavLink>
   </section>
 );
 
