@@ -18,11 +18,11 @@ import './member.scss';
  */
 const ProjectLink = ({
   projectName,
-  projectId,
   projectImages,
   projectSlug,
 }) => {
   if (projectImages != null) {
+    // Récupération de l'image principale du projet grâce à la fonction filter
     const heroImage = projectImages.filter(projectImage => projectImage.isHero === true);
 
     return (
@@ -46,10 +46,20 @@ const ProjectLink = ({
 };
 
 ProjectLink.propTypes = {
-  projectName: PropTypes.string.isRequired,
-  projectId: PropTypes.string.isRequired,
-  projectImages: PropTypes.array.isRequired,
-  projectSlug: PropTypes.string.isRequired,
+  projectName: PropTypes.string,
+  projectImages: PropTypes.arrayOf(PropTypes.object),
+  projectSlug: PropTypes.string,
+};
+
+ProjectLink.defaultProps = {
+  projectName: '',
+  projectImages: [{
+    id: '/images/909',
+    type: 'Image',
+    imageLink: 'https://testinsane.com',
+    isHero: true,
+  }],
+  projectSlug: '',
 };
 
 /**

@@ -36,12 +36,21 @@ const SingleMember = ({
 );
 
 SingleMember.propTypes = {
-  firstname: PropTypes.string.isRequired,
-  lastname: PropTypes.string.isRequired,
-  promotion: PropTypes.string.isRequired,
-  specialisation: PropTypes.string.isRequired,
-  profilePicture: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
+  firstname: PropTypes.string,
+  lastname: PropTypes.string,
+  promotion: PropTypes.string,
+  specialisation: PropTypes.string,
+  profilePicture: PropTypes.string,
+  slug: PropTypes.string,
+};
+
+SingleMember.defaultProps = {
+  firstname: '',
+  lastname: '',
+  promotion: '',
+  specialisation: '',
+  profilePicture: '',
+  slug: '',
 };
 
 /**

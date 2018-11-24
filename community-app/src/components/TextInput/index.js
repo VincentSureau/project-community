@@ -2,6 +2,7 @@
  * NPM import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Local import
@@ -16,7 +17,7 @@ import './textinput.scss';
  */
 class TextInput extends React.Component {
   onChangeInput(e) {
-    console.log(e.target.name, ' --- ', e.target.value);
+    // console.log(e.target.name, ' --- ', e.target.value);
     const { setFilterWithType } = this.props;
     setFilterWithType(e.target.name, e.target.value);
   }
@@ -25,11 +26,24 @@ class TextInput extends React.Component {
     const { type, placeholder } = this.props;
     return (
       <div id="textinput" className="col">
-        <input id="textinput-input" placeholder={placeholder} type="text" name={type} className="text-white w-100" onChange={e => this.onChangeInput(e)} />
+        <input
+          id="textinput-input"
+          placeholder={placeholder}
+          type="text"
+          name={type}
+          className="text-white w-100"
+          onChange={e => this.onChangeInput(e)}
+        />
       </div>
     );
   }
 }
+
+TextInput.propTypes = {
+  type: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  setFilterWithType: PropTypes.func.isRequired,
+};
 
 /**
  * Export

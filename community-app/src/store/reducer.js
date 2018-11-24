@@ -1,26 +1,5 @@
 // initial state
-const initialState = {
-  email: '',
-  password: '',
-  listMembers: [],
-  member: {},
-  membersHome: [],
-  projectsHome: [],
-  memberID: '',
-  listProjects: [],
-  project: {},
-  filterSpeMembers: '',
-  filterPromoMembers: '',
-  filterStatusMembers: '',
-  filterTextMembers: '',
-  filterSpeProjects: '',
-  filterPromoProjects: '',
-  filterTextProjects: '',
-  listSpe: [],
-  listPromo: [],
-  listStatus: [],
-  value: {},
-};
+import initialState from './initialState';
 
 // Types
 export const CHANGE_INPUT = 'CHANGE_INPUT';

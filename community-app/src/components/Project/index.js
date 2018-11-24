@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import ArrowDown from '../ArrowDown';
 import ProjectPresentation from './ProjectPresentation';
 import ProjectGallery from './ProjectGallery';
-import ProjectDescript from './ProjectDescript';
+import ProjectDescription from './ProjectDescription';
 import ProjectLink from './ProjectLink';
 
 // Styles
@@ -28,6 +28,7 @@ class Project extends React.Component {
   render() {
     const { project } = this.props;
     if (project != null && project.images != null) {
+      // Récupération de l'image principale du projet grâce à la fonction filtre
       const heroImage = project.images.filter(projectImage => projectImage.isHero === true);
 
       return (
@@ -46,7 +47,7 @@ class Project extends React.Component {
             promotion={project.promotion.name}
             competences={project.competences}
           />
-          <ProjectDescript description={project.description} />
+          <ProjectDescription description={project.description} />
           <ProjectGallery images={project.images} />
           {
             (project.linkVideo !== '' || project.linkProject !== '')
@@ -64,7 +65,7 @@ class Project extends React.Component {
 
 Project.propTypes = {
   id: PropTypes.string.isRequired,
-  project: PropTypes.array.isRequired,
+  project: PropTypes.object.isRequired,
   getProjectWithId: PropTypes.func.isRequired,
 };
 

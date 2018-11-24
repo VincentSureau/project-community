@@ -15,7 +15,7 @@ import './project.scss';
 /**
  * Code
  */
-const ProjectDescript = ({ description }) => (
+const ProjectDescription = ({ description }) => (
   <div id="project-descript" className="bg-project">
     <section id="project-description">
       <h1 className="text-uppercase text-white">Description</h1>
@@ -26,11 +26,11 @@ const ProjectDescript = ({ description }) => (
   </div>
 );
 
-ProjectDescript.propTypes = {
+ProjectDescription.propTypes = {
   description: PropTypes.string.isRequired,
 };
 
 /**
  * Export
  */
-export default ProjectDescript;
+export default ProjectDescription;

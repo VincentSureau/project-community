@@ -69,8 +69,9 @@ const App = () => (
           return <Project id={slug} />;
         }}
       />
-
       <Route path="/projects/titre-1/edit" exact render={() => <ProjectEdit />} />
+
+      {/* Page 404 */}
       <Route component={NotFound} />
     </Switch>
     <Footer />

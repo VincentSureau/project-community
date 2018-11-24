@@ -5,7 +5,14 @@ import { connect } from 'react-redux';
 import MemberEdit from 'src/components/MemberEdit';
 
 // action creators
-import { getMemberEdit, changeInputForm, getCompetences, putMember, deleteMember, getProStatus } from 'src/store/reducer';
+import {
+  getMemberEdit,
+  changeInputForm,
+  getCompetences,
+  putMember,
+  deleteMember,
+  getProStatus,
+} from 'src/store/reducer';
 
 // == state ==
 const mapStateToProps = state => ({

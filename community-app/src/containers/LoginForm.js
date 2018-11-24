@@ -8,19 +8,17 @@ import { changeInput, submitLogIn } from 'src/store/reducer';
 // composant
 import Form from '../components/Login/LoginForm';
 
-// === State (données) ===
+// === State ===
 const mapStateToProps = state => ({
   email: state.email,
   password: state.password,
   token: state.token,
 });
 
-// === Dispatch (actions) ===
+// == dispacth ==
 const mapDispatchToProps = dispatch => ({
   onChangeInput: (value, name) => {
-    // Je créé l'action
-    const action = changeInput(value, name); // -> {type: ..., value: value}
-    // Je la dispatch(e?)
+    const action = changeInput(value, name);
     dispatch(action);
   },
 
@@ -29,7 +27,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-// Container - connect(Ce que l'on veut)(Qui en a besoin)
+// Container
 const FormContainer = connect(
   mapStateToProps,
   mapDispatchToProps,

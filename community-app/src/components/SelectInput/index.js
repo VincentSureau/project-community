@@ -2,6 +2,7 @@
  * NPM import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Local import
@@ -22,7 +23,7 @@ class SelectInput extends React.Component {
   }
   
   render() {
-    const { 
+    const {
       list,
       type,
       filterSpeMembers,
@@ -30,7 +31,7 @@ class SelectInput extends React.Component {
       filterStatusMembers,
       filterSpeProjects,
       filterPromoProjects,
-      page
+      page,
     } = this.props;
     let selectEvery = '';
     let nameSelect = type === 'Spécialisation' ? 'filterSpe' : 'Filt';
@@ -50,19 +51,33 @@ class SelectInput extends React.Component {
       default:
         break;
     }
+
     nameSelect = ''.concat(nameSelect, page);
-    console.log(nameSelect, ' - ', filterSpeMembers ,' -> ', eval(nameSelect));
+    // console.log(nameSelect, ' - ', filterSpeMembers ,' -> ', eval(nameSelect));
+
     return (
       <div id="selectinput" className="col">
         <select id="selectinput-select" className="w-100 text-white" name={nameSelect} onChange={e => this.onChange(e)}>
-          <option defaultValue="" selected={eval(nameSelect) === '' ? true : false} disabled>{type}</option>
+          <option defaultValue="" selected={eval(nameSelect) === ''} disabled>{type}</option>
           <option value="">{selectEvery}</option>
-          {list.map(item => <option key={item['@id']} defaultValue={item['@id']} selected={eval(nameSelect) === item.name ? true : false}>{item.name}</option>)}
+          {list.map(item => <option key={item['@id']} defaultValue={item['@id']} selected={eval(nameSelect) === item.name}>{item.name}</option>)}
         </select>
       </div>
     );
   }
 }
+
+SelectInput.propTypes = {
+  list: PropTypes.array.isRequired,
+  type: PropTypes.string.isRequired,
+  filterSpeMembers: PropTypes.string.isRequired,
+  filterPromoMembers: PropTypes.string.isRequired,
+  filterStatusMembers: PropTypes.string.isRequired,
+  filterSpeProjects: PropTypes.string.isRequired,
+  filterPromoProjects: PropTypes.string.isRequired,
+  page: PropTypes.string.isRequired,
+  setFilterWithType: PropTypes.func.isRequired,
+};
 
 /**
  * Export

@@ -20,22 +20,22 @@ const ProjectItem = ({
   title,
   promotion,
   images,
-  id,
   members,
   slug,
 }) => {
   const heroImage = images.filter(projectImage => projectImage.isHero === true);
 
-  // Get specialisations from member participating in the project
+  // Récupération de la spécialisation des membres du projet
   const specialisations = members.reduce((acc, curr) => `${acc} ${curr.specialisation.name}`, []);
-  // Convert into string (because some of the results are not strings)
+  // Conversion en chaîne de caractères (quelques résultats n'étaient pas des strings)
   const speString = specialisations.toString();
 
-  // if specialisations is a string, split the string into words and put them in an array,
-  // remove first element of array (which was an empty string)
+  // Si le résultat est bien un string,
+  // couper le string à chaque espace et les mettre dans un tableau,
+  // enlever le premier élément du tableau (qui est un string vide)
   const speArray = speString.split(' ').splice(1);
 
-  // Function to get only unique value from array
+  // Fonction qui permet de récupérer uniquement une fois chaque valeur d'un tableau
   // https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
   function onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
@@ -65,7 +65,7 @@ ProjectItem.propTypes = {
   title: PropTypes.string.isRequired,
   promotion: PropTypes.string.isRequired,
   images: PropTypes.array.isRequired,
-  id: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
   members: PropTypes.array.isRequired,
 };
 
