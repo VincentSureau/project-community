@@ -12,7 +12,7 @@ import {
   putMember,
   deleteMember,
   getProStatus,
-} from 'src/store/reducer';
+} from 'src/store/actions';
 
 // == state ==
 const mapStateToProps = state => ({

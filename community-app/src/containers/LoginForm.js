@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 
 // action creators
-import { changeInput, submitLogIn } from 'src/store/reducer';
+import { changeInput, submitLogIn } from 'src/store/actions';
 
 // composant
 import Form from '../components/Login/LoginForm';

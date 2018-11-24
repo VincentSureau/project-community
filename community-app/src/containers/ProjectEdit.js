@@ -10,7 +10,7 @@ import {
   getCompetences,
   changeInputForm,
   putProject,
-} from 'src/store/reducer';
+} from 'src/store/actions';
 
 // == state ==
 const mapStateToProps = state => ({

@@ -8,7 +8,7 @@ import {
   filterSpeReveived,
   filterStatusReveived,
   GET_FILTERS_PROJECTS,
-} from 'src/store/reducer';
+} from 'src/store/actions';
 
 const API_URL = 'http://127.0.0.1:8001';
 

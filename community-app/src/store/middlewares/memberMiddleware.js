@@ -11,7 +11,7 @@ import {
   memberEditReceived,
   PUT_MEMBER,
   DELETE_MEMBER,
-} from 'src/store/reducer';
+} from 'src/store/actions';
 
 const API_URL = 'http://127.0.0.1:8001';
 

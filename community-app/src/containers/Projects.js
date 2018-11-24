@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Projects from 'src/components/Projects';
 
 // action creators
-import { getProjects, getFiltersProjects } from 'src/store/reducer';
+import { getProjects, getFiltersProjects } from 'src/store/actions';
 
 // == state ==
 const mapStateToProps = state => ({

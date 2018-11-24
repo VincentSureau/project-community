@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Specialities from 'src/components/Home/Specialities';
 
 // action creators
-import { getMembersSpe } from 'src/store/reducer';
+import { getMembersSpe } from 'src/store/actions';
 
 // == state ==
 const mapStateToProps = state => ({

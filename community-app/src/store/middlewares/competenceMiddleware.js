@@ -5,7 +5,7 @@ import axios from 'axios';
 import {
   GET_COMPETENCES,
   competencesReceived,
-} from 'src/store/reducer';
+} from 'src/store/actions';
 
 const API_URL = 'http://127.0.0.1:8001';
 

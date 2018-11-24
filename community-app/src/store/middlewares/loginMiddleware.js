@@ -6,7 +6,7 @@ import decode from 'jwt-decode';
 import {
   POST_LOGIN,
   receivedToken,
-} from 'src/store/reducer';
+} from 'src/store/actions';
 
 const API_URL = 'http://127.0.0.1:8001';
 
