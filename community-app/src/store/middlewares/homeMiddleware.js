@@ -6,7 +6,7 @@ import {
   GET_HOME,
   membersForHomeReceived,
   projectsForHomeReceived,
-} from 'src/store/actions';
+} from 'src/store/actions/homeActions';
 
 const API_URL = 'http://127.0.0.1:8001';
 

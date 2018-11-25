@@ -5,12 +5,9 @@ import { connect } from 'react-redux';
 import ProjectEdit from 'src/components/ProjectEdit';
 
 // action creators
-import {
-  getProjectEdit,
-  getCompetences,
-  changeInputForm,
-  putProject,
-} from 'src/store/actions';
+import { getProjectEdit, putProject } from 'src/store/actions/projectsActions';
+import { getCompetences } from 'src/store/actions/competencesActions';
+import { changeInputForm } from 'src/store/actions/formActions';
 
 // == state ==
 const mapStateToProps = state => ({

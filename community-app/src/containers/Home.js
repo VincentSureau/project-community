@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Home from 'src/components/Home';
 
 // action creators
-import { getHomeData } from 'src/store/actions';
+import { getHomeData } from 'src/store/actions/homeActions';
 
 // == state ==
 const mapStateToProps = state => ({

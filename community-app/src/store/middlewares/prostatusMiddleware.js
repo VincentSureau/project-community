@@ -5,7 +5,7 @@ import axios from 'axios';
 import {
   GET_PROSTATUS,
   proStatusReceived,
-} from 'src/store/actions';
+} from 'src/store/actions/prostatusActions';
 
 const API_URL = 'http://127.0.0.1:8001';
 

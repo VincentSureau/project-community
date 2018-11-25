@@ -11,7 +11,7 @@ import {
   memberEditReceived,
   PUT_MEMBER,
   DELETE_MEMBER,
-} from 'src/store/actions';
+} from 'src/store/actions/membersActions';
 
 const API_URL = 'http://127.0.0.1:8001';
 
