@@ -23,7 +23,7 @@ security:
             guard:
                 authenticators:
                     - lexik_jwt_authentication.jwt_token_authenticator
-        
+
         admin:
             anonymous: ~
             form_login:
