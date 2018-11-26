@@ -11,3 +11,8 @@ app_logout:
 
 api_login_check:
     path: /login_check
+
+new_password:
+    path: /forgotten-password/{email}
+    controller: App\Controller\PasswordCustom::newPassword
+

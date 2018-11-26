@@ -158,7 +158,7 @@ class AppUser implements UserInterface
 
     /**
      * @Groups({"user", "userWrite"})
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="string", length=5, nullable=true)
      * @Assert\Regex(
      *     pattern="/\d/",
      *     match=true,
@@ -416,7 +416,7 @@ class AppUser implements UserInterface
         return $this;
     }
 
-    public function getZipcode(): ?int
+    public function getZipcode(): ?string
     {
         return $this->zipcode;
     }
