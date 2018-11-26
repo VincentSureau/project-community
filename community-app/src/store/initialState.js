@@ -20,6 +20,8 @@ const initialState = {
   listPromo: [],
   listStatus: [],
   value: {},
+  isConnected: false,
+  page: window.location.pathname,
 };
 
 export default initialState;

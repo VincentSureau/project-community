@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
  * Local import
  */
 // Components
+import AuthService from 'src/components/AuthService';
 import Specialities from 'src/containers/Specialities';
 import LastMembers from './LastMembers';
 import ArrowDown from '../ArrowDown';
@@ -26,6 +27,8 @@ class Home extends React.Component {
   componentDidMount() {
     const { getHomeData } = this.props;
     getHomeData();
+    this.Auth = new AuthService();
+    console.log(this.Auth.getToken());
   }
 
   render() {

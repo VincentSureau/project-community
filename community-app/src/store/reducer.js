@@ -2,6 +2,9 @@
 import initialState from './initialState';
 
 // Types
+// Navbar
+export const GET_ISCONNECTED = 'GET_ISCONNECTED';
+
 // Form
 export const CHANGE_INPUT = 'CHANGE_INPUT';
 export const CHANGE_INPUT_FORM = 'CHANGE_INPUT_FORM';
@@ -33,6 +36,8 @@ export const SET_FILTER = 'SET_FILTER';
 
 // Login
 export const RECEIVED_TOKEN = 'RECEIVED_TOKEN';
+export const CONNECT_MEMBER = 'CONNECT_MEMBER';
+export const DISCONNECT_MEMBER = 'DISCONNECT_MEMBER';
 
 // reducer
 const reducer = (state = initialState, action = {}) => {
@@ -172,6 +177,18 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         token: action.token,
+      };
+
+    case CONNECT_MEMBER:
+      return {
+        ...state,
+        isConnected: true,
+      };
+
+    case DISCONNECT_MEMBER:
+      return {
+        ...state,
+        isConnected: false,
       };
 
     // Action non-reconnue

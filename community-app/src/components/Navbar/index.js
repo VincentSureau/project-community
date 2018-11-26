@@ -2,8 +2,10 @@
  * NPM import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import ClassNames from 'classnames';
+import AuthService from 'src/components/AuthService';
 import {
   Collapse,
   Navbar,
@@ -17,11 +19,22 @@ import {
 class ReactStrapNavbar extends React.Component {
   constructor(props) {
     super(props);
-
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false,
     };
+  }
+
+  componentDidUpdate() {
+
+  }
+
+  disconnect() {
+    this.Auth = new AuthService();
+    this.Auth.logout();
+    const { disconnectMember, isConnected } = this.props;
+    disconnectMember();
+    console.log(isConnected);
   }
 
   toggle() {
@@ -32,13 +45,15 @@ class ReactStrapNavbar extends React.Component {
   }
 
   render() {
+    const { isConnected, page } = this.props;
+    console.log(page);
     const classcolor = ClassNames(
-      { 'home-navfoot': window.location.pathname === '/' },
-      { 'members-navfoot': window.location.pathname === '/members' },
-      { 'projects-navfoot': window.location.pathname === '/projects' },
-      { 'login-navfoot': window.location.pathname === '/login' },
-      { 'member-navfoot': window.location.pathname.includes('/members/') },
-      { 'project-navfoot': window.location.pathname.includes('/projects/') },
+      { 'home-navfoot': page === '/' },
+      { 'members-navfoot': page === '/members' },
+      { 'projects-navfoot': page === '/projects' },
+      { 'login-navfoot': page === '/login' },
+      { 'member-navfoot': page.includes('/members/') },
+      { 'project-navfoot': page.includes('/projects/') },
     );
 
     const classNavBar = (classcolor !== '')
@@ -50,6 +65,12 @@ class ReactStrapNavbar extends React.Component {
       : 'bg-notfound-navfoot';
 
     const { isOpen } = this.state;
+    this.Auth = new AuthService();
+    const { connectMember } = this.props;
+    if (this.Auth.getToken()) {
+      connectMember();
+    }
+    console.log(isConnected);
     return (
       <div id="navbar">
         <Navbar className={classNavBar} expand="md">
@@ -66,7 +87,13 @@ class ReactStrapNavbar extends React.Component {
             <Nav className="navbar-nav">
               <NavLink activeClassName="" className="nav-item nav-link text-white" exact to="/projects">Projets</NavLink>
               <NavLink activeClassName="" className="nav-item nav-link text-white" exact to="/members">Etudiants</NavLink>
-              <NavLink activeClassName="" className="btn btn-outline-white mx-3 btn-border-radius" exact to="/login">Me connecter</NavLink>
+              {
+                (isConnected)
+                  ? <ReactStrapLink className="btn btn-outline-white mx-3 btn-border-radius" onClick={() => this.disconnect()}>Me déconnecter</ReactStrapLink>
+                  : <NavLink activeClassName="" className="btn btn-outline-white mx-3 btn-border-radius" exact to="/login">Me connecter</NavLink>
+              }
+              { (isConnected)
+              && (
               <Collapse isOpen={isOpen} navbar>
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret className="nav-item nav-link text-white">
@@ -88,6 +115,7 @@ class ReactStrapNavbar extends React.Component {
                   </DropdownMenu>
                 </UncontrolledDropdown>
               </Collapse>
+              )}
             </Nav>
           </div>
         </Navbar>
@@ -95,5 +123,12 @@ class ReactStrapNavbar extends React.Component {
     );
   }
 }
+
+ReactStrapNavbar.propTypes = {
+  isConnected: PropTypes.bool.isRequired,
+  page: PropTypes.string.isRequired,
+  connectMember: PropTypes.func.isRequired,
+  disconnectMember: PropTypes.func.isRequired,
+};
 
 export default ReactStrapNavbar;
