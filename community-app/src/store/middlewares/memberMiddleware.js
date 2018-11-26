@@ -11,6 +11,8 @@ import {
   memberEditReceived,
   PUT_MEMBER,
   DELETE_MEMBER,
+  GET_CONNECTED_MEMBER,
+  connectedMemberReceived,
 } from 'src/store/actions/membersActions';
 
 const API_URL = 'http://127.0.0.1:8001';
@@ -94,6 +96,24 @@ const memberMiddleware = store => next => (action) => {
         // succes
         .then((response) => {
           console.log('DeleteProfil', response);
+        })
+        // echec
+        .catch((error) => {
+          console.error(error);
+        });
+
+      break;
+
+    case GET_CONNECTED_MEMBER:
+      axios({
+        method: 'get',
+        url: `${API_URL}/app_users/${action.id}`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          const connectedMember = response.data;
+          store.dispatch(connectedMemberReceived(connectedMember));
         })
         // echec
         .catch((error) => {

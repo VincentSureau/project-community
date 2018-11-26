@@ -25,16 +25,24 @@ class ReactStrapNavbar extends React.Component {
     };
   }
 
-  componentDidUpdate() {
-
+  componentDidMount() {
+    const { getConnectedMember } = this.props;
+    if (this.Auth.getToken()) {
+      getConnectedMember(this.Auth.getProfile().userId);
+    }
   }
 
+  // Fonction qui permet de récupérer un élément imbriqué dans un objet à plusieurs niveaux
+  getNestedObject = (nestedObj, pathArr) => (
+    pathArr.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj)
+  );
+
+  // Fonction qui permet de déconnecter le membre et de passer le isConnected à false
   disconnect() {
     this.Auth = new AuthService();
     this.Auth.logout();
-    const { disconnectMember, isConnected } = this.props;
+    const { disconnectMember } = this.props;
     disconnectMember();
-    console.log(isConnected);
   }
 
   toggle() {
@@ -46,7 +54,8 @@ class ReactStrapNavbar extends React.Component {
 
   render() {
     const { isConnected, page } = this.props;
-    console.log(page);
+
+    // Les classes sont modifiées en fonction de la page courante
     const classcolor = ClassNames(
       { 'home-navfoot': page === '/' },
       { 'members-navfoot': page === '/members' },
@@ -64,13 +73,19 @@ class ReactStrapNavbar extends React.Component {
       ? `bg-${classcolor}`
       : 'bg-notfound-navfoot';
 
+    // On récupère les valeurs du state et des props dont on a besoin
     const { isOpen } = this.state;
+    const { connectMember, connectedMember } = this.props;
+
+    // On récupère le slug du projet d'un membre grâce à la fonction getNestedObject pour ne pas avoir un undefined
+    const projectSlug = this.getNestedObject(connectedMember, ['project', 'slug']);
+
+    // Si un token valide existe isConnected à true dans le state
     this.Auth = new AuthService();
-    const { connectMember } = this.props;
     if (this.Auth.getToken()) {
       connectMember();
     }
-    console.log(isConnected);
+
     return (
       <div id="navbar">
         <Navbar className={classNavBar} expand="md">
@@ -87,31 +102,39 @@ class ReactStrapNavbar extends React.Component {
             <Nav className="navbar-nav">
               <NavLink activeClassName="" className="nav-item nav-link text-white" exact to="/projects">Projets</NavLink>
               <NavLink activeClassName="" className="nav-item nav-link text-white" exact to="/members">Etudiants</NavLink>
+              {/* Si le membre est connecté "Me déconnecter" s'affiche, sinon "Me connecter" s'affiche */}
               {
                 (isConnected)
                   ? <ReactStrapLink className="btn btn-outline-white mx-3 btn-border-radius" onClick={() => this.disconnect()}>Me déconnecter</ReactStrapLink>
                   : <NavLink activeClassName="" className="btn btn-outline-white mx-3 btn-border-radius" exact to="/login">Me connecter</NavLink>
               }
+              {/* Si le membre est connecté un menu dropdown s'affiche */}
               { (isConnected)
               && (
               <Collapse isOpen={isOpen} navbar>
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret className="nav-item nav-link text-white">
-                    Bonjour Charles
+                    {`Bonjour ${connectedMember.firstname}`}
                   </DropdownToggle>
                   <DropdownMenu right className={classNavBarColor}>
-                    <NavLink to="/" exact className="nav-item nav-link text-center text-white">
+                    <NavLink to={`/members/${connectedMember.slug}`} exact className="nav-item nav-link text-center text-white">
                       Mon profil
                     </NavLink>
-                    <NavLink to="/" exact className="nav-item nav-link text-center text-white">
+                    <NavLink to={`/members/${connectedMember.slug}/edit`} exact className="nav-item nav-link text-center text-white">
                       Modifier mon profil
                     </NavLink>
-                    <NavLink to="/" exact className="nav-item nav-link text-center text-white">
-                      Mon projet
-                    </NavLink>
-                    <NavLink to="/" exact className="nav-item nav-link text-center text-white">
-                      Modifier mon projet
-                    </NavLink>
+                    {/* Si le membre n'a pas encore de projet, les liens pour y accéder ne s'affichent pas */}
+                    { (projectSlug !== undefined)
+                    && (
+                      <div>
+                        <NavLink to={`/projects/${projectSlug}`} exact className="nav-item nav-link text-center text-white">
+                          Mon projet
+                        </NavLink>
+                        <NavLink to={`/projects/${projectSlug}/edit`} exact className="nav-item nav-link text-center text-white">
+                          Modifier mon projet
+                        </NavLink>
+                      </div>
+                    )}
                   </DropdownMenu>
                 </UncontrolledDropdown>
               </Collapse>
@@ -129,6 +152,8 @@ ReactStrapNavbar.propTypes = {
   page: PropTypes.string.isRequired,
   connectMember: PropTypes.func.isRequired,
   disconnectMember: PropTypes.func.isRequired,
+  getConnectedMember: PropTypes.func.isRequired,
+  connectedMember: PropTypes.object.isRequired,
 };
 
 export default ReactStrapNavbar;

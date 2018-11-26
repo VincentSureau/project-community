@@ -8,6 +8,8 @@ export const GET_MEMBER_EDIT = 'GET_MEMBER_EDIT';
 export const MEMBER_EDIT_RECEIVED = 'MEMBER_EDIT_RECEIVED';
 export const PUT_MEMBER = 'PUT_MEMBER';
 export const DELETE_MEMBER = 'DELETE_MEMBER';
+export const GET_CONNECTED_MEMBER = 'GET_CONNECTED_MEMBER';
+export const CONNECTED_MEMBER_RECEIVED = 'CONNECTED_MEMBER_RECEIVED';
 
 // Action creator
 export const getMembers = () => ({
@@ -53,4 +55,14 @@ export const putMember = (id, data) => ({
 export const deleteMember = id => ({
   type: DELETE_MEMBER,
   id,
+});
+
+export const getConnectedMember = id => ({
+  type: GET_CONNECTED_MEMBER,
+  id,
+});
+
+export const connectedMemberReceived = connectedMember => ({
+  type: CONNECTED_MEMBER_RECEIVED,
+  connectedMember,
 });

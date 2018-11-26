@@ -39,8 +39,6 @@ class AuthService extends React.Component {
       if (decoded.exp < Date.now() / 1000) {
         return true;
       }
-      this.logout();
-      window.history.pushState('/login');
       return false;
     }
     catch (err) {
