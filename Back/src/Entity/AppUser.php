@@ -230,6 +230,7 @@ class AppUser implements UserInterface
     /**
      * @Groups({"user", "AppUserList"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Promotion", inversedBy="appUsers")
+     * @ORM\JoinColumn(onDelete="SET NULL")
      * @Assert\NotBlank(
      *     message = "Le champ promotion ne peux pas être vide."
      * )
@@ -245,12 +246,14 @@ class AppUser implements UserInterface
     /**
      * @Groups({"user", "AppUserList", "userWrite"})
      * @ORM\ManyToOne(targetEntity="App\Entity\ProfessionalStatus", inversedBy="appUsers")
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $professionalStatus;
 
     /**
      * @Groups({"user"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="appUsers")
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $project;
 
