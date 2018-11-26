@@ -34,7 +34,6 @@ class ReactStrapNavbar extends React.Component {
     this.Auth.logout();
     const { disconnectMember, isConnected } = this.props;
     disconnectMember();
-    console.log(isConnected);
   }
 
   toggle() {
@@ -46,7 +45,6 @@ class ReactStrapNavbar extends React.Component {
 
   render() {
     const { isConnected, page } = this.props;
-    console.log(page);
     const classcolor = ClassNames(
       { 'home-navfoot': page === '/' },
       { 'members-navfoot': page === '/members' },
@@ -70,7 +68,6 @@ class ReactStrapNavbar extends React.Component {
     if (this.Auth.getToken()) {
       connectMember();
     }
-    console.log(isConnected);
     return (
       <div id="navbar">
         <Navbar className={classNavBar} expand="md">
