@@ -17,8 +17,6 @@ import './memberedit.scss';
 /**
  * Code
  */
-
-
 class MemberEdit extends React.Component {
   componentDidMount() {
     const {
@@ -27,11 +25,12 @@ class MemberEdit extends React.Component {
       getCompetences,
       getProStatus,
     } = this.props;
+    // L'id est de type: capucine-bertin-650,
+    // on récupère uniquement les chiffres pour récupérer le membre
     getMemberWithId(id.split('-')[2]);
     getCompetences();
     getProStatus();
   }
-
 
   onChangeInput(evt) {
     const { onChangeInput } = this.props;
@@ -43,12 +42,14 @@ class MemberEdit extends React.Component {
     onChangeInput(evt.target.name, evt.target.checked);
   }
 
-  getNestedObject = (nestedObj, pathArr) => {
-    return pathArr.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
-  }
+  // Fonction qui permet de récupérer un élément imbriqué dans un objet à plusieurs niveaux
+  getNestedObject = (nestedObj, pathArr) => (
+    pathArr.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj)
+  );
 
   handleSubmit(event) {
     event.preventDefault();
+    // Serialize permet de formater l'envoi des données
     const data = serialize(event.target, { hash: true, empty: true, disabled: false });
     console.log(data);
     const { postChangeMember } = this.props;
@@ -94,21 +95,21 @@ class MemberEdit extends React.Component {
             <p className="singlemember-prom">#{promoname} #{spename}</p>
             <div id="memberedit-form-info" className="row justify-content-center">
               <p className="label col-5">Ville: </p>
-              <input className="col-5 input-text" type="text" name="city" placeholder="Nantes" value={value.city} onChange={e => this.onChangeInput(e)} />
+              <input className="col-5 input-text" type="text" name="city" placeholder="Nantes" defaultValue={value.city} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Code Postal: </p>
-              {/*<input className="col-5 input-text" type="number" name="zipcode" placeholder="44000" value={value.zipcode} onChange={e => this.onChangeInput(e)} />*/}
+              {/* <input className="col-5 input-text" type="number" name="zipcode" placeholder="44000" defaultValue={value.zipcode} onChange={e => this.onChangeInput(e)} /> */}
               <p className="label col-5">Adresse mail: </p>
-              <input className="col-5 input-text" type="email" name="email" placeholder="marc.dubois@duboiscorp.fr" value={value.email} onChange={e => this.onChangeInput(e)} />
+              <input className="col-5 input-text" type="email" name="email" placeholder="marc.dubois@duboiscorp.fr" defaultValue={value.email} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Téléphone: </p>
-              <input className="col-5 input-text" type="text" name="phoneNumber" placeholder="+33123456789" value={value.phoneNumber} onChange={e => this.onChangeInput(e)} />
+              <input className="col-5 input-text" type="text" name="phoneNumber" placeholder="+33123456789" defaultValue={value.phoneNumber} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Lien Github: </p>
-              <input className="col-5 input-text" type="text" name="linkGithub" placeholder="https://github.com/marcdub" value={value.linkGithub} onChange={e => this.onChangeInput(e)} />
+              <input className="col-5 input-text" type="text" name="linkGithub" placeholder="https://github.com/marcdub" defaultValue={value.linkGithub} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Lien Linked'In: </p>
-              <input className="col-5 input-text" type="text" name="linkLinkedin" placeholder="https://linkedin.com/in/marcdubois/" value={value.linkLinkedin} onChange={e => this.onChangeInput(e)} />
+              <input className="col-5 input-text" type="text" name="linkLinkedin" placeholder="https://linkedin.com/in/marcdubois/" defaultValue={value.linkLinkedin} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Lien PortFolio: </p>
-              <input className="col-5 input-text" type="text" name="linkPersonal" placeholder="https://www.duboiscorp.fr" value={value.linkPersonal} onChange={e => this.onChangeInput(e)} />
+              <input className="col-5 input-text" type="text" name="linkPersonal" placeholder="https://www.duboiscorp.fr" defaultValue={value.linkPersonal} onChange={e => this.onChangeInput(e)} />
               <p className="label col-2">Bio: </p>
-              <textarea className="col-8 input-textarea" type="textarea" name="description" row="" placeholder="Décrivez votre parcourt, votre but et tout ce qui fait qu'un recruteur veuille de vous." value={value.description} onChange={e => this.onChangeInput(e)} />
+              <textarea className="col-8 input-textarea" type="textarea" name="description" row="" placeholder="Décrivez votre parcourt, votre but et tout ce qui fait qu'un recruteur veuille de vous." defaultValue={value.description} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Compétences: </p>
               <div className="col-5 multiselection">
                 <div className="form-check">
@@ -137,6 +138,7 @@ class MemberEdit extends React.Component {
                   {(status != null)
                     ? status.map(singleStatus => (
                       <option
+                        key={this.getNestedObject(singleStatus, ['id'])}
                         value={this.getNestedObject(singleStatus, ['name'])}
                         selected={value.status === this.getNestedObject(singleStatus, ['name'])}
                       >

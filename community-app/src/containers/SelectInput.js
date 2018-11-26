@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import SelectInput from 'src/components/SelectInput';
 
 // action creators
-import { setFilter } from 'src/store/reducer';
+import { setFilter } from 'src/store/actions/filtersActions';
 
 // == state ==
 const mapStateToProps = state => ({

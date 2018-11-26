@@ -23,15 +23,18 @@ import './member.scss';
 class Member extends React.Component {
   componentDidMount() {
     const { getMemberWithId, id } = this.props;
+    // L'id est de type: capucine-bertin-650,
+    // on récupère uniquement les chiffres pour récupérer le membre
     getMemberWithId(id.split('-')[2]);
   }
 
-  getNestedObject = (nestedObj, pathArr) => {
-    return pathArr.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
-  };
+  // Fonction qui permet de récupérer un élément imbriqué dans un objet à plusieurs niveaux
+  getNestedObject = (nestedObj, pathArr) => (
+    pathArr.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj)
+  );
 
   render() {
-    const { member } = this.props;
+    const { member, member: { competences } } = this.props;
     const promoname = this.getNestedObject(member, ['promotion', 'name']);
     const promostart = this.getNestedObject(member, ['promotion', 'startDate']);
     const promoend = this.getNestedObject(member, ['promotion', 'endDate']);
@@ -41,7 +44,6 @@ class Member extends React.Component {
     const projectslug = this.getNestedObject(member, ['project', 'slug']);
     const projectid = this.getNestedObject(member, ['project', '@id']);
     const projectimages = this.getNestedObject(member, ['project', 'images']);
-    const { member: { competences } } = this.props;
 
     return (
       <div id="member">
@@ -84,7 +86,11 @@ class Member extends React.Component {
 Member.propTypes = {
   promotion: PropTypes.objectOf(
     PropTypes.string.isRequired,
-  ).isRequired,
+  ),
+};
+
+Member.defaultProps = {
+  promotion: {},
 };
 
 /**

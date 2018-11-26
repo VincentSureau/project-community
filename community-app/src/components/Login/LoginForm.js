@@ -72,6 +72,7 @@ LoginForm.propTypes = {
   email: PropTypes.string.isRequired,
   password: PropTypes.string.isRequired,
   onChangeInput: PropTypes.func.isRequired,
+  onSubmitLogin: PropTypes.func.isRequired,
 };
 /**
  * Export

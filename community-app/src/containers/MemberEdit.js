@@ -5,7 +5,10 @@ import { connect } from 'react-redux';
 import MemberEdit from 'src/components/MemberEdit';
 
 // action creators
-import { getMemberEdit, changeInputForm, getCompetences, putMember, deleteMember, getProStatus } from 'src/store/reducer';
+import { getMemberEdit, putMember, deleteMember } from 'src/store/actions/membersActions';
+import { changeInputForm } from 'src/store/actions/formActions';
+import { getCompetences } from 'src/store/actions/competencesActions';
+import { getProStatus } from 'src/store/actions/prostatusActions';
 
 // == state ==
 const mapStateToProps = state => ({

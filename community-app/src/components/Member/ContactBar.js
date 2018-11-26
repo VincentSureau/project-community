@@ -36,6 +36,7 @@ const ContactBar = ({
 
   <div id="member-info-contactbar" className="row mx-auto">
     <div className="col-4 d-flex justify-content-end align-items-end pb-4">
+      {/* On affiche les icones uniquement si les champs ont été renseignés par le membre */}
       {email !== '' && <a href={`mailto:${email}`}><FaRegEnvelope className="text-white" /></a>}
       {phoneNumber !== '' && <a href={`tel:${phoneNumber}`}><FaPhone className="text-white" /></a>}
       {linkGithub !== '' && <a href={linkGithub}><FaGithub className="text-white" /></a>}
@@ -55,13 +56,23 @@ const ContactBar = ({
 );
 
 ContactBar.propTypes = {
-  city: PropTypes.string.isRequired,
-  zipcode: PropTypes.number.isRequired,
-  email: PropTypes.string.isRequired,
-  phoneNumber: PropTypes.string.isRequired,
-  linkLinkedin: PropTypes.string.isRequired,
-  linkGithub: PropTypes.string.isRequired,
-  linkPersonal: PropTypes.string.isRequired,
+  city: PropTypes.string,
+  zipcode: PropTypes.number,
+  email: PropTypes.string,
+  phoneNumber: PropTypes.string,
+  linkLinkedin: PropTypes.string,
+  linkGithub: PropTypes.string,
+  linkPersonal: PropTypes.string,
+};
+
+ContactBar.defaultProps = {
+  city: '',
+  zipcode: null,
+  email: '',
+  phoneNumber: '',
+  linkLinkedin: '',
+  linkGithub: '',
+  linkPersonal: '',
 };
 
 /**

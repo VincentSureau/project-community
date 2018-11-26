@@ -25,8 +25,6 @@ const NotFound = () => (
         <NavLink to="/" className="btn btn-outline-white m-3 btn-border-radius text-uppercase">
           Retour accueil
         </NavLink>
-        
-        
       </article>
     </div>
   </section>
