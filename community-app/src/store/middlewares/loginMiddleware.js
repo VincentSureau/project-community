@@ -1,11 +1,9 @@
 // import
 import axios from 'axios';
-import decode from 'jwt-decode';
 
 // Types
 import {
   POST_LOGIN,
-  receivedToken,
   connectMember,
 } from 'src/store/actions/loginActions';
 
@@ -25,8 +23,6 @@ const login = store => next => (action) => {
       })
         // succes
         .then((response) => {
-          console.log('Connexion: ', decode(response.data.token));
-          store.dispatch(receivedToken(response.data.token));
           localStorage.setItem('connect_token', response.data.token);
           window.location.replace('/');
           store.dispatch(connectMember());
