@@ -27,7 +27,9 @@ class ReactStrapNavbar extends React.Component {
 
   componentDidMount() {
     const { getConnectedMember } = this.props;
-    getConnectedMember(this.Auth.getProfile().userId);
+    if (this.Auth.getToken()) {
+      getConnectedMember(this.Auth.getProfile().userId);
+    }
   }
 
   // Fonction qui permet de récupérer un élément imbriqué dans un objet à plusieurs niveaux
