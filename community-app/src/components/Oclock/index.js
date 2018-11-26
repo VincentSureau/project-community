@@ -9,12 +9,12 @@ import React from 'react';
 // Components
 
 // Styles
-import './oclockEdit_edit.scss';
+import './oclock.scss';
 
 /**
  * Code
  */
-const OclockEdit_edit = () => (
+const Oclock = () => (
   <div id="oclockEdit_edit">
     OclockEdit_edit
   </div>
@@ -24,4 +24,4 @@ const OclockEdit_edit = () => (
 /**
  * Export
  */
-export default OclockEdit_edit;
+export default Oclock;

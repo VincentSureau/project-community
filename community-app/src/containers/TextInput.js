@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import TextInput from 'src/components/TextInput';
 
 // action creators
-import { setFilter } from 'src/store/reducer';
+import { setFilter } from 'src/store/actions/filtersActions';
 
 // == state ==
-const mapStateToProps = state => ({});
+const mapStateToProps = () => ({});
 
 // == dispacth ==
 const mapDispatchToProps = dispatch => ({

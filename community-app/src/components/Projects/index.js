@@ -35,23 +35,24 @@ class Projects extends React.Component {
     } = this.props;
     let { listProjects } = this.props;
 
-    // Function to get only unique value from array
+    // Fonction qui permet de récupérer uniquement une fois chaque valeur d'un tableau
     // https://stackoverflow.com/questions/1960473/get-all-unique-values-in-a-javascript-array-remove-duplicates
     function onlyUnique(value, index, self) {
       return self.indexOf(value) === index;
     }
 
-    if (filterSpeProjects !== "" && listProjects !== null) {
+    // Mise en place des filtres
+    if (filterSpeProjects !== '' && listProjects !== null) {
       listProjects = listProjects.filter(project => project.appUsers.reduce((acc, curr) => `${acc} ${curr.specialisation.name}`, [])
         .toString()
         .split(' ').splice(1)
         .filter(onlyUnique)
         .includes(`${filterSpeProjects}`));
     }
-    if (filterPromoProjects !== "" && listProjects !== null) {
+    if (filterPromoProjects !== '' && listProjects !== null) {
       listProjects = listProjects.filter(project => project.promotion.name ===`${filterPromoProjects}`);
     }
-    if (filterTextProjects !== "" && listProjects !== null) {
+    if (filterTextProjects !== '' && listProjects !== null) {
       listProjects = listProjects.filter(project => project.name.includes(filterTextProjects));
     }
     return (
@@ -87,7 +88,14 @@ class Projects extends React.Component {
 Projects.propTypes = {
   listProjects: PropTypes.array.isRequired,
   getProjects: PropTypes.func.isRequired,
+  getFilters: PropTypes.func.isRequired,
+  listSpe: PropTypes.array.isRequired,
+  listPromo: PropTypes.array.isRequired,
+  filterSpeProjects: PropTypes.string.isRequired,
+  filterPromoProjects: PropTypes.string.isRequired,
+  filterTextProjects: PropTypes.string.isRequired,
 };
+
 
 /**
  * Export

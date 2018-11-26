@@ -7,15 +7,11 @@ import ClassNames from 'classnames';
 import {
   Collapse,
   Navbar,
-  NavbarToggler,
-  NavbarBrand,
   Nav,
-  NavItem,
   NavLink as ReactStrapLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
 } from 'reactstrap';
 
 class ReactStrapNavbar extends React.Component {
@@ -29,8 +25,9 @@ class ReactStrapNavbar extends React.Component {
   }
 
   toggle() {
+    const { isOpen } = this.state;
     this.setState({
-      isOpen: !this.state,
+      isOpen: !isOpen,
     });
   }
 
@@ -44,15 +41,6 @@ class ReactStrapNavbar extends React.Component {
       { 'project-navfoot': window.location.pathname.includes('/projects/') },
     );
 
-    const classcolortext = ClassNames(
-      { 'text-home-lighter': window.location.pathname === '/' },
-      { 'text-members-lighter': window.location.pathname === '/members' },
-      { 'text-projects-lighter': window.location.pathname === '/projects' },
-      { 'text-login-lighter': window.location.pathname === '/login' },
-      { 'text-member-lighter': window.location.pathname.includes('/members/') },
-      { 'text-project-lighter': window.location.pathname.includes('/projects/') },
-    );
-
     const classNavBar = (classcolor !== '')
       ? `navbar fixed-top navbar-expand navbar-dark row bg-${classcolor}`
       : 'navbar fixed-top navbar-expand navbar-dark row bg-notfound-navfoot';
@@ -61,10 +49,6 @@ class ReactStrapNavbar extends React.Component {
       ? `bg-${classcolor}`
       : 'bg-notfound-navfoot';
 
-    const classFooterText = (classcolortext !== '')
-      ? `${classcolortext}`
-      : 'text-notfound-lighter';
-    
     const { isOpen } = this.state;
     return (
       <div id="navbar">

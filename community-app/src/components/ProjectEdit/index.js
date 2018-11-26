@@ -34,34 +34,33 @@ class ProjectEdit extends React.Component {
     onChangeInput(evt.target.name, evt.target.checked);
   }
 
-  getNestedObject = (nestedObj, pathArr) => {
-    return pathArr.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj);
-  }
+  // Fonction qui permet de récupérer un élément imbriqué dans un objet à plusieurs niveaux
+  getNestedObject = (nestedObj, pathArr) => (
+    pathArr.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj)
+  );
 
-  formToJSON = elements => [].reduce.call(elements, (data, element) => {
-    if (element.name === 'profile_pic') {
-      if (element.value !== '') {
-        data[element.name] = element.value;
-      }
-      else {
-        data[''] = '';
-      }
-    }
-    if (element.name.search('/competences/') >= 0) {
-      data[element.name] = element.checked;
-    }
-    else {
-      data[element.name] = element.value;
-    }
-    return data;
-  }, {})
+  // formToJSON = elements => [].reduce.call(elements, (data, element) => {
+  //   if (element.name === 'profile_pic') {
+  //     if (element.value !== '') {
+  //       data[element.name] = element.value;
+  //     }
+  //     else {
+  //       data[''] = '';
+  //     }
+  //   }
+  //   if (element.name.search('/competences/') >= 0) {
+  //     data[element.name] = element.checked;
+  //   }
+  //   else {
+  //     data[element.name] = element.value;
+  //   }
+  //   return data;
+  // }, {})
 
   handleSubmit(event) {
     event.preventDefault();
-    // const data = this.formToJSON(event.target);
+    // Serialize permet de formater l'envoi des données
     const data = serialize(event.target, { hash: true, empty: true, disabled: false });
-    console.log(data);
-    console.log(event.target.id.value);
     const { postChangeProject } = this.props;
     postChangeProject(data, event.target.id.value);
   }

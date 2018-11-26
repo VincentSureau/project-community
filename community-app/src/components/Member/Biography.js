@@ -25,6 +25,7 @@ const Biography = ({
   competences,
 }) => {
   if (competences != null) {
+    // Récupération et formatage des dates de début et fin de formation
     const promostartdate = new Date(promoStartDate);
     const promoenddate = new Date(promoEndDate);
     const monthNames = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
@@ -75,12 +76,21 @@ const Biography = ({
 
 
 Biography.propTypes = {
-  description: PropTypes.string.isRequired,
-  promotion: PropTypes.string.isRequired,
-  promoStartDate: PropTypes.string.isRequired,
-  promoEndDate: PropTypes.string.isRequired,
-  professionalStatus: PropTypes.string.isRequired,
-  competences: PropTypes.array.isRequired,
+  description: PropTypes.string,
+  promotion: PropTypes.string,
+  promoStartDate: PropTypes.string,
+  promoEndDate: PropTypes.string,
+  professionalStatus: PropTypes.string,
+  competences: PropTypes.array,
+};
+
+Biography.defaultProps = {
+  description: '',
+  promotion: '',
+  promoStartDate: '',
+  promoEndDate: '',
+  professionalStatus: '',
+  competences: [],
 };
 
 /**

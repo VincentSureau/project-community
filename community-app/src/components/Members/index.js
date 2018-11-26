@@ -38,17 +38,20 @@ class Members extends React.Component {
       filterTextMembers,
     } = this.props;
     let { listMembers } = this.props;
-    if (filterSpeMembers !== "" && listMembers !== null) {
+    // Mise en place des filtres
+    if (filterSpeMembers !== '' && listMembers !== null) {
       listMembers = listMembers.filter(member => member.specialisation.name === `${filterSpeMembers}`);
     }
-    if (filterPromoMembers !== "" && listMembers !== null) {
+    if (filterPromoMembers !== '' && listMembers !== null) {
       listMembers = listMembers.filter(member => member.promotion.name === `${filterPromoMembers}`);
     }
-    if (filterStatusMembers !== "" && listMembers !== null) {
+    if (filterStatusMembers !== '' && listMembers !== null) {
       listMembers = listMembers.filter(member => member.professionalStatus.name === `${filterStatusMembers}`);
     }
-    if (filterTextMembers !== "" && listMembers !== null) {
-      listMembers = listMembers.filter(member => (member.firstname.includes(filterTextMembers) || member.lastname.includes(filterTextMembers)));
+    if (filterTextMembers !== '' && listMembers !== null) {
+      listMembers = listMembers.filter(member => (
+        member.firstname.includes(filterTextMembers) || member.lastname.includes(filterTextMembers)
+      ));
     }
     return (
       <div id="members">
@@ -83,11 +86,14 @@ class Members extends React.Component {
 Members.propTypes = {
   listMembers: PropTypes.array.isRequired,
   getMembers: PropTypes.func.isRequired,
-  filterSpe: PropTypes.string,
-};
-
-Members.defaultProps = {
-  filterSpe: '',
+  getFilters: PropTypes.func.isRequired,
+  listSpe: PropTypes.array.isRequired,
+  listPromo: PropTypes.array.isRequired,
+  listStatus: PropTypes.array.isRequired,
+  filterSpeMembers: PropTypes.string.isRequired,
+  filterPromoMembers: PropTypes.string.isRequired,
+  filterStatusMembers: PropTypes.string.isRequired,
+  filterTextMembers: PropTypes.string.isRequired,
 };
 
 /**

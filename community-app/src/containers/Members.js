@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import Members from 'src/components/Members';
 
 // action creators
-import { getMembers, getFiltersMembers } from 'src/store/reducer';
+import { getMembers } from 'src/store/actions/membersActions';
+import { getFiltersMembers } from 'src/store/actions/filtersActions';
 
 // == state ==
 const mapStateToProps = state => ({
