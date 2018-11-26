@@ -12,6 +12,8 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+
 use App\Utils\GeneratePassword;
 
 class AppUserType extends AbstractType
@@ -38,11 +40,13 @@ class AppUserType extends AbstractType
             $user = $event->getData();
             $form = $event->getForm();
             if ($user && $user->getId() !== null) {
-                $form->add('birthdate', BirthdayType::class, [
-                     'placeholder' => [
-                         'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
-                         ]
-                     ])
+                $form->add('birthdate', DateType::class, [
+                    'label' => 'Date de naissance',
+                    'widget' => 'single_text',
+                    'html5' => false,
+                    'attr' => ['class' => 'datepicker', 'autocomplete' => 'off'],
+                    'format' => 'dd/MM/yyyy',
+                    ])
                      ->add('profilePicture')
                      ->add('phoneNumber')
                      ->add('city')

@@ -46,6 +46,11 @@ class AppUserController extends AbstractController
             $em->persist($appUser);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'L\'utilisateur ' . $appUser->__toString() . ' a été ajouté'
+            );
+
             return $this->redirectToRoute('app_user_index');
         }
 
@@ -74,6 +79,11 @@ class AppUserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'success',
+                'L\' utilisateur ' . $appUser->__toString() . ' a été modifié'
+            );
+
             return $this->redirectToRoute('app_user_index', ['id' => $appUser->getId()]);
         }
 
@@ -92,7 +102,14 @@ class AppUserController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->remove($appUser);
             $em->flush();
+
+            $this->addFlash(
+                'danger',
+                'L\' utilisateur ' . $appUser->__toString() . ' a été supprimé'
+            );
+
         }
+
 
         return $this->redirectToRoute('app_user_index');
     }
@@ -107,6 +124,10 @@ class AppUserController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $mailGenerator->resetPassword($appUser);
             $em->flush();
+                $this->addFlash(
+                    'success',
+                    'Le mot de passe de l\'utilisateur ' . $appUser->__toString() . ' a été réinitialisé'
+                );
         }
 
         return $this->redirectToRoute('app_user_index');
@@ -125,6 +146,18 @@ class AppUserController extends AbstractController
             }
             $em = $this->getDoctrine()->getManager();
             $em->flush();
+
+            if($appUser->getIsActive()) {
+                $this->addFlash(
+                    'success',
+                    'L\'utilisateur ' . $appUser->__toString() . ' a été activé'
+                );
+            } else {
+                $this->addFlash(
+                    'warning',
+                    'L\'utilisateur ' . $appUser->__toString() . ' a été désactivé'
+                );
+            }
         }
 
         return $this->redirectToRoute('app_user_index');

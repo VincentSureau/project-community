@@ -44,6 +44,11 @@ class ProjectController extends AbstractController
             $em->persist($project);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'Le projet ' . $project->getName() . ' a été ajouté'
+            );
+
             return $this->redirectToRoute('project_index');
         }
 
@@ -72,6 +77,11 @@ class ProjectController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'success',
+                'Le projet ' . $project->getName() . ' a été modifié'
+            );
+
             return $this->redirectToRoute('project_index', ['id' => $project->getId()]);
         }
 
@@ -90,6 +100,12 @@ class ProjectController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->remove($project);
             $em->flush();
+
+            $this->addFlash(
+                'danger',
+                'Le projet ' . $project->getName() . ' a été supprimé'
+            );
+
         }
 
         return $this->redirectToRoute('project_index');
@@ -108,6 +124,18 @@ class ProjectController extends AbstractController
             }
             $em = $this->getDoctrine()->getManager();
             $em->flush();
+        }
+
+        if($project->getIsActive()) {
+            $this->addFlash(
+                'success',
+                'Le projet ' . $project->getName() . ' a été activé'
+            );
+        } else {
+            $this->addFlash(
+                'warning',
+                'Le projet ' . $project->getName() . ' a été désactivé'
+            );
         }
 
         return $this->redirectToRoute('project_index');
