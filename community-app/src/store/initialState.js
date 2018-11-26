@@ -22,6 +22,7 @@ const initialState = {
   value: {},
   isConnected: false,
   page: window.location.pathname,
+  connectedMember: {},
 };
 
 export default initialState;
