@@ -8,6 +8,14 @@
         <h2 class="title-category" >Liste des images</h2>
         <a href="{{ path('image_new') }}" class="add-element"><i class="fas fa-plus"></i> Ajouter une image</a>
 
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} mt-4">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
         <table class="table table-striped table_list">
             <thead>
                 <tr>

@@ -43,7 +43,10 @@ class ImageController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($image);
             $em->flush();
-
+            $this->addFlash(
+                'success',
+                'L\'image ' . $image->getId() . ' a été ajoutée'
+            );
             return $this->redirectToRoute('image_index');
         }
 
@@ -72,7 +75,12 @@ class ImageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('admin/image_index', ['id' => $image->getId()]);
+            $this->addFlash(
+                'success',
+                'L\'image ' . $image->getId() . ' a été modifiée'
+            );            
+
+            return $this->redirectToRoute('image_index');
         }
 
         return $this->render('admin/image/edit.html.twig', [
@@ -90,6 +98,12 @@ class ImageController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->remove($image);
             $em->flush();
+
+            $this->addFlash(
+                'danger',
+                'L\'image ' . $image->getId() . ' a été supprimée'
+            );  
+
         }
 
         return $this->redirectToRoute('image_index');

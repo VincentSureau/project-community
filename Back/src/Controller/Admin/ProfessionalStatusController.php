@@ -44,6 +44,11 @@ class ProfessionalStatusController extends AbstractController
             $em->persist($professionalStatus);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'Le statut professionnel ' . $professionalStatus->getName() . ' a été ajouté'
+            );
+
             return $this->redirectToRoute('professional_status_index');
         }
 
@@ -72,6 +77,11 @@ class ProfessionalStatusController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'success',
+                'Le statut professionnel ' . $professionalStatus->getName() . ' a été modifié'
+            );
+    
             return $this->redirectToRoute('professional_status_index', ['id' => $professionalStatus->getId()]);
         }
 
@@ -90,7 +100,13 @@ class ProfessionalStatusController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->remove($professionalStatus);
             $em->flush();
+
+            $this->addFlash(
+                'danger',
+                'Le statut professionnel ' . $professionalStatus->getName() . ' a été supprimé'
+            );
         }
+
 
         return $this->redirectToRoute('professional_status_index');
     }

@@ -44,6 +44,11 @@ class PromotionController extends AbstractController
             $em->persist($promotion);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'La promotion ' . $promotion->getName() . ' a été ajoutée'
+            );            
+
             return $this->redirectToRoute('promotion_index');
         }
 
@@ -72,6 +77,11 @@ class PromotionController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'success',
+                'La promotion ' . $promotion->getName() . ' a été supprimée'
+            );                        
+
             return $this->redirectToRoute('promotion_index', ['id' => $promotion->getId()]);
         }
 
@@ -90,6 +100,12 @@ class PromotionController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->remove($promotion);
             $em->flush();
+
+            $this->addFlash(
+                'danger',
+                'La promotion ' . $promotion->getName() . ' a été supprimée'
+            );            
+
         }
 
         return $this->redirectToRoute('promotion_index');
