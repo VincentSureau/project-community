@@ -32,9 +32,9 @@ public function __construct(RequestStack $requestStack)
         $request = $this->requestStack->getCurrentRequest();
     
         $payload       = $event->getData();
-        $payload['userFirstname'] = $user->getFirstname();
+        #$payload['userFirstname'] = $user->getFirstname();
         $payload['userId'] = $user->getId();
-        $payload['userSlug'] = $user->getSlug();
+        #$payload['userSlug'] = $user->getSlug();
     
         $event->setData($payload);
         
