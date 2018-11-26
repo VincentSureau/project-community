@@ -8,12 +8,21 @@
         <h2 class="title-category" >Liste des images</h2>
         <a href="{{ path('image_new') }}" class="add-element"><i class="fas fa-plus"></i> Ajouter une image</a>
 
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} mt-4">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
         <table class="table table-striped table_list">
             <thead>
                 <tr>
                     <th class="hide_content_phone" {% if pagination.isSorted('id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Id', 'id') }}</th>
                     <th>Image</th>
                     <th {% if pagination.isSorted('isHero') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Image de couverture', 'isHero') }}</th>
+                    <th {% if pagination.isSorted('project.name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Projet', 'project.name') }}</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -35,6 +44,7 @@
                         </div>
 
                     <td>{{ image.isHero ? 'Oui' : 'Non' }}</td>
+                    <td>{{ image.project.name }}</td>
                     <td>
                         <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="Afficher" href="{{ path('image_show', {'id': image.id}) }}"><i class="fas fa-search"></i></a>
                         <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="Modifier" href="{{ path('image_edit', {'id': image.id}) }}"><i class="fas fa-edit"></i></a>

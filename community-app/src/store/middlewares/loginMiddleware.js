@@ -28,7 +28,7 @@ const login = store => next => (action) => {
           console.log('Connexion: ', decode(response.data.token));
           store.dispatch(receivedToken(response.data.token));
           localStorage.setItem('connect_token', response.data.token);
-          window.history.back();
+          window.location.replace('/');
           store.dispatch(connectMember());
         })
         // echec

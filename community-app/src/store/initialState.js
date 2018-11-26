@@ -21,6 +21,7 @@ const initialState = {
   listStatus: [],
   value: {},
   isConnected: false,
+  connectedMember: {},
   actualPage: window.location.pathname,
 };
 

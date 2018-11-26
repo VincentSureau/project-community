@@ -117,6 +117,7 @@ class Project
     /**
      * @Groups({"project","ProjectList"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Promotion", inversedBy="projects")
+     * @ORM\JoinColumn(onDelete="SET NULL")
      */
     private $promotion;
 

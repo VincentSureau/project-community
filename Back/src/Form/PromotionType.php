@@ -17,14 +17,19 @@ class PromotionType extends AbstractType
         $builder
             ->add('name')
             ->add('startDate', DateType::class, [
-                'placeholder' => [
-                    'year'=>'Année', 'month' => 'Mois', 'day' => 'Jour' 
-                ]
+                'label' => 'Date de début',
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['class' => 'datepicker', 'autocomplete' => 'off'],
+                'format' => 'dd/MM/yyyy',
+
             ])
             ->add('endDate', DateType::class, [
-                'placeholder' => [
-                    'year'=>'Année', 'month' => 'Mois', 'day' => 'Jour' 
-                ]
+                'label' => 'Date de fin',
+                'widget' => 'single_text',
+                'html5' => false,
+                'attr' => ['class' => 'datepicker', 'autocomplete' => 'off'],
+                'format' => 'dd/MM/yyyy',
             ])
             ->add('AppUsers', EntityType::class, [
             'class' => AppUser::class,
