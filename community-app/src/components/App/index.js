@@ -2,7 +2,7 @@
  * NPM import
  */
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 /**
  * Local import
@@ -20,6 +20,7 @@ import Projects from 'src/containers/Projects';
 import NotFound from 'src/components/NotFound';
 // import Oclock from 'src/components/Oclock';
 import Footer from 'src/components/Footer';
+import decode from 'jwt-decode';
 
 // Styles
 import './app.scss';
@@ -27,6 +28,19 @@ import './app.scss';
 /**
  * Code
  */
+
+
+function allowedUser(slug) {
+  console.log(localStorage);
+  if (localStorage.connect_token !== undefined) {
+    const tokenDecoded = decode(localStorage.connect_token);
+    console.log(tokenDecoded);
+    if ((tokenDecoded.slugProject === slug) || (tokenDecoded.slugProfile === slug)) {
+      return true;
+    }
+  }
+  return false;
+}
 class App extends React.Component {
   componentDidUpdate() {
     const { changePageLog } = this.props;
@@ -46,10 +60,9 @@ class App extends React.Component {
           <Route
             path="/members/:slug/edit"
             exact
-            render={(matchData) => {
-              const { slug } = matchData.match.params;
-              return <MemberEdit id={slug} />;
-            }}
+            render={matchData => (console.log(allowedUser(matchData.match.params.slug))
+              ? <MemberEdit id={matchData.match.params.slug} />
+              : <Redirect to="/login" />)}
           />
           <Route
             path="/members/:slug"
@@ -62,10 +75,9 @@ class App extends React.Component {
           <Route
             path="/projects/:slug/edit"
             exact
-            render={(matchData) => {
-              const { slug } = matchData.match.params;
-              return <ProjectEdit id={slug} />;
-            }}
+            render={matchData => (console.log(allowedUser(matchData.match.params.slug))
+              ? <ProjectEdit id={matchData.match.params.slug} />
+              : <Redirect to="/login" />)}
           />
           <Route
             path="/projects/:slug"

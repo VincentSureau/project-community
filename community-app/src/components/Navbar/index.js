@@ -54,7 +54,6 @@ class ReactStrapNavbar extends React.Component {
 
   render() {
     const { isConnected, page } = this.props;
-
     // Les classes sont modifiées en fonction de la page courante
     const classcolor = ClassNames(
       { 'home-navfoot': page === '/' },
