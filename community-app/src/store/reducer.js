@@ -91,7 +91,7 @@ const reducer = (state = initialState, action = {}) => {
           linkLinkedin: action.member.linkLinkedin,
           linkPersonal: action.member.linkPersonal,
           description: action.member.description,
-          status: action.member.professionalStatus.name,
+          status: action.member.professionalStatus,
         },
       };
 

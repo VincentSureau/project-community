@@ -53,14 +53,13 @@ class SelectInput extends React.Component {
     }
 
     nameSelect = ''.concat(nameSelect, page);
-    // console.log(nameSelect, ' - ', filterSpeMembers ,' -> ', eval(nameSelect));
 
     return (
       <div id="selectinput" className="col">
         <select id="selectinput-select" className="w-100 text-white" name={nameSelect} onChange={e => this.onChange(e)}>
-          <option defaultValue="" selected={eval(nameSelect) === ''} disabled>{type}</option>
+          <option defaultValue="" selected={window[nameSelect] === ''} disabled>{type}</option>
           <option value="">{selectEvery}</option>
-          {list.map(item => <option key={item['@id']} defaultValue={item['@id']} selected={eval(nameSelect) === item.name}>{item.name}</option>)}
+          {list.map(item => <option key={item['@id']} defaultValue={item['@id']} selected={window[nameSelect] === item.name}>{item.name}</option>)}
         </select>
       </div>
     );

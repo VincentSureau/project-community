@@ -20,8 +20,8 @@ const mapStateToProps = state => ({
 
 // == dispacth ==
 const mapDispatchToProps = dispatch => ({
-  getMemberWithId: (id) => {
-    dispatch(getMemberEdit(id));
+  getMemberWithId: (slug) => {
+    dispatch(getMemberEdit(slug));
   },
 
   onChangeInput: (name, value) => {

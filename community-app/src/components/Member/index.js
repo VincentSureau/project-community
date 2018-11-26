@@ -24,8 +24,7 @@ class Member extends React.Component {
   componentDidMount() {
     const { getMemberWithId, id } = this.props;
     // L'id est de type: capucine-bertin-650,
-    // on récupère uniquement les chiffres pour récupérer le membre
-    getMemberWithId(id.split('-')[2]);
+    getMemberWithId(id);
   }
 
   // Fonction qui permet de récupérer un élément imbriqué dans un objet à plusieurs niveaux
