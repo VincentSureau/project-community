@@ -31,11 +31,8 @@ import './app.scss';
 
 
 function allowedUser(slug) {
-  console.log(localStorage);
-  if (localStorage.connect_token !== undefined) {
-    const tokenDecoded = decode(localStorage.connect_token);
-    console.log(tokenDecoded);
-    if ((tokenDecoded.slugProject === slug) || (tokenDecoded.slugProfile === slug)) {
+  if (localStorage.getItem('connect_token') !== undefined) {
+    if ((localStorage.getItem('connectedMemberSlugMember') === slug) || (localStorage.getItem('connectedMemberSlugProject') === slug)) {
       return true;
     }
   }
@@ -60,7 +57,7 @@ class App extends React.Component {
           <Route
             path="/members/:slug/edit"
             exact
-            render={matchData => (console.log(allowedUser(matchData.match.params.slug))
+            render={matchData => (allowedUser(matchData.match.params.slug)
               ? <MemberEdit id={matchData.match.params.slug} />
               : <Redirect to="/login" />)}
           />
@@ -75,7 +72,7 @@ class App extends React.Component {
           <Route
             path="/projects/:slug/edit"
             exact
-            render={matchData => (console.log(allowedUser(matchData.match.params.slug))
+            render={matchData => (allowedUser(matchData.match.params.slug)
               ? <ProjectEdit id={matchData.match.params.slug} />
               : <Redirect to="/login" />)}
           />

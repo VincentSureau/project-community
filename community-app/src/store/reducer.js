@@ -103,10 +103,11 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case CONNECTED_MEMBER_RECEIVED: {
-      return {
-        ...state,
-        connectedMember: action.connectedMember,
-      };
+      localStorage.setItem('connectedMemberFirstName', action.connectedMember.firstname);
+      localStorage.setItem('connectedMemberLastName', action.connectedMember.lastname);
+      localStorage.setItem('connectedMemberSlugMember', action.connectedMember.slug);
+      localStorage.setItem('connectedMemberSlugProject', action.connectedMember.project.slug);
+      return { ...state };
     }
 
     // Projects
