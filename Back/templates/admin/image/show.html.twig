@@ -36,6 +36,14 @@
                 <th>Image de couverture</th>
                 <td>{{ image.isHero ? 'Oui' : 'Non' }}</td>
             </tr>
+            <tr>
+                <th>Id du projet</th>
+                <td>{{ image.project.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom du projet du projet</th>
+                <td><a href="{{ path('project_show', {id: image.project.id}) }}">{{ image.project.name }}</a></td>
+            </tr>
         </tbody>
     </table>
 
