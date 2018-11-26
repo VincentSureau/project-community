@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Navbar from 'src/components/Navbar';
 
 // action creators
-import { disconnectMember } from 'src/store/actions/loginActions';
+import { disconnectMember, connectMember } from 'src/store/actions/loginActions';
 
 // == state ==
 const mapStateToProps = state => ({
@@ -16,6 +16,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   disconnectMember: () => {
     dispatch(disconnectMember());
+  },
+  connectMember: () => {
+    dispatch(connectMember());
   },
 });
 

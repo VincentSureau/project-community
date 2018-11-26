@@ -28,7 +28,7 @@ class Home extends React.Component {
     const { getHomeData } = this.props;
     getHomeData();
     this.Auth = new AuthService();
-    this.Auth.getToken();
+    console.log(this.Auth.getToken());
   }
 
   render() {
