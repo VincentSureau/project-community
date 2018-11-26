@@ -6,6 +6,7 @@ import decode from 'jwt-decode';
 import {
   POST_LOGIN,
   receivedToken,
+  connectMember,
 } from 'src/store/actions/loginActions';
 
 const API_URL = 'http://127.0.0.1:8001';
@@ -26,6 +27,9 @@ const login = store => next => (action) => {
         .then((response) => {
           console.log('Connexion: ', decode(response.data.token));
           store.dispatch(receivedToken(response.data.token));
+          localStorage.setItem('connect_token', response.data.token);
+          window.history.back();
+          store.dispatch(connectMember());
         })
         // echec
         .catch((error) => {
@@ -41,5 +45,6 @@ const login = store => next => (action) => {
   // Passe à ton voisin
   next(action);
 };
+
 
 export default login;

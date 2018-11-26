@@ -20,6 +20,7 @@ const initialState = {
   listPromo: [],
   listStatus: [],
   value: {},
+  isConnected: false,
 };
 
 export default initialState;

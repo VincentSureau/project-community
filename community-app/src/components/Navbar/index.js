@@ -4,6 +4,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import ClassNames from 'classnames';
+import AuthService from 'src/components/AuthService';
 import {
   Collapse,
   Navbar,
@@ -17,11 +18,27 @@ import {
 class ReactStrapNavbar extends React.Component {
   constructor(props) {
     super(props);
-
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false,
     };
+  }
+
+  componentDidUpdate() {
+    this.Auth = new AuthService();
+    this.connect = false;
+    if (this.Auth.loggedIn()) {
+      this.connect = true;
+    }
+  }
+
+  disconnect() {
+    this.Auth = new AuthService();
+    this.Auth.logout();
+    const { disconnectMember } = this.props;
+    if (this.Auth.getToken()) {
+      disconnectMember();
+    }
   }
 
   toggle() {
@@ -49,7 +66,8 @@ class ReactStrapNavbar extends React.Component {
       ? `bg-${classcolor}`
       : 'bg-notfound-navfoot';
 
-    const { isOpen } = this.state;
+    const { isOpen, isConnected } = this.state;
+
     return (
       <div id="navbar">
         <Navbar className={classNavBar} expand="md">
@@ -66,7 +84,8 @@ class ReactStrapNavbar extends React.Component {
             <Nav className="navbar-nav">
               <NavLink activeClassName="" className="nav-item nav-link text-white" exact to="/projects">Projets</NavLink>
               <NavLink activeClassName="" className="nav-item nav-link text-white" exact to="/members">Etudiants</NavLink>
-              <NavLink activeClassName="" className="btn btn-outline-white mx-3 btn-border-radius" exact to="/login">Me connecter</NavLink>
+              {(!isConnected) && <NavLink activeClassName="" className="btn btn-outline-white mx-3 btn-border-radius" exact to="/login">Me connecter</NavLink>}
+              {(isConnected) && <ReactStrapLink className="btn btn-outline-white mx-3 btn-border-radius" onClick={() => this.disconnect()}>Me déconnecter</ReactStrapLink>}
               <Collapse isOpen={isOpen} navbar>
                 <UncontrolledDropdown nav inNavbar>
                   <DropdownToggle nav caret className="nav-item nav-link text-white">
