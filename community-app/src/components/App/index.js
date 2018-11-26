@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 /**
  * Local import
  */
@@ -27,56 +27,68 @@ import './app.scss';
 /**
  * Code
  */
-const App = () => (
-  <div className="bg-accueil" id="app">
-    <Navbar />
-    <Switch>
-      <Route path="/" exact render={() => <Home />} />
-      <Route path="/login" exact render={() => <Login />} />
-      <Route path="/projects" exact render={() => <Projects />} />
-      <Route path="/members" exact render={() => <Members />} />
-      {/* <Route path="/oclock" exact render={() => <Oclock />} /> */}
-      <Route
-        path="/members/:slug/edit"
-        exact
-        render={(matchData) => {
-          const { slug } = matchData.match.params;
-          return <MemberEdit id={slug} />;
-        }}
-      />
-      <Route
-        path="/members/:slug"
-        exact
-        render={(matchData) => {
-          const { slug } = matchData.match.params;
-          return <Member id={slug} />;
-        }}
-      />
-      <Route
-        path="/projects/:slug/edit"
-        exact
-        render={(matchData) => {
-          const { slug } = matchData.match.params;
-          return <ProjectEdit id={slug} />;
-        }}
-      />
-      <Route
-        path="/projects/:slug"
-        exact
-        render={(matchData) => {
-          const { slug } = matchData.match.params;
-          return <Project id={slug} />;
-        }}
-      />
-      <Route path="/projects/titre-1/edit" exact render={() => <ProjectEdit />} />
+class App extends React.Component {
+  componentDidUpdate() {
+    const { changePageLog } = this.props;
+    changePageLog(window.location.pathname);
+  }
 
-      {/* Page 404 */}
-      <Route component={NotFound} />
-    </Switch>
-    <Footer />
-  </div>
+  render() {
+    return (
+      <div className="bg-accueil" id="app">
+        <Navbar />
+        <Switch>
+          <Route path="/" exact render={() => <Home />} />
+          <Route path="/login" exact render={() => <Login />} />
+          <Route path="/projects" exact render={() => <Projects />} />
+          <Route path="/members" exact render={() => <Members />} />
+          {/* <Route path="/oclock" exact render={() => <Oclock />} /> */}
+          <Route
+            path="/members/:slug/edit"
+            exact
+            render={(matchData) => {
+              const { slug } = matchData.match.params;
+              return <MemberEdit id={slug} />;
+            }}
+          />
+          <Route
+            path="/members/:slug"
+            exact
+            render={(matchData) => {
+              const { slug } = matchData.match.params;
+              return <Member id={slug} />;
+            }}
+          />
+          <Route
+            path="/projects/:slug/edit"
+            exact
+            render={(matchData) => {
+              const { slug } = matchData.match.params;
+              return <ProjectEdit id={slug} />;
+            }}
+          />
+          <Route
+            path="/projects/:slug"
+            exact
+            render={(matchData) => {
+              const { slug } = matchData.match.params;
+              return <Project id={slug} />;
+            }}
+          />
+          <Route path="/projects/titre-1/edit" exact render={() => <ProjectEdit />} />
 
-);
+          {/* Page 404 */}
+          <Route component={NotFound} />
+        </Switch>
+        <Footer />
+      </div>
+    );
+  }
+}
+
+App.propTypes = {
+  changePageLog: PropTypes.func.isRequired,
+};
 
 /**
  * Export

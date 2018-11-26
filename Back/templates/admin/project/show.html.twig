@@ -44,6 +44,24 @@
                     <th>Lien de la vidéo</th>
                     <td>{{ project.linkVideo }}</td>
                 </tr>
+                <tr>
+                    <th>Les images du projet</th>
+                    <td>
+                        {% for images in project.images %}    
+                            <a href="{{ path('image_show', {id: images.id}) }}"><img class="image_for_list" src="{{ images.imageLink }}" alt="project_image"></a>
+                        {% endfor %}  
+                    </td>
+                </tr>
+                <tr>
+                    <th>Les étudiants</th>
+                    <td>
+                        {% for user in project.appUsers %}    
+                            <ul><li><a href="{{ path('app_user_show', {id: user.id}) }}">{{ user.firstname ~ ' ' ~ user.lastname }}</a></li></ul>
+                        {% else %}
+                            N/A
+                        {% endfor %}
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>

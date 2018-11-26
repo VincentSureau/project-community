@@ -6,13 +6,15 @@ import Navbar from 'src/components/Navbar';
 
 // action creators
 import { disconnectMember, connectMember } from 'src/store/actions/loginActions';
+
 import { getConnectedMember } from 'src/store/actions/membersActions';
+
 
 // == state ==
 const mapStateToProps = state => ({
   isConnected: state.isConnected,
-  page: state.page,
   connectedMember: state.connectedMember,
+  page: state.actualPage,
 });
 
 // == dispacth ==

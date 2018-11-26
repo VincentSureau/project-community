@@ -89,6 +89,22 @@
                     <th>Slug</th>
                     <td>{{ app_user.slug }}</td>
                 </tr>
+                <tr>
+                    <th>Promotion</th>
+                    {% if app_user.promotion %}
+                        <td><a href="{{ path('promotion_show', {id: app_user.promotion.id}) }}">{{ app_user.promotion.name }}</a></td>
+                    {% else %}
+                        <td>N/A</td>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <th>Projet</th>
+                    {% if app_user.project %}
+                        <td><a href="{{ path('project_show', {id: app_user.project.id}) }}">{{ app_user.project.name }}</a></td>
+                    {% else %}
+                        <td>N/A</td>
+                    {% endif %}
+                </tr>
             </tbody>
         </table>
     </div>

@@ -44,8 +44,13 @@ class SpecialisationController extends AbstractController
             $em->persist($specialisation);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'La spécialisation ' . $specialisation->getName() . ' a été ajoutée'
+            ); 
+
             return $this->redirectToRoute('specialisation_index');
-        }
+        }  
 
         return $this->render('admin/specialisation/new.html.twig', [
             'specialisation' => $specialisation,
@@ -72,9 +77,14 @@ class SpecialisationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'success',
+                'La spécialisation ' . $specialisation->getName() . ' a été modifiée'
+            );   
+
             return $this->redirectToRoute('specialisation_index', ['id' => $specialisation->getId()]);
         }
-
+        
         return $this->render('admin/specialisation/edit.html.twig', [
             'specialisation' => $specialisation,
             'form' => $form->createView(),
@@ -90,6 +100,12 @@ class SpecialisationController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->remove($specialisation);
             $em->flush();
+
+            $this->addFlash(
+                'danger',
+                'La spécialisation ' . $specialisation->getName() . ' a été supprimée'
+            );  
+        
         }
 
         return $this->redirectToRoute('specialisation_index');

@@ -44,8 +44,14 @@ class CompetenceController extends AbstractController
             $em->persist($competence);
             $em->flush();
 
+            $this->addFlash(
+                'success',
+                'La compétence ' . $competence->getName() . ' a été ajoutée'
+            );
+
             return $this->redirectToRoute('competence_index');
         }
+
 
         return $this->render('admin/competence/new.html.twig', [
             'competence' => $competence,
@@ -72,8 +78,14 @@ class CompetenceController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash(
+                'success',
+                'La compétence ' . $competence->getName() . ' a été modifiée'
+            );
+
             return $this->redirectToRoute('competence_index', ['id' => $competence->getId()]);
         }
+
 
         return $this->render('admin/competence/edit.html.twig', [
             'competence' => $competence,
@@ -90,9 +102,12 @@ class CompetenceController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->remove($competence);
             $em->flush();
-            
+         
+            $this->addFlash(
+                'danger',
+                'La compétence ' . $competence->getName() . ' a été supprimée'
+            );
         }
-
         return $this->redirectToRoute('competence_index');
     }
 }

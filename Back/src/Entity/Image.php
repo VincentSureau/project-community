@@ -38,6 +38,7 @@ class Image
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="images")
+     * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $project;
 
