@@ -40,7 +40,7 @@ class AuthService extends React.Component {
         return true;
       }
       this.logout();
-      window.history.pushState('/login');
+      window.location.replace('/');
       return false;
     }
     catch (err) {
