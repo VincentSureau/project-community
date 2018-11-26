@@ -4,7 +4,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import serialize from 'form-serialize';
+import serialize from '../../functions/Serialize';
 
 /**
  * Local import
@@ -27,7 +27,7 @@ class MemberEdit extends React.Component {
     } = this.props;
     // L'id est de type: capucine-bertin-650,
     // on récupère uniquement les chiffres pour récupérer le membre
-    getMemberWithId(id.split('-')[2]);
+    getMemberWithId(id);
     getCompetences();
     getProStatus();
   }
@@ -83,12 +83,13 @@ class MemberEdit extends React.Component {
 
     return (
       <div id="memberedit">
-        <form onSubmit={e => this.handleSubmit(e)}>
+        <form action="post" onSubmit={e => this.handleSubmit(e)}>
           <input hidden name="id" value={member.id} />
           <section id="memberedit-form" className="d-flex flex-column justify-content-center align-items-center bg-member">
             <div className="row justify-content-center align-items-center">
               <img src={member.profilePicture} className="singlemember-photo" alt="" />
-              <input className="mx-2" type="file" name="profile_pic" accept=".jpg, .jpeg, .png" />
+              {/*<input className="mx-2" type="file" name="profile_pic" accept=".jpg, .jpeg, .png" />*/}
+              <input className="col-5 input-text" type="text" name="profilePicture" placeholder="lien web de l'image" onChange={e => this.onChangeInput(e)} />
             </div>
             <p className="singlemember-name">{member.firstname}</p>
             <p className="singlemember-name name-to-disapear">{member.lastname}</p>
@@ -117,9 +118,10 @@ class MemberEdit extends React.Component {
                     ? competences.map(competence => (
                       <div className="form-check-label" key={competence['@id']}>
                         <input
-                          name={this.getNestedObject(competence, ['@id'])}
+                          name="competences[]"
                           onChange={e => this.onChangeCheckbox(e)}
                           defaultChecked={(competencesMember.map(competenceMember => (competenceMember['@id'] === this.getNestedObject(competence, ['@id']))).filter(response => response === true)[0])}
+                          defaultValue={this.getNestedObject(competence, ['@id'])}
                           type="checkbox"
                           className="form-check-input"
                         />
@@ -134,12 +136,12 @@ class MemberEdit extends React.Component {
               <p className="label col-5">Status professionnel: </p>
 
               <div>
-                <select id="selectinput-select" className="w-100 text-white" name="status" onChange={e => this.onChangeInput(e)} >
+                <select id="selectinput-select" className="w-100 text-white" name="professionalStatus" onChange={e => this.onChangeInput(e)} >
                   {(status != null)
                     ? status.map(singleStatus => (
                       <option
-                        key={this.getNestedObject(singleStatus, ['id'])}
-                        value={this.getNestedObject(singleStatus, ['name'])}
+                        key={this.getNestedObject(singleStatus, ['@id'])}
+                        value={this.getNestedObject(singleStatus, ['@id'])}
                         selected={value.status === this.getNestedObject(singleStatus, ['name'])}
                       >
                         {this.getNestedObject(singleStatus, ['name'])}

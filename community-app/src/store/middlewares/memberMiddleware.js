@@ -41,12 +41,12 @@ const memberMiddleware = store => next => (action) => {
     case GET_MEMBER:
       axios({
         method: 'get',
-        url: `${API_URL}/app_users/${action.id}`,
+        url: `${API_URL}/app_users/?slug=${action.slug}`,
         responseType: 'json',
       })
         // succes
         .then((response) => {
-          const member = response.data;
+          const member = response.data['hydra:member'][0];
           store.dispatch(memberReceived(member));
         })
         // echec
@@ -59,12 +59,12 @@ const memberMiddleware = store => next => (action) => {
     case GET_MEMBER_EDIT:
       axios({
         method: 'get',
-        url: `${API_URL}/app_users/${action.id}`,
+        url: `${API_URL}/app_users/?slug=${action.slug}`,
         responseType: 'json',
       })
         // succes
         .then((response) => {
-          const member = response.data;
+          const member = response.data['hydra:member'][0];
           store.dispatch(memberEditReceived(member));
         })
         // echec

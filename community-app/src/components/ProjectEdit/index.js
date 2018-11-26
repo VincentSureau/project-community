@@ -4,7 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import uuid from 'uuid/v4';
-import serialize from 'form-serialize';
+import serialize from '../../functions/Serialize';
 
 /**
  * Local import
@@ -20,6 +20,7 @@ import './projectEdit.scss';
 class ProjectEdit extends React.Component {
   componentDidMount() {
     const { getProjectWithId, id, getCompetences } = this.props;
+    // L'id est le slug de la barre d'adresse.
     getProjectWithId(id);
     getCompetences();
   }
@@ -76,7 +77,7 @@ class ProjectEdit extends React.Component {
       return (
         <div id="projectEdit">
           <form onSubmit={e => this.handleSubmit(e)}>
-            <input hidden name="id" value={project.id} />
+            <input hidden disabled name="id" value={project.id} />
             <section id="projectedit-form" className="d-flex flex-column justify-content-center align-items-center bg-project">
 
               <h1>{project.name}</h1>
@@ -85,12 +86,24 @@ class ProjectEdit extends React.Component {
                   <img src={heroImage[0].imageLink} alt="" />
                 </div>
               </div>
-              <input className="mx-2" type="file" name="project-heroimage" accept=".jpg, .jpeg, .png" />
+              <input
+                className="mx-2 input-text ishero"
+                type="text"
+                id={heroImage[0]['@id']}
+                name="/images"
+                // defaultValue={heroImage[0].imageLink}
+              />
               <div id="projectedit-form-gallery" className="row">
-                {images.map((image, i) => (
+                {images.map(image => (
                   <div id="projectedit-form-gallery-imagechange" className="col-4" key={uuid()}>
                     <img src={image.imageLink} alt="" />
-                    <input className="" type="file" name={`project-image${i + 1}`} accept=".jpg, .jpeg, .png" />
+                    <input
+                      className="input-text"
+                      type="text"
+                      id={image['@id']}
+                      name="/images"
+                      // defaultValue={image.imageLink}
+                    />
                   </div>
                 ))}
               </div>
@@ -106,11 +119,12 @@ class ProjectEdit extends React.Component {
                     {competences.map(competence => (
                       <div className="form-check-label" key={competence['@id']}>
                         <input
-                          name={this.getNestedObject(competence, ['@id'])}
+                          name="competences[]"
                           type="checkbox"
                           onChange={e => this.onChangeCheckbox(e)}
                           className="form-check-input"
                           defaultChecked={(competencesProject.map(competenceProject => (competenceProject['@id'] === this.getNestedObject(competence, ['@id']))).filter(response => response === true)[0])}
+                          defaultValue={this.getNestedObject(competence, ['@id'])}
                         />
                         {competence.name}
                       </div>

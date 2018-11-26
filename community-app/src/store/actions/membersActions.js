@@ -19,9 +19,9 @@ export const membersReceived = members => ({
   members,
 });
 
-export const getMember = id => ({
+export const getMember = slug => ({
   type: GET_MEMBER,
-  id,
+  slug,
 });
 
 export const memberReceived = member => ({
@@ -34,9 +34,9 @@ export const getMembersSpe = spe => ({
   spe,
 });
 
-export const getMemberEdit = id => ({
+export const getMemberEdit = slug => ({
   type: GET_MEMBER_EDIT,
-  id,
+  slug,
 });
 
 export const memberEditReceived = member => ({
