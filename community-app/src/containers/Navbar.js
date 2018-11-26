@@ -5,12 +5,12 @@ import { connect } from 'react-redux';
 import Navbar from 'src/components/Navbar';
 
 // action creators
-import { disconnectMember, connectMember, changePage } from 'src/store/actions/loginActions';
+import { disconnectMember, connectMember } from 'src/store/actions/loginActions';
 
 // == state ==
 const mapStateToProps = state => ({
   isConnected: state.isConnected,
-  page: state.page,
+  page: state.actualPage,
 });
 
 // == dispacth ==
@@ -21,9 +21,7 @@ const mapDispatchToProps = dispatch => ({
   connectMember: () => {
     dispatch(connectMember());
   },
-  changePage: () => {
-    dispatch(changePage());
-  },
+
 });
 
 

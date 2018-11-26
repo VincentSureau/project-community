@@ -4,6 +4,7 @@ import initialState from './initialState';
 // Types
 // Navbar
 export const GET_ISCONNECTED = 'GET_ISCONNECTED';
+export const CHANGE_PAGE = 'CHANGE_PAGE';
 
 // Form
 export const CHANGE_INPUT = 'CHANGE_INPUT';
@@ -189,6 +190,13 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isConnected: false,
+      };
+
+    // NavBar
+    case CHANGE_PAGE:
+      return {
+        ...state,
+        actualPage: action.pathname,
       };
 
     // Action non-reconnue

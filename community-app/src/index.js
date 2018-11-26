@@ -14,7 +14,7 @@ import { BrowserRouter as Router, withRouter } from 'react-router-dom';
  * Local import
  */
 // Composant
-import App from 'src/components/App';
+import App from 'src/containers/App';
 // store
 import store from 'src/store';
 
