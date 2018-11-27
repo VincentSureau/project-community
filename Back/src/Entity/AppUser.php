@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiSubresource;
+use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -37,6 +37,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *         },
  *         "get",
  *         "post"={"access_control"="is_granted('ROLE_COMMUNITY_ADMIN')"}
+ *     },
+ *     itemOperations={
+ *         "get",
+ *         "put"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object.owner == user", "access_control_message"="Désolé mais tu ne peux modifier que ton profil !"},
+ *         "delete"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object.owner == user", "access_control_message"="Désolé mais tu ne peux pas supprimer un autre utilisateur"}
  *     },
  * )
  * @ApiFilter(SearchFilter::class, properties={"slug": "iexact"})
