@@ -19,7 +19,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ApiResource(
  *     attributes={
- *         "normalization_context"={"groups"={"project"}}
+ *         "normalization_context"={"groups"={"project"}},
+ *         "denormalizationContext"={"groups"={"projectWrite"}}
  *     },
  *     collectionOperations={
  *         "get",
@@ -45,7 +46,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Project
 {
     /**
-     * @Groups({"project"})
+     * @Groups({"project", "projectWrite"})
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -53,7 +54,7 @@ class Project
     private $id;
 
     /**
-     * @Groups({"user", "ProjectList", "project"})
+     * @Groups({"user", "ProjectList", "project", "projectWrite"})
      * @ORM\Column(type="string", length=120)
      * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
      * @Assert\Length(
@@ -64,13 +65,13 @@ class Project
     private $name;
 
     /**
-     * @Groups({"project"})
+     * @Groups({"project", "projectWrite"})
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
 
     /**
-     * @Groups({"ProjectList", "project"})
+     * @Groups({"ProjectList", "project", "projectWrite"})
      * @ORM\Column(type="boolean")
      */
     private $isActive;
@@ -89,7 +90,7 @@ class Project
     private $slug;
 
     /**
-     * @Groups({"project"})
+     * @Groups({"project", "projectWrite"})
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Url(
      *     message = "L'url '{{ value }}  n'est pas une url valide",
@@ -99,7 +100,7 @@ class Project
     private $linkProject;
 
     /**
-     * @Groups({"project"})
+     * @Groups({"project", "projectWrite"})
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Url(
      *     message = "L'url '{{ value }}  n'est pas une url valide",
@@ -122,13 +123,13 @@ class Project
     private $promotion;
 
     /**
-     * @Groups({"user", "project", "ProjectList"})
-     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="project")
+     * @Groups({"user", "project", "ProjectList", "projectWrite"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="project", cascade={"persist"})
      */
     private $images;
 
     /**
-     * @Groups({"project"})
+     * @Groups({"project", "projectWrite"})
      * @ORM\ManyToMany(targetEntity="App\Entity\Competence", inversedBy="projects")
      */
     private $competences;
@@ -283,9 +284,9 @@ class Project
 
     public function addImage(Image $image): self
     {
+        $image->setProject($this);
         if (!$this->images->contains($image)) {
             $this->images[] = $image;
-            $image->setProject($this);
         }
 
         return $this;
