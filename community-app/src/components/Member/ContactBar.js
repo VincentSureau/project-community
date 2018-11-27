@@ -33,15 +33,14 @@ const ContactBar = ({
   linkGithub,
   linkPersonal,
 }) => (
-
   <div id="member-info-contactbar" className="row mx-auto">
     <div className="col-4 d-flex justify-content-end align-items-end pb-4">
       {/* On affiche les icones uniquement si les champs ont été renseignés par le membre */}
-      {email !== '' && <a href={`mailto:${email}`}><FaRegEnvelope className="text-white" /></a>}
-      {phoneNumber !== '' && <a href={`tel:${phoneNumber}`}><FaPhone className="text-white" /></a>}
-      {linkGithub !== '' && <a href={linkGithub}><FaGithub className="text-white" /></a>}
-      {linkLinkedin !== '' && <a href={linkLinkedin}><FaLinkedinIn className="text-white" /></a>}
-      {linkPersonal !== '' && <a href={linkPersonal}><FaDesktop className="text-white" /></a>}
+      {email !== null && <a href={`mailto:${email}`}><FaRegEnvelope className="text-white" /></a>}
+      {phoneNumber !== null && <a href={`tel:${phoneNumber}`}><FaPhone className="text-white" /></a>}
+      {linkGithub !== null && <a href={linkGithub}><FaGithub className="text-white" /></a>}
+      {linkLinkedin !== null && <a href={linkLinkedin}><FaLinkedinIn className="text-white" /></a>}
+      {linkPersonal !== null && <a href={linkPersonal}><FaDesktop className="text-white" /></a>}
     </div>
     <div className="col-4">
       <ArrowDown />
@@ -52,12 +51,11 @@ const ContactBar = ({
       <span id="member-info-contactbar-localisation" className="text-white">{`${city}, ${zipcode}`}</span>
     </div>)}
   </div>
-
 );
 
 ContactBar.propTypes = {
   city: PropTypes.string,
-  zipcode: PropTypes.number,
+  zipcode: PropTypes.string,
   email: PropTypes.string,
   phoneNumber: PropTypes.string,
   linkLinkedin: PropTypes.string,
