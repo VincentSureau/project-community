@@ -17,7 +17,7 @@ export const MEMBER_RECEIVED = 'MEMBER_RECEIVED';
 export const GET_MEMBERS_SPE = 'GET_MEMBERS_SPE';
 export const MEMBERS_HOME_RECEIVED = 'MEMBERS_HOME_RECEIVED';
 export const MEMBER_EDIT_RECEIVED = 'MEMBER_EDIT_RECEIVED';
-export const CONNECTED_MEMBER_RECEIVED = 'CONNECTED_MEMBER_RECEIVED';
+// export const CONNECTED_MEMBER_RECEIVED = 'CONNECTED_MEMBER_RECEIVED';
 
 // Projects
 export const PROJECTS_RECEIVED = 'PROJECTS_RECEIVED';
@@ -104,19 +104,21 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
 
+
     case MEMBER_EDITED:
       return {
         ...state,
         editFormSend: true,
       };
 
-    case CONNECTED_MEMBER_RECEIVED: {
-      localStorage.setItem('connectedMemberFirstName', action.connectedMember.firstname);
-      localStorage.setItem('connectedMemberLastName', action.connectedMember.lastname);
-      localStorage.setItem('connectedMemberSlugMember', action.connectedMember.slug);
-      localStorage.setItem('connectedMemberSlugProject', action.connectedMember.project.slug);
-      return { ...state };
-    }
+      // case CONNECTED_MEMBER_RECEIVED: {
+      //   // localStorage.setItem('connectedMemberFirstName', action.connectedMember.firstname);
+      //   // localStorage.setItem('connectedMemberLastName', action.connectedMember.lastname);
+      //   // localStorage.setItem('connectedMemberSlugMember', action.connectedMember.slug);
+      //   // localStorage.setItem('connectedMemberSlugProject', action.connectedMember.project.slug);
+      //   return { ...state };
+      // }
+
 
     // Projects
     case PROJECTS_RECEIVED:

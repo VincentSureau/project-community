@@ -12,8 +12,8 @@ import {
   PUT_MEMBER,
   DELETE_MEMBER,
   GET_CONNECTED_MEMBER,
-  connectedMemberReceived,
   memberEdited,
+  // connectedMemberReceived,
 } from 'src/store/actions/membersActions';
 
 const API_URL = 'http://127.0.0.1:8001';
@@ -113,8 +113,12 @@ const memberMiddleware = store => next => (action) => {
       })
         // succes
         .then((response) => {
-          const connectedMember = response.data;
-          store.dispatch(connectedMemberReceived(connectedMember));
+          // const connectedMember = response.data;
+          localStorage.setItem('connectedMemberFirstName', response.data.firstname);
+          localStorage.setItem('connectedMemberLastName', response.data.lastname);
+          localStorage.setItem('connectedMemberSlugMember', response.data.slug);
+          localStorage.setItem('connectedMemberSlugProject', response.data.project.slug);
+          // store.dispatch(connectedMemberReceived(connectedMember));
         })
         // echec
         .catch((error) => {
