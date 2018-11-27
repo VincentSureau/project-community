@@ -44,7 +44,8 @@
                         </div>
 
                     <td>{{ image.isHero ? 'Oui' : 'Non' }}</td>
-                    <td>{{ image.project.name }}</td>
+                    <td>{{ image.project.name|default('N/A') }} 
+                    </td>
                     <td>
                         <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="Afficher" href="{{ path('image_show', {'id': image.id}) }}"><i class="fas fa-search"></i></a>
                         <a class="btn btn-link  p-0"  data-toggle="tooltip" data-placement="top" title="Modifier" href="{{ path('image_edit', {'id': image.id}) }}"><i class="fas fa-edit"></i></a>
