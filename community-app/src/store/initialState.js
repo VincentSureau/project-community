@@ -24,6 +24,7 @@ const initialState = {
   // connectedMember: {},
   actualPage: window.location.pathname,
   editFormSend: false,
+  slug: '',
 };
 
 export default initialState;

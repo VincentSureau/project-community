@@ -252,7 +252,6 @@ function hash_serializer(result, key, value, element) {
           if (key === '/images') {
             const valueObject = {
               '@id': element.id,
-              '@type': 'Image',
               'imageLink': value,
               'isHero': element.className.includes('ishero'),
             };
@@ -266,7 +265,6 @@ function hash_serializer(result, key, value, element) {
         if (key === '/images') {
           const valueObject = {
             '@id': element.id,
-            '@type': 'Image',
             'imageLink': value,
             'isHero': element.className.includes('ishero'),
           };
