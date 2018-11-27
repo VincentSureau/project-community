@@ -11,6 +11,8 @@ import { getMember } from 'src/store/actions/membersActions';
 const mapStateToProps = state => ({
   member: state.member,
   memberID: state.memberID,
+  page: state.actualPage,
+  previousSlug: state.slug,
 });
 
 // == dispacth ==

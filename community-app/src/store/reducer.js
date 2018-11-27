@@ -1,7 +1,7 @@
 // initial state
 import initialState from './initialState';
-import { MEMBER_EDITED } from './actions/membersActions';
-import { PROJECT_EDITED } from './actions/projectsActions';
+import { MEMBER_EDITED, GET_MEMBER } from './actions/membersActions';
+import { PROJECT_EDITED, GET_PROJECT } from './actions/projectsActions';
 // Types
 // Navbar
 export const GET_ISCONNECTED = 'GET_ISCONNECTED';
@@ -58,6 +58,12 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     // Members
+    case GET_MEMBER:
+      return {
+        ...state,
+        slug: action.slug,
+      };
+    
     case MEMBERS_RECEIVED:
       return {
         ...state,
@@ -128,6 +134,12 @@ const reducer = (state = initialState, action = {}) => {
         project: {},
       };
 
+    case GET_PROJECT:
+      return {
+        ...state,
+        slug: action.id,
+      };
+      
     case PROJECT_RECEIVED:
       return {
         ...state,
