@@ -132,7 +132,7 @@ class AppUserController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $mailGenerator->resetPassword($appUser);
             $encodedPassword = $this->passwordEncoder->encodePassword($appUser, $appUser->getPassword());
-            $user->setPassword($encodedPassword);
+            $appUser->setPassword($encodedPassword);
             $em->flush();
                 $this->addFlash(
                     'success',
