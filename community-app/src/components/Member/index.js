@@ -67,12 +67,16 @@ class Member extends React.Component {
                 professionalStatus={professionalstatus}
                 competences={competences}
               />
-              <ProjectLink
-                projectName={projectname}
-                projectId={projectid}
-                projectImages={projectimages}
-                projectSlug={projectslug}
-              />
+              {member.project &&
+                (
+                  <ProjectLink
+                    projectName={projectname}
+                    projectId={projectid}
+                    projectImages={projectimages}
+                    projectSlug={projectslug}
+                  />
+                )
+              }
             </div>
           )
           : <p>Loading</p>
