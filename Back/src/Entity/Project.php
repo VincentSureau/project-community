@@ -18,10 +18,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
- *     attributes={
- *         "normalization_context"={"groups"={"project"}},
- *         "denormalizationContext"={"groups"={"projectWrite"}}
- *     },
+ *     normalizationContext={"groups"={"project"}},
+ *     denormalizationContext={"groups"={"projectWrite"}},
  *     collectionOperations={
  *         "get",
  *         "list"={
@@ -37,7 +35,15 @@ use Symfony\Component\Validator\Constraints as Assert;
  *             "normalization_context"={"groups"={"ProjectList"}},
  *         },
  *         "post"
- *     }
+ *     },
+ *     itemOperations={
+ *         "put"={
+ *             "normalization_context"={"groups"={"projectWrite"}}
+ *         },
+ *        "get"={
+ *             "normalization_context"={"groups"={"project"}}
+ *         }
+ *      }
  * )
  * @ApiFilter(SearchFilter::class, properties={"slug": "iexact"})
  * 
@@ -46,91 +52,91 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Project
 {
     /**
-     * @Groups({"project", "projectWrite"})
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups({"project", "projectWrite"})
      */
     private $id;
 
     /**
-     * @Groups({"user", "ProjectList", "project", "projectWrite"})
      * @ORM\Column(type="string", length=120)
      * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
      * @Assert\Length(
      *      max = 120,
      *      maxMessage = "Le nom du projet ne doit pas dépasser {{ limit }} caractères"
      * )
+     * @Groups({"user", "ProjectList", "project", "projectWrite"})
      */
     private $name;
 
     /**
-     * @Groups({"project", "projectWrite"})
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"project", "projectWrite"})
      */
     private $description;
 
     /**
-     * @Groups({"ProjectList", "project", "projectWrite"})
      * @ORM\Column(type="boolean")
+     * @Groups({"ProjectList", "project", "projectWrite"})
      */
     private $isActive;
 
     /**
-     * @Groups({"project"})
      * @ORM\Column(type="datetime")
+     * @Groups({"project"})
      */
     private $createdDate;
 
     /**
-     * @Groups({"project", "AppUserList", "ProjectList", "user"})
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(type="string", length=150, nullable=true)
+     * @Groups({"project", "AppUserList", "ProjectList", "user"})
      */
     private $slug;
 
     /**
-     * @Groups({"project", "projectWrite"})
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Url(
      *     message = "L'url '{{ value }}  n'est pas une url valide",
      *     protocols = {"http", "https"}
      * )
+     * @Groups({"project", "projectWrite"})
      */
     private $linkProject;
 
     /**
-     * @Groups({"project", "projectWrite"})
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\Url(
      *     message = "L'url '{{ value }}  n'est pas une url valide",
      *     protocols = {"http", "https"}
      * )
+     * @Groups({"project", "projectWrite"})
      */
     private $linkVideo;
 
     /**
-     * @Groups({"project", "ProjectList"})
      * @ORM\OneToMany(targetEntity="App\Entity\AppUser", mappedBy="project")
+     * @Groups({"project", "ProjectList"})
      */
     private $appUsers;
 
     /**
-     * @Groups({"project","ProjectList"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Promotion", inversedBy="projects")
      * @ORM\JoinColumn(onDelete="SET NULL")
+     * @Groups({"project","ProjectList"})
      */
     private $promotion;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="project", cascade={"persist", "remove"}, orphanRemoval=true)
      * @Groups({"user", "project", "ProjectList", "projectWrite"})
-     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="project", cascade={"persist"})
      */
     private $images;
 
     /**
-     * @Groups({"project", "projectWrite"})
      * @ORM\ManyToMany(targetEntity="App\Entity\Competence", inversedBy="projects")
+     * @Groups({"project", "projectWrite"})
      */
     private $competences;
 
@@ -282,11 +288,20 @@ class Project
         return $this->images;
     }
 
+    public function setImage(Image $image)
+    {
+        
+    }
+
     public function addImage(Image $image): self
     {
-        $image->setProject($this);
+        
         if (!$this->images->contains($image)) {
             $this->images[] = $image;
+            $image->setProject($this);
+        } else {
+            $em->persist($image);
+            $em->flush();
         }
 
         return $this;

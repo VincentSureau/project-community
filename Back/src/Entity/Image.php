@@ -9,9 +9,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
- *     attributes={
- *         "denormalizationContext"={"groups"={"projectWrite"}}
- *     },
+ *     normalizationContext={"groups"={"project"}},
+ *     denormalizationContext={"groups"={"projectWrite"}},
  * )
  * @ORM\Entity(repositoryClass="App\Repository\ImageRepository")
  */
@@ -35,8 +34,8 @@ class Image
     private $imageLink;
 
     /**
-     * @Groups({"user","project", "ProjectList", "projectWrite"})
      * @ORM\Column(type="boolean")
+     * @Groups({"user","project", "ProjectList", "projectWrite"})
      */
     private $isHero;
 
