@@ -10,6 +10,8 @@ import { getProject } from 'src/store/actions/projectsActions';
 // == state ==
 const mapStateToProps = state => ({
   project: state.project,
+  page: state.actualPage,
+  previousSlug: state.slug,
 });
 
 // == dispacth ==
