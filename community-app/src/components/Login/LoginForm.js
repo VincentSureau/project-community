@@ -38,7 +38,7 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    const { email, password } = this.props;
+    const { email, password, connectionError } = this.props;
     return (
       <form className="login-article-form d-flex flex-column align-self-center" onSubmit={this.handleSubmit}>
         <input
@@ -57,6 +57,9 @@ class LoginForm extends React.Component {
           placeholder="Mot de passe"
           onChange={this.handleChangePassword}
         />
+        {connectionError !== undefined
+          && <p className="alert alert-danger">{connectionError}</p>
+        }
         <button
           type="submit"
           className="btn btn-outline-white mx-3 btn-border-radius text-uppercase align-self-center mt-4"
@@ -73,6 +76,11 @@ LoginForm.propTypes = {
   password: PropTypes.string.isRequired,
   onChangeInput: PropTypes.func.isRequired,
   onSubmitLogin: PropTypes.func.isRequired,
+  connectionError: PropTypes.string,
+};
+
+LoginForm.defaultProps = {
+  connectionError: '',
 };
 /**
  * Export

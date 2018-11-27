@@ -41,6 +41,7 @@ export const SET_FILTER = 'SET_FILTER';
 export const RECEIVED_TOKEN = 'RECEIVED_TOKEN';
 export const CONNECT_MEMBER = 'CONNECT_MEMBER';
 export const DISCONNECT_MEMBER = 'DISCONNECT_MEMBER';
+export const ERROR_CONNEXION = 'ERROR_CONNEXION';
 
 // reducer
 const reducer = (state = initialState, action = {}) => {
@@ -228,6 +229,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isConnected: false,
+      };
+
+    case ERROR_CONNEXION:
+      return {
+        ...state,
+        connectionError: action.connectionError,
       };
 
     // NavBar
