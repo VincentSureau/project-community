@@ -77,7 +77,7 @@ class ProjectEdit extends React.Component {
       return (
         <div id="projectEdit">
           <form onSubmit={e => this.handleSubmit(e)}>
-            <input hidden disabled name="id" value={project.id} />
+            <input hidden disabled name="id" defaultValue={project.id} />
             <section id="projectedit-form" className="d-flex flex-column justify-content-center align-items-center bg-project">
 
               <h1>{project.name}</h1>
