@@ -22,7 +22,8 @@ const ProjectPresentation = ({ members, promotion, competences }) => (
       <img id="project-team-logo" src="/src/images/user-astronaut-solid.png" alt="" />
       <h1 className="text-white">La team</h1>
       <div id="project-team-list" className="row">
-        {members.map(member => (
+        {members.map(member => (member.isActive)
+        && (
           <SingleMember
             key={member.id}
             firstname={member.firstname}

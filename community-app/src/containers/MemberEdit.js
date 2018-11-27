@@ -16,6 +16,7 @@ const mapStateToProps = state => ({
   value: state.value,
   competences: state.competences,
   status: state.status,
+  editFormSend: state.editFormSend,
 });
 
 // == dispacth ==

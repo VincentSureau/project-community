@@ -205,7 +205,7 @@ class AppUser implements UserInterface
     private $linkPersonal;
 
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "project"})
      * @ORM\Column(type="boolean")
      */
     private $isActive;

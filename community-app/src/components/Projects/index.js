@@ -53,7 +53,7 @@ class Projects extends React.Component {
       listProjects = listProjects.filter(project => project.promotion.name ===`${filterPromoProjects}`);
     }
     if (filterTextProjects !== '' && listProjects !== null) {
-      listProjects = listProjects.filter(project => project.name.includes(filterTextProjects));
+      listProjects = listProjects.filter(project => project.name.toLowerCase().includes(filterTextProjects.toLowerCase()));
     }
     return (
       <div id="projects">

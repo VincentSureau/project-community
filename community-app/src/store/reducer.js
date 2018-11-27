@@ -1,6 +1,7 @@
 // initial state
 import initialState from './initialState';
-
+import { MEMBER_EDITED } from './actions/membersActions';
+import { PROJECT_EDITED } from './actions/projectsActions';
 // Types
 // Navbar
 export const GET_ISCONNECTED = 'GET_ISCONNECTED';
@@ -16,7 +17,7 @@ export const MEMBER_RECEIVED = 'MEMBER_RECEIVED';
 export const GET_MEMBERS_SPE = 'GET_MEMBERS_SPE';
 export const MEMBERS_HOME_RECEIVED = 'MEMBERS_HOME_RECEIVED';
 export const MEMBER_EDIT_RECEIVED = 'MEMBER_EDIT_RECEIVED';
-export const CONNECTED_MEMBER_RECEIVED = 'CONNECTED_MEMBER_RECEIVED';
+// export const CONNECTED_MEMBER_RECEIVED = 'CONNECTED_MEMBER_RECEIVED';
 
 // Projects
 export const PROJECTS_RECEIVED = 'PROJECTS_RECEIVED';
@@ -69,6 +70,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         listMembers: [],
         member: action.member,
+        editFormSend: false,
       };
 
     case GET_MEMBERS_SPE: {
@@ -102,12 +104,21 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
 
-    case CONNECTED_MEMBER_RECEIVED: {
+
+    case MEMBER_EDITED:
       return {
         ...state,
-        connectedMember: action.connectedMember,
+        editFormSend: true,
       };
-    }
+
+      // case CONNECTED_MEMBER_RECEIVED: {
+      //   // localStorage.setItem('connectedMemberFirstName', action.connectedMember.firstname);
+      //   // localStorage.setItem('connectedMemberLastName', action.connectedMember.lastname);
+      //   // localStorage.setItem('connectedMemberSlugMember', action.connectedMember.slug);
+      //   // localStorage.setItem('connectedMemberSlugProject', action.connectedMember.project.slug);
+      //   return { ...state };
+      // }
+
 
     // Projects
     case PROJECTS_RECEIVED:
@@ -122,6 +133,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         listProjects: [],
         project: action.project,
+        editFormSend: false,
       };
 
     case PROJECTS_HOME_RECEIVED:
@@ -140,6 +152,12 @@ const reducer = (state = initialState, action = {}) => {
           linkVideo: action.project.linkVideo,
           description: action.project.description,
         },
+      };
+
+    case PROJECT_EDITED:
+      return {
+        ...state,
+        editFormSend: true,
       };
 
     // Competences

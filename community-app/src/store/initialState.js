@@ -21,8 +21,9 @@ const initialState = {
   listStatus: [],
   value: {},
   isConnected: false,
-  connectedMember: {},
+  // connectedMember: {},
   actualPage: window.location.pathname,
+  editFormSend: false,
 };
 
 export default initialState;

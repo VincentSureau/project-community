@@ -13,7 +13,7 @@ import { getConnectedMember } from 'src/store/actions/membersActions';
 // == state ==
 const mapStateToProps = state => ({
   isConnected: state.isConnected,
-  connectedMember: state.connectedMember,
+  connectedMember: localStorage.connectedMember,
   page: state.actualPage,
 });
 

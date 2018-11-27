@@ -78,7 +78,7 @@ class Project
 
     /**
      * @ORM\Column(type="boolean")
-     * @Groups({"ProjectList", "project", "projectWrite"})
+     * @Groups({"ProjectList", "project", "projectWrite, "user""})
      */
     private $isActive;
 

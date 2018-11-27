@@ -67,9 +67,17 @@ function serialize(form, options) {
     if (options.empty) {
       // for checkbox
       if (element.type === 'checkbox' && !element.checked) {
-        continue;
+        if (element.name === 'competences[]') {
+          continue;
+        } else if (element.name === 'isActive') {
+          val = false;
+        }
+        
       } else if (element.checked) {
         val = element.value;
+        if (element.name === 'isActive') {
+          val = true;
+        }
       }
 
       // for image
@@ -264,7 +272,6 @@ function hash_serializer(result, key, value, element) {
           };
           result[key] = valueObject;
         } else {
-          console.log('not in if: ', key);
           result[key] = value;
         }
       }

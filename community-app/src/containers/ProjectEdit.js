@@ -14,6 +14,7 @@ const mapStateToProps = state => ({
   project: state.project,
   value: state.value,
   competences: state.competences,
+  editFormSend: state.editFormSend,
 });
 
 // == dispacth ==
