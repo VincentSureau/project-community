@@ -2,9 +2,11 @@
  * NPM import
  */
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import uuid from 'uuid/v4';
 import serialize from '../../functions/Serialize';
+
 
 /**
  * Local import
@@ -67,7 +69,7 @@ class ProjectEdit extends React.Component {
   }
 
   render() {
-    const { project, competences, value } = this.props;
+    const { project, competences, value, editFormSend } = this.props;
     const competencesProject = this.getNestedObject(project, ['competences']);
 
     if (project != null && project.images != null) {
@@ -131,10 +133,15 @@ class ProjectEdit extends React.Component {
                     ))}
                   </div>
                 </div>
+                <div className="form-check col-12 ">
+                  <input name="isActive" type="checkbox" defaultChecked={project.isActive} onChange={e => this.onChangeCheckbox(e)} defaultValue={project.isActive} />
+                  Afficher le projet
+                </div>
                 <button className="col-6 button-submit" type="submit">Enregistrer</button>
               </div>
             </section>
           </form>
+          {editFormSend && <Redirect to={''.concat('/projects/', project.slug)} />}
         </div>
       );
     }

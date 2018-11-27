@@ -6,6 +6,7 @@ export const PROJECT_RECEIVED = 'PROJECT_RECEIVED';
 export const GET_PROJECT_EDIT = 'GET_PROJECT_EDIT';
 export const PROJECT_EDIT_RECEIVED = 'PROJECT_EDIT_RECEIVED';
 export const PUT_PROJECT = 'PUT_PROJECT';
+export const PROJECT_EDITED = 'PROJECT_EDITED';
 
 // Action creator
 export const getProjects = () => ({
@@ -41,4 +42,8 @@ export const putProject = (id, data) => ({
   type: PUT_PROJECT,
   id,
   data,
+});
+
+export const projectEdited = () => ({
+  type: PROJECT_EDITED,
 });
