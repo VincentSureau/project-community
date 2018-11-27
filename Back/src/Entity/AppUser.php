@@ -36,7 +36,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *             "normalization_context"={"groups"={"AppUserList"}}
  *         },
  *         "get",
- *         "post"
+ *         "post"={"access_control"="is_granted('ROLE_COMMUNITY_ADMIN')"}
  *     },
  * )
  * @ApiFilter(SearchFilter::class, properties={"slug": "iexact"})
