@@ -80,7 +80,7 @@ LoginForm.propTypes = {
 };
 
 LoginForm.defaultProps = {
-  connectionError: '',
+  connectionError: undefined,
 };
 /**
  * Export

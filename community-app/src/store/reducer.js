@@ -6,6 +6,7 @@ import { PROJECT_EDITED, GET_PROJECT } from './actions/projectsActions';
 // Navbar
 export const GET_ISCONNECTED = 'GET_ISCONNECTED';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
+export const ERROR_ON_SUBMIT = 'ERROR_ON_SUBMIT';
 
 // Form
 export const CHANGE_INPUT = 'CHANGE_INPUT';
@@ -52,10 +53,17 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.name]: action.value,
       };
+
     case CHANGE_INPUT_FORM:
       return {
         ...state,
         value: { ...state.value, [action.name]: action.value },
+      };
+
+    case ERROR_ON_SUBMIT:
+      return {
+        ...state,
+        submitError: action.submitError,
       };
 
     // Members
@@ -64,7 +72,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         slug: action.slug,
       };
-    
+
     case MEMBERS_RECEIVED:
       return {
         ...state,
@@ -140,7 +148,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         slug: action.id,
       };
-      
+
     case PROJECT_RECEIVED:
       return {
         ...state,

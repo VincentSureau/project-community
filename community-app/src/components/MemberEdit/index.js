@@ -75,6 +75,7 @@ class MemberEdit extends React.Component {
       competences,
       status,
       editFormSend,
+      submitError,
     } = this.props;
     const promoname = this.getNestedObject(member, ['promotion', 'name']);
     const spename = this.getNestedObject(member, ['specialisation', 'name']);
@@ -99,7 +100,7 @@ class MemberEdit extends React.Component {
               <p className="label col-5">Code Postal: </p>
               <input className="col-5 input-text" type="number" name="zipcode" placeholder="44000" defaultValue={value.zipcode} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Adresse mail: </p>
-              <input className="col-5 input-text" type="email" name="email" placeholder="marc.dubois@duboiscorp.fr" defaultValue={value.email} onChange={e => this.onChangeInput(e)} />
+              <input required className="col-5 input-text" type="email" name="email" placeholder="marc.dubois@duboiscorp.fr" defaultValue={value.email} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Téléphone: </p>
               <input className="col-5 input-text" type="text" name="phoneNumber" placeholder="+33123456789" defaultValue={value.phoneNumber} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Lien Github: </p>
@@ -154,6 +155,9 @@ class MemberEdit extends React.Component {
                 <input name="isActive" type="checkbox" defaultChecked={member.isActive} onChange={e => this.onChangeCheckbox(e)} defaultValue={member.isActive} />
                 Afficher mon profil
               </div>
+              {submitError !== undefined
+                && <p className="alert alert-danger">{submitError}</p>
+              }
               <button className="col-6 button-submit" type="submit">Enregistrer</button>
             </div>
           </section>
@@ -180,13 +184,16 @@ MemberEdit.propTypes = {
   deleteMember: PropTypes.func.isRequired,
   member: PropTypes.object.isRequired,
   value: PropTypes.object.isRequired,
+  editFormSend: PropTypes.bool.isRequired,
   competences: PropTypes.array,
   status: PropTypes.array,
+  submitError: PropTypes.string,
 };
 
 MemberEdit.defaultProps = {
   competences: [],
   status: [],
+  submitError: undefined,
 };
 
 /**
