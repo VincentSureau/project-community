@@ -70,7 +70,7 @@ class Project
     private $description;
 
     /**
-     * @Groups({"ProjectList", "project"})
+     * @Groups({"ProjectList", "project", "user"})
      * @ORM\Column(type="boolean")
      */
     private $isActive;
