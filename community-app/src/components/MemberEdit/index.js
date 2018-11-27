@@ -2,7 +2,7 @@
  * NPM import
  */
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import serialize from '../../functions/Serialize';
 
@@ -51,13 +51,11 @@ class MemberEdit extends React.Component {
     event.preventDefault();
     // Serialize permet de formater l'envoi des données
     const data = serialize(event.target, { hash: true, empty: true, disabled: false });
-    console.log(data);
     const { postChangeMember } = this.props;
     postChangeMember(data, event.target.id.value);
   }
 
   handleDeleteMember(id, history) {
-    console.log(id);
     const { deleteMember, member } = this.props;
     switch (window.prompt('ATTENTION: Tu vas supprimer ton profil. Si tu souhaite le recréer, pense à passer par un admin. Tu devras tout refaire. Es-tu sûr à 10000% ? Si oui, ecris ton prénom en dessous')) {
       case member.firstname:
@@ -76,6 +74,7 @@ class MemberEdit extends React.Component {
       value,
       competences,
       status,
+      editFormSend,
     } = this.props;
     const promoname = this.getNestedObject(member, ['promotion', 'name']);
     const spename = this.getNestedObject(member, ['specialisation', 'name']);
@@ -98,7 +97,7 @@ class MemberEdit extends React.Component {
               <p className="label col-5">Ville: </p>
               <input className="col-5 input-text" type="text" name="city" placeholder="Nantes" defaultValue={value.city} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Code Postal: </p>
-              {/* <input className="col-5 input-text" type="number" name="zipcode" placeholder="44000" defaultValue={value.zipcode} onChange={e => this.onChangeInput(e)} /> */}
+              <input className="col-5 input-text" type="number" name="zipcode" placeholder="44000" defaultValue={value.zipcode} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Adresse mail: </p>
               <input className="col-5 input-text" type="email" name="email" placeholder="marc.dubois@duboiscorp.fr" defaultValue={value.email} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Téléphone: </p>
@@ -151,18 +150,21 @@ class MemberEdit extends React.Component {
                   }
                 </select>
               </div>
-
+              <div className="form-check col-12 ">
+                <input name="isActive" type="checkbox" defaultChecked={member.isActive} onChange={e => this.onChangeCheckbox(e)} defaultValue={member.isActive} />
+                Afficher mon profil
+              </div>
               <button className="col-6 button-submit" type="submit">Enregistrer</button>
             </div>
           </section>
         </form>
+        {editFormSend && <Redirect to={''.concat('/members/', member.slug)} />}
         <div className="d-flex flex-column justify-content-center align-items-center bg-member">
           <Route render={
             ({ history }) => (<button className="col-2 button-deleteProfile" type="button" onClick={() => this.handleDeleteMember(member.id, history)}>Supprimer mon profil</button>)
           }
           />
         </div>
-
       </div>
     );
   }

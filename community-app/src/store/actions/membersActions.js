@@ -10,6 +10,7 @@ export const PUT_MEMBER = 'PUT_MEMBER';
 export const DELETE_MEMBER = 'DELETE_MEMBER';
 export const GET_CONNECTED_MEMBER = 'GET_CONNECTED_MEMBER';
 export const CONNECTED_MEMBER_RECEIVED = 'CONNECTED_MEMBER_RECEIVED';
+export const MEMBER_EDITED = 'MEMBER_EDITED';
 
 // Action creator
 export const getMembers = () => ({
@@ -65,4 +66,8 @@ export const getConnectedMember = id => ({
 export const connectedMemberReceived = connectedMember => ({
   type: CONNECTED_MEMBER_RECEIVED,
   connectedMember,
+});
+
+export const memberEdited = () => ({
+  type: MEMBER_EDITED,
 });

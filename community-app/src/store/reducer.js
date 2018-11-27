@@ -1,5 +1,6 @@
 // initial state
 import initialState from './initialState';
+import { MEMBER_EDITED } from './actions/membersActions';
 
 // Types
 // Navbar
@@ -69,6 +70,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         listMembers: [],
         member: action.member,
+        editFormSend: false,
       };
 
     case GET_MEMBERS_SPE: {
@@ -102,6 +104,13 @@ const reducer = (state = initialState, action = {}) => {
         },
       };
 
+
+    case MEMBER_EDITED:
+      return {
+        ...state,
+        editFormSend: true,
+      };
+
       // case CONNECTED_MEMBER_RECEIVED: {
       //   // localStorage.setItem('connectedMemberFirstName', action.connectedMember.firstname);
       //   // localStorage.setItem('connectedMemberLastName', action.connectedMember.lastname);
@@ -109,6 +118,7 @@ const reducer = (state = initialState, action = {}) => {
       //   // localStorage.setItem('connectedMemberSlugProject', action.connectedMember.project.slug);
       //   return { ...state };
       // }
+
 
     // Projects
     case PROJECTS_RECEIVED:

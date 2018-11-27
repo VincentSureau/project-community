@@ -12,6 +12,7 @@ import {
   PUT_MEMBER,
   DELETE_MEMBER,
   GET_CONNECTED_MEMBER,
+  memberEdited,
   // connectedMemberReceived,
 } from 'src/store/actions/membersActions';
 
@@ -76,10 +77,10 @@ const memberMiddleware = store => next => (action) => {
 
       break;
     case PUT_MEMBER:
-      console.log(axios.put(`${API_URL}/app_users/${action.id}`, action.data))
+      axios.put(`${API_URL}/app_users/${action.id}`, action.data)
         // succes
         .then((response) => {
-          console.log('retour put=>>>  ', response);
+          store.dispatch(memberEdited());
         })
         // echec
         .catch((error) => {
