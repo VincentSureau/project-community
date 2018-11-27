@@ -7,7 +7,6 @@ import { createStore, applyMiddleware, compose } from 'redux';
  * local import
  */
 import reducer from './reducer';
-// import axios from './axiosMiddleware';
 import home from './middlewares/homeMiddleware';
 import member from './middlewares/memberMiddleware';
 import project from './middlewares/projectMiddleware';
