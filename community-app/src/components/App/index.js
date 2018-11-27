@@ -58,7 +58,7 @@ class App extends React.Component {
             path="/members/:slug/edit"
             exact
             render={matchData => (allowedUser(matchData.match.params.slug)
-              ? <MemberEdit id={matchData.match.params.slug} />
+              ? <MemberEdit id={matchData.match.params.slug} history={window.history} />
               : <Redirect to="/login" />)}
           />
           <Route
@@ -84,8 +84,6 @@ class App extends React.Component {
               return <Project id={slug} />;
             }}
           />
-          <Route path="/projects/titre-1/edit" exact render={() => <ProjectEdit />} />
-
           {/* Page 404 */}
           <Route component={NotFound} />
         </Switch>

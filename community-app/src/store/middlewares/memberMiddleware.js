@@ -13,6 +13,7 @@ import {
   DELETE_MEMBER,
   GET_CONNECTED_MEMBER,
   connectedMemberReceived,
+  memberEdited,
 } from 'src/store/actions/membersActions';
 
 const API_URL = 'http://127.0.0.1:8001';
@@ -76,10 +77,10 @@ const memberMiddleware = store => next => (action) => {
 
       break;
     case PUT_MEMBER:
-      console.log(axios.put(`${API_URL}/app_users/${action.id}`, action.data))
+      axios.put(`${API_URL}/app_users/${action.id}`, action.data)
         // succes
         .then((response) => {
-          console.log('retour put=>>>  ', response);
+          store.dispatch(memberEdited());
         })
         // echec
         .catch((error) => {

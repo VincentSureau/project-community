@@ -23,6 +23,7 @@ const initialState = {
   isConnected: false,
   connectedMember: {},
   actualPage: window.location.pathname,
+  editFormSend: false,
 };
 
 export default initialState;

@@ -1,5 +1,6 @@
 // initial state
 import initialState from './initialState';
+import { MEMBER_EDITED } from './actions/membersActions';
 
 // Types
 // Navbar
@@ -69,6 +70,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         listMembers: [],
         member: action.member,
+        editFormSend: false,
       };
 
     case GET_MEMBERS_SPE: {
@@ -100,6 +102,12 @@ const reducer = (state = initialState, action = {}) => {
           description: action.member.description,
           status: action.member.professionalStatus,
         },
+      };
+
+    case MEMBER_EDITED:
+      return {
+        ...state,
+        editFormSend: true,
       };
 
     case CONNECTED_MEMBER_RECEIVED: {
