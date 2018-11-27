@@ -10,6 +10,7 @@ import {
   PUT_PROJECT,
   GET_PROJECT,
   projectReceived,
+  projectEdited,
 } from 'src/store/actions/projectsActions';
 
 const API_URL = 'http://127.0.0.1:8001';
@@ -73,10 +74,10 @@ const projectMiddleware = store => next => (action) => {
 
       break;
     case PUT_PROJECT:
-      console.log(axios.put(`${API_URL}/projects/${action.id}`, action.data))
+      axios.put(`${API_URL}/projects/${action.id}`, action.data)
         // succes
         .then((response) => {
-          console.log('retour put=>>>  ', response);
+          store.dispatch(projectEdited());
         })
         // echec
         .catch((error) => {

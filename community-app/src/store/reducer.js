@@ -1,7 +1,7 @@
 // initial state
 import initialState from './initialState';
 import { MEMBER_EDITED } from './actions/membersActions';
-
+import { PROJECT_EDITED } from './actions/projectsActions';
 // Types
 // Navbar
 export const GET_ISCONNECTED = 'GET_ISCONNECTED';
@@ -133,6 +133,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         listProjects: [],
         project: action.project,
+        editFormSend: false,
       };
 
     case PROJECTS_HOME_RECEIVED:
@@ -151,6 +152,12 @@ const reducer = (state = initialState, action = {}) => {
           linkVideo: action.project.linkVideo,
           description: action.project.description,
         },
+      };
+
+    case PROJECT_EDITED:
+      return {
+        ...state,
+        editFormSend: true,
       };
 
     // Competences
