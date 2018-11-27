@@ -117,7 +117,9 @@ const memberMiddleware = store => next => (action) => {
           localStorage.setItem('connectedMemberFirstName', response.data.firstname);
           localStorage.setItem('connectedMemberLastName', response.data.lastname);
           localStorage.setItem('connectedMemberSlugMember', response.data.slug);
-          localStorage.setItem('connectedMemberSlugProject', response.data.project.slug);
+          if (response.data.project !== null) {
+            localStorage.setItem('connectedMemberSlugProject', response.data.project.slug);
+          }
           // store.dispatch(connectedMemberReceived(connectedMember));
         })
         // echec
