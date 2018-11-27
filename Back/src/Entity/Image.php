@@ -8,7 +8,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext={"groups"={"project"}},
+ *     denormalizationContext={"groups"={"projectWrite"}},
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\ImageRepository")
  */
 class Image
@@ -26,13 +29,13 @@ class Image
      *     message = "L'url '{{ value }}  n'est pas une url valide",
      *     protocols = {"http", "https"}
      * )
-     * @Groups({"user","project", "ProjectList"})
+     * @Groups({"user","project", "ProjectList", "projectWrite"})
      */
     private $imageLink;
 
     /**
-     * @Groups({"user","project", "ProjectList"})
      * @ORM\Column(type="boolean")
+     * @Groups({"user","project", "ProjectList", "projectWrite"})
      */
     private $isHero;
 
