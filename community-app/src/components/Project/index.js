@@ -25,6 +25,13 @@ class Project extends React.Component {
     getProjectWithId(id);
   }
 
+  componentDidUpdate() {
+    const { getProjectWithId, id, previousSlug } = this.props;
+    if (id !== previousSlug) {
+      getProjectWithId(id);
+    }
+  }
+
   render() {
     const { project } = this.props;
     if (project != null && project.images != null) {
@@ -67,6 +74,7 @@ Project.propTypes = {
   id: PropTypes.string.isRequired,
   project: PropTypes.object.isRequired,
   getProjectWithId: PropTypes.func.isRequired,
+  previousSlug: PropTypes.string.isRequired,
 };
 
 /**

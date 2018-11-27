@@ -88,7 +88,7 @@ class MemberEdit extends React.Component {
             <div className="row justify-content-center align-items-center">
               <img src={member.profilePicture} className="singlemember-photo" alt="" />
               {/*<input className="mx-2" type="file" name="profile_pic" accept=".jpg, .jpeg, .png" />*/}
-              <input className="col-5 input-text" type="text" name="profilePicture" placeholder="lien web de l'image" onChange={e => this.onChangeInput(e)} />
+              <input className="col-5 input-text" type="text" name="profilePicture" placeholder="lien web de l'image" onChange={e => this.onChangeInput(e)} defaultValue={member.profilePicture} />
             </div>
             <p className="singlemember-name">{member.firstname}</p>
             <p className="singlemember-name name-to-disapear">{member.lastname}</p>
