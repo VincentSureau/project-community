@@ -50,7 +50,7 @@ class Members extends React.Component {
     }
     if (filterTextMembers !== '' && listMembers !== null) {
       listMembers = listMembers.filter(member => (
-        member.firstname.includes(filterTextMembers) || member.lastname.includes(filterTextMembers)
+        member.firstname.toLowerCase().includes(filterTextMembers.toLowerCase()) || member.lastname.toLowerCase().includes(filterTextMembers.toLowerCase())
       ));
     }
     return (
