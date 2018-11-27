@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import ClassNames from 'classnames';
 import AuthService from 'src/components/AuthService';
+import decode from 'jwt-decode';
 import {
   Collapse,
   Navbar,
@@ -74,15 +75,22 @@ class ReactStrapNavbar extends React.Component {
 
     // On récupère les valeurs du state et des props dont on a besoin
     const { isOpen } = this.state;
-    const { connectMember } = this.props;
+    const { connectMember, disconnectMember } = this.props;
     const firstnameConnectedMember = localStorage.getItem('connectedMemberFirstName');
     const slugMemberConnectedMember = localStorage.getItem('connectedMemberSlugMember');
     const slugProjectConnectedMember = localStorage.getItem('connectedMemberSlugProject');
 
     // Si un token valide existe isConnected à true dans le state
     this.Auth = new AuthService();
-    if (this.Auth.getToken()) {
+    const token = this.Auth.getToken();
+    if (token && !this.Auth.isTokenExpired(token)) {
       connectMember();
+    }
+    // Si le token n'est plus valide, on déconnecte l'utilisateur et on le redirige vers la page de connexion
+    else if (this.Auth.isTokenExpired(token)) {
+      disconnectMember();
+      this.Auth.logout();
+      window.location.replace('/login');
     }
 
     return (
