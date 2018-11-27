@@ -13,8 +13,8 @@ import {
   DELETE_MEMBER,
   GET_CONNECTED_MEMBER,
   memberEdited,
-  // connectedMemberReceived,
 } from 'src/store/actions/membersActions';
+import { onSubmitError } from 'src/store/actions/formActions';
 
 const API_URL = 'http://127.0.0.1:8001';
 
@@ -85,6 +85,7 @@ const memberMiddleware = store => next => (action) => {
         // echec
         .catch((error) => {
           console.error(error);
+          store.dispatch(onSubmitError('Erreur sur la requête, veuillez contacter un admin'));
         });
 
       break;

@@ -5,6 +5,7 @@ import axios from 'axios';
 import {
   POST_LOGIN,
   connectMember,
+  errorConnexion,
 } from 'src/store/actions/loginActions';
 
 const API_URL = 'http://127.0.0.1:8001';
@@ -30,6 +31,7 @@ const login = store => next => (action) => {
         // echec
         .catch((error) => {
           console.error('Connexion: ', error);
+          console.log(store.dispatch(errorConnexion('Les identifiants ne sont pas valides')));
         });
 
       break;

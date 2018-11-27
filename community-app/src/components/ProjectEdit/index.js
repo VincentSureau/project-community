@@ -69,7 +69,13 @@ class ProjectEdit extends React.Component {
   }
 
   render() {
-    const { project, competences, value, editFormSend } = this.props;
+    const {
+      project,
+      competences,
+      value,
+      editFormSend,
+      submitError,
+    } = this.props;
     const competencesProject = this.getNestedObject(project, ['competences']);
 
     if (project != null && project.images != null) {
@@ -137,6 +143,9 @@ class ProjectEdit extends React.Component {
                   <input name="isActive" type="checkbox" defaultChecked={project.isActive} onChange={e => this.onChangeCheckbox(e)} defaultValue={project.isActive} />
                   Afficher le projet
                 </div>
+                {submitError !== undefined
+                  && <p className="alert alert-danger">{submitError}</p>
+                }
                 <button className="col-6 button-submit" type="submit">Enregistrer</button>
               </div>
             </section>
@@ -160,10 +169,13 @@ ProjectEdit.propTypes = {
   competences: PropTypes.array,
   getCompetences: PropTypes.func.isRequired,
   value: PropTypes.object.isRequired,
+  submitError: PropTypes.string,
+  editFormSend: PropTypes.bool.isRequired,
 };
 
 ProjectEdit.defaultProps = {
   competences: [],
+  submitError: undefined,
 };
 
 /**

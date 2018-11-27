@@ -14,6 +14,7 @@ const mapStateToProps = state => ({
   email: state.email,
   password: state.password,
   token: state.token,
+  connectionError: state.connectionError,
 });
 
 // == dispacth ==
