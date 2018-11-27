@@ -17,7 +17,13 @@ class AuthService extends React.Component {
   getToken = () => (localStorage.getItem('connect_token'));
 
   // Fonction qui efface le token de connexion dans le localStorage
-  logout = () => (localStorage.removeItem('connect_token'));
+  logout = () => {
+    localStorage.removeItem('connect_token');
+    localStorage.removeItem('connectedMemberFirstName');
+    localStorage.removeItem('connectedMemberLastName');
+    localStorage.removeItem('connectedMemberSlugMember');
+    localStorage.removeItem('connectedMemberSlugProject');
+  }
 
   // Fonction qui permet de décoder le token
   getProfile = () => (decode(this.getToken()))

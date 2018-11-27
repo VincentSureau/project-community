@@ -249,7 +249,7 @@ function hash_serializer(result, key, value, element) {
           if (!Array.isArray(existing)) {
               result[key] = [ existing ];
           }
-          if (key === '/images') {
+          if (key === 'images') {
             const valueObject = {
               '@id': element.id,
               'imageLink': value,
@@ -262,13 +262,15 @@ function hash_serializer(result, key, value, element) {
           
       }
       else {
-        if (key === '/images') {
+        if (key === 'images') {
           const valueObject = {
             '@id': element.id,
             'imageLink': value,
             'isHero': element.className.includes('ishero'),
           };
           result[key] = valueObject;
+        } else if (key === 'zipcode' && value === "" ) {
+          result[key] = null;
         } else {
           result[key] = value;
         }

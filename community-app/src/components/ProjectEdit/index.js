@@ -92,8 +92,8 @@ class ProjectEdit extends React.Component {
                 className="mx-2 input-text ishero"
                 type="text"
                 id={heroImage[0]['@id']}
-                name="/images"
-                // defaultValue={heroImage[0].imageLink}
+                name="images"
+                defaultValue={heroImage[0].imageLink}
               />
               <div id="projectedit-form-gallery" className="row">
                 {images.map(image => (
@@ -103,8 +103,8 @@ class ProjectEdit extends React.Component {
                       className="input-text"
                       type="text"
                       id={image['@id']}
-                      name="/images"
-                      // defaultValue={image.imageLink}
+                      name="images"
+                      defaultValue={image.imageLink}
                     />
                   </div>
                 ))}
