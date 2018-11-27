@@ -40,8 +40,8 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *     },
  *     itemOperations={
  *         "get",
- *         "put"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object.getEmail() == user.email", "access_control_message"="Désolé mais tu ne peux modifier que ton profil !"},
- *         "delete"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object.getEmail() == user.email", "access_control_message"="Désolé mais tu ne peux pas supprimer un autre utilisateur"}
+ *         "put"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object == user", "access_control_message"="Désolé mais tu ne peux modifier que ton profil !"},
+ *         "delete"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object == user", "access_control_message"="Désolé mais tu ne peux pas supprimer un autre utilisateur"}
  *     },
  * )
  * @ApiFilter(SearchFilter::class, properties={"slug": "iexact"})
