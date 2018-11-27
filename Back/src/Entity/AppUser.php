@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -260,7 +259,6 @@ class AppUser implements UserInterface
     /**
      * @Groups({"user", "userWrite"})
      * @ORM\ManyToMany(targetEntity="App\Entity\Competence", inversedBy="appUsers")
-     * @ApiSubresource
      */
     private $competences;
 
