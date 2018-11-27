@@ -43,6 +43,7 @@ class Member extends React.Component {
     const projectslug = this.getNestedObject(member, ['project', 'slug']);
     const projectid = this.getNestedObject(member, ['project', '@id']);
     const projectimages = this.getNestedObject(member, ['project', 'images']);
+    const projectisactive = this.getNestedObject(member, ['project', 'isActive']);
 
     return (
       <div id="member">
@@ -67,15 +68,15 @@ class Member extends React.Component {
                 professionalStatus={professionalstatus}
                 competences={competences}
               />
-              {member.project &&
-                (
-                  <ProjectLink
-                    projectName={projectname}
-                    projectId={projectid}
-                    projectImages={projectimages}
-                    projectSlug={projectslug}
-                  />
-                )
+              {projectisactive
+              && (
+                <ProjectLink
+                  projectName={projectname}
+                  projectId={projectid}
+                  projectImages={projectimages}
+                  projectSlug={projectslug}
+                />
+              )
               }
             </div>
           )
