@@ -83,7 +83,7 @@ class MemberEdit extends React.Component {
     return (
       <div id="memberedit">
         <form action="post" onSubmit={e => this.handleSubmit(e)}>
-          <input hidden name="id" value={member.id} />
+          <input hidden name="id" defaultValue={member.id} />
           <section id="memberedit-form" className="d-flex flex-column justify-content-center align-items-center bg-member">
             <div className="row justify-content-center align-items-center">
               <img src={member.profilePicture} className="singlemember-photo" alt="" />
