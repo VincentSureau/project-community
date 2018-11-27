@@ -26,13 +26,13 @@
                     <th {% if pagination.isSorted('lastname') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nom' , 'lastname') }}</th>
                     <th class="hide_content_tab"{% if pagination.isSorted('birthDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de naissance', 'birthDate') }}</th>
                     <th class="hide_content_phone" >Photo de profil</th>
-                    <th class="hide_content_phone" >Numéro de tél.</th>
-                    <th class="hide_content_phone" {% if pagination.isSorted('city') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Ville' , 'city') }}</th>
+                    <th class="hide_content_tab" >Numéro de tél.</th>
+                    <th class="hide_content_tab" {% if pagination.isSorted('city') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Ville' , 'city') }}</th>
                     <th  class="hide_content_tab" {% if pagination.isSorted('zipcode') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Code postal' , 'zipcode') }}</th>
                     <!--<th>LinkLinkedin</th>-->
                     <!--<th>LinkGithub</th>-->
                     <!--<th>LinkPersonal</th>-->
-                    <th {% if pagination.isSorted('promotion') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Promotion' , 'promotion') }}</th>
+                    <th class="hide_content_phone" {% if pagination.isSorted('promotion') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Promotion' , 'promotion') }}</th>
                     <th {% if pagination.isSorted('isactive') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Actif' , 'isactive') }}</th>
                     <th class="hide_content_tab" {% if pagination.isSorted('createdDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Date de création' , 'createdDate') }}</th>
                     <!--<th>Description</th>-->
@@ -61,13 +61,13 @@
                             </div>
                         </div>
 
-                    <td class="hide_content_phone">{{ app_user.phoneNumber }}</td>
-                    <td class="hide_content_phone">{{ app_user.city }}</td>
+                    <td class="hide_content_tab">{{ app_user.phoneNumber }}</td>
+                    <td class="hide_content_tab">{{ app_user.city }}</td>
                     <td  class="hide_content_tab">{{ app_user.zipcode }}</td>
                     <!--<td>{{ app_user.linkLinkedin }}</td>-->
                     <!--<td>{{ app_user.linkGithub }}</td>-->
                     <!--<td>{{ app_user.linkPersonal }}</td>-->
-                    <td>{{ (app_user.promotion != null)? app_user.promotion : 'N/A' }} </td>
+                    <td class="hide_content_phone">{{ (app_user.promotion != null)? app_user.promotion : 'N/A' }} </td>
                     <td>{{ app_user.isActive ? 'Oui' : 'Non' }}</td>
                     <td class="hide_content_tab">{{ app_user.createdDate ? app_user.createdDate|date('d-m-Y') : '' }}</td>
                      <!--<td>{{ app_user.description }}</td>-->
