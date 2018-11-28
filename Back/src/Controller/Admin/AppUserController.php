@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use App\Utils\GeneratePassword;
 use App\Utils\SendMail;
@@ -18,6 +19,13 @@ use App\Utils\SendMail;
  */
 class AppUserController extends AbstractController
 {
+    private $passwordEncoder;
+
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $this->passwordEncoder = $passwordEncoder;
+    }
+
     /**
      * @Route("/", name="app_user_index", methods="GET")
      */
@@ -123,6 +131,8 @@ class AppUserController extends AbstractController
             $appUser->setPassword($passwordFactory->generate());
             $em = $this->getDoctrine()->getManager();
             $mailGenerator->resetPassword($appUser);
+            $encodedPassword = $this->passwordEncoder->encodePassword($appUser, $appUser->getPassword());
+            $appUser->setPassword($encodedPassword);
             $em->flush();
                 $this->addFlash(
                     'success',

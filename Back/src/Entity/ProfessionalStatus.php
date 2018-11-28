@@ -11,7 +11,17 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={
+ *        "get",
+ *        "post"={"access_control"="is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais seuls les administrateurs peuvent ajouter un statut professionnel !"}
+ *     },
+ *     itemOperations={
+ *        "get",
+ *        "put"={"access_control"="is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais seuls les administrateurs peuvent modifier un statut professionnel !"},
+ *        "delete"={"access_control"="is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais mais seuls les administrateurs peuvent supprimer un statut professionnel"}
+ *     },
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\ProfessionalStatusRepository")
  */
 class ProfessionalStatus
