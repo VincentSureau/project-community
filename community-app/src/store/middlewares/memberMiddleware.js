@@ -84,7 +84,6 @@ const memberMiddleware = store => next => (action) => {
       })
         // succes
         .then((response) => {
-          console.log(response.headers);
           store.dispatch(memberEdited());
         })
         // echec

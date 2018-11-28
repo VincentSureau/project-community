@@ -106,7 +106,7 @@ class MemberEdit extends React.Component {
                 <input id="zipcode-input" className="input-text col-12" type="number" name="zipcode" placeholder="44000" defaultValue={value.zipcode} onChange={e => this.onChangeInput(e)} />
               </label>
               <label className="label col-12" htmlFor="mail-input">
-                * Adresse mail :
+                Adresse mail : (obligatoire)
                 <input id="mail-input" required className="col-12 input-text" type="email" name="email" placeholder="marc.dubois@duboiscorp.fr" defaultValue={value.email} onChange={e => this.onChangeInput(e)} />
               </label>
               <label className="label col-12" htmlFor="phone-input">
