@@ -26,7 +26,6 @@ class MemberEdit extends React.Component {
       getProStatus,
     } = this.props;
     // L'id est de type: capucine-bertin-650,
-    // on récupère uniquement les chiffres pour récupérer le membre
     getMemberWithId(id);
     getCompetences();
     getProStatus();
@@ -75,6 +74,7 @@ class MemberEdit extends React.Component {
       competences,
       status,
       editFormSend,
+      submitError,
     } = this.props;
     const promoname = this.getNestedObject(member, ['promotion', 'name']);
     const spename = this.getNestedObject(member, ['specialisation', 'name']);
@@ -83,12 +83,12 @@ class MemberEdit extends React.Component {
     return (
       <div id="memberedit">
         <form action="post" onSubmit={e => this.handleSubmit(e)}>
-          <input hidden name="id" value={member.id} />
+          <input hidden name="id" defaultValue={member.id} />
           <section id="memberedit-form" className="d-flex flex-column justify-content-center align-items-center bg-member">
             <div className="row justify-content-center align-items-center">
               <img src={member.profilePicture} className="singlemember-photo" alt="" />
               {/*<input className="mx-2" type="file" name="profile_pic" accept=".jpg, .jpeg, .png" />*/}
-              <input className="col-5 input-text" type="text" name="profilePicture" placeholder="lien web de l'image" onChange={e => this.onChangeInput(e)} />
+              <input className="col-5 input-text" type="text" name="profilePicture" placeholder="lien web de l'image" onChange={e => this.onChangeInput(e)} defaultValue={member.profilePicture} />
             </div>
             <p className="singlemember-name">{member.firstname}</p>
             <p className="singlemember-name name-to-disapear">{member.lastname}</p>
@@ -99,7 +99,7 @@ class MemberEdit extends React.Component {
               <p className="label col-5">Code Postal: </p>
               <input className="col-5 input-text" type="number" name="zipcode" placeholder="44000" defaultValue={value.zipcode} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Adresse mail: </p>
-              <input className="col-5 input-text" type="email" name="email" placeholder="marc.dubois@duboiscorp.fr" defaultValue={value.email} onChange={e => this.onChangeInput(e)} />
+              <input required className="col-5 input-text" type="email" name="email" placeholder="marc.dubois@duboiscorp.fr" defaultValue={value.email} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Téléphone: </p>
               <input className="col-5 input-text" type="text" name="phoneNumber" placeholder="+33123456789" defaultValue={value.phoneNumber} onChange={e => this.onChangeInput(e)} />
               <p className="label col-5">Lien Github: </p>
@@ -154,6 +154,9 @@ class MemberEdit extends React.Component {
                 <input name="isActive" type="checkbox" defaultChecked={member.isActive} onChange={e => this.onChangeCheckbox(e)} defaultValue={member.isActive} />
                 Afficher mon profil
               </div>
+              {submitError !== undefined && submitError !== ''
+                && <p className="alert alert-danger">{submitError}</p>
+              }
               <button className="col-6 button-submit" type="submit">Enregistrer</button>
             </div>
           </section>
@@ -180,13 +183,16 @@ MemberEdit.propTypes = {
   deleteMember: PropTypes.func.isRequired,
   member: PropTypes.object.isRequired,
   value: PropTypes.object.isRequired,
+  editFormSend: PropTypes.bool.isRequired,
   competences: PropTypes.array,
   status: PropTypes.array,
+  submitError: PropTypes.string,
 };
 
 MemberEdit.defaultProps = {
   competences: [],
   status: [],
+  submitError: undefined,
 };
 
 /**

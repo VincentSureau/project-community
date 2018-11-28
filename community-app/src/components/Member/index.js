@@ -27,6 +27,14 @@ class Member extends React.Component {
     getMemberWithId(id);
   }
 
+  componentDidUpdate() {
+    const { getMemberWithId, id, previousSlug } = this.props;
+    // L'id est de type: capucine-bertin-650,
+    if (id !== previousSlug) {
+      getMemberWithId(id);
+    }
+  }
+
   // Fonction qui permet de récupérer un élément imbriqué dans un objet à plusieurs niveaux
   getNestedObject = (nestedObj, pathArr) => (
     pathArr.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj)

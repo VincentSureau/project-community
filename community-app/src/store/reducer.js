@@ -1,11 +1,13 @@
 // initial state
 import initialState from './initialState';
-import { MEMBER_EDITED } from './actions/membersActions';
-import { PROJECT_EDITED } from './actions/projectsActions';
+import { MEMBER_EDITED, GET_MEMBER } from './actions/membersActions';
+import { PROJECT_EDITED, GET_PROJECT } from './actions/projectsActions';
+import { TOGGLE_POPOVER, ERASE_MESSAGE_FORM, MESSAGE_FORGOT_PASSWORD } from './actions/formActions';
 // Types
 // Navbar
 export const GET_ISCONNECTED = 'GET_ISCONNECTED';
 export const CHANGE_PAGE = 'CHANGE_PAGE';
+export const ERROR_ON_SUBMIT = 'ERROR_ON_SUBMIT';
 
 // Form
 export const CHANGE_INPUT = 'CHANGE_INPUT';
@@ -41,6 +43,7 @@ export const SET_FILTER = 'SET_FILTER';
 export const RECEIVED_TOKEN = 'RECEIVED_TOKEN';
 export const CONNECT_MEMBER = 'CONNECT_MEMBER';
 export const DISCONNECT_MEMBER = 'DISCONNECT_MEMBER';
+export const ERROR_CONNEXION = 'ERROR_CONNEXION';
 
 // reducer
 const reducer = (state = initialState, action = {}) => {
@@ -51,13 +54,47 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         [action.name]: action.value,
       };
+
     case CHANGE_INPUT_FORM:
       return {
         ...state,
         value: { ...state.value, [action.name]: action.value },
       };
 
+    case ERROR_ON_SUBMIT:
+      return {
+        ...state,
+        submitError: action.submitError,
+      };
+
+    case TOGGLE_POPOVER:
+      return {
+        ...state,
+        popoverPassword: action.popover,
+      };
+
+    case MESSAGE_FORGOT_PASSWORD:
+      return {
+        ...state,
+        messagePassword: action.response,
+      };
+    
+    case ERASE_MESSAGE_FORM:
+      return {
+        ...state,
+        messagePassword: '',
+        connectionError: '',
+        submitError: '',
+      };
+      
+
     // Members
+    case GET_MEMBER:
+      return {
+        ...state,
+        slug: action.slug,
+      };
+
     case MEMBERS_RECEIVED:
       return {
         ...state,
@@ -126,6 +163,12 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         listProjects: action.projects,
         project: {},
+      };
+
+    case GET_PROJECT:
+      return {
+        ...state,
+        slug: action.id,
       };
 
     case PROJECT_RECEIVED:
@@ -204,6 +247,8 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         token: action.token,
+        connectionError: '',
+        messagePassword: '',
       };
 
     case CONNECT_MEMBER:
@@ -216,6 +261,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isConnected: false,
+      };
+
+    case ERROR_CONNEXION:
+      return {
+        ...state,
+        connectionError: action.connectionError,
       };
 
     // NavBar

@@ -3,6 +3,7 @@ export const POST_LOGIN = 'POST_LOGIN';
 export const RECEIVED_TOKEN = 'RECEIVED_TOKEN';
 export const CONNECT_MEMBER = 'CONNECT_MEMBER';
 export const DISCONNECT_MEMBER = 'DISCONNECT_MEMBER';
+export const ERROR_CONNEXION = 'ERROR_CONNEXION';
 
 // Action creator
 export const submitLogIn = data => ({
@@ -21,4 +22,9 @@ export const connectMember = () => ({
 
 export const disconnectMember = () => ({
   type: DISCONNECT_MEMBER,
+});
+
+export const errorConnexion = connectionError => ({
+  type: ERROR_CONNEXION,
+  connectionError,
 });
