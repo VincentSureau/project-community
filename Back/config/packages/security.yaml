@@ -52,13 +52,13 @@ security:
         #         path: app_logout
         #         target: admin_index
 
-        api:
-            pattern:   ^/
-            anonymous: true
-            stateless: true
-            guard:
-                authenticators:
-                    - lexik_jwt_authentication.jwt_token_authenticator
+        # api:
+        #     pattern:   ^/
+        #     anonymous: true
+        #     stateless: true
+        #     guard:
+        #         authenticators:
+        #             - lexik_jwt_authentication.jwt_token_authenticator
 
     access_control:
         - { path: ^/admin, roles: ROLE_COMMUNITY_ADMIN }

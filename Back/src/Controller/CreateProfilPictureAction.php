@@ -30,11 +30,11 @@ final class CreateProfilPictureAction
     /**
      * @IsGranted("ROLE_COMMUNITY_USER")
      */
-    public function __invoke(Request $request): MediaObject
+    public function __invoke(Request $request): ProfilPicture
     {
         $profilePicture = new ProfilPicture();
 
-        $form = $this->factory->create(ProfilPictureType::class, $profilePicture);
+        $form = $this->factory->create(ProfilPictureType::class, $profilPicture);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->doctrine->getManager();
