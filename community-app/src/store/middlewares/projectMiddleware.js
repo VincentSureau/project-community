@@ -74,9 +74,14 @@ const projectMiddleware = store => next => (action) => {
 
       break;
     case PUT_PROJECT:
-      axios.put(`${API_URL}/projects/${action.id}`, action.data)
+      axios.put(`${API_URL}/projects/${action.id}`, action.data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('connect_token')}`,
+        },
+      })
         // succes
         .then((response) => {
+          console.log(response);
           store.dispatch(projectEdited());
         })
         // echec

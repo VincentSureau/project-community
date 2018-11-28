@@ -13,8 +13,8 @@ import {
   DELETE_MEMBER,
   GET_CONNECTED_MEMBER,
   memberEdited,
+  // connectedMemberReceived,
 } from 'src/store/actions/membersActions';
-import { onSubmitError } from 'src/store/actions/formActions';
 
 const API_URL = 'http://127.0.0.1:8001';
 
@@ -77,15 +77,19 @@ const memberMiddleware = store => next => (action) => {
 
       break;
     case PUT_MEMBER:
-      axios.put(`${API_URL}/app_users/${action.id}`, action.data)
+      axios.put(`${API_URL}/app_users/${action.id}`, action.data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('connect_token')}`,
+        },
+      })
         // succes
         .then((response) => {
+          console.log(response.headers);
           store.dispatch(memberEdited());
         })
         // echec
         .catch((error) => {
           console.error(error);
-          store.dispatch(onSubmitError('Erreur sur la requête, veuillez contacter un admin'));
         });
 
       break;
