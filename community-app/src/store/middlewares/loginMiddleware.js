@@ -5,7 +5,9 @@ import axios from 'axios';
 import {
   POST_LOGIN,
   connectMember,
+  errorConnexion,
 } from 'src/store/actions/loginActions';
+import { FORGOT_PASSWORD, messageForgotPassword } from '../actions/formActions';
 
 const API_URL = 'http://127.0.0.1:8001';
 
@@ -30,9 +32,29 @@ const login = store => next => (action) => {
         // echec
         .catch((error) => {
           console.error('Connexion: ', error);
+          console.log(store.dispatch(errorConnexion('Les identifiants ne sont pas valides')));
         });
 
       break;
+
+    case FORGOT_PASSWORD:
+      axios({
+        method: 'post',
+        url: `${API_URL}/forgotten-password/${action.email}`,
+        responseType: 'json',
+      })
+        // succes
+        .then((response) => {
+          store.dispatch(messageForgotPassword('OK'));
+        })
+        // echec
+        .catch((error) => {
+          console.error('Connexion: ', error);
+          store.dispatch(messageForgotPassword('NOK'));
+        });
+
+      break;
+
 
     default:
       break;

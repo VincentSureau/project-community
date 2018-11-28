@@ -77,9 +77,14 @@ const memberMiddleware = store => next => (action) => {
 
       break;
     case PUT_MEMBER:
-      axios.put(`${API_URL}/app_users/${action.id}`, action.data)
+      axios.put(`${API_URL}/app_users/${action.id}`, action.data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('connect_token')}`,
+        },
+      })
         // succes
         .then((response) => {
+          console.log(response.headers);
           store.dispatch(memberEdited());
         })
         // echec
@@ -114,6 +119,7 @@ const memberMiddleware = store => next => (action) => {
         // succes
         .then((response) => {
           // const connectedMember = response.data;
+          localStorage.setItem('connectedMember', 'on');
           localStorage.setItem('connectedMemberFirstName', response.data.firstname);
           localStorage.setItem('connectedMemberLastName', response.data.lastname);
           localStorage.setItem('connectedMemberSlugMember', response.data.slug);

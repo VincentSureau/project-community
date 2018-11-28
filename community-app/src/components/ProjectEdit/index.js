@@ -69,7 +69,13 @@ class ProjectEdit extends React.Component {
   }
 
   render() {
-    const { project, competences, value, editFormSend } = this.props;
+    const {
+      project,
+      competences,
+      value,
+      editFormSend,
+      submitError,
+    } = this.props;
     const competencesProject = this.getNestedObject(project, ['competences']);
 
     if (project != null && project.images != null) {
@@ -92,8 +98,8 @@ class ProjectEdit extends React.Component {
                 className="mx-2 input-text ishero"
                 type="text"
                 id={heroImage[0]['@id']}
-                name="/images"
-                // defaultValue={heroImage[0].imageLink}
+                name="images"
+                defaultValue={heroImage[0].imageLink}
               />
               <div id="projectedit-form-gallery" className="row">
                 {images.map(image => (
@@ -103,8 +109,8 @@ class ProjectEdit extends React.Component {
                       className="input-text"
                       type="text"
                       id={image['@id']}
-                      name="/images"
-                      // defaultValue={image.imageLink}
+                      name="images"
+                      defaultValue={image.imageLink}
                     />
                   </div>
                 ))}
@@ -137,6 +143,9 @@ class ProjectEdit extends React.Component {
                   <input name="isActive" type="checkbox" defaultChecked={project.isActive} onChange={e => this.onChangeCheckbox(e)} defaultValue={project.isActive} />
                   Afficher le projet
                 </div>
+                {submitError !== undefined
+                  && <p className="alert alert-danger">{submitError}</p>
+                }
                 <button className="col-6 button-submit" type="submit">Enregistrer</button>
               </div>
             </section>
@@ -160,10 +169,13 @@ ProjectEdit.propTypes = {
   competences: PropTypes.array,
   getCompetences: PropTypes.func.isRequired,
   value: PropTypes.object.isRequired,
+  submitError: PropTypes.string,
+  editFormSend: PropTypes.bool.isRequired,
 };
 
 ProjectEdit.defaultProps = {
   competences: [],
+  submitError: undefined,
 };
 
 /**

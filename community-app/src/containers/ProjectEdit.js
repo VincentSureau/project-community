@@ -15,6 +15,7 @@ const mapStateToProps = state => ({
   value: state.value,
   competences: state.competences,
   editFormSend: state.editFormSend,
+  submitError: state.submitError,
 });
 
 // == dispacth ==

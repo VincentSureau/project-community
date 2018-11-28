@@ -12,6 +12,7 @@ import {
   projectReceived,
   projectEdited,
 } from 'src/store/actions/projectsActions';
+import { onSubmitError } from 'src/store/actions/formActions';
 
 const API_URL = 'http://127.0.0.1:8001';
 
@@ -29,7 +30,6 @@ const projectMiddleware = store => next => (action) => {
         // succes
         .then((response) => {
           const project = response.data['hydra:member'][0];
-          console.log(project);
           store.dispatch(projectEditReceived(project));
         })
         // echec
@@ -74,14 +74,20 @@ const projectMiddleware = store => next => (action) => {
 
       break;
     case PUT_PROJECT:
-      axios.put(`${API_URL}/projects/${action.id}`, action.data)
+      axios.put(`${API_URL}/projects/${action.id}`, action.data, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('connect_token')}`,
+        },
+      })
         // succes
         .then((response) => {
+          console.log(response);
           store.dispatch(projectEdited());
         })
         // echec
         .catch((error) => {
           console.error(error);
+          store.dispatch(onSubmitError('Erreur sur la requête, veuillez contacter un admin'));
         });
 
       break;
