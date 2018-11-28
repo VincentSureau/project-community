@@ -26,7 +26,7 @@ const ProjectItem = ({
   const heroImage = images.filter(projectImage => projectImage.isHero === true);
 
   // Récupération de la spécialisation des membres du projet
-  const specialisations = members.reduce((acc, curr) => `${acc} ${curr.specialisation.name}`, []);
+  const specialisations = members.reduce((acc, curr) => `${acc} ${curr.specialisation !== null ? curr.specialisation.name : ''}`, []);
   // Conversion en chaîne de caractères (quelques résultats n'étaient pas des strings)
   const speString = specialisations.toString();
 

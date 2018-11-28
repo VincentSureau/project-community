@@ -12,22 +12,30 @@
     width: 100%;
     position: relative;
     height: 100vh;
-    min-height: 700px;
+    min-height: 650px;
 
     &-text {
       font-size: 1.3em;
-      max-width: 40%;
+      width: 100%;
+      max-width: 800px;
       text-align: center;
       padding: 3em 0;
+    }
+
+    &-logo {
+      max-width: 500px;
     }
   }
   &-members {
     margin: 0;
-    padding: 10em;
+    padding: 100px 5em;
+    height: 100%;
+    text-align: center;
   }
   &-projects {
     margin: 0;
-    padding: 10em;
+    padding: 100px 5em;
+    text-align: center;
     &-carousel {
       margin-bottom: 3em !important;
     }
@@ -56,9 +64,49 @@
     }
 
   }
+  &-specialities {
+    margin: 0;
+    padding: 100px 5em;
+    height: 100%;
+    & .specialitie {
+      text-align: center;
+      max-width: 250px;
+    }
+  }
 }
 
 .full-height {
   min-height: 100vh;
 }
 
+@media (max-width:768px) {
+
+  #home {
+    &-projects {
+      margin: 0;
+      padding: 100px 5em;
+      &-pc {
+        transform: scale(.6);
+        margin-top: -5em;
+        margin-bottom: -5em;
+      }
+    }
+  }
+}
+
+@media (max-width:576px) {
+
+#home {
+  &-projects {
+    margin: 0;
+    padding: 100px 5em;
+    &-pc {
+      transform: scale(0.4);
+      margin-top: -8em;
+      margin-bottom: -8em;
+
+    }
+  }
+}
+
+}
