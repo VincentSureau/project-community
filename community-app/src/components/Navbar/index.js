@@ -75,7 +75,7 @@ class ReactStrapNavbar extends React.Component {
 
     // On récupère les valeurs du state et des props dont on a besoin
     const { isOpen } = this.state;
-    const { connectMember, disconnectMember } = this.props;
+    const { connectMember, disconnectMember, connectedMember } = this.props;
     const firstnameConnectedMember = localStorage.getItem('connectedMemberFirstName');
     const slugMemberConnectedMember = localStorage.getItem('connectedMemberSlugMember');
     const slugProjectConnectedMember = localStorage.getItem('connectedMemberSlugProject');
@@ -110,7 +110,7 @@ class ReactStrapNavbar extends React.Component {
               <NavLink activeClassName="" className="nav-item nav-link text-white" exact to="/projects">Projets</NavLink>
               <NavLink activeClassName="" className="nav-item nav-link text-white" exact to="/members">Etudiants</NavLink>
               {/* Si le membre est connecté un menu dropdown s'affiche */}
-              { (isConnected)
+              { (connectedMember !== undefined)
               && (
               <Collapse isOpen={isOpen} navbar>
                 <UncontrolledDropdown nav inNavbar>

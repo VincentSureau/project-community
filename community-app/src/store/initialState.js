@@ -25,6 +25,8 @@ const initialState = {
   actualPage: window.location.pathname,
   editFormSend: false,
   slug: '',
+  popoverPassword: false,
+  messagePassword: '',
 };
 
 export default initialState;

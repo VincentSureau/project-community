@@ -4,17 +4,18 @@ import { connect } from 'react-redux';
 
 // action creators
 import { submitLogIn } from 'src/store/actions/loginActions';
-import { changeInput } from 'src/store/actions/formActions';
+import { changeInput, tooglePopover, forgottenPassword } from 'src/store/actions/formActions';
 
 // composant
 import Form from '../components/Login/LoginForm';
 
 // === State ===
 const mapStateToProps = state => ({
-  email: state.email,
-  password: state.password,
   token: state.token,
   connectionError: state.connectionError,
+  popoverPassword: state.popoverPassword,
+  username: state.username,
+  messagePassword: state.messagePassword,
 });
 
 // == dispacth ==
@@ -26,6 +27,14 @@ const mapDispatchToProps = dispatch => ({
 
   onSubmitLogin: (data) => {
     dispatch(submitLogIn(data));
+  },
+
+  togglePopover: (popover) => {
+    dispatch(tooglePopover(popover));
+  },
+
+  passwordForgotten: (email) => {
+    dispatch(forgottenPassword(email));
   },
 });
 
