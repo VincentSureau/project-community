@@ -271,7 +271,6 @@ class AppUser implements UserInterface
     /**
      * @var MediaObject|null
      * @ORM\OneToOne(targetEntity="App\Entity\ProfilPicture", inversedBy="appUser", cascade={"persist", "remove"})
-     * @Groups({"AppUserList", "user", "project", "userWrite"})
      * @ApiProperty(iri="http://schema.org/image")
      * @ORM\JoinColumn(nullable=true)
      * @Groups({"AppUserList", "user", "project", "userWrite"})

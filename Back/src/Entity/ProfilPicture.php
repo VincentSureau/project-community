@@ -15,6 +15,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity
  * @ApiResource(
+  *     attributes={
+ *         "normalization_context"={"groups"={"profilPictureRead"}},
+ *         "denormalizationContext"={"groups"={"profilPictureWrite"}}
+ *     },
  *     collectionOperations={
  *         "get",
  *         "post"={
@@ -29,7 +33,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 class ProfilPicture
 {
     /**
-     * @Groups({"user"})
+     * @Groups({"user", "userWrite"})
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
@@ -37,9 +41,8 @@ class ProfilPicture
     private $id;
 
     /**
-     * @var File|null
-     * @Assert\NotNull()
-     * @Vich\UploadableField(mapping="media_object", fileNameProperty="contentUrl")
+     * @Vich\UploadableField(mapping="profil_pictures", fileNameProperty="contentUrl")
+     * @var File
      */
     public $file;
 
@@ -47,14 +50,26 @@ class ProfilPicture
      * @var string|null
      * @ORM\Column(nullable=true)
      * @ApiProperty(iri="http://schema.org/contentUrl")
-     * @Groups({"user"})     * 
+     * @Groups({"user", "userWrite"})
      */
     public $contentUrl;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;    
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\AppUser", mappedBy="profilPicture", cascade={"persist", "remove"})
      */
     private $appUser;
+
+    public function __construct()
+    {
+        $this->updatedAt = new \DateTimeImmutable();
+    }
 
     public function getAppUser(): ?AppUser
     {
@@ -109,5 +124,55 @@ class ProfilPicture
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get the value of file
+     *
+     * @return  File|null
+     */ 
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Set the value of file
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $file
+     */ 
+    public function setFile(?File $file = null): void
+    {
+        $this->file = $file;
+
+        if (null !== $file) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    /**
+     * Get the value of updatedAt
+     *
+     * @return  \DateTime
+     */ 
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set the value of updatedAt
+     *
+     * @param  \DateTime  $updatedAt
+     *
+     * @return  self
+     */ 
+    public function setUpdatedAt(\DateTime $updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 }

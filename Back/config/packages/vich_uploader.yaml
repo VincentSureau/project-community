@@ -5,6 +5,15 @@ vich_uploader:
         profil_pictures:
            uri_prefix: /images/profils
            upload_destination: '%kernel.project_dir%/public/images/profils'
+
+           inject_on_load: false
+           delete_on_update: true
+           delete_on_remove: true
+
         project_pictures:
            uri_prefix: /images/projects
            upload_destination: '%kernel.project_dir%/public/images/projects'
+
+           inject_on_load: false
+           delete_on_update: true
+           delete_on_remove: true

@@ -13,8 +13,7 @@ use App\Entity\Competence;
 use App\Entity\Specialisation;
 use App\Entity\ProfessionalStatus;
 use App\Entity\ProfilPicture;
-
-
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -212,7 +211,8 @@ class AppFixtures extends Fixture
                     $user->setLastname($faker->lastName);
                     $user->setBirthdate($faker->dateTimeInInterval($startDate = '-60 years', $interval = '-16 years'));
                     $profilPicture = new ProfilPicture;
-                    $profilPicture->setContentUrl('https://avatars.dicebear.com/v2/'. $gender . '/' . $user->getEmail() . '.svg');
+                    $url = 'https://avatars.dicebear.com/v2/'. $gender . '/' . $user->getEmail() . '.svg';
+                    $profilPicture->setContentUrl($url);
                     $user->setProfilPicture($profilPicture);
                     $user->setPhoneNumber($faker->mobileNumber);
                     $user->setCity($faker->city);
