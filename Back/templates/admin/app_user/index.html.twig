@@ -48,14 +48,14 @@
                     <td>{{ app_user.firstname }}</td>
                     <td>{{ app_user.lastname }}</td>
                     <td class="hide_content_tab">{{ app_user.birthdate ? app_user.birthdate|date('d-m-Y') : '' }}</td>
-                    <td class="hide_content_phone"><img class="image_for_list bg-creme" src="{{ app_user.profilePicture.contentUrl }}" alt="profile picture" data-toggle="modal" data-target="#modal-{{ app_user.id }}"></td>
+                    <td class="hide_content_phone"><img class="image_for_list bg-creme" src="{{ app_user.profilPicture.contentUrl }}" alt="profile picture" data-toggle="modal" data-target="#modal-{{ app_user.id }}"></td>
 
                         <!-- Modal -->
                         <div class="modal fade" id="modal-{{ app_user.id }}" tabindex="-1" role="dialog" aria-labelledby="view_picture" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-body d-flex justify-content-center">
-                                        <img class="img-fluid bg-creme modal-image" src="{{ app_user.profilePicture.contentUrl }}" alt="profile picture">
+                                        <img class="img-fluid bg-creme modal-image" src="{{ app_user.profilPicture.contentUrl }}" alt="profile picture">
                                     </div>
                                 </div>
                             </div>
