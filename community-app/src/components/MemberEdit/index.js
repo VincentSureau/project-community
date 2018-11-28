@@ -26,7 +26,6 @@ class MemberEdit extends React.Component {
       getProStatus,
     } = this.props;
     // L'id est de type: capucine-bertin-650,
-    // on récupère uniquement les chiffres pour récupérer le membre
     getMemberWithId(id);
     getCompetences();
     getProStatus();
@@ -155,7 +154,7 @@ class MemberEdit extends React.Component {
                 <input name="isActive" type="checkbox" defaultChecked={member.isActive} onChange={e => this.onChangeCheckbox(e)} defaultValue={member.isActive} />
                 Afficher mon profil
               </div>
-              {submitError !== undefined
+              {submitError !== undefined && submitError !== ''
                 && <p className="alert alert-danger">{submitError}</p>
               }
               <button className="col-6 button-submit" type="submit">Enregistrer</button>
