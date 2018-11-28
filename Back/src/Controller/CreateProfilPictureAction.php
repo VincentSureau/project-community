@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
-use App\Entity\ProfilePicture;
+use App\Entity\ProfilPicture;
 use App\Form\ProfilePictureType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -32,7 +32,7 @@ final class CreateProfilPictureAction
      */
     public function __invoke(Request $request): MediaObject
     {
-        $profilePicture = new ProfilePicture();
+        $profilePicture = new ProfilPicture();
 
         $form = $this->factory->create(ProfilePictureType::class, $profilePicture);
         $form->handleRequest($request);
