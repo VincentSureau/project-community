@@ -137,14 +137,6 @@ class AppUser implements UserInterface
      */
     private $birthdate;
 
-    /**
-     * @var MediaObject|null
-     * @ORM\ManyToOne(targetEntity="App\Entity\ProfilPicture")
-     * @ORM\JoinColumn(nullable=true)
-     * @Groups({"AppUserList", "user", "project", "userWrite"})
-     * @ApiProperty(iri="http://schema.org/image")
-     */
-    private $profilPicture;
 
     /**
      * @Groups({"user", "userWrite"})
@@ -276,6 +268,16 @@ class AppUser implements UserInterface
      */
     private $slug;
 
+    /**
+     * @var MediaObject|null
+     * @ORM\OneToOne(targetEntity="App\Entity\ProfilPicture", inversedBy="appUser", cascade={"persist", "remove"})
+     * @Groups({"AppUserList", "user", "project", "userWrite"})
+     * @ApiProperty(iri="http://schema.org/image")
+     * @ORM\JoinColumn(nullable=true)
+     * @Groups({"AppUserList", "user", "project", "userWrite"})
+     */
+    private $profilePicture;
+
     public function __construct()
     {
         $this->createdDate = new \DateTime();
@@ -382,18 +384,6 @@ class AppUser implements UserInterface
     public function setBirthdate(?\DateTimeInterface $birthdate): self
     {
         $this->birthdate = $birthdate;
-
-        return $this;
-    }
-
-    public function getProfilePicture(): ?string
-    {
-        return $this->profilePicture;
-    }
-        
-    public function setProfilePicture(?string $profilePicture): self
-    {
-        $this->profilePicture = $profilePicture;
 
         return $this;
     }
@@ -605,6 +595,18 @@ class AppUser implements UserInterface
     public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getProfilePicture(): ?ProfilPicture
+    {
+        return $this->profilePicture;
+    }
+
+    public function setProfilePicture(?ProfilPicture $profilePicture): self
+    {
+        $this->profilePicture = $profilePicture;
 
         return $this;
     }

@@ -48,4 +48,27 @@ class ProfilPicture
      * @ApiProperty(iri="http://schema.org/contentUrl")
      */
     public $contentUrl;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\AppUser", mappedBy="profilPicture", cascade={"persist", "remove"})
+     */
+    private $appUser;
+
+    public function getAppUser(): ?AppUser
+    {
+        return $this->appUser;
+    }
+
+    public function setAppUser(?AppUser $appUser): self
+    {
+        $this->appUser = $appUser;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newProfilPicture = $appUser === null ? null : $this;
+        if ($newProfilPicture !== $appUser->getProfilPicture()) {
+            $appUser->setProfilPicture($newProfilPicture);
+        }
+
+        return $this;
+    }
 }
