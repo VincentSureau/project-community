@@ -64,4 +64,5 @@ security:
         - { path: ^/,       roles: IS_AUTHENTICATED_ANONYMOUSLY }
 
     role_hierarchy:
+        ROLE_COMMUNITY_SUPERADMIN: ROLE_COMMUNITY_ADMIN
         ROLE_COMMUNITY_ADMIN: ROLE_COMMUNITY_USER

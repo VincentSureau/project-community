@@ -9,8 +9,19 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
- *     normalizationContext={"groups"={"project"}},
- *     denormalizationContext={"groups"={"projectWrite"}},
+ *     attributes={
+ *        "normalizationContext"={"groups"={"project"}},
+ *        "denormalizationContext"={"groups"={"projectWrite"}},
+ *     },
+ *     collectionOperations={
+ *        "get",
+ *        "post"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object.getProject() == user.getProject() or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux ajouter des images qu'à ton projet !"},
+ *     },
+ *     itemOperations={
+ *        "get",
+ *        "put"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object.getProject() == user.getProject() or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux modifier que les images de ton projet !"},
+ *        "delete"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object.getProject() == user.getProject() or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux supprimer que les images de ton projet !"}
+ *     },
  * )
  * @ORM\Entity(repositoryClass="App\Repository\ImageRepository")
  */
