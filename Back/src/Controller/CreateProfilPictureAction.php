@@ -32,19 +32,19 @@ final class CreateProfilPictureAction
      */
     public function __invoke(Request $request): ProfilPicture
     {
-        $profilePicture = new ProfilPicture();
+        $profilPicture = new ProfilPicture();
 
         $form = $this->factory->create(ProfilPictureType::class, $profilPicture);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->doctrine->getManager();
-            $em->persist($profilePicture);
+            $em->persist($profilPicture);
             $em->flush();
 
             // Prevent the serialization of the file property
-            $profilePicture->file = null;
+            $profilPicture->file = null;
 
-            return $profilePicture;
+            return $profilPicture;
         }
 
         // This will be handled by API Platform and returns a validation error.
