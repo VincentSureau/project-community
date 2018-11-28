@@ -72,7 +72,7 @@ class Members extends React.Component {
               key={member.slug}
               firstname={member.firstname}
               lastname={member.lastname}
-              promotion={member.promotion.name}
+              promotion={member.promotion !== null ? member.promotion.name : ''}
               specialisation={member.specialisation !== null ? member.specialisation.name : ''}
               profilePicture={member.profilePicture}
               slug={member.slug}

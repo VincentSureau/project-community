@@ -50,7 +50,7 @@ class Projects extends React.Component {
         .includes(`${filterSpeProjects}`));
     }
     if (filterPromoProjects !== '' && listProjects !== null) {
-      listProjects = listProjects.filter(project => project.promotion.name ===`${filterPromoProjects}`);
+      listProjects = listProjects.filter(project => project.promotion.name === `${filterPromoProjects}`);
     }
     if (filterTextProjects !== '' && listProjects !== null) {
       listProjects = listProjects.filter(project => project.name.toLowerCase().includes(filterTextProjects.toLowerCase()));
@@ -73,7 +73,7 @@ class Projects extends React.Component {
               key={project['@id']}
               slug={project.slug}
               title={project.name}
-              promotion={project.promotion.name}
+              promotion={project.promotion !== null ? project.promotion.name : ''}
               images={project.images}
               id={project['@id']}
               members={project.appUsers}
