@@ -14,6 +14,14 @@
     width: 100%;
     height: 100vh;
     min-height: 700px;
+    & .presentation-title {
+      margin: 0;
+      font-size: 6em;
+    }
+    & .presentation-subtitle {
+      padding: 0 0 2em 0;
+      font-weight: normal;
+    }
   }
 
   &-list {
