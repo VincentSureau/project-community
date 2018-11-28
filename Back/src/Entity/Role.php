@@ -9,7 +9,17 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *     collectionOperations={
+ *        "get",
+ *        "post"={"access_control"="is_granted('ROLE_COMMUNITY_SUPERADMIN')", "access_control_message"="Désolé mais seuls les supers administrateurs peuvent ajouter un rôle !"}
+ *     },
+ *     itemOperations={
+ *        "get",
+ *        "put"={"access_control"="is_granted('ROLE_COMMUNITY_SUPERADMIN')", "access_control_message"="Désolé mais seuls les supers administrateurs peuvent modifier un rôle !"},
+ *        "delete"={"access_control"="is_granted('ROLE_COMMUNITY_SUPERADMIN')", "access_control_message"="Désolé mais mais seuls les supers administrateurs peuvent supprimer un rôle !"}
+ *     },
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\RoleRepository")
  */
 class Role

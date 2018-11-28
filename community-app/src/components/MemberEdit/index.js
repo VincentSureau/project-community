@@ -26,7 +26,6 @@ class MemberEdit extends React.Component {
       getProStatus,
     } = this.props;
     // L'id est de type: capucine-bertin-650,
-    // on récupère uniquement les chiffres pour récupérer le membre
     getMemberWithId(id);
     getCompetences();
     getProStatus();
@@ -180,7 +179,7 @@ class MemberEdit extends React.Component {
                   Je souhaite afficher mon profil
                 </div>
               </label>
-              {submitError !== undefined
+              {submitError !== undefined && submitError !== ''
                 && <p className="alert alert-danger">{submitError}</p>
               }
               <button className="col-6 button-submit" type="submit">Enregistrer</button>

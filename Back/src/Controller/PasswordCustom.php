@@ -9,14 +9,18 @@ use App\Repository\AppUserRepository;
 use App\Entity\AppUser;
 use App\Utils\SendMail;
 use App\Utils\GeneratePassword;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class PasswordCustom extends AbstractController
 {
     private $repo;
 
-    public function __construct(AppUserRepository $repo)
+    private $passwordEncoder;
+
+    public function __construct(AppUserRepository $repo, UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->repo = $repo;
+        $this->passwordEncoder = $passwordEncoder;
     }
 
     public function newPassword($email, GeneratePassword $passwordFactory, SendMail $mailGenerator): Response
@@ -26,6 +30,8 @@ class PasswordCustom extends AbstractController
             $user->setPassword($passwordFactory->generate());
             $em = $this->getDoctrine()->getManager();
             $mailGenerator->resetPassword($user);
+            $encodedPassword = $this->passwordEncoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($encodedPassword);
             $em->flush();
 
             return $this->json($data = ["message" => "mot de passe envoyé"], $status = 200);

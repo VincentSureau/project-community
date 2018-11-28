@@ -35,7 +35,12 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *             "normalization_context"={"groups"={"AppUserList"}}
  *         },
  *         "get",
- *         "post"
+ *         "post"={"access_control"="is_granted('ROLE_COMMUNITY_ADMIN')"}
+ *     },
+ *     itemOperations={
+ *         "get",
+ *         "put"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object == user or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux modifier que ton profil !"},
+ *         "delete"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object == user or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux pas supprimer un autre utilisateur"}
  *     },
  * )
  * @ApiFilter(SearchFilter::class, properties={"slug": "iexact"})
