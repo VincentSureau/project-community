@@ -25,6 +25,7 @@ security:
                     - lexik_jwt_authentication.jwt_token_authenticator
 
         # admin:
+        #     pattern: ^/admin
         #     anonymous: ~
         #     form_login:
         #         login_path: app_login
@@ -38,6 +39,7 @@ security:
         #         target: admin_index
 
         # gestion:
+        #     pattern: ^/gestion
         #     anonymous: true
         #     form_login:
         #         login_path: app_login
