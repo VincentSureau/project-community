@@ -12,28 +12,33 @@
     }
 
     & label {
+      margin: .5em 0 .5em 1em;
+      font-size: 1.4em;
+      font-weight: bold;
+      position: relative;
+      color: darken($color-member, 20%);
+    }
+
+    & #isMemberActive-input {
       color: $text-color;
+      text-align: start;
+      border: none;
+      background-color: transparent;
+      border-bottom: 2px solid $text-color;
+      margin-right: .5em;
     }
 
     &-info {
       width: 500px;
-      & label {
-        // text-align: center;
-        margin: 1em 0 1em 1em;
-        font-size: 1.3em;
-        padding-left: 1em;
-        font-weight: bold;
-        position: relative;
-      }
+
       & .input-text ,.input-textarea {
         text-align: start;
         padding-left: 0;
-        // margin: .5em 2em 1em 2em;
         border: none;
         background-color: transparent;
         color: $text-color;
         border-bottom: 2px solid $text-color;
-        font-size: 1.1em;
+        font-size: 0.9em;
         width: 100%;
         &::placeholder{
           color: $text-color;
@@ -42,16 +47,24 @@
       }
       & .input-textarea {
         height: 10em;
+        margin-top: .6em;
         border: 2px solid $text-color;
-        padding: 0 10px;
+        padding: .7em;
       }
       & .multiselection {
-        height: 110px;
+        height: 7em;
         overflow-y: auto;
-        margin: 1em 2em 1em 0;
+        margin: .5em 2em 1em 0;
         padding-left: 10px;
         border-left: 2px solid $text-color;
         color: $text-color;
+      }
+      & #selectinput-select {
+        text-align: left;
+        text-align-last: left;
+        padding: .2em;
+        border-left: 2px solid $text-color;
+        margin-top: .5em;
       }
 
     }

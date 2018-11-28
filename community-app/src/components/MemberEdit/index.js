@@ -99,81 +99,87 @@ class MemberEdit extends React.Component {
             </div>
             <div id="memberedit-form-info" className="row justify-content-center">
               <label className="label col-12" htmlFor="city-input">
-                Ville:
+                Ville :
                 <input id="city-input" className="input-text col-12" type="text" name="city" placeholder="Nantes" defaultValue={value.city} onChange={e => this.onChangeInput(e)} />
               </label>
               <label className="label col-12" htmlFor="zipcode-input">
-                Code Postal:
+                Code Postal :
                 <input id="zipcode-input" className="input-text col-12" type="number" name="zipcode" placeholder="44000" defaultValue={value.zipcode} onChange={e => this.onChangeInput(e)} />
               </label>
               <label className="label col-12" htmlFor="mail-input">
-                Adresse mail:
+                * Adresse mail :
                 <input id="mail-input" required className="col-12 input-text" type="email" name="email" placeholder="marc.dubois@duboiscorp.fr" defaultValue={value.email} onChange={e => this.onChangeInput(e)} />
               </label>
               <label className="label col-12" htmlFor="phone-input">
-                Téléphone:
+                Téléphone :
                 <input id="phone-input" className="col-12 input-text" type="text" name="phoneNumber" placeholder="+33123456789" defaultValue={value.phoneNumber} onChange={e => this.onChangeInput(e)} />
               </label>
               <label className="label col-12" htmlFor="github-input">
-                Lien Github:
+                Lien Github :
                 <input id="github-input" className="col-12 input-text" type="text" name="linkGithub" placeholder="https://github.com/marcdub" defaultValue={value.linkGithub} onChange={e => this.onChangeInput(e)} />
               </label>
               <label className="label col-12" htmlFor="linkedin-input">
-                Lien Linked'In:
+                Lien Linked'In :
                 <input id="linkedin-input" className="col-12 input-text" type="text" name="linkLinkedin" placeholder="https://linkedin.com/in/marcdubois/" defaultValue={value.linkLinkedin} onChange={e => this.onChangeInput(e)} />
               </label>
               <label className="label col-12" htmlFor="portfolio-input">
-                Lien PortFolio:
+                Lien PortFolio :
                 <input id="portfolio-input" className="col-12 input-text" type="text" name="linkPersonal" placeholder="https://www.duboiscorp.fr" defaultValue={value.linkPersonal} onChange={e => this.onChangeInput(e)} />
               </label>
               <label className="label col-12" htmlFor="bio-textarea">
-                Bio:
+                Biographie :
                 <textarea id="bio-textarea" className="col-12 input-textarea" type="textarea" name="description" row="" placeholder="Décrivez votre parcourt, votre but et tout ce qui fait qu'un recruteur veuille de vous." defaultValue={value.description} onChange={e => this.onChangeInput(e)} />
               </label>
-              <p className="label col-5">Compétences: </p>
-              <div className="col-5 multiselection">
-                <div className="form-check">
-                  { ((competences != null) && (competencesMember != null))
-                    ? competences.map(competence => (
-                      <div className="form-check-label" key={competence['@id']}>
-                        <input
-                          name="competences[]"
-                          onChange={e => this.onChangeCheckbox(e)}
-                          defaultChecked={(competencesMember.map(competenceMember => (competenceMember['@id'] === this.getNestedObject(competence, ['@id']))).filter(response => response === true)[0])}
-                          defaultValue={this.getNestedObject(competence, ['@id'])}
-                          type="checkbox"
-                          className="form-check-input"
-                        />
-                        {this.getNestedObject(competence, ['name'])}
-                      </div>
-                    ))
-                    : <p>Loading</p>
-                  }
-
+              <label className="label col-12" htmlFor="competences-checkbox">
+                Compétences:
+                <div id="competences-checkbox" className="col-12 multiselection">
+                  <div className="form-check">
+                    { ((competences != null) && (competencesMember != null))
+                      ? competences.map(competence => (
+                        <div className="form-check-label" key={competence['@id']}>
+                          <input
+                            name="competences[]"
+                            onChange={e => this.onChangeCheckbox(e)}
+                            defaultChecked={(competencesMember.map(competenceMember => (competenceMember['@id'] === this.getNestedObject(competence, ['@id']))).filter(response => response === true)[0])}
+                            defaultValue={this.getNestedObject(competence, ['@id'])}
+                            type="checkbox"
+                            className="form-check-input"
+                          />
+                          {this.getNestedObject(competence, ['name'])}
+                        </div>
+                      ))
+                      : <p>Loading</p>
+                    }
+                  </div>
                 </div>
-              </div>
-              <p className="label col-5">Status professionnel: </p>
+              </label>
 
-              <div>
-                <select id="selectinput-select" className="w-100 text-white" name="professionalStatus" onChange={e => this.onChangeInput(e)} >
-                  {(status != null)
-                    ? status.map(singleStatus => (
-                      <option
-                        key={this.getNestedObject(singleStatus, ['@id'])}
-                        value={this.getNestedObject(singleStatus, ['@id'])}
-                        selected={value.status === this.getNestedObject(singleStatus, ['name'])}
-                      >
-                        {this.getNestedObject(singleStatus, ['name'])}
-                      </option>
-                    ))
-                    : <p>Loading</p>
-                  }
-                </select>
-              </div>
-              <div className="form-check col-12 ">
-                <input name="isActive" type="checkbox" defaultChecked={member.isActive} onChange={e => this.onChangeCheckbox(e)} defaultValue={member.isActive} />
-                Afficher mon profil
-              </div>
+              <label className="label col-12" htmlFor="selectinput-select">
+                Status professionnel:
+                <div>
+                  <select id="selectinput-select" className="col-8 text-white" name="professionalStatus" onChange={e => this.onChangeInput(e)} >
+                    {(status != null)
+                      ? status.map(singleStatus => (
+                        <option
+                          key={this.getNestedObject(singleStatus, ['@id'])}
+                          value={this.getNestedObject(singleStatus, ['@id'])}
+                          selected={value.status === this.getNestedObject(singleStatus, ['name'])}
+                        >
+                          {this.getNestedObject(singleStatus, ['name'])}
+                        </option>
+                      ))
+                      : <p>Loading</p>
+                    }
+                  </select>
+                </div>
+              </label>
+              <label className="label col-12 mt-4 mb-4" htmlFor="isMemberActive-input">
+                Affichage du profil
+                <div className="text-white font-weight-normal">
+                  <input id="isMemberActive-input" name="isActive" type="checkbox" defaultChecked={member.isActive} onChange={e => this.onChangeCheckbox(e)} defaultValue={member.isActive} />
+                  Je souhaite afficher mon profil
+                </div>
+              </label>
               {submitError !== undefined
                 && <p className="alert alert-danger">{submitError}</p>
               }
