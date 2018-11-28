@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -15,6 +16,9 @@ use App\Controller\AppUserCustomLastUsersHome;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity; 
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+
 /**
  * @ApiResource(
  *     attributes={
@@ -134,14 +138,13 @@ class AppUser implements UserInterface
     private $birthdate;
 
     /**
+     * @var MediaObject|null
+     * @ORM\ManyToOne(targetEntity="App\Entity\ProfilPicture")
+     * @ORM\JoinColumn(nullable=true)
      * @Groups({"AppUserList", "user", "project", "userWrite"})
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Url(
-     *     message = "L'url '{{ value }}  n'est pas une url valide",
-     *     protocols = {"http", "https"}
-     * )
+     * @ApiProperty(iri="http://schema.org/image")
      */
-    private $profilePicture;
+    private $profilPicture;
 
     /**
      * @Groups({"user", "userWrite"})
