@@ -143,7 +143,7 @@ class ProjectEdit extends React.Component {
                   <input name="isActive" type="checkbox" defaultChecked={project.isActive} onChange={e => this.onChangeCheckbox(e)} defaultValue={project.isActive} />
                   Afficher le projet
                 </div>
-                {submitError !== undefined
+                {submitError !== undefined && submitError !== ''
                   && <p className="alert alert-danger">{submitError}</p>
                 }
                 <button className="col-6 button-submit" type="submit">Enregistrer</button>

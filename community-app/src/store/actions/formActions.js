@@ -5,6 +5,7 @@ export const ERROR_ON_SUBMIT = 'ERROR_ON_SUBMIT';
 export const TOGGLE_POPOVER = 'TOGGLE_POPOVER';
 export const FORGOT_PASSWORD = 'FORGOT_PASSWORD';
 export const MESSAGE_FORGOT_PASSWORD = 'MESSAGE_FORGOT_PASSWORD';
+export const ERASE_MESSAGE_FORM = 'ERASE_MESSAGE_FORM'
 
 // Action creator
 export const changeInput = (value, name) => ({
@@ -37,4 +38,8 @@ export const forgottenPassword = email => ({
 export const messageForgotPassword = response => ({
   type: MESSAGE_FORGOT_PASSWORD,
   response,
+});
+
+export const eraseMessage = () => ({
+  type: ERASE_MESSAGE_FORM,
 });
