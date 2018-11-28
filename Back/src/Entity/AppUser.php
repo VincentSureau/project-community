@@ -276,7 +276,7 @@ class AppUser implements UserInterface
      * @ORM\JoinColumn(nullable=true)
      * @Groups({"AppUserList", "user", "project", "userWrite"})
      */
-    private $profilePicture;
+    private $profilPicture;
 
     public function __construct()
     {
@@ -599,14 +599,14 @@ class AppUser implements UserInterface
         return $this;
     }
 
-    public function getProfilePicture(): ?ProfilPicture
+    public function getProfilPicture(): ?ProfilPicture
     {
-        return $this->profilePicture;
+        return $this->profilPicture;
     }
 
-    public function setProfilePicture(?ProfilPicture $profilePicture): self
+    public function setProfilPicture(?ProfilPicture $profilPicture): self
     {
-        $this->profilePicture = $profilePicture;
+        $this->profilPicture = $profilPicture;
 
         return $this;
     }

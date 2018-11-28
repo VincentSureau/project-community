@@ -71,4 +71,28 @@ class ProfilPicture
 
         return $this;
     }
+
+    /**
+     * Get the value of contentUrl
+     *
+     * @return  string|null
+     */ 
+    public function getContentUrl()
+    {
+        return $this->contentUrl;
+    }
+
+    /**
+     * Set the value of contentUrl
+     *
+     * @param  string|null  $contentUrl
+     *
+     * @return  self
+     */ 
+    public function setContentUrl($contentUrl)
+    {
+        $this->contentUrl = $contentUrl;
+
+        return $this;
+    }
 }

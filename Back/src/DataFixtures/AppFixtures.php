@@ -12,6 +12,7 @@ use App\Entity\Promotion;
 use App\Entity\Competence;
 use App\Entity\Specialisation;
 use App\Entity\ProfessionalStatus;
+use App\Entity\ProfilPicture;
 
 
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -210,7 +211,9 @@ class AppFixtures extends Fixture
                     }
                     $user->setLastname($faker->lastName);
                     $user->setBirthdate($faker->dateTimeInInterval($startDate = '-60 years', $interval = '-16 years'));
-                    $user->setProfilePicture('https://avatars.dicebear.com/v2/'. $gender . '/' . $user->getEmail() . '.svg');
+                    $profilPicture = new ProfilPicture;
+                    $profilPicture->setContentUrl('https://avatars.dicebear.com/v2/'. $gender . '/' . $user->getEmail() . '.svg');
+                    $user->setProfilPicture($profilPicture);
                     $user->setPhoneNumber($faker->mobileNumber);
                     $user->setCity($faker->city);
                     $postcode = '';
