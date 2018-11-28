@@ -2,6 +2,7 @@
 import initialState from './initialState';
 import { MEMBER_EDITED, GET_MEMBER } from './actions/membersActions';
 import { PROJECT_EDITED, GET_PROJECT } from './actions/projectsActions';
+import { TOGGLE_POPOVER, FORGOT_PASSWORD, MESSAGE_FORGOT_PASSWORD } from './actions/formActions';
 // Types
 // Navbar
 export const GET_ISCONNECTED = 'GET_ISCONNECTED';
@@ -64,6 +65,18 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         submitError: action.submitError,
+      };
+
+    case TOGGLE_POPOVER:
+      return {
+        ...state,
+        popoverPassword: action.popover,
+      };
+
+    case MESSAGE_FORGOT_PASSWORD:
+      return {
+        ...state,
+        messagePassword: action.response,
       };
 
     // Members
@@ -225,6 +238,8 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         token: action.token,
+        connectionError: '',
+        messagePassword: '',
       };
 
     case CONNECT_MEMBER:

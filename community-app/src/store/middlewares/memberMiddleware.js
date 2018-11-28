@@ -115,6 +115,7 @@ const memberMiddleware = store => next => (action) => {
         // succes
         .then((response) => {
           // const connectedMember = response.data;
+          localStorage.setItem('connectedMember', 'on');
           localStorage.setItem('connectedMemberFirstName', response.data.firstname);
           localStorage.setItem('connectedMemberLastName', response.data.lastname);
           localStorage.setItem('connectedMemberSlugMember', response.data.slug);
