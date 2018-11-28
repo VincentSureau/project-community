@@ -18,6 +18,10 @@ import './login.scss';
  * Code
  */
 class LoginForm extends React.Component {
+  componentWillUnmount() {
+    const { eraseMessage } = this.props;
+    eraseMessage();
+  }
 
   handleChangeEmail = (evt) => {
     const { onChangeInput } = this.props;
@@ -63,7 +67,7 @@ class LoginForm extends React.Component {
             id="inputPassword"
             placeholder="Mot de passe"
           />
-          {connectionError !== undefined
+          {connectionError !== undefined && connectionError !== ''
             && <p className="alert alert-danger">{connectionError}</p>
           }
           <button
