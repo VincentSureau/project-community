@@ -74,16 +74,16 @@ class LoginForm extends React.Component {
           </button>
         </form>
         {messagePassword === 'OK'
-        && <p className="alert alert-success">Mot de passe réinitialisé</p>
+        && <p className="alert alert-success my-2">Mot de passe réinitialisé</p>
         }
         {messagePassword === 'NOK'
-          && <p className="alert alert-danger">Adresse-mail inconnue</p>
+          && <p className="alert alert-danger my-2">Adresse-mail inconnue</p>
         }
-        <a id="PopoverPassword" onClick={this.toggle}>Mot de passe oublié...</a>
-        <Popover placement="bottom" isOpen={popoverPassword} target="PopoverPassword" toggle={this.toggle}>
-          <PopoverHeader>Réinitialiser votre mot de passe</PopoverHeader>
-          <PopoverBody>
-            <p>Entrer votre email afin de recevoir un nouveau mot de passe sur votre boite mail.</p>
+        <a id="PopoverPassword" className="text-white my-2" onClick={this.toggle}>Mot de passe oublié...</a>
+        <Popover className="" placement="bottom" isOpen={popoverPassword} target="PopoverPassword" toggle={this.toggle}>
+          <PopoverHeader className="bg-white text-center text-login">Réinitialiser votre mot de passe</PopoverHeader>
+          <PopoverBody className="bg-login-darker text-center">
+            <p className="my-2">Entrer votre email afin de recevoir un nouveau mot de passe sur votre boite mail.</p>
             <input
               type="email"
               name="username"
