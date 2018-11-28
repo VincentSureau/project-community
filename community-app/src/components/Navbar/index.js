@@ -139,7 +139,6 @@ class ReactStrapNavbar extends React.Component {
                     {`Bonjour ${firstnameConnectedMember}`}
                   </DropdownToggle>
                   <DropdownMenu right className={classNavBarColor}>
-                    <DropdownItem divider />
                     <NavLink to={`/members/${slugMemberConnectedMember}`} exact className="nav-item nav-link text-center text-white text-uppercase font-weight-bold">
                       Mon profil
                     </NavLink>
@@ -158,7 +157,6 @@ class ReactStrapNavbar extends React.Component {
                         </NavLink>
                       </div>
                     )}
-                    <DropdownItem divider />
                   </DropdownMenu>
                 </UncontrolledDropdown>
               )}
