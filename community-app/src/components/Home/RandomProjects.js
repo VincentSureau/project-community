@@ -18,7 +18,7 @@ import ProjectsCarousel from './ProjectsCarousel';
  * Code
  */
 const RandomProjects = ({ projects }) => (
-  <section id="home-projects" className="d-flex flex-column justify-content-center align-items-center full-height bg-home">
+  <section id="home-projects" className="d-flex flex-column justify-content-center align-items-center bg-home">
     <h2 id="home-projects-title">Leurs projets <br /> de fin d'étude</h2>
     <h3 id="home-projects-subtitle">En un mois, on obtient cela !</h3>
     <div id="home-projects-pc">
