@@ -14,13 +14,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity
- * @ApiResource(iri="http://schema.org/MediaObject", collectionOperations={
- *     "get",
- *     "post"={
- *         "method"="POST",
- *         "path"="/profil_picture",
- *         "controller"=CreateProfilPictureAction::class,
- *         "defaults"={"_api_receive"=false},
+ * @ApiResource(
+ *     collectionOperations={
+ *         "get",
+ *         "post"={
+ *             "method"="POST",
+ *             "path"="/profil_picture",
+ *             "controller"=CreateProfilPictureAction::class,
+ *             "defaults"={"_api_receive"=false},
  *     },
  * })
  * @Vich\Uploadable
@@ -46,6 +47,7 @@ class ProfilPicture
      * @var string|null
      * @ORM\Column(nullable=true)
      * @ApiProperty(iri="http://schema.org/contentUrl")
+     * @Groups({"user"})     * 
      */
     public $contentUrl;
 
@@ -99,5 +101,13 @@ class ProfilPicture
     public function __toString()
     {
       return $this->contentUrl;
+    }
+
+    /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
     }
 }
