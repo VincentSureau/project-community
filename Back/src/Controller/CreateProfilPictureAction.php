@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
 use App\Entity\ProfilPicture;
-use App\Form\ProfilePictureType;
+use App\Form\ProfilPictureType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,7 +34,7 @@ final class CreateProfilPictureAction
     {
         $profilePicture = new ProfilPicture();
 
-        $form = $this->factory->create(ProfilePictureType::class, $profilePicture);
+        $form = $this->factory->create(ProfilPictureType::class, $profilePicture);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->doctrine->getManager();
