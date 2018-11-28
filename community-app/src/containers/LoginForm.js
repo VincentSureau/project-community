@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 // action creators
 import { submitLogIn } from 'src/store/actions/loginActions';
-import { changeInput, tooglePopover, forgottenPassword } from 'src/store/actions/formActions';
+import { changeInput, tooglePopover, forgottenPassword, eraseMessage } from 'src/store/actions/formActions';
 
 // composant
 import Form from '../components/Login/LoginForm';
@@ -35,6 +35,10 @@ const mapDispatchToProps = dispatch => ({
 
   passwordForgotten: (email) => {
     dispatch(forgottenPassword(email));
+  },
+
+  eraseMessage: () => {
+    dispatch(eraseMessage());
   },
 });
 
