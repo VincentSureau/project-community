@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\AppUser;
 use App\Repository\RoleRepository;
 use App\Entity\Competence;
+use App\Entity\ProfilPicture;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -12,6 +13,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 use App\Utils\GeneratePassword;
@@ -47,7 +49,11 @@ class AppUserType extends AbstractType
                     'attr' => ['class' => 'datepicker', 'autocomplete' => 'off'],
                     'format' => 'dd/MM/yyyy',
                     ])
-                     ->add('profilePicture')
+                     ->add('profilPicture', FileType::class, [
+                            'label' => 'Profil picture',
+                            'data_class' => ProfilPicture::class,
+                            'required' => false,
+                     ])
                      ->add('phoneNumber')
                      ->add('city')
                      ->add('zipcode')
@@ -85,7 +91,9 @@ class AppUserType extends AbstractType
                     $user->setIsActive(false);
                     $user->setPassword($this->passwordFactory->generate());
                     $user->setRole($roleUser);
-                    $user->setProfilePicture('https://avatars.dicebear.com/v2/male/'. $user->getEmail() . '.svg');
+                    $profilPicture = new ProfilPicture;
+                    $profilPicture->setContentUrl('https://avatars.dicebear.com/v2/male/'. $user->getEmail() . '.svg');
+                    $user->setProfilPicture($profilPicture);
                 }
             }
 
@@ -98,5 +106,10 @@ class AppUserType extends AbstractType
         $resolver->setDefaults([
             'data_class' => AppUser::class,
         ]);
+    }
+
+    public function getBlockPrefix()
+    {
+        return '';
     }
 }

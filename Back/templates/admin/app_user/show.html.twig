@@ -35,14 +35,14 @@
                 </tr>
                 <tr>
                     <th>Photo de profil</th>
-                    <td><img class="image_for_list bg-creme" src="{{ app_user.profilePicture }}" alt="profile picture" data-toggle="modal" data-target="#modal-{{ app_user.id }}"></td>
+                    <td><img class="image_for_list bg-creme" src="{{ app_user.profilPicture.contentUrl }}" alt="profil picture" data-toggle="modal" data-target="#modal-{{ app_user.id }}"></td>
 
                         <!-- Modal -->
                         <div class="modal fade" id="modal-{{ app_user.id }}" tabindex="-1" role="dialog" aria-labelledby="view_picture" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-body d-flex justify-content-center">
-                                        <img class="img-fluid modal-image bg-creme" src="{{ app_user.profilePicture }}" alt="">
+                                        <img class="img-fluid modal-image bg-creme" src="{{ app_user.profilPicture.contentUrl }}" alt="">
                                     </div>
                                 </div>
                             </div>

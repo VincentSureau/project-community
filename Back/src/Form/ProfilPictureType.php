@@ -1,5 +1,5 @@
 <?php
-// src/Form/ProfilePictureType.php
+// src/Form/ProfilPictureType.php
 
 namespace App\Form;
 
@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class ProfilePictureType extends AbstractType
+final class ProfilPictureType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -25,7 +25,7 @@ final class ProfilePictureType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => ProfilePicture::class,
+            'data_class' => ProfilPicture::class,
             'csrf_protection' => false,
         ]);
     }

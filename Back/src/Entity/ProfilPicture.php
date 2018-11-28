@@ -95,4 +95,9 @@ class ProfilPicture
 
         return $this;
     }
+
+    public function __toString()
+    {
+      return $this->contentUrl;
+    }
 }
