@@ -86,31 +86,50 @@ class MemberEdit extends React.Component {
         <form action="post" onSubmit={e => this.handleSubmit(e)}>
           <input hidden name="id" defaultValue={member.id} />
           <section id="memberedit-form" className="d-flex flex-column justify-content-center align-items-center bg-member">
-            <div className="row justify-content-center align-items-center">
-              <img src={member.profilePicture} className="singlemember-photo" alt="" />
-              {/*<input className="mx-2" type="file" name="profile_pic" accept=".jpg, .jpeg, .png" />*/}
-              <input className="col-5 input-text" type="text" name="profilePicture" placeholder="lien web de l'image" onChange={e => this.onChangeInput(e)} defaultValue={member.profilePicture} />
-            </div>
             <p className="singlemember-name">{member.firstname}</p>
             <p className="singlemember-name name-to-disapear">{member.lastname}</p>
-            <p className="singlemember-prom">#{promoname} #{spename}</p>
+            <p className="singlemember-prom mb-4">#{promoname} {spename !== undefined ? `#${spename}` : ''}</p>
+            <div className="row flex-column justify-content-center align-items-center">
+              <img src={member.profilePicture} className="singlemember-photo mb-3" alt="" />
+              {/*<input className="mx-2" type="file" name="profile_pic" accept=".jpg, .jpeg, .png" />*/}
+              <label className="label col-12" htmlFor="profil-picture-input">
+                Image de profil, insérer un lien :
+                <input id="profil-picture-input" className="col-12 input-text d-block text-member-navfoot mb-3 mt-2" type="text" name="profilePicture" placeholder="lien web de l'image" onChange={e => this.onChangeInput(e)} defaultValue={member.profilePicture} />
+              </label>
+            </div>
             <div id="memberedit-form-info" className="row justify-content-center">
-              <p className="label col-5">Ville: </p>
-              <input className="col-5 input-text" type="text" name="city" placeholder="Nantes" defaultValue={value.city} onChange={e => this.onChangeInput(e)} />
-              <p className="label col-5">Code Postal: </p>
-              <input className="col-5 input-text" type="number" name="zipcode" placeholder="44000" defaultValue={value.zipcode} onChange={e => this.onChangeInput(e)} />
-              <p className="label col-5">Adresse mail: </p>
-              <input required className="col-5 input-text" type="email" name="email" placeholder="marc.dubois@duboiscorp.fr" defaultValue={value.email} onChange={e => this.onChangeInput(e)} />
-              <p className="label col-5">Téléphone: </p>
-              <input className="col-5 input-text" type="text" name="phoneNumber" placeholder="+33123456789" defaultValue={value.phoneNumber} onChange={e => this.onChangeInput(e)} />
-              <p className="label col-5">Lien Github: </p>
-              <input className="col-5 input-text" type="text" name="linkGithub" placeholder="https://github.com/marcdub" defaultValue={value.linkGithub} onChange={e => this.onChangeInput(e)} />
-              <p className="label col-5">Lien Linked'In: </p>
-              <input className="col-5 input-text" type="text" name="linkLinkedin" placeholder="https://linkedin.com/in/marcdubois/" defaultValue={value.linkLinkedin} onChange={e => this.onChangeInput(e)} />
-              <p className="label col-5">Lien PortFolio: </p>
-              <input className="col-5 input-text" type="text" name="linkPersonal" placeholder="https://www.duboiscorp.fr" defaultValue={value.linkPersonal} onChange={e => this.onChangeInput(e)} />
-              <p className="label col-2">Bio: </p>
-              <textarea className="col-8 input-textarea" type="textarea" name="description" row="" placeholder="Décrivez votre parcourt, votre but et tout ce qui fait qu'un recruteur veuille de vous." defaultValue={value.description} onChange={e => this.onChangeInput(e)} />
+              <label className="label col-12" htmlFor="city-input">
+                Ville:
+                <input id="city-input" className="input-text col-12" type="text" name="city" placeholder="Nantes" defaultValue={value.city} onChange={e => this.onChangeInput(e)} />
+              </label>
+              <label className="label col-12" htmlFor="zipcode-input">
+                Code Postal:
+                <input id="zipcode-input" className="input-text col-12" type="number" name="zipcode" placeholder="44000" defaultValue={value.zipcode} onChange={e => this.onChangeInput(e)} />
+              </label>
+              <label className="label col-12" htmlFor="mail-input">
+                Adresse mail:
+                <input id="mail-input" required className="col-12 input-text" type="email" name="email" placeholder="marc.dubois@duboiscorp.fr" defaultValue={value.email} onChange={e => this.onChangeInput(e)} />
+              </label>
+              <label className="label col-12" htmlFor="phone-input">
+                Téléphone:
+                <input id="phone-input" className="col-12 input-text" type="text" name="phoneNumber" placeholder="+33123456789" defaultValue={value.phoneNumber} onChange={e => this.onChangeInput(e)} />
+              </label>
+              <label className="label col-12" htmlFor="github-input">
+                Lien Github:
+                <input id="github-input" className="col-12 input-text" type="text" name="linkGithub" placeholder="https://github.com/marcdub" defaultValue={value.linkGithub} onChange={e => this.onChangeInput(e)} />
+              </label>
+              <label className="label col-12" htmlFor="linkedin-input">
+                Lien Linked'In:
+                <input id="linkedin-input" className="col-12 input-text" type="text" name="linkLinkedin" placeholder="https://linkedin.com/in/marcdubois/" defaultValue={value.linkLinkedin} onChange={e => this.onChangeInput(e)} />
+              </label>
+              <label className="label col-12" htmlFor="portfolio-input">
+                Lien PortFolio:
+                <input id="portfolio-input" className="col-12 input-text" type="text" name="linkPersonal" placeholder="https://www.duboiscorp.fr" defaultValue={value.linkPersonal} onChange={e => this.onChangeInput(e)} />
+              </label>
+              <label className="label col-12" htmlFor="bio-textarea">
+                Bio:
+                <textarea id="bio-textarea" className="col-12 input-textarea" type="textarea" name="description" row="" placeholder="Décrivez votre parcourt, votre but et tout ce qui fait qu'un recruteur veuille de vous." defaultValue={value.description} onChange={e => this.onChangeInput(e)} />
+              </label>
               <p className="label col-5">Compétences: </p>
               <div className="col-5 multiselection">
                 <div className="form-check">
