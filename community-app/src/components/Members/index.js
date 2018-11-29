@@ -59,10 +59,10 @@ class Members extends React.Component {
           <h1>Étudiants</h1>
           <h3>Vous êtes prêts ? Eux oui !</h3>
           <div id="members-form" className="row w-100">
-            { (listSpe !== null) ? <SelectInput type="Spécialisation" list={listSpe} page="Members" /> : <p>Loading</p> }
-            { (listPromo !== null) ? <SelectInput type="Promotion" list={listPromo} page="Members" /> : <p>Loading</p> }
-            { (listStatus !== null) ? <SelectInput type="Status Professionnel" list={listStatus} page="Members" /> : <p>Loading</p> }
-            <TextInput type="filterTextMembers" placeholder="Prénom Nom" />
+            { (listSpe !== null) ? <SelectInput type="Spécialisation" list={listSpe} page="Members" value={filterSpeMembers} /> : <p>Loading</p> }
+            { (listPromo !== null) ? <SelectInput type="Promotion" list={listPromo} page="Members" value={filterPromoMembers} /> : <p>Loading</p> }
+            { (listStatus !== null) ? <SelectInput type="Status Professionnel" list={listStatus} page="Members" value={filterStatusMembers} /> : <p>Loading</p> }
+            <TextInput type="filterTextMembers" placeholder="Prénom Nom" value={filterTextMembers} />
           </div>
           <ArrowDown />
         </section>
@@ -77,6 +77,13 @@ class Members extends React.Component {
               profilePicture={member.profilePicture}
               slug={member.slug}
             />))}
+          {(listMembers.length === 0) && (
+            <div id="members-list-noresult" className="text-center">
+              <img src="src/images/sad-cry-regular.png" alt="sad face" />
+              <h1>Oh non ! Personne ne correspond...</h1>
+              <h1>Essaye encore !</h1>
+            </div>
+          )}
         </section>
       </div>
     );

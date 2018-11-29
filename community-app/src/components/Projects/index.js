@@ -61,9 +61,9 @@ class Projects extends React.Component {
           <h1 className="text-uppercase presentation-title">Projets</h1>
           <h3 className="text-uppercase presentation-subtitle">Des exploits fait en un mois !</h3>
           <div id="projects-form" className="row w-100">
-            { (listSpe !== null) ? <SelectInput type="Spécialisation" list={listSpe} page="Projects" /> : <p>Loading</p> }
-            { (listSpe !== null) ? <SelectInput type="Promotion" list={listPromo} page="Projects" /> : <p>Loading</p> }
-            <TextInput type="filterTextProjects" placeholder="Titre" />
+            { (listSpe !== null) ? <SelectInput type="Spécialisation" list={listSpe} page="Projects" value={filterSpeProjects} /> : <p>Loading</p> }
+            { (listSpe !== null) ? <SelectInput type="Promotion" list={listPromo} page="Projects" value={filterPromoProjects} /> : <p>Loading</p> }
+            <TextInput type="filterTextProjects" placeholder="Titre" value={filterTextProjects} />
           </div>
           <ArrowDown />
         </section>
@@ -78,6 +78,13 @@ class Projects extends React.Component {
               id={project['@id']}
               members={project.appUsers}
             />))}
+          {(listProjects.length === 0) && (
+            <div id="projects-list-noresult" className="text-center">
+              <img src="src/images/sad-cry-regular.png" alt="sad face" />
+              <h1>Oh non ! Aucun projet ne correspond...</h1>
+              <h1>Essaye encore !</h1>
+            </div>
+          )}
         </section>
       </div>
 

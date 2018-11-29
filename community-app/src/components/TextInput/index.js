@@ -23,7 +23,9 @@ class TextInput extends React.Component {
   }
 
   render() {
-    const { type, placeholder } = this.props;
+    const { type, placeholder, value } = this.props;
+    console.log(value);
+    
     return (
       <div id="textinput" className="col">
         <input
@@ -33,6 +35,7 @@ class TextInput extends React.Component {
           name={type}
           className="text-white w-100"
           onChange={e => this.onChangeInput(e)}
+          value={value}
         />
       </div>
     );
