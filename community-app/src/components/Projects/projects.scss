@@ -1,6 +1,10 @@
 @import '../../styles/vars';
 
 #projects {
+  & h1 {
+    margin: .5em 0;
+    font-size: 2em;
+  }
   & h3 {
     padding: 0 0 2em 0;
     font-weight: normal;
@@ -10,6 +14,14 @@
     width: 100%;
     height: 100vh;
     min-height: 700px;
+    & .presentation-title {
+      margin: 0;
+      font-size: 6em;
+    }
+    & .presentation-subtitle {
+      padding: 0 0 2em 0;
+      font-weight: normal;
+    }
   }
 
   &-list {
@@ -17,6 +29,10 @@
     padding: 3em 10em;
     width: 100%;
     min-height: 100vh;
+
+    & #projectitem {
+      height: auto;
+    }
   }
 
   &-form {

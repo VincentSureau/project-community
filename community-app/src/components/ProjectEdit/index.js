@@ -94,55 +94,73 @@ class ProjectEdit extends React.Component {
                   <img src={heroImage[0].imageLink} alt="" />
                 </div>
               </div>
-              <input
-                className="mx-2 input-text ishero"
-                type="text"
-                id={heroImage[0]['@id']}
-                name="images"
-                defaultValue={heroImage[0].imageLink}
-              />
+              <label className="label col-6 text-center" htmlFor={heroImage[0]['@id']}>
+                Image principale du projet, insérer un lien :
+                <input
+                  className="mx-2 input-text ishero w-80 text-project-lighter"
+                  type="text"
+                  id={heroImage[0]['@id']}
+                  name="images"
+                  defaultValue={heroImage[0].imageLink}
+                />
+              </label>
               <div id="projectedit-form-gallery" className="row">
                 {images.map(image => (
                   <div id="projectedit-form-gallery-imagechange" className="col-4" key={uuid()}>
                     <img src={image.imageLink} alt="" />
-                    <input
-                      className="input-text"
-                      type="text"
-                      id={image['@id']}
-                      name="images"
-                      defaultValue={image.imageLink}
-                    />
+                    <label className="label col-12 images-label" htmlFor={image['@id']}>
+                      Insérer un lien :
+                      <input
+                        className="input-text"
+                        type="text"
+                        id={image['@id']}
+                        name="images"
+                        defaultValue={image.imageLink}
+                      />
+                    </label>
                   </div>
                 ))}
               </div>
               <div id="projectedit-form-info" className="row justify-content-center">
-                <p className="label col-5">Lien site: </p>
-                <input className="col-5 input-text" type="text" name="linkProject" placeholder={project.linkProject} defaultValue={value.linkProject} onChange={e => this.onChangeInput(e)} />
-                <p className="label col-5">Lien vidéo YouTube: </p>
-                <input className="col-5 input-text" type="text" name="linkVideo" placeholder={project.linkVideo} defaultValue={value.linkVideo} onChange={e => this.onChangeInput(e)} />
-                <textarea className="col-12 input-textarea" type="textarea" name="description" row="" placeholder={project.description} defaultValue={value.description} onChange={e => this.onChangeInput(e)} />
-                <p className="label col-5">Technologies utilisées: </p>
-                <div className="col-5 multiselection">
-                  <div className="form-check">
-                    {competences.map(competence => (
-                      <div className="form-check-label" key={competence['@id']}>
-                        <input
-                          name="competences[]"
-                          type="checkbox"
-                          onChange={e => this.onChangeCheckbox(e)}
-                          className="form-check-input"
-                          defaultChecked={(competencesProject.map(competenceProject => (competenceProject['@id'] === this.getNestedObject(competence, ['@id']))).filter(response => response === true)[0])}
-                          defaultValue={this.getNestedObject(competence, ['@id'])}
-                        />
-                        {competence.name}
-                      </div>
-                    ))}
+                <label className="label col-12" htmlFor="projectlink-input">
+                  Lien site:
+                  <input id="projectlink-input" className="col-12 input-text" type="text" name="linkProject" placeholder="https://www.monprojet.com" defaultValue={value.linkProject} onChange={e => this.onChangeInput(e)} />
+                </label>
+                <label className="label col-12" htmlFor="projectvideo-input">
+                  Lien vidéo YouTube:
+                  <input id="projectvideo-input" className="col-12 input-text" type="text" name="linkVideo" placeholder="https://www.youtube.com/monprojet" defaultValue={value.linkVideo} onChange={e => this.onChangeInput(e)} />
+                </label>
+                <label className="label col-12" htmlFor="projectDescription-input">
+                  Description
+                  <textarea id="projectDescription-input" className="col-12 input-textarea" type="textarea" name="description" row="" placeholder="Décrivez votre projet" defaultValue={value.description} onChange={e => this.onChangeInput(e)} />
+                </label>
+                <label className="label col-12" htmlFor="projectDescription-input">
+                  Technologies utilisées:
+                  <div id="projectDescription-input" className="col-12 multiselection">
+                    <div className="form-check">
+                      {competences.map(competence => (
+                        <div className="form-check-label" key={competence['@id']}>
+                          <input
+                            name="competences[]"
+                            type="checkbox"
+                            onChange={e => this.onChangeCheckbox(e)}
+                            className="form-check-input"
+                            defaultChecked={(competencesProject.map(competenceProject => (competenceProject['@id'] === this.getNestedObject(competence, ['@id']))).filter(response => response === true)[0])}
+                            defaultValue={this.getNestedObject(competence, ['@id'])}
+                          />
+                          {competence.name}
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div className="form-check col-12 ">
-                  <input name="isActive" type="checkbox" defaultChecked={project.isActive} onChange={e => this.onChangeCheckbox(e)} defaultValue={project.isActive} />
-                  Afficher le projet
-                </div>
+                </label>
+                <label className="label col-12 mt-4 mb-4" htmlFor="isProjectActive-input">
+                  Affichage du profil
+                  <div className="text-white font-weight-normal">
+                    <input id="isProjectActive-input" name="isActive" type="checkbox" defaultChecked={project.isActive} onChange={e => this.onChangeCheckbox(e)} defaultValue={project.isActive} />
+                    Afficher le projet
+                  </div>
+                </label>
                 {submitError !== undefined && submitError !== ''
                   && <p className="alert alert-danger">{submitError}</p>
                 }

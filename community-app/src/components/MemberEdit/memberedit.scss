@@ -3,28 +3,43 @@
 #memberedit {
   &-form {
     margin: 0;
-    padding: 5em 10em;
+    padding: 7em 10em;
     width: 100%;
     height: 100%;
     min-height: 650px;
     & input {
       color: $text-color;
     }
+
+    & label {
+      margin: .5em 0 .5em 1em;
+      font-size: 1.4em;
+      font-weight: bold;
+      position: relative;
+      color: darken($color-member, 20%);
+    }
+
+    & #isMemberActive-input {
+      color: $text-color;
+      text-align: start;
+      border: none;
+      background-color: transparent;
+      border-bottom: 2px solid $text-color;
+      margin-right: .5em;
+    }
+
     &-info {
       width: 500px;
-      & p {
-        text-align: end;
-        margin: 1em 0 1em 1em;
-        margin-bottom: 0;
-      }
+
       & .input-text ,.input-textarea {
         text-align: start;
-        padding: 0;
-        margin: 1em 2em 1em 0;
+        padding-left: 0;
         border: none;
         background-color: transparent;
         color: $text-color;
         border-bottom: 2px solid $text-color;
+        font-size: 0.9em;
+        width: 100%;
         &::placeholder{
           color: $text-color;
           opacity: 0.5;
@@ -32,20 +47,33 @@
       }
       & .input-textarea {
         height: 10em;
+        margin-top: .6em;
         border: 2px solid $text-color;
-        padding: 0 10px;
+        padding: .7em;
       }
       & .multiselection {
-        height: 110px;
-        overflow-y: auto;
-        margin: 1em 2em 1em 0;
+        height: 7em;
+        overflow-y: scroll;
+        margin: .5em 2em 1em 0;
         padding-left: 10px;
         border-left: 2px solid $text-color;
         color: $text-color;
       }
+      & #selectinput-select {
+        text-align: left;
+        text-align-last: left;
+        padding: .2em;
+        border-left: 2px solid $text-color;
+        margin-top: .5em;
+      }
 
     }
+
+    & .singlemember-name {
+      font-size: 3em;
+    }
   }
+
 }
 
 .form-check-label {
