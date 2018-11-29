@@ -61,8 +61,8 @@ security:
                     - lexik_jwt_authentication.jwt_token_authenticator
 
     access_control:
-        - { path: ^/admin, roles: ROLE_COMMUNITY_ADMIN }
-        - { path: ^/gestion, roles: ROLE_COMMUNITY_ADMIN }
+        - { path: ^/admin, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/gestion, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/,       roles: IS_AUTHENTICATED_ANONYMOUSLY }
 

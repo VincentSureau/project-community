@@ -37,7 +37,7 @@ final class AppUserSubscriber implements EventSubscriber
 
     public function prePersist(LifecycleEventArgs $args)
     {
-        $this->sendMail($args);
+        // $this->sendMail($args);
         $this->encryptPassword($args);
     }
 

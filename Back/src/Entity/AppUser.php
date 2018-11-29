@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -12,9 +13,13 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use App\Controller\AppUserCustomAllUsersRandom;
 use App\Controller\AppUserCustomLastUsersHome;
+use App\Controller\CreateProfilPictureAction;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity; 
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+
 /**
  * @ApiResource(
  *     attributes={
@@ -40,12 +45,20 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *     itemOperations={
  *         "get",
  *         "put"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object == user or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux modifier que ton profil !"},
- *         "delete"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object == user or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux pas supprimer un autre utilisateur"}
+ *         "delete"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object == user or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux pas supprimer un autre utilisateur"},
+ *         "picture"= {
+ *             "method"="POST",
+ *             "path"="/app_users/{id}/profil_picture",
+ *             "controller"=CreateProfilPictureAction::class,
+ *             "defaults"={"_api_receive"=false},
+ *             "denormalizationContext"={"groups"={"userWrite"}},
+ *          },
  *     },
  * )
  * @ApiFilter(SearchFilter::class, properties={"slug": "iexact"})
  * @ORM\Entity(repositoryClass="App\Repository\AppUserRepository")
  * @UniqueEntity("email")
+ * @Vich\Uploadable
  */
 class AppUser implements UserInterface
 {
@@ -133,15 +146,6 @@ class AppUser implements UserInterface
      */
     private $birthdate;
 
-    /**
-     * @Groups({"AppUserList", "user", "project", "userWrite"})
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\Url(
-     *     message = "L'url '{{ value }}  n'est pas une url valide",
-     *     protocols = {"http", "https"}
-     * )
-     */
-    private $profilePicture;
 
     /**
      * @Groups({"user", "userWrite"})
@@ -227,6 +231,28 @@ class AppUser implements UserInterface
     private $description;
 
     /**
+     * @Groups({"userWrite"})
+     * @Vich\UploadableField(mapping="profil_pictures", fileNameProperty="contentUrl")
+     * @var File
+     */
+    public $file;
+
+    /**
+     * @var string|null
+     * @ORM\Column(nullable=true)
+     * @ApiProperty(iri="http://schema.org/contentUrl")
+     * @Groups({"AppUserList", "user", "project", "userWrite"})
+     */
+    public $contentUrl;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;    
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Role", inversedBy="appUsers")
      */
     private $role;
@@ -277,6 +303,7 @@ class AppUser implements UserInterface
     {
         $this->createdDate = new \DateTime();
         $this->competences = new ArrayCollection();
+        $this->updatedAt = new \DateTime();
     }
 
     // return id
@@ -379,18 +406,6 @@ class AppUser implements UserInterface
     public function setBirthdate(?\DateTimeInterface $birthdate): self
     {
         $this->birthdate = $birthdate;
-
-        return $this;
-    }
-
-    public function getProfilePicture(): ?string
-    {
-        return $this->profilePicture;
-    }
-        
-    public function setProfilePicture(?string $profilePicture): self
-    {
-        $this->profilePicture = $profilePicture;
 
         return $this;
     }
@@ -602,6 +617,81 @@ class AppUser implements UserInterface
     public function setSlug(?string $slug): self
     {
         $this->slug = $slug;
+
+        return $this;
+    }
+
+
+    /**
+     * Get the value of file
+     *
+     * @return  File
+     */ 
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Set the value of file
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $file
+     */ 
+    public function setFile(?File $file = null): void
+    {
+        $this->file = $file;
+
+        if (null !== $file) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    /**
+     * Get the value of contentUrl
+     *
+     * @return  string|null
+     */ 
+    public function getContentUrl()
+    {
+        return $this->contentUrl;
+    }
+
+    /**
+     * Set the value of contentUrl
+     *
+     * @param  string|null  $contentUrl
+     *
+     * @return  self
+     */ 
+    public function setContentUrl($contentUrl)
+    {
+        $this->contentUrl = $contentUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of updatedAt
+     *
+     * @return  \DateTime
+     */ 
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set the value of updatedAt
+     *
+     * @param  \DateTime  $updatedAt
+     *
+     * @return  self
+     */ 
+    public function setUpdatedAt(\DateTime $updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

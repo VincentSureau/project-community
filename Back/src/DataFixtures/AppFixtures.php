@@ -12,8 +12,8 @@ use App\Entity\Promotion;
 use App\Entity\Competence;
 use App\Entity\Specialisation;
 use App\Entity\ProfessionalStatus;
-
-
+use App\Entity\ProfilPicture;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -210,7 +210,25 @@ class AppFixtures extends Fixture
                     }
                     $user->setLastname($faker->lastName);
                     $user->setBirthdate($faker->dateTimeInInterval($startDate = '-60 years', $interval = '-16 years'));
-                    $user->setProfilePicture('https://avatars.dicebear.com/v2/'. $gender . '/' . $user->getEmail() . '.svg');
+                    //$profilPicture = new ProfilPicture;
+                    //$url = 'https://avatars.dicebear.com/v2/'. $gender . '/' . $user->getEmail() . '.svg';
+                    //$profilPicture->setContentUrl($url);
+
+                    $url_to_image = 'https://avatars.dicebear.com/v2/'. $gender . '/' . $user->getEmail() . '.svg';
+                    
+                    $ch = curl_init($url_to_image);
+                    
+                    $my_save_dir = 'public/images/profils/';
+                    $filename = md5(uniqid(rand(), true)) . '.svg';
+                    $complete_save_loc = $my_save_dir . $filename;
+                    $fp = fopen($complete_save_loc, 'wb');
+                    curl_setopt($ch, CURLOPT_FILE, $fp);
+                    curl_setopt($ch, CURLOPT_HEADER, 0);
+                    curl_exec($ch);
+                    curl_close($ch);
+                    fclose($fp);
+                    
+                    $user->setContentUrl($filename);
                     $user->setPhoneNumber($faker->mobileNumber);
                     $user->setCity($faker->city);
                     $postcode = '';
