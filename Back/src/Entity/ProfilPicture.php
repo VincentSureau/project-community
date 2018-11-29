@@ -61,11 +61,6 @@ class ProfilPicture
      */
     private $updatedAt;    
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\AppUser", mappedBy="profilPicture", cascade={"persist", "remove"})
-     */
-    private $appUser;
-
     public function __construct()
     {
         $this->updatedAt = new \DateTimeImmutable();

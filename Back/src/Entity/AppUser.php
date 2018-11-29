@@ -13,6 +13,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use App\Controller\AppUserCustomAllUsersRandom;
 use App\Controller\AppUserCustomLastUsersHome;
+use App\Controller\CreateProfilPictureAction;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity; 
@@ -44,7 +45,14 @@ use Symfony\Component\HttpFoundation\File\File;
  *     itemOperations={
  *         "get",
  *         "put"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object == user or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux modifier que ton profil !"},
- *         "delete"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object == user or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux pas supprimer un autre utilisateur"}
+ *         "delete"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object == user or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux pas supprimer un autre utilisateur"},
+ *         "picture"= {
+ *             "method"="POST",
+ *             "path"="/app_users/{id}/profil_picture",
+ *             "controller"=CreateProfilPictureAction::class,
+ *             "defaults"={"_api_receive"=false},
+ *             "denormalizationContext"={"groups"={"userWrite"}},
+ *          },
  *     },
  * )
  * @ApiFilter(SearchFilter::class, properties={"slug": "iexact"})
@@ -223,6 +231,7 @@ class AppUser implements UserInterface
     private $description;
 
     /**
+     * @Groups({"userWrite"})
      * @Vich\UploadableField(mapping="profil_pictures", fileNameProperty="contentUrl")
      * @var File
      */
@@ -626,15 +635,17 @@ class AppUser implements UserInterface
     /**
      * Set the value of file
      *
-     * @param  File  $file
-     *
-     * @return  self
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $file
      */ 
-    public function setFile(File $file)
+    public function setFile(?File $file = null): void
     {
         $this->file = $file;
 
-        return $this;
+        if (null !== $file) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
     }
 
     /**

@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use ApiPlatform\Core\Bridge\Symfony\Validator\Exception\ValidationException;
-use App\Entity\ProfilPicture;
+use App\Entity\AppUser;
 use App\Form\ProfilPictureType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -30,24 +30,21 @@ final class CreateProfilPictureAction
     /**
      * @IsGranted("ROLE_COMMUNITY_USER")
      */
-    public function __invoke(Request $request): ProfilPicture
+    public function __invoke(AppUser $appUser, Request $request): AppUser
     {
-        $profilPicture = new ProfilPicture();
-
-        $form = $this->factory->create(ProfilPictureType::class, $profilPicture);
+        $form = $this->factory->create(ProfilPictureType::class, $appUser);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->doctrine->getManager();
-            $em->persist($profilPicture);
+            $em->persist($appUser);
             $em->flush();
-
             // Prevent the serialization of the file property
-            $profilPicture->file = null;
+            $appUser->file = null;
 
-            return $profilPicture;
+            return $appUser;
         }
 
         // This will be handled by API Platform and returns a validation error.
-        throw new ValidationException($this->validator->validate($profilPicture));
+        throw new ValidationException($this->validator->validate($appUser));
     }
 }
