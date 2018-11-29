@@ -3,20 +3,21 @@
 namespace App\Form;
 
 use App\Entity\AppUser;
-use App\Repository\RoleRepository;
 use App\Entity\Competence;
 use App\Entity\ProfilPicture;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use App\Utils\GeneratePassword;
+use App\Repository\RoleRepository;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 
-use App\Utils\GeneratePassword;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 
 class AppUserType extends AbstractType
 {
@@ -49,10 +50,13 @@ class AppUserType extends AbstractType
                     'attr' => ['class' => 'datepicker', 'autocomplete' => 'off'],
                     'format' => 'dd/MM/yyyy',
                     ])
-                     ->add('profilPicture', FileType::class, [
-                            'label' => 'Profil picture',
-                            'data_class' => ProfilPicture::class,
-                            'required' => false,
+                     ->add('file', VichImageType::class, [
+                        'required' => false,
+                        'allow_delete' => true,
+                        // 'download_label' => '...',
+                        'download_uri' => true,
+                        'image_uri' => true,
+                        // 'imagine_pattern' => '...',
                      ])
                      ->add('phoneNumber')
                      ->add('city')
@@ -91,9 +95,22 @@ class AppUserType extends AbstractType
                     $user->setIsActive(false);
                     $user->setPassword($this->passwordFactory->generate());
                     $user->setRole($roleUser);
-                    $profilPicture = new ProfilPicture;
-                    $profilPicture->setContentUrl('https://avatars.dicebear.com/v2/male/'. $user->getEmail() . '.svg');
-                    $user->setProfilPicture($profilPicture);
+
+                    $url_to_image = 'https://avatars.dicebear.com/v2/male/'. $user->getEmail() . '.svg';
+                    
+                    $ch = curl_init($url_to_image);
+                    
+                    $my_save_dir = '../public/images/profils/';
+                    $filename = md5(uniqid(rand(), true)) . '.svg';
+                    $complete_save_loc = $my_save_dir . $filename;
+                    $fp = fopen($complete_save_loc, 'wb');
+                    curl_setopt($ch, CURLOPT_FILE, $fp);
+                    curl_setopt($ch, CURLOPT_HEADER, 0);
+                    curl_exec($ch);
+                    curl_close($ch);
+                    fclose($fp);
+                    
+                    $user->setContentUrl($filename);
                 }
             }
 

@@ -3,7 +3,7 @@
 
 namespace App\Form;
 
-use App\Entity\ProfilPicture;
+use App\Entity\AppUser;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,7 +25,7 @@ final class ProfilPictureType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => ProfilPicture::class,
+            'data_class' => AppUser::class,
             'csrf_protection' => false,
         ]);
     }

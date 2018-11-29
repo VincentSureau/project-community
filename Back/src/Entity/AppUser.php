@@ -50,6 +50,7 @@ use Symfony\Component\HttpFoundation\File\File;
  * @ApiFilter(SearchFilter::class, properties={"slug": "iexact"})
  * @ORM\Entity(repositoryClass="App\Repository\AppUserRepository")
  * @UniqueEntity("email")
+ * @Vich\Uploadable
  */
 class AppUser implements UserInterface
 {
@@ -222,6 +223,27 @@ class AppUser implements UserInterface
     private $description;
 
     /**
+     * @Vich\UploadableField(mapping="profil_pictures", fileNameProperty="contentUrl")
+     * @var File
+     */
+    public $file;
+
+    /**
+     * @var string|null
+     * @ORM\Column(nullable=true)
+     * @ApiProperty(iri="http://schema.org/contentUrl")
+     * @Groups({"AppUserList", "user", "project", "userWrite"})
+     */
+    public $contentUrl;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;    
+
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Role", inversedBy="appUsers")
      */
     private $role;
@@ -268,19 +290,11 @@ class AppUser implements UserInterface
      */
     private $slug;
 
-    /**
-     * @var MediaObject|null
-     * @ORM\OneToOne(targetEntity="App\Entity\ProfilPicture", inversedBy="appUser", cascade={"persist", "remove"})
-     * @ApiProperty(iri="http://schema.org/image")
-     * @ORM\JoinColumn(nullable=true)
-     * @Groups({"AppUserList", "user", "project", "userWrite"})
-     */
-    private $profilPicture;
-
     public function __construct()
     {
         $this->createdDate = new \DateTime();
         $this->competences = new ArrayCollection();
+        $this->updatedAt = new \DateTime();
     }
 
     // return id
@@ -598,14 +612,75 @@ class AppUser implements UserInterface
         return $this;
     }
 
-    public function getProfilPicture(): ?ProfilPicture
+
+    /**
+     * Get the value of file
+     *
+     * @return  File
+     */ 
+    public function getFile()
     {
-        return $this->profilPicture;
+        return $this->file;
     }
 
-    public function setProfilPicture(?ProfilPicture $profilPicture): self
+    /**
+     * Set the value of file
+     *
+     * @param  File  $file
+     *
+     * @return  self
+     */ 
+    public function setFile(File $file)
     {
-        $this->profilPicture = $profilPicture;
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of contentUrl
+     *
+     * @return  string|null
+     */ 
+    public function getContentUrl()
+    {
+        return $this->contentUrl;
+    }
+
+    /**
+     * Set the value of contentUrl
+     *
+     * @param  string|null  $contentUrl
+     *
+     * @return  self
+     */ 
+    public function setContentUrl($contentUrl)
+    {
+        $this->contentUrl = $contentUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of updatedAt
+     *
+     * @return  \DateTime
+     */ 
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set the value of updatedAt
+     *
+     * @param  \DateTime  $updatedAt
+     *
+     * @return  self
+     */ 
+    public function setUpdatedAt(\DateTime $updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

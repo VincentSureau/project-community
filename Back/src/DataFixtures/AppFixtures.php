@@ -210,10 +210,25 @@ class AppFixtures extends Fixture
                     }
                     $user->setLastname($faker->lastName);
                     $user->setBirthdate($faker->dateTimeInInterval($startDate = '-60 years', $interval = '-16 years'));
-                    $profilPicture = new ProfilPicture;
-                    $url = 'https://avatars.dicebear.com/v2/'. $gender . '/' . $user->getEmail() . '.svg';
-                    $profilPicture->setContentUrl($url);
-                    $user->setProfilPicture($profilPicture);
+                    //$profilPicture = new ProfilPicture;
+                    //$url = 'https://avatars.dicebear.com/v2/'. $gender . '/' . $user->getEmail() . '.svg';
+                    //$profilPicture->setContentUrl($url);
+
+                    $url_to_image = 'https://avatars.dicebear.com/v2/'. $gender . '/' . $user->getEmail() . '.svg';
+                    
+                    $ch = curl_init($url_to_image);
+                    
+                    $my_save_dir = 'public/images/profils/';
+                    $filename = md5(uniqid(rand(), true)) . '.svg';
+                    $complete_save_loc = $my_save_dir . $filename;
+                    $fp = fopen($complete_save_loc, 'wb');
+                    curl_setopt($ch, CURLOPT_FILE, $fp);
+                    curl_setopt($ch, CURLOPT_HEADER, 0);
+                    curl_exec($ch);
+                    curl_close($ch);
+                    fclose($fp);
+                    
+                    $user->setContentUrl($filename);
                     $user->setPhoneNumber($faker->mobileNumber);
                     $user->setCity($faker->city);
                     $postcode = '';
