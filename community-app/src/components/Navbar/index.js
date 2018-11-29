@@ -154,11 +154,11 @@ class ReactStrapNavbar extends React.Component {
                         </NavLink>
                       </div>
                     )}
-                    {(this.Auth.getProfile().roles[0] === 'ROLE_COMMUNITY_ADMIN')
+                    {/* {(this.Auth.getProfile().roles[0] === 'ROLE_COMMUNITY_ADMIN')
                       && (
                       <ReactStrapLink className="nav-item nav-link text-white text-center text-uppercase font-weight-bold" href="http://127.0.0.1:8001/app_login">Espace admin</ReactStrapLink>
                       )
-                    }
+                    } */}
                   </DropdownMenu>
                 </UncontrolledDropdown>
               )}
