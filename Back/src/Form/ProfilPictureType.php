@@ -19,7 +19,7 @@ final class ProfilPictureType extends AbstractType
                 'label' => 'label.file',
                 'required' => false,
             ])
-        ;
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
