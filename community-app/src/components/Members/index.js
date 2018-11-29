@@ -80,8 +80,8 @@ class Members extends React.Component {
           {(listMembers.length === 0) && (
             <div id="members-list-noresult" className="text-center">
               <img src="src/images/sad-cry-regular.png" alt="sad face" />
-              <h1>Oh non! Personne ne correspond...</h1>
-              <h1>Essaye encore</h1>
+              <h1>Oh non ! Personne ne correspond...</h1>
+              <h1>Essaye encore !</h1>
             </div>
           )}
         </section>
