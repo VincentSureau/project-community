@@ -1,37 +1,37 @@
 <?php
 // src/Form/ProfilPictureType.php
 
-// namespace App\Form;
+namespace App\Form;
 
-// use App\Entity\AppUser;
-// use Symfony\Component\Form\AbstractType;
-// use Symfony\Component\Form\Extension\Core\Type\FileType;
-// use Symfony\Component\Form\FormBuilderInterface;
-// use Symfony\Component\OptionsResolver\OptionsResolver;
+use App\Entity\AppUser;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
-// final class ProfilPictureType extends AbstractType
-// {
-//     public function buildForm(FormBuilderInterface $builder, array $options)
-//     {
-//         $builder
-//             // Configure each fields you want to be submitted here, like a classic form.
-//             ->add('file', FileType::class, [
-//                 'label' => 'label.file',
-//                 'required' => false,
-//             ])
-//             ;
-//     }
+final class ProfilPictureType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            // Configure each fields you want to be submitted here, like a classic form.
+            ->add('file', FileType::class, [
+                'label' => 'label.file',
+                'required' => false,
+            ])
+            ;
+    }
 
-//     public function configureOptions(OptionsResolver $resolver)
-//     {
-//         $resolver->setDefaults([
-//             'data_class' => AppUser::class,
-//             'csrf_protection' => false,
-//         ]);
-//     }
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => AppUser::class,
+            'csrf_protection' => false,
+        ]);
+    }
 
-//     public function getBlockPrefix()
-//     {
-//         return '';
-//     }
-// }
+    public function getBlockPrefix()
+    {
+        return '';
+    }
+}
