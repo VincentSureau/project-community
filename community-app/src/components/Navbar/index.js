@@ -97,6 +97,7 @@ class ReactStrapNavbar extends React.Component {
     // Si un token valide existe isConnected à true dans le state
     this.Auth = new AuthService();
     const token = this.Auth.getToken();
+    
     if (token && !this.Auth.isTokenExpired(token)) {
       connectMember();
     }
@@ -106,6 +107,7 @@ class ReactStrapNavbar extends React.Component {
       this.Auth.logout();
       window.location.replace('/login');
     }
+    const connectedMemberRole = (token && !this.Auth.isTokenExpired(token)) ? this.Auth.getProfile().roles[0] : '';
 
     return (
       <div id="navbar">
@@ -154,11 +156,11 @@ class ReactStrapNavbar extends React.Component {
                         </NavLink>
                       </div>
                     )}
-                    {/* {(this.Auth.getProfile().roles[0] === 'ROLE_COMMUNITY_ADMIN')
+                    {(connectedMemberRole === 'ROLE_COMMUNITY_ADMIN')
                       && (
                       <ReactStrapLink className="nav-item nav-link text-white text-center text-uppercase font-weight-bold" href="http://127.0.0.1:8001/app_login">Espace admin</ReactStrapLink>
                       )
-                    } */}
+                    }
                   </DropdownMenu>
                 </UncontrolledDropdown>
               )}
