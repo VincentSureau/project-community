@@ -15,11 +15,9 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  Badge,
   NavbarBrand,
   NavbarToggler,
   NavItem,
-  DropdownItem,
 } from 'reactstrap';
 
 import './navbar.scss';
@@ -30,7 +28,6 @@ class ReactStrapNavbar extends React.Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false,
-      collapse: true,
     };
   }
 
@@ -58,7 +55,6 @@ class ReactStrapNavbar extends React.Component {
   toggle() {
     const { isOpen } = this.state;
     console.log(!isOpen);
-    
     this.setState({
       isOpen: !isOpen,
     });
@@ -158,6 +154,11 @@ class ReactStrapNavbar extends React.Component {
                         </NavLink>
                       </div>
                     )}
+                    {(this.Auth.getProfile().roles[0] === 'ROLE_COMMUNITY_ADMIN')
+                      && (
+                      <ReactStrapLink className="nav-item nav-link text-white text-center text-uppercase font-weight-bold" href="http://127.0.0.1:8001/app_login">Espace admin</ReactStrapLink>
+                      )
+                    }
                   </DropdownMenu>
                 </UncontrolledDropdown>
               )}
