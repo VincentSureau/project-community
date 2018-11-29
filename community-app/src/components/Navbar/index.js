@@ -52,6 +52,7 @@ class ReactStrapNavbar extends React.Component {
     this.Auth.logout();
     const { disconnectMember } = this.props;
     disconnectMember();
+    window.location.replace('/');
   }
 
   toggle() {
@@ -182,6 +183,7 @@ ReactStrapNavbar.propTypes = {
   connectMember: PropTypes.func.isRequired,
   disconnectMember: PropTypes.func.isRequired,
   getConnectedMember: PropTypes.func.isRequired,
+  connectedMember: PropTypes.string.isRequired,
 };
 
 export default ReactStrapNavbar;
