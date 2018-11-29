@@ -32,6 +32,7 @@ class SelectInput extends React.Component {
       filterSpeProjects,
       filterPromoProjects,
       page,
+      value,
     } = this.props;
     let selectEvery = '';
     let nameSelect = type === 'Spécialisation' ? 'filterSpe' : 'Filt';
@@ -56,7 +57,7 @@ class SelectInput extends React.Component {
 
     return (
       <div id="selectinput" className="col">
-        <select id="selectinput-select" className="w-100 text-white" name={nameSelect} onChange={e => this.onChange(e)}>
+        <select id="selectinput-select" className="w-100 text-white" name={nameSelect} onChange={e => this.onChange(e)} value={value}>
           <option defaultValue="" selected={window[nameSelect] === ''} disabled>{type}</option>
           <option value="">{selectEvery}</option>
           {list.map(item => <option key={item['@id']} defaultValue={item['@id']} selected={window[nameSelect] === item.name}>{item.name}</option>)}
