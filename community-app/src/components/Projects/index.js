@@ -63,7 +63,7 @@ class Projects extends React.Component {
           <h3 className="text-uppercase presentation-subtitle">Des exploits fait en un mois !</h3>
           { (Object.keys(listSpe).length > 0) && (Object.keys(listPromo).length > 0)
             ? (
-              <div id="projects-form" className="row w-100">
+              <div id="projects-form" className="row justify-content-center">
                 <SelectInput type="Spécialisation" list={listSpe} page="Projects" value={filterSpeProjects} />
                 <SelectInput type="Promotion" list={listPromo} page="Projects" value={filterPromoProjects} />
                 <TextInput type="filterTextProjects" placeholder="Titre" value={filterTextProjects} />
