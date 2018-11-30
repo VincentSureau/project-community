@@ -29,7 +29,7 @@ const ProjectPresentation = ({ members, promotion, competences }) => (
             firstname={member.firstname}
             lastname={member.lastname}
             promotion={promotion}
-            specialisation={member.specialisation.name}
+            specialisation={member.specialisation !== null ? member.specialisation.name : ''}
             contentUrl={member.contentUrl}
             slug={member.slug}
           />
