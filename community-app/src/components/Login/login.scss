@@ -1,9 +1,13 @@
 @import '../../styles/vars';
 
 .login {
-  padding: 8em 20em;
+  padding: 1em .5em;
   text-align: center;
   min-height: 100vh;
+
+  &-container {
+    max-width: 70em;
+  }
 
   &-title {
     font-size: 5em;
@@ -19,12 +23,12 @@
     &-text {
       margin-top: 1em;
       font-size: 1.25em;
-      width: 55%;
+      width: 80%;
       text-align: justify;
     }
 
     &-form {
-      width: 60%;
+      width: 80%;
       &-textinput {
         border: none;
         border-bottom: 1px solid $text-color;
