@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import ReactLoading from 'react-loading';
 /**
  * Local import
  */
@@ -61,11 +61,20 @@ class Projects extends React.Component {
         <section id="projects-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-projects">
           <h1 className="text-uppercase presentation-title">Projets</h1>
           <h3 className="text-uppercase presentation-subtitle">Des exploits fait en un mois !</h3>
-          <div id="projects-form" className="row justify-content-center">
-            { (listSpe !== null) ? <SelectInput type="Spécialisation" list={listSpe} page="Projects" value={filterSpeProjects} /> : <p>Loading</p> }
-            { (listSpe !== null) ? <SelectInput type="Promotion" list={listPromo} page="Projects" value={filterPromoProjects} /> : <p>Loading</p> }
-            <TextInput type="filterTextProjects" placeholder="Titre" value={filterTextProjects} />
-          </div>
+          { (Object.keys(listSpe).length > 0) && (Object.keys(listPromo).length > 0)
+            ? (
+              <div id="projects-form" className="row justify-content-center">
+                <SelectInput type="Spécialisation" list={listSpe} page="Projects" value={filterSpeProjects} />
+                <SelectInput type="Promotion" list={listPromo} page="Projects" value={filterPromoProjects} />
+                <TextInput type="filterTextProjects" placeholder="Titre" value={filterTextProjects} />
+              </div>
+            )
+            : (
+              <section id="members-form" className="justify-content-center align-items-center text-center d-flex flex-column">
+                <ReactLoading type="bubbles" color="#fdf1cd" height={100} width={100} />
+                <p className="singlemember-name ">Chargement ...</p>
+              </section>
+            )}
           <ArrowDown />
         </section>
         <section id="projects-list" className="bg-projects-darker justify-content-center row">

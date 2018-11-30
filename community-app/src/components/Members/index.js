@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import ReactLoading from 'react-loading';
 /**
  * Local import
  */
@@ -68,12 +68,21 @@ class Members extends React.Component {
         <section id="members-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-members row">
           <h1>Étudiants</h1>
           <h3>Vous êtes prêts ? Eux oui !</h3>
-          <div id="members-form" className="row justify-content-center">
-            { (listSpe !== null) ? <SelectInput type="Spécialisation" list={listSpe} page="Members" value={filterSpeMembers} /> : <p>Loading</p> }
-            { (listPromo !== null) ? <SelectInput type="Promotion" list={listPromo} page="Members" value={filterPromoMembers} /> : <p>Loading</p> }
-            { (listStatus !== null) ? <SelectInput type="Status Professionnel" list={listStatus} page="Members" value={filterStatusMembers} /> : <p>Loading</p> }
-            <TextInput type="filterTextMembers" placeholder="Prénom Nom" value={filterTextMembers} />
-          </div>
+          { (Object.keys(listSpe).length > 0) && (Object.keys(listPromo).length > 0) && (Object.keys(listStatus).length > 0)
+            ? (
+              <div id="members-form" className="row justify-content-center">
+                <SelectInput type="Spécialisation" list={listSpe} page="Members" value={filterSpeMembers} />
+                <SelectInput type="Promotion" list={listPromo} page="Members" value={filterPromoMembers} />
+                <SelectInput type="Status Professionnel" list={listStatus} page="Members" value={filterStatusMembers} />
+                <TextInput type="filterTextMembers" placeholder="Prénom Nom" value={filterTextMembers} />
+              </div>
+            )
+            : (
+              <section id="members-form" className="justify-content-center align-items-center text-center d-flex flex-column">
+                <ReactLoading type="bubbles" color="#fdf1cd" height={100} width={100} />
+                <p className="singlemember-name ">Chargement ...</p>
+              </section>
+            )}
           <ArrowDown />
         </section>
         <section id="members-list" className="bg-members-darker justify-content-center row">

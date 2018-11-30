@@ -39,12 +39,12 @@ class ProjectEdit extends React.Component {
   }
 
   onChangeFile(evt, hero) {
+    const { project } = this.props;
     const fd = new FormData();
     if (evt.target.files[0].size < 500000) {
-      fd.append('file', evt.target.files[0], evt.target.files[0].name);    
+      fd.append('file', evt.target.files[0], evt.target.files[0].name);
       fd.append('isHero', hero);
-      console.log(fd);
-      axios.post(`http://127.0.0.1:8001${evt.target.id}`, fd, {
+      axios.post(`http://127.0.0.1:8001/projects/${project.id}/project_pictures/${evt.target.id.split('/')[2]}`, fd, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('connect_token')}`,
         },

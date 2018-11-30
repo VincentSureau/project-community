@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import ReactLoading from 'react-loading';
 /**
  * Local import
  */
@@ -53,43 +53,49 @@ class Member extends React.Component {
     const projectimages = this.getNestedObject(member, ['project', 'images']);
     const projectisactive = this.getNestedObject(member, ['project', 'isActive']);
 
+    if (Object.keys(member).length !== 0) {
+      return (
+        <div id="member">
+              <div>
+                <section id="member-info" className="d-flex flex-column justify-content-center align-items-center bg-member">
+                  <SingleMember
+                    firstname={member.firstname}
+                    lastname={member.lastname}
+                    promotion={promoname}
+                    specialisation={spename}
+                    contentUrl={member.contentUrl}
+                  />
+                  <ContactBar {...member} />
+                </section>
+                <Biography
+                  description={member.description}
+                  promotion={promoname}
+                  promoStartDate={promostart}
+                  promoEndDate={promoend}
+                  professionalStatus={professionalstatus}
+                  competences={competences}
+                />
+                {projectisactive
+                && (
+                  <ProjectLink
+                    projectName={projectname}
+                    projectId={projectid}
+                    projectImages={projectimages}
+                    projectSlug={projectslug}
+                  />
+                )
+                }
+              </div>
+          }
+        </div>
+      );
+    }
     return (
       <div id="member">
-        { (member != null)
-          ? (
-            <div>
-              <section id="member-info" className="d-flex flex-column justify-content-center align-items-center bg-member">
-                <SingleMember
-                  firstname={member.firstname}
-                  lastname={member.lastname}
-                  promotion={promoname}
-                  specialisation={spename}
-                  contentUrl={member.contentUrl}
-                />
-                <ContactBar {...member} />
-              </section>
-              <Biography
-                description={member.description}
-                promotion={promoname}
-                promoStartDate={promostart}
-                promoEndDate={promoend}
-                professionalStatus={professionalstatus}
-                competences={competences}
-              />
-              {projectisactive
-              && (
-                <ProjectLink
-                  projectName={projectname}
-                  projectId={projectid}
-                  projectImages={projectimages}
-                  projectSlug={projectslug}
-                />
-              )
-              }
-            </div>
-          )
-          : <p>Loading</p>
-        }
+        <section id="member-info" className="d-flex flex-column justify-content-center align-items-center bg-member">
+          <ReactLoading type="bubbles" color="#fdf1cd" height={150} width={150} />
+          <p className="singlemember-name">Chargement du profil...</p>
+        </section>
       </div>
     );
   }
