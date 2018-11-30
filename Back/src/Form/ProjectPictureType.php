@@ -6,7 +6,6 @@ namespace App\Form;
 use App\Entity\Image;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,7 +19,7 @@ final class ProjectPictureType extends AbstractType
                 'label' => 'label.file',
                 'required' => false,
             ])
-            ->add('isHero', CheckboxType::class)
+            ->add('isHero')
             ;
     }
 
