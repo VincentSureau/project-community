@@ -51,7 +51,7 @@ class MemberEdit extends React.Component {
   onChangeFile(evt) {
     const { member } = this.props;
     const fd = new FormData();
-    if (evt.target.files[0].size < 1000000) {
+    if (evt.target.files[0].size < 500000) {
       fd.append('file', evt.target.files[0], evt.target.files[0].name);
       axios.post(`http://127.0.0.1:8001/app_users/${member.id}/profil_picture`, fd, {
         headers: {
