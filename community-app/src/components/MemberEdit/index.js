@@ -109,7 +109,7 @@ class MemberEdit extends React.Component {
             <div className="row flex-column justify-content-center align-items-center">
               <img src={`http://127.0.0.1:8001/img/profils/${member.contentUrl}`} className="singlemember-photo mb-3" alt="" />
               <label className="label col-12" htmlFor="profil-picture-input" id="infoImage">
-                Image de profil : <span className="label-info">Taille de l'image: Max 500ko. Pensez à mettre une photo au format carré ;)</span>
+                Image de profil (max: 500Ko):
                 <input id="profil-picture-input" className="col-12 input-text d-block text-member-navfoot mb-3 mt-2" type="file" name="profilePicture" placeholder="lien web de l'image" onChange={e => this.onChangeFile(e)} defaultValue={member.profilePicture} accept=".jpg, .png, .jpeg" />
               </label>
             </div>
