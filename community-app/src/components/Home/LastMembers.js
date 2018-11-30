@@ -29,7 +29,7 @@ const LastMembers = ({ members }) => (
             lastname={member.lastname}
             promotion={member.promotion.name}
             specialisation={member.specialisation.name}
-            profilePicture={member.profilePicture}
+            contentUrl={member.contentUrl}
             slug={member.slug}
           />)))
         : <p>Loading</p>
