@@ -74,7 +74,7 @@ class Members extends React.Component {
               lastname={member.lastname}
               promotion={member.promotion !== null ? member.promotion.name : ''}
               specialisation={member.specialisation !== null ? member.specialisation.name : ''}
-              profilePicture={member.profilePicture}
+              contentUrl={member.contentUrl}
               slug={member.slug}
             />))}
           {(listMembers.length === 0) && (

@@ -64,7 +64,7 @@ class Member extends React.Component {
                   lastname={member.lastname}
                   promotion={promoname}
                   specialisation={spename}
-                  profilePicture={member.profilePicture}
+                  contentUrl={member.contentUrl}
                 />
                 <ContactBar {...member} />
               </section>
