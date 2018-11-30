@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import ClassNames from 'classnames';
 import AuthService from 'src/components/AuthService';
-import decode from 'jwt-decode';
+
 import {
   Collapse,
   Navbar,
@@ -29,13 +29,6 @@ class ReactStrapNavbar extends React.Component {
     this.state = {
       isOpen: false,
     };
-  }
-
-  componentDidMount() {
-    const { getConnectedMember } = this.props;
-    if (this.Auth.getToken()) {
-      getConnectedMember(this.Auth.getProfile().userId);
-    }
   }
 
   // Fonction qui permet de récupérer un élément imbriqué dans un objet à plusieurs niveaux
@@ -97,11 +90,12 @@ class ReactStrapNavbar extends React.Component {
     // Si un token valide existe isConnected à true dans le state
     this.Auth = new AuthService();
     const token = this.Auth.getToken();
-    
+
     if (token && !this.Auth.isTokenExpired(token)) {
       connectMember();
     }
-    // Si le token n'est plus valide, on déconnecte l'utilisateur et on le redirige vers la page de connexion
+    // Si le token n'est plus valide,
+    // on déconnecte l'utilisateur et on le redirige vers la page de connexion
     else if (this.Auth.isTokenExpired(token)) {
       disconnectMember();
       this.Auth.logout();
@@ -185,7 +179,6 @@ ReactStrapNavbar.propTypes = {
   page: PropTypes.string.isRequired,
   connectMember: PropTypes.func.isRequired,
   disconnectMember: PropTypes.func.isRequired,
-  getConnectedMember: PropTypes.func.isRequired,
   connectedMember: PropTypes.string.isRequired,
 };
 
