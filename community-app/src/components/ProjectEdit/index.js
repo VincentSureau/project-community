@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import uuid from 'uuid/v4';
 import serialize from '../../functions/Serialize';
@@ -35,6 +36,23 @@ class ProjectEdit extends React.Component {
   onChangeCheckbox(evt) {
     const { onChangeInput } = this.props;
     onChangeInput(evt.target.name, evt.target.checked);
+  }
+
+  onChangeFile(evt, hero) {
+    const fd = new FormData();
+    if (evt.target.files[0].size < 500000) {
+      fd.append('file', evt.target.files[0], evt.target.files[0].name);    
+      fd.append('isHero', hero);
+      console.log(fd);
+      axios.post(`http://127.0.0.1:8001${evt.target.id}`, fd, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('connect_token')}`,
+        },
+      }).then((response) => {
+        console.log(response);
+        window.location.reload(true);
+      });
+    }
   }
 
   // Fonction qui permet de récupérer un élément imbriqué dans un objet à plusieurs niveaux
@@ -96,13 +114,15 @@ class ProjectEdit extends React.Component {
               </div>
               <label className="label col-6 text-center" htmlFor={heroImage[0]['@id']}>
                 Image principale du projet, insérer un lien :
-                <input
+                <input id={heroImage[0]['@id']} className="text" type="file" name="heroImage" placeholder="Aperçu écran" onChange={e => this.onChangeFile(e, true)} accept=".jpg, .png, .jpeg" />
+
+            {/*}    <input
                   className="mx-2 input-text ishero w-80 text-project-lighter"
                   type="text"
                   id={heroImage[0]['@id']}
                   name="images"
                   defaultValue={heroImage[0].imageLink}
-                />
+                /> */}
               </label>
               <div id="projectedit-form-gallery" className="row">
                 {images.map(image => (
@@ -110,13 +130,15 @@ class ProjectEdit extends React.Component {
                     <img src={image.imageLink} alt="" />
                     <label className="label col-12 images-label" htmlFor={image['@id']}>
                       Insérer un lien :
-                      <input
+                      <input id={image['@id']} className="text" type="file" name="imageProject" placeholder="Aperçu écran" onChange={e => this.onChangeFile(e, false)} accept=".jpg, .png, .jpeg" />
+
+                      {/*<input
                         className="input-text"
                         type="text"
                         id={image['@id']}
                         name="images"
                         defaultValue={image.imageLink}
-                      />
+                      />*/}
                     </label>
                   </div>
                 ))}
