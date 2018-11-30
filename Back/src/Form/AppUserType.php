@@ -56,6 +56,7 @@ class AppUserType extends AbstractType
                         // 'download_label' => '...',
                         'download_uri' => true,
                         'image_uri' => true,
+                        'attr' => ['class' => 'image_for_list'],
                      ])
                      ->add('phoneNumber')
                      ->add('city')

@@ -3,7 +3,7 @@ vich_uploader:
 
     mappings:
         profil_pictures:
-           uri_prefix: /images/profils
+           uri_prefix: /img/profils
            upload_destination: '%kernel.project_dir%/public/img/profils'
 
            inject_on_load: false
@@ -12,7 +12,7 @@ vich_uploader:
            namer: Vich\UploaderBundle\Naming\UniqidNamer
 
         project_pictures:
-           uri_prefix: /images/projects
+           uri_prefix: /img/projects
            upload_destination: '%kernel.project_dir%/public/img/projects'
 
            inject_on_load: false

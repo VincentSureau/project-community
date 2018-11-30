@@ -1,11 +1,11 @@
 easy_admin:
-    site_name: '<img src="/images/logoOclockCommunity.svg">'
+    site_name: '<img src="/img/logoOclockCommunity.svg">'
     design:
       form_theme: 'vertical'
     #   form_theme: '@App/easy_admin/form.html.twig'
       brand_color: '#194d61'
       assets:
-        favicon: '/images/oclock-fav.png'
+        favicon: '/img/oclock-fav.png'
       menu:
          - { entity: 'Membres', icon: 'user' }
          - { entity: 'Competences', icon: 'tags' }
