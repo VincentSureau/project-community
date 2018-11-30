@@ -6,7 +6,7 @@ use App\Entity\Image;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Vich\UploaderBundle\Form\Type\VichImageType;
-use Symfony\Component\Form\Extension\Core\Type\RadioType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ImageType extends AbstractType
@@ -23,7 +23,13 @@ class ImageType extends AbstractType
                 'download_link' => false,
                 'image_uri' => true,
             ])
-            ->add('isHero', RadioType::class)
+            ->add('isHero', ChoiceType::class, [
+                'choices' => [
+                    'Oui' => true,
+                    'Non' => false
+                ],
+                'expanded' => true,
+            ])
             ->add('project')
         ;
     }
