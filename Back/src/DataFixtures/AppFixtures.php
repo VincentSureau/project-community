@@ -173,7 +173,7 @@ class AppFixtures extends Fixture
 
             //Projects
             $projects = [];
-            for($project_index = 0; $project_index < mt_rand(5, 7); $project_index++) {
+            for($project_index = 0; $project_index < mt_rand(2, 3); $project_index++) {
                 $project = new Project();
                 $project->setName($faker->catchPhrase);
                 $project->setDescription($faker->text($maxNbChars = 200));
@@ -190,14 +190,28 @@ class AppFixtures extends Fixture
                 for($image_index = 0; $image_index < 4; $image_index++) {
                     $image = new Image;
                     // $image->setImageLink('https://via.placeholder.com/500x750');
-                    $image->setImageLink('https://testinsane.com/blog/wp-content/uploads/2014/11/eCommerce-Testing-at-TestInsane-Technologies.png');
+                    $url_to_image = 'https://testinsane.com/blog/wp-content/uploads/2014/11/eCommerce-Testing-at-TestInsane-Technologies.png';
+                    
+                    $ch = curl_init($url_to_image);
+                    
+                    $my_save_dir = 'public/img/projects/';
+                    $filename = md5(uniqid(rand(), true)) . '.png';
+                    $complete_save_loc = $my_save_dir . $filename;
+                    $fp = fopen($complete_save_loc, 'wb');
+                    curl_setopt($ch, CURLOPT_FILE, $fp);
+                    curl_setopt($ch, CURLOPT_HEADER, 0);
+                    curl_exec($ch);
+                    curl_close($ch);
+                    fclose($fp);
+                    
+                    $image->setContentUrl($filename);
                     $image->setProject($project);
                     $image->setIsHero(($image_index == 0)? true : false);
                     $manager->persist($image);
                 }
 
                 //Creation de users
-                for($k = 1; $k < mt_rand(3,5); $k++) {
+                for($k = 1; $k < mt_rand(1,3); $k++) {
                     $user = new AppUser();
                     $gender = ($k % 2 == 0)? 'male' : 'female';
                     $user->setEmail($faker->unique()->safeEmail);

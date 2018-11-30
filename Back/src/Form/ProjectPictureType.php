@@ -1,36 +1,38 @@
 <?php
+// src/Form/ProjectPictureType.php
 
 namespace App\Form;
 
 use App\Entity\Image;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Vich\UploaderBundle\Form\Type\VichImageType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ImageType extends AbstractType
+final class ProjectPictureType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file', VichImageType::class, [
+            // Configure each fields you want to be submitted here, like a classic form.
+            ->add('file', FileType::class, [
+                'label' => 'label.file',
                 'required' => false,
-                'label' => 'Image du projet',
-                'allow_delete' => true,
-                'download_label' => 'Télécharger l\'image',
-                'download_uri' => true,
-                'download_link' => false,
-                'image_uri' => true,
             ])
             ->add('isHero')
-            ->add('project')
-        ;
+            ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => Image::class,
+            'csrf_protection' => false,
         ]);
+    }
+
+    public function getBlockPrefix()
+    {
+        return '';
     }
 }

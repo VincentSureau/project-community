@@ -52,11 +52,12 @@ class AppUserType extends AbstractType
                     ])
                      ->add('file', VichImageType::class, [
                         'required' => false,
+                        'label' => 'Photo de profil',
                         'allow_delete' => true,
-                        // 'download_label' => '...',
+                        'download_label' => 'Télécharger l\'image',
                         'download_uri' => true,
+                        'download_link' => false,
                         'image_uri' => true,
-                        'attr' => ['class' => 'image_for_list'],
                      ])
                      ->add('phoneNumber')
                      ->add('city')

@@ -2,19 +2,18 @@ easy_admin:
     site_name: '<img src="/img/logoOclockCommunity.svg">'
     design:
       form_theme: 'vertical'
-    #   form_theme: '@App/easy_admin/form.html.twig'
       brand_color: '#194d61'
       assets:
         favicon: '/img/oclock-fav.png'
       menu:
          - { entity: 'Membres', icon: 'user' }
-         - { entity: 'Competences', icon: 'tags' }
-         - { entity: 'Images', icon: 'image' }
-         - { entity: 'Statuts_professionnels', icon: 'briefcase' }
-         - { entity: 'Projets', icon: 'book' }
          - { entity: 'Promotions', icon: 'tasks' }
-         - { entity: 'Specialisation', icon: 'list' }
-         - { entity: 'Roles', icon: 'cog' }
+         - { entity: 'Specialisation', icon: 'list', label: 'Spécialisations'  }
+         - { entity: 'Competences', icon: 'tags', label: 'Compétences' }
+         - { entity: 'Statuts_professionnels', icon: 'briefcase', label: 'Statuts professionnels' }
+         - { entity: 'Projets', icon: 'book' }
+         - { entity: 'Images', icon: 'image', label: 'Images des projets' }
+         - { entity: 'Roles', icon: 'cog', label: 'Rôles' }
     formats:
         date:     'd/m/Y'
         time:     'H:i'
@@ -25,15 +24,42 @@ easy_admin:
             class: App\Entity\AppUser
             label: 'Membres'
             list:
-                fields: ['id', 'email', 'firstname', 'lastname', 'birthdate', Phone number, role, isActive]
                 title: "Liste des étudiants"
+                fields:
+                  - id
+                  - firstname
+                  - lastname
+                  - { property: 'contentUrl', type: 'image', base_path: '/img/profils/' }
+                  - email
+                  - birthdate
+                  - Phone number
+                  - role
+                  - isActive
+            show:
+                fields:
+                  - id
+                  - firstname
+                  - lastname
+                  - { property: 'birthdate', type: 'birthday', label: 'birthdate', type_options: { format: 'dd-MM-yyyy'}}
+                  - { property: 'contentUrl', type: 'image', base_path: '/img/profils/' }
+                  - email
+                  - city
+                  - zipcode
+                  - phone_number
+                  - birthdate
+                  - Phone number
+                  - link_linkedin
+                  - link_github
+                  - link_personal
+                  - role
+                  - isActive
             form:
               fields:
                   - { type: 'tab' , label: 'Informations personnelles', icon: 'user' }
                   - lastname
                   - firstname
                   - { property: 'birthdate', type: 'birthday', label: 'birthdate', type_options: { format: 'dd-MM-yyyy'}}
-                  - profile_picture
+                  - { property: 'file', type: 'vich_image' }
                   - { type: 'tab' , label: 'Informations de localisation', icon: 'home' }
                   - city
                   - zipcode
@@ -45,8 +71,7 @@ easy_admin:
                   - link_github
                   - link_personal
                   - { type: 'tab', label: 'Role', icon: 'link' }
-                  - role
-
+                  - role                  
 
         Competences:
             class: App\Entity\Competence
@@ -58,6 +83,22 @@ easy_admin:
             label: 'Images'
             list:
                 title: "Liste des Images"
+                fields:
+                  - 'id'  
+                  - { property: 'contentUrl', type: 'image', base_path: '/img/projects/' } 
+                  - 'isHero'
+                  - 'Project'
+            show:
+                fields:
+                  - 'id'
+                  - { property: 'contentUrl', type: 'image', base_path: '/img/projects/' } 
+                  - 'isHero'
+                  - 'updatedAt'
+                  - 'Project'
+            form:
+                fields:
+                  - { property: 'file', type: 'vich_image' }
+                  - 'isHero'
         Statuts_professionnels:
             class: App\Entity\ProfessionalStatus
             label: 'Statuts_professionnels'
@@ -68,6 +109,7 @@ easy_admin:
             label: 'Projets'
             list:
                 title: "Liste des projets"
+
         Promotions:
             class: App\Entity\Promotion
             label: 'Promotions'

@@ -45,10 +45,11 @@
                     <td>{{ project.linkVideo }}</td>
                 </tr>
                 <tr>
+                
                     <th>Les images du projet</th>
                     <td>
                         {% for images in project.images %}    
-                            <a href="{{ path('image_show', {id: images.id}) }}"><img class="image_for_list" src="{{ images.imageLink }}" alt="project_image"></a>
+                            <a href="{{ path('image_show', {id: images.id}) }}"><img class="image_for_list" src="{{ (asset('/img/projects/' ~ images.contentUrl)) }}" alt="project_image"></a>
                         {% endfor %}  
                     </td>
                 </tr>
