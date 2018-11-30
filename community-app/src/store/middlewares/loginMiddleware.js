@@ -1,5 +1,6 @@
 // import
 import axios from 'axios';
+import decode from 'jwt-decode';
 
 // Types
 import {
@@ -8,6 +9,7 @@ import {
   errorConnexion,
 } from 'src/store/actions/loginActions';
 import { FORGOT_PASSWORD, messageForgotPassword } from '../actions/formActions';
+import { getConnectedMember } from '../actions/membersActions';
 
 const API_URL = 'http://127.0.0.1:8001';
 
@@ -25,9 +27,13 @@ const login = store => next => (action) => {
       })
         // succes
         .then((response) => {
+          // Le token du membre connecté est stocké dans le localStorage
           localStorage.setItem('connect_token', response.data.token);
-          window.location.replace('/');
-          store.dispatch(connectMember());
+          // On récupère l'id du membre connecté
+          const token = decode(response.data.token);
+          const connectedMemberId = token.userId;
+          // On récupère les informations du membre connecté
+          store.dispatch(getConnectedMember(connectedMemberId));
         })
         // echec
         .catch((error) => {

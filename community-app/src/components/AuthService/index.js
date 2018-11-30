@@ -23,6 +23,7 @@ class AuthService extends React.Component {
     localStorage.removeItem('connectedMemberFirstName');
     localStorage.removeItem('connectedMemberLastName');
     localStorage.removeItem('connectedMemberSlugMember');
+    localStorage.removeItem('connectedMemberisActive');
     localStorage.removeItem('connectedMemberSlugProject');
   }
 

@@ -55,6 +55,7 @@ const memberMiddleware = store => next => (action) => {
         // echec
         .catch((error) => {
           console.error(error);
+          window.location.replace('/404');
         });
 
       break;
@@ -117,15 +118,26 @@ const memberMiddleware = store => next => (action) => {
       })
         // succes
         .then((response) => {
-          // const connectedMember = response.data;
           localStorage.setItem('connectedMember', 'on');
           localStorage.setItem('connectedMemberFirstName', response.data.firstname);
           localStorage.setItem('connectedMemberLastName', response.data.lastname);
           localStorage.setItem('connectedMemberSlugMember', response.data.slug);
+          localStorage.setItem('connectedMemberisActive', response.data.isActive);
+
           if (response.data.project !== null) {
             localStorage.setItem('connectedMemberSlugProject', response.data.project.slug);
           }
-          // store.dispatch(connectedMemberReceived(connectedMember));
+
+          // La redirection après la connexion se fera :
+          // vers l'édition du profil, si le profil du membre n'est pas actif
+          // vers la page d'accueil, si le profil du membre est actif
+          if (localStorage.getItem('connectedMemberisActive') === 'false') {
+            const slug = localStorage.getItem('connectedMemberSlugMember');
+            window.location.replace(`/members/${slug}/edit`);
+          }
+          else {
+            window.location.replace('/');
+          }
         })
         // echec
         .catch((error) => {
