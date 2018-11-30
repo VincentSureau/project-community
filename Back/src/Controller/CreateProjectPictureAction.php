@@ -43,7 +43,7 @@ final class CreateProjectPictureAction
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->doctrine->getManager();
             $image->setProject($project);
-            $dump($image);
+            dd($image);
             $em->persist($image);
             $em->flush();
             // Prevent the serialization of the file property
