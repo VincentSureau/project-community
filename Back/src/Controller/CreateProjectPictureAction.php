@@ -41,6 +41,12 @@ final class CreateProjectPictureAction
         $form = $this->factory->create(ProjectPictureType::class, $image);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            if($request->request->get('isHero') == 'true')
+            {
+                $image->setIsHero(true);
+            } else {
+                $image->setIsHero(false);
+            }
             $em = $this->doctrine->getManager();
             $image->setProject($project);
             $em->persist($image);
