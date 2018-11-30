@@ -56,37 +56,36 @@ class Member extends React.Component {
     if (Object.keys(member).length !== 0) {
       return (
         <div id="member">
-              <div>
-                <section id="member-info" className="d-flex flex-column justify-content-center align-items-center bg-member">
-                  <SingleMember
-                    firstname={member.firstname}
-                    lastname={member.lastname}
-                    promotion={promoname}
-                    specialisation={spename}
-                    contentUrl={member.contentUrl}
-                  />
-                  <ContactBar {...member} />
-                </section>
-                <Biography
-                  description={member.description}
-                  promotion={promoname}
-                  promoStartDate={promostart}
-                  promoEndDate={promoend}
-                  professionalStatus={professionalstatus}
-                  competences={competences}
-                />
-                {projectisactive
-                && (
-                  <ProjectLink
-                    projectName={projectname}
-                    projectId={projectid}
-                    projectImages={projectimages}
-                    projectSlug={projectslug}
-                  />
-                )
-                }
-              </div>
-          }
+          <div>
+            <section id="member-info" className="pt-7 d-block d-md-flex flex-md-column justify-content-center align-items-center bg-member">
+              <SingleMember
+                firstname={member.firstname}
+                lastname={member.lastname}
+                promotion={promoname}
+                specialisation={spename}
+                contentUrl={member.contentUrl}
+              />
+              <ContactBar {...member} />
+            </section>
+            <Biography
+              description={member.description}
+              promotion={promoname}
+              promoStartDate={promostart}
+              promoEndDate={promoend}
+              professionalStatus={professionalstatus}
+              competences={competences}
+            />
+            {projectisactive
+            && (
+              <ProjectLink
+                projectName={projectname}
+                projectId={projectid}
+                projectImages={projectimages}
+                projectSlug={projectslug}
+              />
+            )
+            }
+          </div>
         </div>
       );
     }
