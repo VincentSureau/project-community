@@ -258,7 +258,7 @@ td {
 .vich-image>a>img {
     height: 100px;
     width: 100px;
-    display: block;
+    display: inline-block;
 }
 
 
