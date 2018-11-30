@@ -19,7 +19,13 @@ final class ProjectPictureType extends AbstractType
                 'label' => 'label.file',
                 'required' => false,
             ])
-            ->add('isHero')
+            ->add('isHero', ChoiceType::class, [
+                'choices' => [
+                    'Oui' => true,
+                    'Non' => false
+                ],
+                'expanded' => true,
+            ])
             ;
     }
 
