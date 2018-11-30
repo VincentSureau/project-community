@@ -255,6 +255,12 @@ td {
     margin-top: 10px;
 }
 
+.vich-image>a>img {
+    height: 100px;
+    width: 100px;
+}
+
+
 /*Editer*/
 
 .container-form{
