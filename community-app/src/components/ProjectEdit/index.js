@@ -118,7 +118,7 @@ class ProjectEdit extends React.Component {
               </div>
               <label className="label col-6 text-center" htmlFor={heroImage[0]['@id']}>
                 Image principale du projet (max: 500Ko):
-                <input id={heroImage[0]['@id']} className="text" type="file" name="heroImage" placeholder="Aperçu écran" onChange={e => this.onChangeFile(e, false)} accept=".jpg, .png, .jpeg" />
+                <input id={heroImage[0]['@id']} className="text" type="file" name="heroImage" placeholder="Aperçu écran" onChange={e => this.onChangeFile(e, true)} accept=".jpg, .png, .jpeg" />
 
             {/*}    <input
                   className="mx-2 input-text ishero w-80 text-project-lighter"
