@@ -20,7 +20,7 @@ final class ProjectPictureType extends AbstractType
                 'label' => 'label.file',
                 'required' => false,
             ])
-            ->add('isHero', CheckboxType::class)
+            ->add('isHero')
             ;
     }
 
