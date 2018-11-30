@@ -59,7 +59,7 @@ const projectMiddleware = store => next => (action) => {
     case GET_PROJECT:
       axios({
         method: 'get',
-        url: `${API_URL}/projects?slug=${action.id}`,
+        url: `${API_URL}/projects/?slug=${action.id}`,
         responseType: 'json',
       })
         // succes

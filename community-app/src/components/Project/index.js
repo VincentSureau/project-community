@@ -34,6 +34,10 @@ class Project extends React.Component {
 
   render() {
     const { project } = this.props;
+    if (project === undefined) {
+      window.location.replace('/404');
+    }
+
     if (project != null && project.images != null) {
       // Récupération de l'image principale du projet grâce à la fonction filtre
       const heroImage = project.images.filter(projectImage => projectImage.isHero === true);
