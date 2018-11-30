@@ -24,14 +24,21 @@ use App\Controller\CreateProjectPictureAction;
  *     itemOperations={
  *        "get",
  *        "put"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object.getProject() == user.getProject() or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux modifier que les images de ton projet !"},
- *        "delete"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object.getProject() == user.getProject() or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux supprimer que les images de ton projet !"},
- *        "pictures"= {
+ *        "delete"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object.getProject() == user.getProject() or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux supprimer que les images de ton projet !"}, 
+ *        "edit_pictures"= {
  *             "method"="POST",
- *             "path"="/project/{projectId}/project_picture/{pictureId}",
+ *             "path"="/project/{project}/project_pictures/{image}",
  *             "controller"=CreateProjectPictureAction::class,
  *             "defaults"={"_api_receive"=false},
  *             "denormalizationContext"={"groups"={"projectWrite"}},
- *          },  
+ *          },
+ *        "new_pictures"= {
+ *             "method"="POST",
+ *             "path"="/project/{project}/project_pictures",
+ *             "controller"=CreateProjectPictureAction::class,
+ *             "defaults"={"_api_receive"=false},
+ *             "denormalizationContext"={"groups"={"projectWrite"}},
+ *          }, 
  *     },
  * )
  * @ORM\Entity(repositoryClass="App\Repository\ImageRepository")

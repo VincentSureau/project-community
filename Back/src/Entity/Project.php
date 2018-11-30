@@ -292,7 +292,9 @@ class Project
 
     public function setImage(Image $image)
     {
+        $this->addImage($image);
         
+        return $this;
     }
 
     public function addImage(Image $image): self

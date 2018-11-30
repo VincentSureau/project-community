@@ -31,13 +31,19 @@ final class CreateProjectPictureAction
     /**
      * @IsGranted("ROLE_COMMUNITY_USER")
      */
-    public function __invoke(Image $image, Project $project, Request $request): AppUser
+    public function __invoke(Project $project, $image = null, Request $request): Image
     {
+        if($image){
+            $image = $this->doctrine->getRepository(Image::class)->find($image);
+        } else {
+            $image = new Image();
+        }
         $form = $this->factory->create(ProjectPictureType::class, $image);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->doctrine->getManager();
-            $em->persist($appUser);
+            $image->setProject($project);
+            $em->persist($image);
             $em->flush();
             // Prevent the serialization of the file property
             $image->file = null;
