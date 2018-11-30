@@ -57,6 +57,8 @@ class Image
      * @Groups({"projectWrite"})
      * @Vich\UploadableField(mapping="project_pictures", fileNameProperty="contentUrl")
      * @var File
+     * @Assert\Image(
+     *      mimeTypesMessage = "Le fichier téléchargé doit forcément être une image !")
      */
     public $file;
 
