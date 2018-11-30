@@ -28,6 +28,13 @@
       margin-right: .5em;
     }
 
+    & #infoImage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
     &-info {
       width: 500px;
 
@@ -65,6 +72,10 @@
         padding: .2em;
         border-left: 2px solid $text-color;
         margin-top: .5em;
+
+        & option {
+          color: $color-member;
+        }
       }
 
     }

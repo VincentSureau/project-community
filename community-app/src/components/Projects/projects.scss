@@ -31,6 +31,37 @@
 
     & #projectitem {
       height: auto;
+      min-width: 600px;
+      padding: 1em 3em;
+      &-photo {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        object-position: top;
+      }
+      & h1 {
+        font-size: 3em;
+        margin-bottom: -10px;
+      }
+
+      &-prom {
+        font-size: 2em;
+        font-weight: bold;
+        color: darken($color-projects, 20%);
+        margin-top: -5px;
+        margin-bottom: 5px;
+      }
+
+      & .projectitem-tag {
+        font-size: 0.8em;
+        font-weight: normal;
+        text-transform: uppercase;
+        color: darken($color-projects, 40%);
+        margin: 0 2px;
+        padding: 5px 10px;
+        border: 1px solid darken($color-projects, 40%);
+        border-radius: 5px;
+      }
     }
   }
 
@@ -39,6 +70,14 @@
     // padding: 0 10em;
     & #selectinput {
       border-color: darken($color-projects, 20%);
+      color: darken($color-projects, 20%);
+
+      & option {
+        color: darken($color-projects, 20%);
+      }
+      & option[disabled] {
+        color: $color-projects;
+      }
     }
     
     & #textinput {
@@ -50,43 +89,6 @@
   }
 
 
-}
-
-
-
-#projectitem {
-  min-width: 600px;
-  height: 500px;
-  padding: 1em 3em;
-  &-photo {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    object-position: top;
-  }
-  & h1 {
-    font-size: 3em;
-    margin-bottom: -10px;
-  }
-
-  &-prom {
-    font-size: 2em;
-    font-weight: bold;
-    color: darken($color-projects, 20%);
-    margin-top: -5px;
-    margin-bottom: 5px;
-  }
-
-  & .projectitem-tag {
-    font-size: 0.8em;
-    font-weight: normal;
-    text-transform: uppercase;
-    color: darken($color-projects, 40%);
-    margin: 0 2px;
-    padding: 5px 10px;
-    border: 1px solid darken($color-projects, 40%);
-    border-radius: 5px;
-  }
 }
 
 .no-blue-on-link:hover{

@@ -30,6 +30,13 @@
     // padding: 0 10em;
     & #selectinput {
       border-color: darken($color-members, 20%);
+
+      & option {
+        color: darken($color-members, 20%);
+      }
+      & option[disabled] {
+        color: $color-members;
+      }
     }
     
     & #textinput {

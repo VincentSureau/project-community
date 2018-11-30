@@ -21,7 +21,7 @@ class SelectInput extends React.Component {
     const { setFilterWithType } = this.props;
     setFilterWithType(e.target.name, e.target.value);
   }
-  
+
   render() {
     const {
       list,
@@ -52,7 +52,6 @@ class SelectInput extends React.Component {
       default:
         break;
     }
-
     nameSelect = ''.concat(nameSelect, page);
 
     return (
@@ -79,6 +78,7 @@ SelectInput.propTypes = {
   filterPromoProjects: PropTypes.string.isRequired,
   page: PropTypes.string.isRequired,
   setFilterWithType: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
 };
 
 /**

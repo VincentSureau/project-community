@@ -109,9 +109,9 @@ class MemberEdit extends React.Component {
               <p className="singlemember-prom mb-4">#{promoname} {spename !== undefined ? `#${spename}` : ''}</p>
               <div className="row flex-column justify-content-center align-items-center">
                 <img src={`http://127.0.0.1:8001/img/profils/${member.contentUrl}`} className="singlemember-photo mb-3" alt="" />
-                <label className="label col-12" htmlFor="profil-picture-input" id="infoImage">
+                <label className="label col-12" htmlFor="profil-picture-input d-flex flex-column align-items-center" id="infoImage">
                   Image de profil (max: 500Ko):
-                  <input id="profil-picture-input" className="col-12 input-text d-block text-member-navfoot mb-3 mt-2" type="file" name="profilePicture" placeholder="lien web de l'image" onChange={e => this.onChangeFile(e)} defaultValue={member.profilePicture} accept=".jpg, .png, .jpeg" />
+                  <input id="profil-picture-input" className="col-12 input-text d-block text-member-navfoot mb-3 mt-2 w-80" type="file" name="profilePicture" placeholder="lien web de l'image" onChange={e => this.onChangeFile(e)} defaultValue={member.profilePicture} accept=".jpg, .png, .jpeg" />
                 </label>
               </div>
               <div id="memberedit-form-info" className="row justify-content-center">
