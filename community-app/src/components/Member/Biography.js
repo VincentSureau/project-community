@@ -38,7 +38,7 @@ const Biography = ({
 
     return (
       <section id="member-biography" className="bg-member-darker d-flex justify-content-center align-items-center row px-5">
-        <article className="biography-article col-12 col-md-4 m-1 mr-md-5 justify-content-center align-items-start justify-content-md-left">
+        <article className="biography-article col-12 col-md-4 m-1 mr-md-5 align-self-start">
           <h2>En quelques mots</h2>
           <div className="w-md-80 my-4">
             <FaQuoteLeft className="biography-article-quotationmark text-membertext" />
@@ -46,7 +46,7 @@ const Biography = ({
             <FaQuoteRight className="biography-article-quotationmark text-membertext" />
           </div>
         </article>
-        <article className="biography-article col-12 col-md-4 m-1 ml-md-5">
+        <article className="biography-article col-12 col-md-3 m-1 ml-md-5">
           <div className="biography-article-group">
             <h2>Promotion</h2>
             <p className="biography-article-group-important text-membertext">{`#${promotion}`}</p>
