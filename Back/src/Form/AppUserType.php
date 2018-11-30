@@ -52,6 +52,7 @@ class AppUserType extends AbstractType
                     ])
                      ->add('file', VichImageType::class, [
                         'required' => false,
+                        'label' => 'Photo de profil',
                         'allow_delete' => true,
                         'download_label' => 'Télécharger l\'image',
                         'download_uri' => true,
