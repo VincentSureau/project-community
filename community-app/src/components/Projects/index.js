@@ -43,7 +43,7 @@ class Projects extends React.Component {
 
     // Mise en place des filtres
     if (filterSpeProjects !== '' && listProjects !== null) {
-      listProjects = listProjects.filter(project => project.appUsers.reduce((acc, curr) => `${acc} ${curr.specialisation.name}`, [])
+      listProjects = listProjects.filter(project => project.appUsers.reduce((acc, curr) => ''.concat(acc, ' ', (curr.specialisation !== null ? curr.specialisation.name : '')), [])
         .toString()
         .split(' ').splice(1)
         .filter(onlyUnique)
@@ -53,7 +53,8 @@ class Projects extends React.Component {
       listProjects = listProjects.filter(project => project.promotion.name === `${filterPromoProjects}`);
     }
     if (filterTextProjects !== '' && listProjects !== null) {
-      listProjects = listProjects.filter(project => project.name.toLowerCase().includes(filterTextProjects.toLowerCase()));
+      listProjects = listProjects.filter(project => project.name.toLowerCase()
+        .includes(filterTextProjects.toLowerCase()));
     }
     return (
       <div id="projects">
