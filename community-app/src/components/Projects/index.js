@@ -61,7 +61,7 @@ class Projects extends React.Component {
         <section id="projects-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-projects">
           <h1 className="text-uppercase presentation-title">Projets</h1>
           <h3 className="text-uppercase presentation-subtitle">Des exploits fait en un mois !</h3>
-          <div id="projects-form" className="row w-100">
+          <div id="projects-form" className="row justify-content-center">
             { (listSpe !== null) ? <SelectInput type="Spécialisation" list={listSpe} page="Projects" value={filterSpeProjects} /> : <p>Loading</p> }
             { (listSpe !== null) ? <SelectInput type="Promotion" list={listPromo} page="Projects" value={filterPromoProjects} /> : <p>Loading</p> }
             <TextInput type="filterTextProjects" placeholder="Titre" value={filterTextProjects} />

@@ -56,12 +56,14 @@ class SelectInput extends React.Component {
     nameSelect = ''.concat(nameSelect, page);
 
     return (
-      <div id="selectinput" className="col">
-        <select id="selectinput-select" className="w-100 text-white" name={nameSelect} onChange={e => this.onChange(e)} value={value}>
-          <option defaultValue="" selected={window[nameSelect] === ''} disabled>{type}</option>
-          <option value="">{selectEvery}</option>
-          {list.map(item => <option key={item['@id']} defaultValue={item['@id']} selected={window[nameSelect] === item.name}>{item.name}</option>)}
-        </select>
+      <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">
+        <div id="selectinput">
+          <select id="selectinput-select" className="text-white w-100" name={nameSelect} onChange={e => this.onChange(e)} value={value}>
+            <option defaultValue="" selected={window[nameSelect] === ''} disabled>{type}</option>
+            <option value="">{selectEvery}</option>
+            {list.map(item => <option key={item['@id']} defaultValue={item['@id']} selected={window[nameSelect] === item.name}>{item.name}</option>)}
+          </select>
+        </div>
       </div>
     );
   }

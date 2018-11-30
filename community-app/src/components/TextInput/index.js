@@ -27,16 +27,18 @@ class TextInput extends React.Component {
     console.log(value);
     
     return (
-      <div id="textinput" className="col">
-        <input
-          id="textinput-input"
-          placeholder={placeholder}
-          type="text"
-          name={type}
-          className="text-white w-100"
-          onChange={e => this.onChangeInput(e)}
-          value={value}
-        />
+      <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">
+        <div id="textinput">
+          <input
+            id="textinput-input"
+            placeholder={placeholder}
+            type="text"
+            name={type}
+            className="text-white w-100"
+            onChange={e => this.onChangeInput(e)}
+            value={value}
+          />
+        </div>
       </div>
     );
   }

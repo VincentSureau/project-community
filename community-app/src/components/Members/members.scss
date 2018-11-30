@@ -10,15 +10,15 @@
   }
   &-presentation {
     position: relative;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     min-height: 700px;
   }
 
   &-list {
-    margin: 0;
+    // margin: 0;
     padding: 3em 10em;
-    width: 100%;
+    width: 100vw;
     & h1 {
       margin: .5em 0;
       font-size: 2em;
@@ -27,7 +27,7 @@
 
   &-form {
     width: 80%;
-    padding: 0 10em;
+    // padding: 0 10em;
     & #selectinput {
       border-color: darken($color-members, 20%);
     }

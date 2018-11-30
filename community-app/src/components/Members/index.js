@@ -65,10 +65,10 @@ class Members extends React.Component {
     }
     return (
       <div id="members">
-        <section id="members-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-members">
+        <section id="members-presentation" className="d-flex flex-column justify-content-center align-items-center bg-h-100vh bg-members row">
           <h1>Étudiants</h1>
           <h3>Vous êtes prêts ? Eux oui !</h3>
-          <div id="members-form" className="row w-100">
+          <div id="members-form" className="row justify-content-center">
             { (listSpe !== null) ? <SelectInput type="Spécialisation" list={listSpe} page="Members" value={filterSpeMembers} /> : <p>Loading</p> }
             { (listPromo !== null) ? <SelectInput type="Promotion" list={listPromo} page="Members" value={filterPromoMembers} /> : <p>Loading</p> }
             { (listStatus !== null) ? <SelectInput type="Status Professionnel" list={listStatus} page="Members" value={filterStatusMembers} /> : <p>Loading</p> }
