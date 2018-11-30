@@ -89,7 +89,7 @@ class MemberEdit extends React.Component {
             <p className="singlemember-name name-to-disapear">{member.lastname}</p>
             <p className="singlemember-prom mb-4">#{promoname} {spename !== undefined ? `#${spename}` : ''}</p>
             <div className="row flex-column justify-content-center align-items-center">
-              <img src={member.profilePicture} className="singlemember-photo mb-3" alt="" />
+              <img src={`http://127.0.0.1:8001/img/profils/${member.contentUrl}`} className="singlemember-photo mb-3" alt="" />
               {/*<input className="mx-2" type="file" name="profile_pic" accept=".jpg, .jpeg, .png" />*/}
               <label className="label col-12" htmlFor="profil-picture-input">
                 Image de profil, insérer un lien :
