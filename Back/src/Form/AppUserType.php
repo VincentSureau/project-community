@@ -56,7 +56,6 @@ class AppUserType extends AbstractType
                         // 'download_label' => '...',
                         'download_uri' => true,
                         'image_uri' => true,
-                        // 'imagine_pattern' => '...',
                      ])
                      ->add('phoneNumber')
                      ->add('city')
@@ -100,7 +99,7 @@ class AppUserType extends AbstractType
                     
                     $ch = curl_init($url_to_image);
                     
-                    $my_save_dir = '../public/images/profils/';
+                    $my_save_dir = '../public/img/profils/';
                     $filename = md5(uniqid(rand(), true)) . '.svg';
                     $complete_save_loc = $my_save_dir . $filename;
                     $fp = fopen($complete_save_loc, 'wb');

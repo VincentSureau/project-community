@@ -200,7 +200,7 @@ class AppFixtures extends Fixture
                 for($k = 1; $k < mt_rand(3,5); $k++) {
                     $user = new AppUser();
                     $gender = ($k % 2 == 0)? 'male' : 'female';
-                    $user->setEmail($faker->safeEmail);
+                    $user->setEmail($faker->unique()->safeEmail);
                     $user->setRole($roleUser);
                     $user->setPassword('user');
                     if($gender == 'male'){
@@ -218,7 +218,7 @@ class AppFixtures extends Fixture
                     
                     $ch = curl_init($url_to_image);
                     
-                    $my_save_dir = 'public/images/profils/';
+                    $my_save_dir = 'public/img/profils/';
                     $filename = md5(uniqid(rand(), true)) . '.svg';
                     $complete_save_loc = $my_save_dir . $filename;
                     $fp = fopen($complete_save_loc, 'wb');
