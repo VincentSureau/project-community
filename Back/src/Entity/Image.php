@@ -3,9 +3,13 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiProperty;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use App\Controller\CreateProjectPictureAction;
 
 /**
  * @ApiResource(
@@ -20,10 +24,18 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     itemOperations={
  *        "get",
  *        "put"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object.getProject() == user.getProject() or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux modifier que les images de ton projet !"},
- *        "delete"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object.getProject() == user.getProject() or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux supprimer que les images de ton projet !"}
+ *        "delete"={"access_control"="is_granted('ROLE_COMMUNITY_USER') and object.getProject() == user.getProject() or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux supprimer que les images de ton projet !"},
+ *        "pictures"= {
+ *             "method"="POST",
+ *             "path"="/project/{projectId}/project_picture/{pictureId}",
+ *             "controller"=CreateProjectPictureAction::class,
+ *             "defaults"={"_api_receive"=false},
+ *             "denormalizationContext"={"groups"={"projectWrite"}},
+ *          },  
  *     },
  * )
  * @ORM\Entity(repositoryClass="App\Repository\ImageRepository")
+ * @Vich\Uploadable
  */
 class Image
 {
@@ -35,14 +47,19 @@ class Image
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Url(
-     *     message = "L'url '{{ value }}  n'est pas une url valide",
-     *     protocols = {"http", "https"}
-     * )
+     * @Groups({"projectWrite"})
+     * @Vich\UploadableField(mapping="project_pictures", fileNameProperty="contentUrl")
+     * @var File
+     */
+    public $file;
+
+    /**
+     * @var string|null
+     * @ORM\Column(nullable=true)
+     * @ApiProperty(iri="http://schema.org/contentUrl")
      * @Groups({"user","project", "ProjectList", "projectWrite"})
      */
-    private $imageLink;
+    private $contentUrl;
 
     /**
      * @ORM\Column(type="boolean")
@@ -56,21 +73,21 @@ class Image
      */
     private $project;
 
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTime
+     */
+    private $updatedAt;    
+
+    public function __construct()
+    {
+        $this->updatedAt = new \DateTime();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getImageLink(): ?string
-    {
-        return $this->imageLink;
-    }
-
-    public function setImageLink(string $imageLink): self
-    {
-        $this->imageLink = $imageLink;
-
-        return $this;
     }
 
     public function getIsHero(): ?bool
@@ -99,6 +116,82 @@ class Image
 
     public function __toString()
     {
-        return $this->imageLink;
+        return $this->contentUrl;
+    }
+
+    /**
+     * Get the value of file
+     *
+     * @return  File
+     */ 
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Set the value of file
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $file
+     */ 
+    public function setFile(?File $file = null): void
+    {
+        $this->file = $file;
+
+        if (null !== $file) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    /**
+     * Get the value of contentUrl
+     *
+     * @return  string|null
+     */ 
+    public function getContentUrl()
+    {
+        return $this->contentUrl;
+    }
+
+    /**
+     * Set the value of contentUrl
+     *
+     * @param  string|null  $contentUrl
+     *
+     * @return  self
+     */ 
+    public function setContentUrl($contentUrl)
+    {
+        $this->contentUrl = $contentUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of updatedAt
+     *
+     * @return  \DateTime
+     */ 
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set the value of updatedAt
+     *
+     * @param  \DateTime  $updatedAt
+     *
+     * @return  self
+     */ 
+    public function setUpdatedAt(\DateTime $updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
     }
 }
+
+

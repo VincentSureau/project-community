@@ -45,7 +45,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *             "access_control"="is_granted('ROLE_COMMUNITY_USER') and object == user.getProject() or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux modifier que ton projet !"
  *         },
  *         "delete"={"access_control"="is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais mais seuls les administrateurs peuvent supprimer un projet"}
- *      }
+ *     }
  * )
  * @ApiFilter(SearchFilter::class, properties={"slug": "iexact"})
  * 
