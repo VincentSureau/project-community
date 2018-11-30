@@ -22,8 +22,8 @@ final class ProjectPictureType extends AbstractType
             ])
             ->add('isHero', ChoiceType::class, [
                 'choices' => [
-                    'Oui' => true,
-                    'Non' => false
+                    'true' => true,
+                    'false' => false
                 ],
                 'expanded' => true,
             ])
