@@ -44,13 +44,17 @@ class ProjectEdit extends React.Component {
     if (evt.target.files[0].size < 500000) {
       fd.append('file', evt.target.files[0], evt.target.files[0].name);
       fd.append('isHero', hero);
-      axios.post(`http://127.0.0.1:8001/projects/${project.id}/project_pictures/${evt.target.id.split('/')[2]}`, fd, {
+      console.log(hero);
+      console.log(`http://127.0.0.1:8001/project/${project.id}/project_pictures/${evt.target.id.split('/')[2]}`, fd);
+      axios.post(`http://127.0.0.1:8001/project/${project.id}/project_pictures/${evt.target.id.split('/')[2]}`, fd, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('connect_token')}`,
         },
       }).then((response) => {
         console.log(response);
         window.location.reload(true);
+      }).catch((error) => {
+        console.error(error);
       });
     }
   }
@@ -109,12 +113,12 @@ class ProjectEdit extends React.Component {
               <h1>{project.name}</h1>
               <div id="project-project-pc">
                 <div id="project-project-pc-screen">
-                  <img src={heroImage[0].imageLink} alt="" />
+                  <img src={`http://127.0.0.1:8001/img/projects/${heroImage[0].contentUrl}`} alt="" />
                 </div>
               </div>
               <label className="label col-6 text-center" htmlFor={heroImage[0]['@id']}>
-                Image principale du projet, insérer un lien :
-                <input id={heroImage[0]['@id']} className="text" type="file" name="heroImage" placeholder="Aperçu écran" onChange={e => this.onChangeFile(e, true)} accept=".jpg, .png, .jpeg" />
+                Image principale du projet (max: 500Ko):
+                <input id={heroImage[0]['@id']} className="text" type="file" name="heroImage" placeholder="Aperçu écran" onChange={e => this.onChangeFile(e, false)} accept=".jpg, .png, .jpeg" />
 
             {/*}    <input
                   className="mx-2 input-text ishero w-80 text-project-lighter"
@@ -127,7 +131,7 @@ class ProjectEdit extends React.Component {
               <div id="projectedit-form-gallery" className="row">
                 {images.map(image => (
                   <div id="projectedit-form-gallery-imagechange" className="col-4" key={uuid()}>
-                    <img src={image.imageLink} alt="" />
+                    <img src={`http://127.0.0.1:8001/img/projects/${image.contentUrl}`} alt="" />
                     <label className="label col-12 images-label" htmlFor={image['@id']}>
                       Insérer un lien :
                       <input id={image['@id']} className="text" type="file" name="imageProject" placeholder="Aperçu écran" onChange={e => this.onChangeFile(e, false)} accept=".jpg, .png, .jpeg" />

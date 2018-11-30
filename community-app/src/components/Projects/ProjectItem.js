@@ -45,7 +45,7 @@ const ProjectItem = ({
   return (
     <div id="projectitem" className="col-6">
       <NavLink activeClassName="" className="no-blue-on-link" exact to={''.concat('/projects/', slug)}>
-        <img id="projectitem-photo" src={heroImage[0].imageLink} alt="" />
+        <img id="projectitem-photo" src={`http://127.0.0.1:8001/img/projects/${heroImage[0].contentUrl}`} alt="" />
         <h1 id="projectitem-title">{title}</h1>
         <p id="projectitem-prom" className="text-uppercase">{`#${promotion}`}</p>
         {uniqueSpeArray.map(specialisation => (

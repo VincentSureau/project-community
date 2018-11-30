@@ -48,7 +48,7 @@ class Project extends React.Component {
             <h1>{project.name}</h1>
             <div id="project-project-pc">
               <div id="project-project-pc-screen">
-                <img src={heroImage[0].imageLink} alt="" />
+                <img src={`http://127.0.0.1:8001/img/projects/${heroImage[0].contentUrl}`} alt="" />
               </div>
             </div>
             <ArrowDown />

@@ -57,7 +57,7 @@ class ProjectsCarousel extends Component {
       this.items = Object.entries(projects).map((project, i) => (
         {
           key: i,
-          src: project.slice(1)[0].images.slice(1, 2)[0].imageLink,
+          src: `http://127.0.0.1:8001/img/projects/${project.slice(1)[0].images.slice(1, 2)[0].contentUrl}`,
           altText: ''.concat('Slide ', (i + 1)),
           caption: ''.concat('Slide ', (i + 1)),
         }));

@@ -32,7 +32,7 @@ const ProjectLink = ({
         <NavLink exact to={''.concat('/projects/', projectSlug)} className="no-blue-on-link d-flex flex-column align-items-center">
           <div id="member-project-pc">
             <div id="member-project-pc-screen">
-              <img src={heroImage[0].imageLink} alt="" />
+              <img src={`http://127.0.0.1:8001/img/projects/${heroImage[0].contentUrl}`} alt="" />
             </div>
           </div>
           <button type="button" className="btn btn-outline-white mx-3 btn-border-radius text-uppercase mt-7">C'est par ici</button>
@@ -56,7 +56,7 @@ ProjectLink.defaultProps = {
   projectImages: [{
     id: '/images/909',
     type: 'Image',
-    imageLink: 'https://testinsane.com',
+    contentUrl: 'https://testinsane.com',
     isHero: true,
   }],
   projectSlug: '',
