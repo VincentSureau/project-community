@@ -55,6 +55,7 @@ class AppUserType extends AbstractType
                         'allow_delete' => true,
                         'download_label' => 'Télécharger l\'image',
                         'download_uri' => true,
+                        'download_link' => false,
                         'image_uri' => true,
                      ])
                      ->add('phoneNumber')
