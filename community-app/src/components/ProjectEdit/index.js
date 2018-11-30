@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import uuid from 'uuid/v4';
 import serialize from '../../functions/Serialize';
@@ -35,6 +36,22 @@ class ProjectEdit extends React.Component {
   onChangeCheckbox(evt) {
     const { onChangeInput } = this.props;
     onChangeInput(evt.target.name, evt.target.checked);
+  }
+
+  onChangeFile(evt) {
+    const { project } = this.props;
+    const fd = new FormData();
+    if (evt.target.files[0].size < 500000) {
+      fd.append('file', evt.target.files[0], evt.target.files[0].name);
+      axios.post(`http://127.0.0.1:8001/app_users/${project.id}/profil_picture`, fd, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('connect_token')}`,
+        },
+      }).then((response) => {
+        console.log(response);
+        window.location.reload(true);
+      });
+    }
   }
 
   // Fonction qui permet de récupérer un élément imbriqué dans un objet à plusieurs niveaux
@@ -110,13 +127,15 @@ class ProjectEdit extends React.Component {
                     <img src={image.imageLink} alt="" />
                     <label className="label col-12 images-label" htmlFor={image['@id']}>
                       Insérer un lien :
-                      <input
+                      <input id={image['@id']} className="input-text" type="file" name="heroImage" placeholder="lien web de l'image" onChange={e => this.onChangeFile(e)} accept=".jpg, .png, .jpeg" />
+
+                      {/*<input
                         className="input-text"
                         type="text"
                         id={image['@id']}
                         name="images"
                         defaultValue={image.imageLink}
-                      />
+                      />*/}
                     </label>
                   </div>
                 ))}

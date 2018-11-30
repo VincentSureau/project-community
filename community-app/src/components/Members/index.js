@@ -40,13 +40,23 @@ class Members extends React.Component {
     let { listMembers } = this.props;
     // Mise en place des filtres
     if (filterSpeMembers !== '' && listMembers !== null) {
-      listMembers = listMembers.filter(member => member.specialisation.name === `${filterSpeMembers}`);
+      listMembers = listMembers.filter((member) => {
+        if (member.specialisation !== null) {
+          return (member.specialisation.name === `${filterSpeMembers}`);
+        }
+        return false;
+      });
     }
     if (filterPromoMembers !== '' && listMembers !== null) {
       listMembers = listMembers.filter(member => member.promotion.name === `${filterPromoMembers}`);
     }
     if (filterStatusMembers !== '' && listMembers !== null) {
-      listMembers = listMembers.filter(member => member.professionalStatus.name === `${filterStatusMembers}`);
+      listMembers = listMembers.filter((member) => {
+        if (member.professionalStatus !== null) {
+          return (member.professionalStatus.name === `${filterStatusMembers}`);
+        }
+        return false;
+      });
     }
     if (filterTextMembers !== '' && listMembers !== null) {
       listMembers = listMembers.filter(member => (
