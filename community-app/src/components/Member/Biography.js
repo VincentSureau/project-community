@@ -37,16 +37,16 @@ const Biography = ({
     const monthEnd = monthNames[promoenddate.getMonth()];
 
     return (
-      <section id="member-biography" className="bg-member-darker d-flex justify-content-center align-items-center row">
-        <article className="biography-article col-4 mr-5">
+      <section id="member-biography" className="bg-member-darker d-flex justify-content-center align-items-center row px-5">
+        <article className="biography-article col-12 col-md-4 m-1 mr-md-5 justify-content-center align-items-start justify-content-md-left">
           <h2>En quelques mots</h2>
-          <div className="w-80 mt-4">
+          <div className="w-md-80 my-4">
             <FaQuoteLeft className="biography-article-quotationmark text-membertext" />
-            <p className="biography-article-description">{description}</p>
+            <p className="biography-article-description mr-0">{description}</p>
             <FaQuoteRight className="biography-article-quotationmark text-membertext" />
           </div>
         </article>
-        <article className="biography-article col-3 ml-5">
+        <article className="biography-article col-12 col-md-4 m-1 ml-md-5">
           <div className="biography-article-group">
             <h2>Promotion</h2>
             <p className="biography-article-group-important text-membertext">{`#${promotion}`}</p>
@@ -58,7 +58,7 @@ const Biography = ({
           </div>
           <div className="biography-article-group">
             <h2>Je maîtrise ...</h2>
-            <div className="mt-3 d-flex flex-wrap">
+            <div className="mt-md-3 d-flex flex-wrap">
               {competences.map(competence => (<span className="biography-article-group-tech" key={competence['@id']}>{competence.name}</span>))}
             </div>
           </div>
