@@ -25,7 +25,7 @@ const SingleMember = ({
 }) => (
   <div id="singlemember" className="singlemember col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3 d-flex flex-column align-items-center justify-content-center text-center">
     <NavLink activeClassName="" className="no-blue-on-link" exact to={`/members/${slug}`}>
-      <img src={`http://127.0.0.1:8001/images/profils/${contentUrl}`} className="singlemember-photo" alt="" />
+      <img src={`http://127.0.0.1:8001/img/profils/${contentUrl}`} className="singlemember-photo" alt="" />
       <p className="singlemember-name">{firstname}</p>
       <p className="singlemember-name name-to-disapear">{lastname}</p>
       <p className="singlemember-prom">#{promotion} {specialisation !== '' ? `#${specialisation}` : ''}</p>
