@@ -17,6 +17,19 @@
       font-weight: bold;
       position: relative;
       color: darken($color-member, 20%);
+
+      &.label .label-info {
+        display: none;
+      }
+
+      &.label {
+        &:hover {
+          & .label-info{
+            display: inline;
+          }
+        }
+      }
+        
     }
 
     & #isMemberActive-input {

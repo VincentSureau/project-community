@@ -2,7 +2,9 @@
  * NPM import
  */
 import React from 'react';
+import axios from 'axios';
 import { Route, Redirect } from 'react-router-dom';
+import { Tooltip } from 'reactstrap';
 import PropTypes from 'prop-types';
 import serialize from '../../functions/Serialize';
 
@@ -45,6 +47,22 @@ class MemberEdit extends React.Component {
   getNestedObject = (nestedObj, pathArr) => (
     pathArr.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj)
   );
+
+  onChangeFile(evt) {
+    const { member } = this.props;
+    const fd = new FormData();
+    if (evt.target.files[0].size < 1000000) {
+      fd.append('file', evt.target.files[0], evt.target.files[0].name);
+      axios.post(`http://127.0.0.1:8001/app_users/${member.id}/profil_picture`, fd, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('connect_token')}`,
+        },
+      }).then((response) => {
+        console.log(response);
+        window.location.reload(true);
+      });
+    }
+  }
 
   handleSubmit(event) {
     event.preventDefault();
@@ -90,10 +108,9 @@ class MemberEdit extends React.Component {
             <p className="singlemember-prom mb-4">#{promoname} {spename !== undefined ? `#${spename}` : ''}</p>
             <div className="row flex-column justify-content-center align-items-center">
               <img src={`http://127.0.0.1:8001/img/profils/${member.contentUrl}`} className="singlemember-photo mb-3" alt="" />
-              {/*<input className="mx-2" type="file" name="profile_pic" accept=".jpg, .jpeg, .png" />*/}
-              <label className="label col-12" htmlFor="profil-picture-input">
-                Image de profil, insérer un lien :
-                <input id="profil-picture-input" className="col-12 input-text d-block text-member-navfoot mb-3 mt-2" type="text" name="profilePicture" placeholder="lien web de l'image" onChange={e => this.onChangeInput(e)} defaultValue={member.profilePicture} />
+              <label className="label col-12" htmlFor="profil-picture-input" id="infoImage">
+                Image de profil : <span className="label-info">Taille de l'image: Max 500ko. Pensez à mettre une photo au format carré ;)</span>
+                <input id="profil-picture-input" className="col-12 input-text d-block text-member-navfoot mb-3 mt-2" type="file" name="profilePicture" placeholder="lien web de l'image" onChange={e => this.onChangeFile(e)} defaultValue={member.profilePicture} accept=".jpg, .png, .jpeg" />
               </label>
             </div>
             <div id="memberedit-form-info" className="row justify-content-center">
