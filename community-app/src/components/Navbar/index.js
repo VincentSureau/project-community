@@ -106,8 +106,8 @@ class ReactStrapNavbar extends React.Component {
     return (
       <div id="navbar">
         <Navbar className={classNavBar} dark expand="lg">
-          <NavbarBrand className="mx-3">
-            <NavLink activeClassName="" className=" my-1" exact to="/"><img src="/src/images/logo_oclock_community_navbar.png" alt="Logo Community" /></NavLink>
+          <NavbarBrand className="mx-3" href="/">
+            <img src="/src/images/logo_oclock_community_navbar.png" alt="Logo Community" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} className="" />
           <Collapse isOpen={isOpen} navbar>
