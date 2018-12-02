@@ -33,6 +33,7 @@ class ProjectType extends AbstractType
                 ]
                 );
 
+        // add field to the form when editing an existing project
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             $project = $event->getData();
             $form = $event->getForm();
@@ -57,6 +58,7 @@ class ProjectType extends AbstractType
             }
         });
 
+        // if the project is new, it set to inactive by default
         $builder->addEventListener(
             FormEvents::POST_SUBMIT,
             function(FormEvent $event) {

@@ -23,6 +23,7 @@ class PasswordCustom extends AbstractController
         $this->passwordEncoder = $passwordEncoder;
     }
 
+    // generate a new random password and send a mail to the user
     public function newPassword($email, GeneratePassword $passwordFactory, SendMail $mailGenerator): Response
     {
         $user = $this->repo->findOneByEmail($email);

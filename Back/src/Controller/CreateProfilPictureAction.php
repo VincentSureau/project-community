@@ -28,6 +28,7 @@ final class CreateProfilPictureAction
     }
 
     /**
+     * This function is called when a user upload a new profile picture
      * @IsGranted("ROLE_COMMUNITY_USER")
      */
     public function __invoke(AppUser $appUser, Request $request): AppUser

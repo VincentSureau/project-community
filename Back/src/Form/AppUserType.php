@@ -42,6 +42,7 @@ class AppUserType extends AbstractType
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             $user = $event->getData();
             $form = $event->getForm();
+            // add fields to the form when editing an existing user
             if ($user && $user->getId() !== null) {
                 $form->add('birthdate', DateType::class, [
                     'label' => 'Date de naissance',
@@ -85,6 +86,8 @@ class AppUserType extends AbstractType
             }
         });
 
+        // if the user is a new user, set role to user, status to inactive
+        // set a random password and a random profile picture
         $builder->addEventListener(
             FormEvents::POST_SUBMIT,
             function(FormEvent $event) {

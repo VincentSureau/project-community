@@ -4,6 +4,11 @@ namespace App\Utils;
 
 class GeneratePassword
 {
+  /**
+   * generate a password with letters, numbers and special characters
+   *
+   * @return string
+   */
   public function generate() {
     $chara = '0123456789azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN';
     $specialChara = '#$^+=!*()@%&';

@@ -12,6 +12,12 @@ class SendMail
       $this->twig = $twig;
   }
 
+  /**
+   * Send a welcoming mail to every user with his password
+   *
+   * @param [type] $user
+   * @return mail
+   */
   public function newUser($user)
   {
     $message = (new \Swift_Message('Bienvenue sur Oclock Community'))
@@ -21,6 +27,7 @@ class SendMail
     return $this->mailer->send($message);
   }
 
+  // send a mail to a user with a new password
   public function resetPassword($user)
   {
     $message = (new \Swift_Message('Ton nouveau mot de passe'))
