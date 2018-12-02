@@ -14,7 +14,6 @@ final class ProfilPictureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            // Configure each fields you want to be submitted here, like a classic form.
             ->add('file', FileType::class, [
                 'label' => 'label.file',
                 'required' => false,

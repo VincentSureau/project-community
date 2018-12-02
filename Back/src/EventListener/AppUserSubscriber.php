@@ -35,22 +35,46 @@ final class AppUserSubscriber implements EventSubscriber
         ];
     }
 
+    /**
+     * Encrypt user's password on persist event
+     *
+     * @param LifecycleEventArgs $args
+     * @return void
+     */
     public function prePersist(LifecycleEventArgs $args)
     {
         // $this->sendMail($args);
         $this->encryptPassword($args);
     }
 
+    /**
+     * set user slug with they Id after persist event
+     *
+     * @param LifecycleEventArgs $args
+     * @return void
+     */
     public function postPersist(LifecycleEventArgs $args)
     {
         $this->setSlug($args);
     }
 
+    /**
+     * set user slug with they Id after update event
+     *
+     * @param LifecycleEventArgs $args
+     * @return void
+     */
     public function postUpdate(LifecycleEventArgs $args)
     {
         $this->setSlug($args);
     }
 
+    /**
+     * send a mail to the user with his password when a newx user is created
+     *
+     * @param LifecycleEventArgs $args
+     * @return void
+     */
     public function sendMail(LifecycleEventArgs $args)
     {
         $user = $args->getObject();
@@ -61,6 +85,12 @@ final class AppUserSubscriber implements EventSubscriber
         }
     }
 
+    /**
+     * encrypt the password of a user
+     *
+     * @param LifecycleEventArgs $args
+     * @return void
+     */
     public function encryptPassword(LifecycleEventArgs $args)
     {
         $user = $args->getObject();
@@ -71,6 +101,12 @@ final class AppUserSubscriber implements EventSubscriber
         }
     }
 
+    /**
+     * create the slug of a user
+     *
+     * @param LifecycleEventArgs $args
+     * @return void
+     */
     public function setSlug(LifecycleEventArgs $args)
     {
         $user = $args->getObject();

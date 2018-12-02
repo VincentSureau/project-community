@@ -16,6 +16,9 @@ class AppUserCustomLastUsersHome extends AbstractController
         $this->repo = $repo;
     }
 
+    /**
+    * Return an array [] of 8 Users randomly sorted of the last promotion
+    */
     public function __invoke(): Array
     {
 

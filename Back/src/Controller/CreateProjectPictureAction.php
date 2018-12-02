@@ -29,6 +29,7 @@ final class CreateProjectPictureAction
     }
 
     /**
+     * This function is called when a user create or update a new picture in his project
      * @IsGranted("ROLE_COMMUNITY_USER")
      */
     public function __invoke(Project $project, $image = null, Request $request): Image
@@ -41,6 +42,8 @@ final class CreateProjectPictureAction
         $form = $this->factory->create(ProjectPictureType::class, $image);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            // multipart/form-data sent form react serialize boolean value as a string
+            // so we need to transform it into boolean
             if($request->request->get('isHero') == 'true')
             {
                 $image->setIsHero(true);

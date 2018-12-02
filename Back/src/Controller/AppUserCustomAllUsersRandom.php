@@ -16,6 +16,10 @@ class AppUserCustomAllUsersRandom extends AbstractController
         $this->repo = $repo;
     }
 
+
+    /**
+    * Return an array [] of all the Users randomly sorted
+    */
     public function __invoke(): Array
     {
         $data = $this->repo->findRandom();

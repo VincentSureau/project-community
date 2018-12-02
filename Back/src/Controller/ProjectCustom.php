@@ -16,6 +16,11 @@ class ProjectCustom extends AbstractController
        $this->repo = $repo;
    }
 
+   /**
+    * return and array [] of all the project randomly sorted
+    *
+    * @return array
+    */
    public function __invoke()
    {
        $data = $this->repo->findRandom();
