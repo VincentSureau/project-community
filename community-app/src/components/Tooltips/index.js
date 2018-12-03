@@ -14,7 +14,7 @@ export default function Tooltips({ email, phoneNumber }) {
       <UncontrolledTooltip placement="left" target="email-tooltip">
         { email }
       </UncontrolledTooltip>
-      {phoneNumber !== null && <a href={`tel:${phoneNumber}`}><FaPhone className="text-white" id="phone-tooltip" /></a>}
+      {phoneNumber !== '' && <a href={`tel:${phoneNumber}`}><FaPhone className="text-white" id="phone-tooltip" /></a>}
       <UncontrolledTooltip placement="top" target="phone-tooltip">
         { phoneNumber }
       </UncontrolledTooltip>
