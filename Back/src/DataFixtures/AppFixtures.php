@@ -154,12 +154,10 @@ class AppFixtures extends Fixture
             'Hyperspace',
             'Invaders',
             'Journey',
-            'Krypton',
             'Lunar',
             'Meteor',
             'Nova',
-            'Omega',
-            'Pluton'
+            'Orion',
         ];
 
         $promotions = [];
@@ -173,7 +171,7 @@ class AppFixtures extends Fixture
 
             //Projects
             $projects = [];
-            for($project_index = 0; $project_index < mt_rand(2, 3); $project_index++) {
+            for($project_index = 0; $project_index < mt_rand(5, 7); $project_index++) {
                 $project = new Project();
                 $project->setName($faker->catchPhrase);
                 $project->setDescription($faker->text($maxNbChars = 200));
@@ -211,12 +209,12 @@ class AppFixtures extends Fixture
                 }
 
                 //Creation de users
-                for($k = 1; $k < mt_rand(1,3); $k++) {
+                for($k = 1; $k < mt_rand(4,6); $k++) {
                     $user = new AppUser();
                     $gender = ($k % 2 == 0)? 'male' : 'female';
                     $user->setEmail($faker->unique()->safeEmail);
                     $user->setRole($roleUser);
-                    $user->setPassword('user');
+                    $user->setPassword('User1!');
                     if($gender == 'male'){
                         $user->setFirstname($faker->firstNameMale());
                     } else {
@@ -224,9 +222,6 @@ class AppFixtures extends Fixture
                     }
                     $user->setLastname($faker->lastName);
                     $user->setBirthdate($faker->dateTimeInInterval($startDate = '-60 years', $interval = '-16 years'));
-                    //$profilPicture = new ProfilPicture;
-                    //$url = 'https://avatars.dicebear.com/v2/'. $gender . '/' . $user->getEmail() . '.svg';
-                    //$profilPicture->setContentUrl($url);
 
                     $url_to_image = 'https://avatars.dicebear.com/v2/'. $gender . '/' . $user->getEmail() . '.svg';
                     
@@ -255,7 +250,7 @@ class AppFixtures extends Fixture
                     $user->setLinkPersonal($faker->url);
                     $user->setIsActive(true); 
                     $user->setDescription($faker->text($maxNbChars = 200));
-                    $user->setProject($projects[array_rand($projects)]);
+                    $user->setProject($project);
                     $user->setPromotion($promotion);
                     $user->setSpecialisation($specialisations[array_rand($specialisations)]);
                     $user->setProfessionalStatus($proStatus[array_rand($proStatus)]);
@@ -267,6 +262,75 @@ class AppFixtures extends Fixture
             }
 
         }
+        $manager->flush();
+
+        $promoKrypton = new Promotion;
+        $promoKrypton->setName('Krypton');
+        $promoKrypton->setStartDate(new \DateTime());
+        $promoKrypton->setEndDate(new \DateTime());
+        $manager->persist($promoKrypton);
+        $community = new Project;
+        $community->setDescription('Le site communautaire des anciens étudiants O\'clock');
+        $community->setIsActive(true);
+        $community->setPromotion($promoKrypton);
+        $community->setName('Oclock Community');
+        $manager->persist($community);
+        $communityUsers = [
+            [
+                'prenom' => 'Tristan',
+                'nom' => 'Touchain',
+                'email' => 'tristan.touchain@gmail.com',
+                'gender' => 'male'
+            ],
+            [
+                'prenom' => 'Thibault',
+                'nom' => 'Garnier',
+                'email' => 'tgarni01@gmail.com',
+                'gender' => 'male'
+            ],
+            [
+                'prenom' => 'Elodie',
+                'nom' => 'Chiarani',
+                'email' => 'elodie.chiarani@gmail.com',
+                'gender' => 'female'
+            ],
+            [
+                'prenom' => 'Vincent',
+                'nom' => 'Sureau',
+                'email' => 'hello@vincent-sureau.fr',
+                'gender' => 'male'
+            ]
+        ];
+
+        foreach ($communityUsers as $member){
+            $newUser = new AppUser;
+            $newUser->setFirstName($member['prenom'])
+            ->setLastName($member['nom'])
+            ->setEmail($member['email'])
+            ->setPassword('Admin021218!')
+            ->setProject($community)
+            ->setPromotion($promoKrypton)
+            ->setIsActive(true);
+
+            $url_to_image = 'https://avatars.dicebear.com/v2/'. $member['gender'] . '/' . $user->getEmail() . '.svg';
+            
+            $ch = curl_init($url_to_image);
+            
+            $my_save_dir = 'public/img/profils/';
+            $filename = md5(uniqid(rand(), true)) . '.svg';
+            $complete_save_loc = $my_save_dir . $filename;
+            $fp = fopen($complete_save_loc, 'wb');
+            curl_setopt($ch, CURLOPT_FILE, $fp);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_exec($ch);
+            curl_close($ch);
+            fclose($fp);
+            
+            $newUser->setContentUrl($filename);
+
+            $manager->persist($newUser);
+        }
+
         $manager->flush();
     }
 }
