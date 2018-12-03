@@ -19,6 +19,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *        "put"={"access_control"="is_granted('ROLE_COMMUNITY_SUPERADMIN')", "access_control_message"="Désolé mais seuls les supers administrateurs peuvent modifier un rôle !"},
  *        "delete"={"access_control"="is_granted('ROLE_COMMUNITY_SUPERADMIN')", "access_control_message"="Désolé mais mais seuls les supers administrateurs peuvent supprimer un rôle !"}
  *     },
+ *     iri="https://schema.org/Role",
  * )
  * @ORM\Entity(repositoryClass="App\Repository\RoleRepository")
  */
@@ -44,6 +45,7 @@ class Role
      *      max = 40,
      *      maxMessage = "Le role ne doit pas dépasser {{ limit }} caractères"
      * )
+     * @ApiProperty(iri="https://schema.org/roleName")
      */
     private $name;
 

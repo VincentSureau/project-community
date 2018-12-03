@@ -40,6 +40,7 @@ use App\Controller\CreateProjectPictureAction;
  *             "denormalizationContext"={"groups"={"projectWrite"}},
  *          }, 
  *     },
+ *     iri="http://schema.org/image",
  * )
  * @ORM\Entity(repositoryClass="App\Repository\ImageRepository")
  * @Vich\Uploadable
@@ -59,6 +60,7 @@ class Image
      * @var File
      * @Assert\Image(
      *      mimeTypesMessage = "Le fichier téléchargé doit forcément être une image !")
+     * @ApiProperty(iri="https://schema.org/MediaObject")
      */
     public $file;
 
@@ -79,11 +81,13 @@ class Image
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="images")
      * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ApiProperty(iri="https://schema.org/Project")
      */
     private $project;
 
     /**
      * @ORM\Column(type="datetime")
+     * @ApiProperty(iri="https://schema.org/Date")
      *
      * @var \DateTime
      */

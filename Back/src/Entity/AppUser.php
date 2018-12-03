@@ -54,6 +54,7 @@ use Symfony\Component\HttpFoundation\File\File;
  *             "denormalizationContext"={"groups"={"userWrite"}},
  *          },
  *     },
+ *     iri="http://schema.org/Person",
  * )
  * @ApiFilter(SearchFilter::class, properties={"slug": "iexact"})
  * @ORM\Entity(repositoryClass="App\Repository\AppUserRepository")
@@ -79,6 +80,7 @@ class AppUser implements UserInterface
      * @Assert\Email(
      *     message = "L'email '{{ value }}' n'est pas valide.",
      * )
+     * @ApiProperty(iri="http://schema.org/email")
      */
     private $email;
 
@@ -91,6 +93,8 @@ class AppUser implements UserInterface
      *     pattern="~^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$^+=!*()@%&]).{10,15}~"),
      *     match=true,
      *     message="Ton mot de passe doit contenir au minimum une majuscule, une minuscule, un chiffre, un caractère spécial et faire entre 8 et 15 caractères",
+     * )
+     * @ApiProperty(iri="http://schema.org/accessCode")
      */
     private $password;
 
@@ -114,6 +118,7 @@ class AppUser implements UserInterface
      *      minMessage = "Le champ prénom doit comporter au moins {{ limit }} caractères",
      *      maxMessage = "Le champ prénom ne peux pas comporter plus de {{ limit }} caractères"
      * )
+     * @ApiProperty(iri="https://schema.org/givenName")
      */
 
 
@@ -136,6 +141,7 @@ class AppUser implements UserInterface
      *      minMessage = "Le champ nom doit comporter au moins {{ limit }} caractères",
      *      maxMessage = "Le champ nom ne peux pas comporter plus de {{ limit }} caractères"
      * )
+     * @ApiProperty(iri="https://schema.org/familyName")
      */
     private $lastname;
 
@@ -143,6 +149,7 @@ class AppUser implements UserInterface
      * @Groups({"user", "userWrite"})
      * @ORM\Column(type="datetime", nullable=true)
      * @Assert\DateTime(message="Veuillez indiquer une date valide")
+     * @ApiProperty(iri="https://schema.org/birthDate")
      */
     private $birthdate;
 
@@ -155,12 +162,14 @@ class AppUser implements UserInterface
      *     message="Le numéro de téléphone saisi n'est pas valide"
      * )
      * @ORM\Column(type="string", length=25, nullable=true)
+     * @ApiProperty(iri="https://schema.org/telephone")
      */
     private $phoneNumber;
 
     /**
      * @Groups({"user", "userWrite"})
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @ApiProperty(iri="https://schema.org/City")
      */
     private $city;
 
@@ -178,6 +187,7 @@ class AppUser implements UserInterface
      *      minMessage = "Le champ code postal doit comporter au minimum {{ limit }} caractères.",
      *      maxMessage = "Le champ code postal ne doit pas comporter plus de {{ limit }} caractères"
      * )
+     * @ApiProperty(iri="https://schema.org/postalCode")
      */
     private $zipcode;
 
@@ -188,6 +198,7 @@ class AppUser implements UserInterface
      *     message = "L'url '{{ value }}  n'est pas une url valide",
      *     protocols = {"http", "https"}
      * )
+     * @ApiProperty(iri="https://schema.org/URL")
      */
     private $linkLinkedin;
 
@@ -198,6 +209,7 @@ class AppUser implements UserInterface
      *     message = "L'url '{{ value }}  n'est pas une url valide",
      *     protocols = {"http", "https"}
      * )
+     * @ApiProperty(iri="https://schema.org/URL")
      */
     private $linkGithub;
 
@@ -208,6 +220,7 @@ class AppUser implements UserInterface
      *     message = "L'url '{{ value }}  n'est pas une url valide",
      *     protocols = {"http", "https"}
      * )
+     * @ApiProperty(iri="https://schema.org/URL")
      */
     
     private $linkPersonal;
@@ -221,12 +234,14 @@ class AppUser implements UserInterface
     /**
      * @Groups({"user"})
      * @ORM\Column(type="datetime")
+     * @ApiProperty(iri="https://schema.org/Date")
      */
     private $createdDate;
 
     /**
      * @Groups({"user", "userWrite"})
      * @ORM\Column(type="text", nullable=true)
+     * @ApiProperty(iri="https://schema.org/Text")
      */
     private $description;
 
@@ -236,6 +251,7 @@ class AppUser implements UserInterface
      * @var File
      * @Assert\Image(
      *     mimeTypesMessage = "Le fichier téléchargé doit forcément être une image !")
+     * @ApiProperty(iri="https://schema.org/MediaObject")
      */
     public $file;
 
@@ -249,6 +265,7 @@ class AppUser implements UserInterface
 
     /**
      * @ORM\Column(type="datetime")
+     * @ApiProperty(iri="https://schema.org/Date")
      *
      * @var \DateTime
      */
@@ -272,6 +289,7 @@ class AppUser implements UserInterface
     /**
      * @Groups({"user", "project", "AppUserList", "ProjectList"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Specialisation", inversedBy="appUsers")
+     * @ApiProperty(iri="https://schema.org/skills")
      */
     private $specialisation;
 
@@ -279,6 +297,7 @@ class AppUser implements UserInterface
      * @Groups({"user", "AppUserList", "userWrite"})
      * @ORM\ManyToOne(targetEntity="App\Entity\ProfessionalStatus", inversedBy="appUsers")
      * @ORM\JoinColumn(onDelete="SET NULL")
+     * @ApiProperty(iri="https://schema.org/hasOccupation")
      */
     private $professionalStatus;
 
@@ -286,18 +305,21 @@ class AppUser implements UserInterface
      * @Groups({"user"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="appUsers")
      * @ORM\JoinColumn(onDelete="SET NULL")
+     * @ApiProperty(iri="https://schema.org/Project")
      */
     private $project;
 
     /**
      * @Groups({"user", "userWrite"})
      * @ORM\ManyToMany(targetEntity="App\Entity\Competence", inversedBy="appUsers")
+     * @ApiProperty(iri="https://schema.org/skills")
      */
     private $competences;
 
     /**
      * @Groups({"user", "AppUserList", "project", "ProjectList"})
      * @ORM\Column(type="string", length=120, nullable=true)
+     * @ApiProperty(iri="https://schema.org/URL")
      */
     private $slug;
 
