@@ -43,7 +43,7 @@ const ProjectItem = ({
   const uniqueSpeArray = speArray.filter(onlyUnique);
 
   return (
-    <div id="projectitem" className="col-6">
+    <div id="projectitem" className="col-12 col-md-6">
       <NavLink activeClassName="" className="no-blue-on-link" exact to={''.concat('/projects/', slug)}>
         <img id="projectitem-photo" src={`http://127.0.0.1:8001/img/projects/${heroImage[0].contentUrl}`} alt="" />
         <h1 id="projectitem-title">{title}</h1>
