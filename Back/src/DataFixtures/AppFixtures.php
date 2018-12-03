@@ -330,7 +330,7 @@ class AppFixtures extends Fixture
             ->setPromotion($promoKrypton)
             ->setIsActive(true)
             ->setRole($roleSuperAdmin)
-            ->setSpecialisation($member[]);
+            ->setSpecialisation($member['specialisation']);
 
             $url_to_image = 'https://avatars.dicebear.com/v2/'. $member['gender'] . '/' . $user->getEmail() . '.svg';
             
