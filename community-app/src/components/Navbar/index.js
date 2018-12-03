@@ -162,8 +162,8 @@ class ReactStrapNavbar extends React.Component {
                 {/* Si le membre est connecté "Me déconnecter" s'affiche, sinon "Me connecter" s'affiche */}
                 {
                   (isConnected)
-                    ? <ReactStrapLink onMouseEnter={() => mouseOver()} className="btn btn-outline-white mx-3 btn-border-radius text-white text-uppercase font-weight-bold connection-button" onClick={() => this.disconnect()}>Me déconnecter</ReactStrapLink>
-                    : <NavLink exact onMouseEnter={() => mouseOver()} to="/login" className="btn btn-outline-white mx-3 btn-border-radius text-white text-uppercase font-weight-bold connection-button">Me connecter</NavLink>
+                    ? <ReactStrapLink className="btn btn-outline-white mx-3 btn-border-radius text-white text-uppercase font-weight-bold connection-button" onClick={() => this.disconnect()}>Me déconnecter</ReactStrapLink>
+                    : <NavLink exact to="/login" className="btn btn-outline-white mx-3 btn-border-radius text-white text-uppercase font-weight-bold connection-button">Me connecter</NavLink>
                 }
               </NavItem>
             </Nav>
@@ -179,7 +179,12 @@ ReactStrapNavbar.propTypes = {
   page: PropTypes.string.isRequired,
   connectMember: PropTypes.func.isRequired,
   disconnectMember: PropTypes.func.isRequired,
-  connectedMember: PropTypes.string.isRequired,
+  connectedMember: PropTypes.string,
 };
+
+ReactStrapNavbar.defaultProps = {
+  connectedMember: undefined,
+};
+
 
 export default ReactStrapNavbar;
