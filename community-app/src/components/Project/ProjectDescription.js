@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
 
 /**
  * Local import
@@ -20,7 +21,9 @@ const ProjectDescription = ({ description }) => (
     <section id="project-description">
       <h1 className="text-uppercase text-white">Description</h1>
       <div id="project-description-paragraphe">
+        <FaQuoteLeft className="project-description-paragraphe-quotationmark text-projecttext" />
         <p>{description}</p>
+        <FaQuoteRight className="project-description-paragraphe-quotationmark text-projecttext" />
       </div>
     </section>
   </div>

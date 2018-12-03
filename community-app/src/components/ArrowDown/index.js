@@ -17,7 +17,7 @@ import './arrowdown.scss';
 const ArrowDown = () => (
   <div id="arrowdown">
     <div className="arrow bounce">
-      <img className="w-10" src={DoubleArrow} alt="arrow down" />
+      <img className="" src={DoubleArrow} alt="arrow down" />
     </div>
   </div>
 

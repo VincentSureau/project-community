@@ -22,7 +22,7 @@ const ProjectPresentation = ({ members, promotion, competences }) => (
     <section id="project-team">
       <img id="project-team-logo" src={Astronaut} alt="" />
       <h1 className="text-white">La team</h1>
-      <div id="project-team-list" className="row">
+      <div id="project-team-list" className="row justify-content-center">
         {members.map(member => (member.isActive)
         && (
           <SingleMember
