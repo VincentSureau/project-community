@@ -4,7 +4,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
+import LogoOclockCommunity from 'src/images/logo_oclock_community.svg';
 /**
  * Local import
  */
@@ -34,7 +34,7 @@ class Home extends React.Component {
     return (
       <div id="home">
         <section id="home-presentation" className="d-flex flex-column justify-content-center align-items-center bg-home full-height px-5">
-          <img id="home-presentation-logo" className="" src="src/images/logo_oclock_community.svg" alt="" />
+          <img id="home-presentation-logo" className="" src={LogoOclockCommunity} alt="" />
           <p id="home-presentation-text">Retrouvez tous les <em className="font-weight-bold">étudiants</em> des différentes promotions <em className="font-weight-bold">O'clock</em>, consultez leur profil et admirez l'aboutissement de leur 5 mois de dur labeur : leurs <em className="font-weight-bold">projets</em> de fin d'étude !</p>
           <NavLink
             className="btn btn-outline-white m-3 btn-border-radius text-uppercase"

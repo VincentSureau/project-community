@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import ClassNames from 'classnames';
 import AuthService from 'src/components/AuthService';
-
+import LogoOclockCommunityNavBar from 'src/images/logo_oclock_community_navbar.png';
 import {
   Collapse,
   Navbar,
@@ -111,7 +111,7 @@ class ReactStrapNavbar extends React.Component {
       <div id="navbar">
         <Navbar className={classNavBar} dark expand="lg">
           <NavbarBrand className="mx-3" href="/">
-            <img src="/src/images/logo_oclock_community_navbar.png" alt="Logo Community" />
+            <img src={LogoOclockCommunityNavBar} alt="Logo Community" />
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} className="" />
           <Collapse isOpen={isOpen} navbar>

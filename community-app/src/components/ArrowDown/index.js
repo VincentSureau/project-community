@@ -2,7 +2,7 @@
  * NPM import
  */
 import React from 'react';
-
+import DoubleArrow from 'src/images/angle-double-down-solid.png';
 /**
  * Local import
  */
@@ -17,7 +17,7 @@ import './arrowdown.scss';
 const ArrowDown = () => (
   <div id="arrowdown">
     <div className="arrow bounce">
-      <img className="w-10" src="/src/images/angle-double-down-solid.png" alt="arrow down" />
+      <img className="w-10" src={DoubleArrow} alt="arrow down" />
     </div>
   </div>
 

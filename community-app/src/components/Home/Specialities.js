@@ -4,7 +4,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-
+import LogoWordpress from 'src/images/OClockCommunity-LogoWordPress.svg';
+import LogoReact from 'src/images/OClockCommunity-LogoReact.svg';
+import LogoSymfony from 'src/images/OClockCommunity-LogoSymfony.svg';
 /**
  * Local import
  */
@@ -27,7 +29,7 @@ const Specialities = ({ getMembersSpe }) => (
         onClick={() => getMembersSpe('Wordpress')}
         className="d-flex align-items-center flex-column col-12 col-sm-4 mt-2 mt-md-0"
       >
-        <img src="src/images/OClockCommunity-LogoWordPress.svg" className="specialitie" alt="" />
+        <img src={LogoWordpress} className="specialitie" alt="" />
         <h4 className="my-1 my-md-2">WordPress</h4>
         <button type="button" className="btn btn-outline-white mx-3 btn-border-radius text-uppercase mt-2">Consulter</button>
       </Link>
@@ -37,7 +39,7 @@ const Specialities = ({ getMembersSpe }) => (
         onClick={() => getMembersSpe('React')}
         className="d-flex align-items-center flex-column col-12 col-sm-4 mt-2 mt-md-0"
       >
-        <img src="src/images/OClockCommunity-LogoReact.svg" className="specialitie" alt="" />
+        <img src={LogoReact} className="specialitie" alt="" />
         <h4 className="my-1 my-md-2">React</h4>
         <button type="button" className="btn btn-outline-white mx-3 btn-border-radius text-uppercase mt-1 mt-md-2">Consulter</button>
       </Link>
@@ -47,7 +49,7 @@ const Specialities = ({ getMembersSpe }) => (
         onClick={() => getMembersSpe('Symfony')}
         className="d-flex align-items-center flex-column col-12 col-sm-4 mt-2 mt-md-0"
       >
-        <img src="src/images/OClockCommunity-LogoSymfony.svg" className="specialitie" alt="" />
+        <img src={LogoSymfony} className="specialitie" alt="" />
         <h4 className="my-1 my-md-2">Symfony</h4>
         <button type="button" className="btn btn-outline-white mx-3 btn-border-radius text-uppercase mt-2">Consulter</button>
       </Link>
