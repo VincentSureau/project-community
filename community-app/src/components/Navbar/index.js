@@ -80,10 +80,6 @@ class ReactStrapNavbar extends React.Component {
       ? `bg-${classcolor}`
       : 'bg-notfound-navfoot';
 
-    const activeClassColor = (classcolor !== '')
-      ? `text-${classcolor}`
-      : 'text-notfound-navfoot';
-
     // On récupère les valeurs du state et des props dont on a besoin
     const { isOpen } = this.state;
     const { connectMember, disconnectMember, connectedMember } = this.props;
@@ -166,8 +162,8 @@ class ReactStrapNavbar extends React.Component {
                 {/* Si le membre est connecté "Me déconnecter" s'affiche, sinon "Me connecter" s'affiche */}
                 {
                   (isConnected)
-                    ? <ReactStrapLink className="btn btn-outline-white mx-3 btn-border-radius text-white text-uppercase font-weight-bold" onClick={() => this.disconnect()}>Me déconnecter</ReactStrapLink>
-                    : <NavLink exact to="/login"><ReactStrapLink className="btn btn-outline-white mx-3 btn-border-radius text-white text-uppercase font-weight-bold" >Me connecter</ReactStrapLink></NavLink>
+                    ? <ReactStrapLink onMouseEnter={() => mouseOver()} className="btn btn-outline-white mx-3 btn-border-radius text-white text-uppercase font-weight-bold connection-button" onClick={() => this.disconnect()}>Me déconnecter</ReactStrapLink>
+                    : <NavLink exact onMouseEnter={() => mouseOver()} to="/login" className="btn btn-outline-white mx-3 btn-border-radius text-white text-uppercase font-weight-bold connection-button">Me connecter</NavLink>
                 }
               </NavItem>
             </Nav>

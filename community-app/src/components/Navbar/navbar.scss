@@ -10,3 +10,9 @@
   border: none !important;
   margin: 0 !important;
 }
+
+.connection-button:hover {
+  &:hover {
+    color: #2a2a2a !important;
+  }
+}
