@@ -50,6 +50,9 @@
         height: 452px;
         object-fit: cover;
         object-position: center top;
+        & img {
+          width: 100%;
+        }
       }
     }
     &-pc {
