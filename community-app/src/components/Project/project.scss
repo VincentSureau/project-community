@@ -81,9 +81,7 @@
   }
 
   &-gallery{
-    height: 100vh;
-    min-height: 750px;
-    padding-bottom: 7em;
+    padding: 10em;
     &-wrapper{
       width: 800px;
       height: 60%;
@@ -118,8 +116,6 @@
   &-descript {
     margin: 0;
     padding: 10em;
-    // width: 100vw;
-    min-height: 100vh;
     text-align: center;
 
 
@@ -132,12 +128,13 @@
       }
 
       &-paragraphe {
-        text-align: justify;
+        text-align: center;
       }
     }
     p {
       font-weight: normal;
       font-size: 1.3em;
+      display: inline;
     }
 
 
