@@ -17,6 +17,7 @@ import {
  */
 // Components
 import ArrowDown from 'src/components/ArrowDown';
+import Tooltips from 'src/components/Tooltips';
 
 // Styles
 import './member.scss';
@@ -35,9 +36,11 @@ const ContactBar = ({
 }) => (
   <div id="member-info-contactbar" className="row w-100 mx-0 justify-content-center">
     <div className="col-12 col-md-4 d-flex float-right order-1 justify-content-md-end justify-content-center align-items-md-end align-items-center pb-3">
+      {/* On utilise les tooltips de ReactStrap pour afficher le numéro de téléphone et le mail */}
+      <Tooltips email={email} phoneNumber={phoneNumber} />
       {/* On affiche les icones uniquement si les champs ont été renseignés par le membre */}
-      {email !== null && <a href={`mailto:${email}`}><FaRegEnvelope className="text-white" /></a>}
-      {phoneNumber !== '' && <a href={`tel:${phoneNumber}`}><FaPhone className="text-white" /></a>}
+      {/* {email !== null && <a href={`mailto:${email}`}><FaRegEnvelope className="text-white" /></a>}
+      {phoneNumber !== '' && <a href={`tel:${phoneNumber}`}><FaPhone className="text-white" /></a>} */}
       {linkGithub !== '' && <a href={linkGithub}><FaGithub className="text-white" /></a>}
       {linkLinkedin !== '' && <a href={linkLinkedin}><FaLinkedinIn className="text-white" /></a>}
       {linkPersonal !== '' && <a href={linkPersonal}><FaDesktop className="text-white" /></a>}
