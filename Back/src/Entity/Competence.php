@@ -21,6 +21,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *        "put"={"access_control"="is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais seuls les administrateurs peuvent modifier une compétence !"},
  *        "delete"={"access_control"="is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais mais seuls les administrateurs peuvent supprimer une compétence"}
  *     },
+ *     iri="http://schema.org/skills",
  * )
  * @ORM\Entity(repositoryClass="App\Repository\CompetenceRepository")
  */
@@ -41,22 +42,26 @@ class Competence
      *      max = 100,
      *      maxMessage = "Le nom de la spécialisation ne doit pas dépasser {{ limit }} caractères"
      * )
+     * @ApiProperty(iri="https://schema.org/name")
      */
     private $name;
 
     /**
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(type="string", length=120, nullable=true)
+     * @ApiProperty(iri="https://schema.org/URL")
      */
     private $slug;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\AppUser", mappedBy="competences")
+     * @ApiProperty(iri="https://schema.org/Person")
      */
     private $appUsers;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Project", mappedBy="competences")
+     * @ApiProperty(iri="https://schema.org/Project")
      */
     private $projects;
 

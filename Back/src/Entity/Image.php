@@ -40,6 +40,7 @@ use App\Controller\CreateProjectPictureAction;
  *             "denormalizationContext"={"groups"={"projectWrite"}},
  *          }, 
  *     },
+ *     iri="http://schema.org/image",
  * )
  * @ORM\Entity(repositoryClass="App\Repository\ImageRepository")
  * @Vich\Uploadable
@@ -80,6 +81,7 @@ class Image
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="images")
      * @ORM\JoinColumn(onDelete="CASCADE")
+     * @ApiProperty(iri="https://schema.org/Project")
      */
     private $project;
 

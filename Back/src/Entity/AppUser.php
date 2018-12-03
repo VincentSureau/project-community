@@ -54,6 +54,7 @@ use Symfony\Component\HttpFoundation\File\File;
  *             "denormalizationContext"={"groups"={"userWrite"}},
  *          },
  *     },
+ *     iri="http://schema.org/Person",
  * )
  * @ApiFilter(SearchFilter::class, properties={"slug": "iexact"})
  * @ORM\Entity(repositoryClass="App\Repository\AppUserRepository")
@@ -288,6 +289,7 @@ class AppUser implements UserInterface
     /**
      * @Groups({"user", "project", "AppUserList", "ProjectList"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Specialisation", inversedBy="appUsers")
+     * @ApiProperty(iri="https://schema.org/skills")
      */
     private $specialisation;
 
@@ -295,6 +297,7 @@ class AppUser implements UserInterface
      * @Groups({"user", "AppUserList", "userWrite"})
      * @ORM\ManyToOne(targetEntity="App\Entity\ProfessionalStatus", inversedBy="appUsers")
      * @ORM\JoinColumn(onDelete="SET NULL")
+     * @ApiProperty(iri="https://schema.org/hasOccupation")
      */
     private $professionalStatus;
 
@@ -302,18 +305,21 @@ class AppUser implements UserInterface
      * @Groups({"user"})
      * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="appUsers")
      * @ORM\JoinColumn(onDelete="SET NULL")
+     * @ApiProperty(iri="https://schema.org/Project")
      */
     private $project;
 
     /**
      * @Groups({"user", "userWrite"})
      * @ORM\ManyToMany(targetEntity="App\Entity\Competence", inversedBy="appUsers")
+     * @ApiProperty(iri="https://schema.org/skills")
      */
     private $competences;
 
     /**
      * @Groups({"user", "AppUserList", "project", "ProjectList"})
      * @ORM\Column(type="string", length=120, nullable=true)
+     * @ApiProperty(iri="https://schema.org/URL")
      */
     private $slug;
 

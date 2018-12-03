@@ -46,7 +46,8 @@ use ApiPlatform\Core\Annotation\ApiProperty;
  *             "access_control"="is_granted('ROLE_COMMUNITY_USER') and object == user.getProject() or is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais tu ne peux modifier que ton projet !"
  *         },
  *         "delete"={"access_control"="is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais mais seuls les administrateurs peuvent supprimer un projet"}
- *     }
+ *     },
+ *     iri="http://schema.org/Project",
  * )
  * @ApiFilter(SearchFilter::class, properties={"slug": "iexact"})
  * 
@@ -70,13 +71,14 @@ class Project
      *      maxMessage = "Le nom du projet ne doit pas dépasser {{ limit }} caractères"
      * )
      * @Groups({"user", "ProjectList", "project", "projectWrite"})
+     * @ApiProperty(iri="https://schema.org/name")
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
      * @Groups({"project", "projectWrite"})
-     * @ApiProperty(iri="https://schema.org/Text")
+     * @ApiProperty(iri="https://schema.org/description")
      */
     private $description;
 
@@ -97,6 +99,7 @@ class Project
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(type="string", length=150, nullable=true)
      * @Groups({"project", "AppUserList", "ProjectList", "user"})
+     * @ApiProperty(iri="https://schema.org/URL")
      */
     private $slug;
 

@@ -21,6 +21,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *        "put"={"access_control"="is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais seuls les administrateurs peuvent modifier un statut professionnel !"},
  *        "delete"={"access_control"="is_granted('ROLE_COMMUNITY_ADMIN')", "access_control_message"="Désolé mais mais seuls les administrateurs peuvent supprimer un statut professionnel"}
  *     },
+ *     iri="http://schema.org/hasOccupation",
  * )
  * @ORM\Entity(repositoryClass="App\Repository\ProfessionalStatusRepository")
  */
@@ -41,17 +42,20 @@ class ProfessionalStatus
      *      max = 100,
      *      maxMessage = "Le nom du statut professionnel ne doit pas dépasser {{ limit }} caractères"
      * )
+     * @ApiProperty(iri="http://schema.org/name")
      */
     private $name;
 
     /**
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(type="string", length=120, nullable=true)
+     * @ApiProperty(iri="https://schema.org/URL")
      */
     private $slug;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\AppUser", mappedBy="professionalStatus")
+     * @ApiProperty(iri="https://schema.org/Person")
      */
     private $appUsers;
 
