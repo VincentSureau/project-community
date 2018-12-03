@@ -71,6 +71,9 @@
     margin: 0;
     padding: 100px 5em;
     height: 100%;
+    &-list a:hover {
+      text-decoration: none;
+    }
     & .specialitie {
       text-align: center;
       max-width: 250px;
