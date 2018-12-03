@@ -15,6 +15,7 @@ easy_admin:
          - { entity: 'Images', icon: 'image', label: 'Images des projets' }
          - { entity: 'Roles', icon: 'cog', label: 'Rôles' }
          - { label: 'Retour à la page gestion', url: '/gestion', rel: 'index' }
+         #- { label: 'Retour vers le site', url: 'http://o-community.fr' }
     formats:
         date:     'd/m/Y'
         time:     'H:i'
