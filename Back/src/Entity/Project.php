@@ -13,6 +13,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use App\Controller\ProjectCustom;
 use App\Controller\ProjectHomeCustom;
 use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Annotation\ApiProperty;
 
 
 
