@@ -80,6 +80,10 @@ class ReactStrapNavbar extends React.Component {
       ? `bg-${classcolor}`
       : 'bg-notfound-navfoot';
 
+    const activeClassColor = (classcolor !== '')
+      ? `text-${classcolor}`
+      : 'text-notfound-navfoot';
+
     // On récupère les valeurs du state et des props dont on a besoin
     const { isOpen } = this.state;
     const { connectMember, disconnectMember, connectedMember } = this.props;
@@ -113,16 +117,16 @@ class ReactStrapNavbar extends React.Component {
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink activeClassName="" className="nav-item nav-link text-white text-center text-uppercase font-weight-bold" exact to="/">Accueil</NavLink>
+                <NavLink className="nav-item nav-link text-white text-center text-uppercase font-weight-bold" exact to="/">Accueil</NavLink>
               </NavItem>
               <NavItem>
                 <ReactStrapLink className="nav-item nav-link text-white text-center text-uppercase font-weight-bold" href="http://oclock.io">O'Clock</ReactStrapLink>
               </NavItem>
               <NavItem>
-                <NavLink activeClassName="" className="nav-item nav-link text-white text-center text-uppercase font-weight-bold" exact to="/projects">Projets</NavLink>
+                <NavLink className="nav-item nav-link text-white text-center text-uppercase font-weight-bold" exact to="/projects">Projets</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink activeClassName="" className="nav-item nav-link text-white text-center text-uppercase font-weight-bold" exact to="/members">Etudiants</NavLink>
+                <NavLink className="nav-item nav-link text-white text-center text-uppercase font-weight-bold" exact to="/members">Etudiants</NavLink>
               </NavItem>
               {/* Si le membre est connecté un menu dropdown s'affiche */}
               { (connectedMember !== undefined)
