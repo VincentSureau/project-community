@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Project;
 use App\Entity\AppUser;
+use App\Entity\Image;
 use App\Entity\Competence;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -67,6 +68,25 @@ class ProjectType extends AbstractType
 
                 if ($project && $project->getId() == null) {
                     $project->setIsActive(false);
+
+                    $image = new Image;
+                    $url_to_image = 'https://www.greengeeks.com/blog/wp-content/uploads/2015/11/ResponsiveWebDesign-e1447282926766.jpg';
+                    
+                    $ch = curl_init($url_to_image);
+                    
+                    $my_save_dir = '../public/img/projects/';
+                    $filename = md5(uniqid(rand(), true)) . '.jpg';
+                    $complete_save_loc = $my_save_dir . $filename;
+                    $fp = fopen($complete_save_loc, 'wb');
+                    curl_setopt($ch, CURLOPT_FILE, $fp);
+                    curl_setopt($ch, CURLOPT_HEADER, 0);
+                    curl_exec($ch);
+                    curl_close($ch);
+                    fclose($fp);
+
+                    $image->setContentUrl($filename);
+                    $image->setIshero(true);
+                    $project->addImage($image);
                 }
             }
 
