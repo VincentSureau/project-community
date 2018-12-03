@@ -280,25 +280,29 @@ class AppFixtures extends Fixture
                 'prenom' => 'Tristan',
                 'nom' => 'Touchain',
                 'email' => 'tristan.touchain@gmail.com',
-                'gender' => 'male'
+                'gender' => 'male',
+                'specialisation' => $react
             ],
             [
                 'prenom' => 'Thibault',
                 'nom' => 'Garnier',
                 'email' => 'tgarni01@gmail.com',
-                'gender' => 'male'
+                'gender' => 'male',
+                'specialisation' => $symfony
             ],
             [
                 'prenom' => 'Elodie',
                 'nom' => 'Chiarani',
                 'email' => 'elodie.chiarani@gmail.com',
-                'gender' => 'female'
+                'gender' => 'female',
+                'specialisation' => $react
             ],
             [
                 'prenom' => 'Vincent',
                 'nom' => 'Sureau',
                 'email' => 'hello@vincent-sureau.fr',
-                'gender' => 'male'
+                'gender' => 'male',
+                'specialisation' => $symfony
             ]
         ];
 
@@ -310,7 +314,9 @@ class AppFixtures extends Fixture
             ->setPassword('Admin021218!')
             ->setProject($community)
             ->setPromotion($promoKrypton)
-            ->setIsActive(true);
+            ->setIsActive(true)
+            ->setRole($roleAdmin)
+            ->setSpecialisation($member[]);
 
             $url_to_image = 'https://avatars.dicebear.com/v2/'. $member['gender'] . '/' . $user->getEmail() . '.svg';
             
