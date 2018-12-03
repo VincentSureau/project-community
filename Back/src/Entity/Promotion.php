@@ -55,6 +55,7 @@ class Promotion
      * @ORM\Column(type="datetime", nullable=true)
      * @Assert\NotBlank(message="Tu dois indiquer une date de début")
      * @Assert\DateTime(message="Tu dois indiquer une date valide")
+     * @ApiProperty(iri="https://schema.org/Date")
      */
     private $startDate;
 
@@ -63,6 +64,7 @@ class Promotion
      * @ORM\Column(type="datetime", nullable=true)
      * @Assert\NotBlank(message="Tu dois indiquer une date de fin")
      * @Assert\DateTime(message="Tu dois indiquer une date valide")
+     * @ApiProperty(iri="https://schema.org/Date")
      */
     private $endDate;
 

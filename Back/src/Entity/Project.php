@@ -75,6 +75,7 @@ class Project
     /**
      * @ORM\Column(type="text", nullable=true)
      * @Groups({"project", "projectWrite"})
+     * @ApiProperty(iri="https://schema.org/Text")
      */
     private $description;
 
@@ -87,6 +88,7 @@ class Project
     /**
      * @ORM\Column(type="datetime")
      * @Groups({"project"})
+     * @ApiProperty(iri="https://schema.org/Date")
      */
     private $createdDate;
 
@@ -104,6 +106,7 @@ class Project
      *     protocols = {"http", "https"}
      * )
      * @Groups({"project", "projectWrite"})
+     * @ApiProperty(iri="https://schema.org/URL") 
      */
     private $linkProject;
 
@@ -114,6 +117,7 @@ class Project
      *     protocols = {"http", "https"}
      * )
      * @Groups({"project", "projectWrite"})
+     * @ApiProperty(iri="https://schema.org/URL")
      */
     private $linkVideo;
 

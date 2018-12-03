@@ -59,6 +59,7 @@ class Image
      * @var File
      * @Assert\Image(
      *      mimeTypesMessage = "Le fichier téléchargé doit forcément être une image !")
+     * @ApiProperty(iri="https://schema.org/MediaObject")
      */
     public $file;
 
@@ -84,6 +85,7 @@ class Image
 
     /**
      * @ORM\Column(type="datetime")
+     * @ApiProperty(iri="https://schema.org/Date")
      *
      * @var \DateTime
      */
