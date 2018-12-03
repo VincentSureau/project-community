@@ -7,6 +7,7 @@ import ReactLoading from 'react-loading';
 /**
  * Local import
  */
+import SadFace from 'src/images/sad-cry-regular.png';
 // Components
 import SelectInput from '../../containers/SelectInput';
 import TextInput from '../../containers/TextInput';
@@ -90,7 +91,7 @@ class Projects extends React.Component {
             />))}
           {(listProjects.length === 0) && (
             <div id="projects-list-noresult" className="text-center">
-              <img src="src/images/sad-cry-regular.png" alt="sad face" />
+              <img src={SadFace} alt="sad face" />
               <h1>Oh non ! Aucun projet ne correspond...</h1>
               <h1>Essaye encore !</h1>
             </div>

@@ -1,11 +1,15 @@
 #arrowdown {
   position: absolute;
   bottom: 0;
+
 }
 
 .arrow {
   text-align: center;
   margin: 8% 0;
+  & img {
+    width: 40px !important;
+  }
 }
 
 .bounce {

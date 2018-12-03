@@ -132,8 +132,6 @@
       }
 
       &-paragraphe {
-        column-count: 2;
-        column-gap: 2em;
         text-align: justify;
       }
     }
@@ -160,6 +158,19 @@
         font-size: 4em;
       }
     }
+  }
+}
+
+.project-description-paragraphe-quotationmark {
+  font-size: .8em;
+  margin-bottom: 1em;
+
+  &:first-child {
+    margin-right: 1em;
+  }
+
+  &:last-child {
+    margin-left: 1em;
   }
 }
 
