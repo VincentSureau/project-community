@@ -45,11 +45,14 @@ const ContactBar = ({
     <div className="col-4 col-md-4 order-3 order-md-2 align-self-center">
       <ArrowDown />
     </div>
-    {(city != null || zipcode != null) && (
     <div className="d-flex justify-content-start col-12 col-md-4 order-2 order-md-3 justify-content-md-start justify-content-center align-items-end pb-3">
-      <FaMapMarkerAlt className="text-white" />
-      <span id="member-info-contactbar-localisation" className="text-white">{(city != null) && city}{(city != null && zipcode != null) && ', '}{(zipcode != null) && zipcode}</span>
-    </div>)}
+      {(city != null || zipcode != null) && (
+      <div>
+        <FaMapMarkerAlt className="text-white" />
+        <span id="member-info-contactbar-localisation" className="text-white">{(city != null) && city}{(city != null && zipcode != null) && ', '}{(zipcode != null) && zipcode}</span>
+      </div>
+      )}
+    </div>
   </div>
 );
 

@@ -21,7 +21,7 @@ const API_URL = 'http://127.0.0.1:8001';
 /**
  * Middleware de gestion axios
  */
-const memberMiddleware = store => next => (action) => {
+const memberMiddleware = store => next => (action, context) => {
   switch (action.type) {
     case GET_MEMBERS:
       axios({
