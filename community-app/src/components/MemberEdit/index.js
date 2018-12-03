@@ -103,7 +103,7 @@ class MemberEdit extends React.Component {
         <div id="memberedit">
           <form action="post" onSubmit={e => this.handleSubmit(e)}>
             <input hidden name="id" defaultValue={member.id} />
-            <section id="memberedit-form" className="d-flex flex-column justify-content-center align-items-center bg-member">
+            <section id="memberedit-form" className="d-flex flex-column justify-content-center align-items-center bg-member row">
               <p className="singlemember-name">{member.firstname}</p>
               <p className="singlemember-name name-to-disapear">{member.lastname}</p>
               <p className="singlemember-prom mb-4">#{promoname} {spename !== undefined ? `#${spename}` : ''}</p>
@@ -114,7 +114,7 @@ class MemberEdit extends React.Component {
                   <input id="profil-picture-input" className="col-12 input-text d-block text-member-navfoot mb-3 mt-2 w-80" type="file" name="profilePicture" placeholder="lien web de l'image" onChange={e => this.onChangeFile(e)} defaultValue={member.profilePicture} accept=".jpg, .png, .jpeg" />
                 </label>
               </div>
-              <div id="memberedit-form-info" className="row justify-content-center">
+              <div id="memberedit-form-info" className="row justify-content-center col-12">
                 <label className="label col-12" htmlFor="city-input">
                   Ville :
                   <input id="city-input" className="input-text col-12" type="text" name="city" placeholder="Nantes" defaultValue={value.city} onChange={e => this.onChangeInput(e)} />
@@ -206,7 +206,7 @@ class MemberEdit extends React.Component {
           {editFormSend && <Redirect to={''.concat('/members/', member.slug)} />}
           <div className="d-flex flex-column justify-content-center align-items-center bg-member">
             <Route render={
-              ({ history }) => (<button className="col-2 button-deleteProfile" type="button" onClick={() => this.handleDeleteMember(member.id, history)}>Supprimer mon profil</button>)
+              ({ history }) => (<button className="col-6 col-md-3 col-lg-2 button-deleteProfile" type="button" onClick={() => this.handleDeleteMember(member.id, history)}>Supprimer mon profil</button>)
             }
             />
           </div>
