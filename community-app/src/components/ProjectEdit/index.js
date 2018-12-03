@@ -108,7 +108,7 @@ class ProjectEdit extends React.Component {
         <div id="projectEdit">
           <form onSubmit={e => this.handleSubmit(e)}>
             <input hidden disabled name="id" defaultValue={project.id} />
-            <section id="projectedit-form" className="d-flex flex-column justify-content-center align-items-center bg-project">
+            <section id="projectedit-form" className="d-flex flex-column justify-content-center align-items-center bg-project row">
 
               <h1>{project.name}</h1>
               <div id="project-project-pc">
@@ -118,7 +118,7 @@ class ProjectEdit extends React.Component {
               </div>
               <label className="label col-6 text-center" htmlFor={heroImage[0]['@id']}>
                 Image principale du projet (max: 500Ko):
-                <input id={heroImage[0]['@id']} className="text" type="file" name="heroImage" placeholder="Aperçu écran" onChange={e => this.onChangeFile(e, true)} accept=".jpg, .png, .jpeg" />
+                <input id={heroImage[0]['@id']} className="text w-70" type="file" name="heroImage" placeholder="Aperçu écran" onChange={e => this.onChangeFile(e, true)} accept=".jpg, .png, .jpeg" />
 
             {/*}    <input
                   className="mx-2 input-text ishero w-80 text-project-lighter"
@@ -130,7 +130,7 @@ class ProjectEdit extends React.Component {
               </label>
               <div id="projectedit-form-gallery" className="row">
                 {images.map(image => (
-                  <div id="projectedit-form-gallery-imagechange" className="col-4" key={uuid()}>
+                  <div id="projectedit-form-gallery-imagechange" className="col-12 col-md-6 col-lg-4" key={uuid()}>
                     <img src={`http://127.0.0.1:8001/img/projects/${image.contentUrl}`} alt="" />
                     <label className="label col-12 images-label" htmlFor={image['@id']}>
                       Insérer un lien :
@@ -147,7 +147,7 @@ class ProjectEdit extends React.Component {
                   </div>
                 ))}
               </div>
-              <div id="projectedit-form-info" className="row justify-content-center">
+              <div id="projectedit-form-info" className="row justify-content-center col-12">
                 <label className="label col-12" htmlFor="projectlink-input">
                   Lien site:
                   <input id="projectlink-input" className="col-12 input-text" type="text" name="linkProject" placeholder="https://www.monprojet.com" defaultValue={value.linkProject} onChange={e => this.onChangeInput(e)} />
