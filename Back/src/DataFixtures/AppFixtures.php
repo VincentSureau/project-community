@@ -84,6 +84,12 @@ class AppFixtures extends Fixture
 
         $manager->flush();
 
+        //Creation d un role superadmin
+        $roleSuperAdmin = new Role();
+        $roleSuperAdmin->setCode('ROLE_COMMUNITY_SUPERADMIN'); //code technique role utilise pour tester l'ACL notamment
+        $roleSuperAdmin->setName('Super_administrateur'); //libelle affiche a l'utilisateur lorsqu'il est connecte
+        $manager->persist($roleSuperAdmin);
+
         //Creation d un role admin
         $roleAdmin = new Role();
         $roleAdmin->setCode('ROLE_COMMUNITY_ADMIN'); //code technique role utilise pour tester l'ACL notamment
@@ -209,6 +215,7 @@ class AppFixtures extends Fixture
                 }
 
                 //Creation de users
+
                 for($k = 1; $k < mt_rand(4,6); $k++) {
                     $user = new AppUser();
                     $gender = ($k % 2 == 0)? 'male' : 'female';
@@ -315,7 +322,7 @@ class AppFixtures extends Fixture
             ->setProject($community)
             ->setPromotion($promoKrypton)
             ->setIsActive(true)
-            ->setRole($roleAdmin)
+            ->setRole($roleSuperAdmin)
             ->setSpecialisation($member[]);
 
             $url_to_image = 'https://avatars.dicebear.com/v2/'. $member['gender'] . '/' . $user->getEmail() . '.svg';
