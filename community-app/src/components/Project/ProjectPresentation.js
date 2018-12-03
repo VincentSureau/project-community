@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 /**
  * Local import
  */
+import Astronaut from 'src/images/user-astronaut-solid.png';
 // Components
 import SingleMember from '../SingleMember';
 
@@ -19,7 +20,7 @@ import './project.scss';
 const ProjectPresentation = ({ members, promotion, competences }) => (
   <div id="project-teamtech" className="bg-project-darker">
     <section id="project-team">
-      <img id="project-team-logo" src="/src/images/user-astronaut-solid.png" alt="" />
+      <img id="project-team-logo" src={Astronaut} alt="" />
       <h1 className="text-white">La team</h1>
       <div id="project-team-list" className="row">
         {members.map(member => (member.isActive)
