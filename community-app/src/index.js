@@ -8,7 +8,7 @@ import './styles/index.scss';
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, withRouter, browserHistory } from 'react-router-dom';
+import { BrowserRouter as Router, withRouter } from 'react-router-dom';
 
 /**
  * Local import
@@ -37,7 +37,7 @@ export default withRouter(ScrollToTop);
 
 const rootComponent = (
   <Provider store={store}>
-    <Router history={browserHistory} onUpdate={() => document.window.scrollTo(0, 0)}>
+    <Router onUpdate={() => document.window.scrollTo(0, 0)}>
       <ScrollToTop>
         <App />
       </ScrollToTop>
