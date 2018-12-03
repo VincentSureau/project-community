@@ -11,11 +11,15 @@
   margin: 0 !important;
 }
 
-.connection-button {
-  &:hover{
-    color: #2a2a2a !important;
-  }
-  &.active {
+.connection-button.active {
+  color: #2a2a2a !important;
+  &:focus {
     color: #2a2a2a !important;
   }
 }
+.connection-button:hover {
+  &:hover {
+    color: #2a2a2a !important;
+  }
+}
+
