@@ -1,6 +1,7 @@
 @import '../../styles/vars';
 
 #members {
+  
   & h1 {
     font-size: 6em;
   }
@@ -13,10 +14,11 @@
     width: 100vw;
     height: 100vh;
     min-height: 700px;
+    margin: 0;
   }
 
   &-list {
-    // margin: 0;
+    margin: 0;
     padding: 3em 10em;
     width: 100vw;
     & h1 {
@@ -27,7 +29,7 @@
 
   &-form {
     width: 80%;
-    // padding: 0 10em;
+    margin: 0;
     & #selectinput {
       border-color: darken($color-members, 20%);
 
