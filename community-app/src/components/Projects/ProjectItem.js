@@ -9,6 +9,7 @@ import uuid from 'uuid/v4';
  * Local import
  */
 // Components
+import { API_URL } from '../../configuration';
 
 // Styles
 import './projects.scss';
@@ -45,7 +46,7 @@ const ProjectItem = ({
   return (
     <div id="projectitem" className="col-12 col-md-6">
       <NavLink activeClassName="" className="no-blue-on-link" exact to={''.concat('/projects/', slug)}>
-        <img id="projectitem-photo" src={`http://127.0.0.1:8001/img/projects/${heroImage[0].contentUrl}`} alt="" />
+        <img id="projectitem-photo" src={`${API_URL}/img/projects/${heroImage[0].contentUrl}`} alt="" />
         <h1 id="projectitem-title">{title}</h1>
         <p id="projectitem-prom" className="text-uppercase">{`#${promotion}`}</p>
         {uniqueSpeArray.map(specialisation => (
