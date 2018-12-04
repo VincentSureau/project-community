@@ -57,9 +57,11 @@ class ProjectType extends AbstractType
             if ($project && $project->getId() !== null) {
                 $form->add('linkProject', null, [
                     'label' => 'Lien du projet',
+                    'required' => false,
                 ])
                      ->add('linkVideo', null, [
                          'label' => 'Lien de la vidéo',
+                         'required' => false,
                      ])
                      ->add('competences', EntityType::class, [
                         'class' => Competence::class,
