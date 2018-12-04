@@ -15,9 +15,11 @@ export default function Tooltips({ email, phoneNumber }) {
         { email }
       </UncontrolledTooltip>
       {phoneNumber !== '' && <a href={`tel:${phoneNumber}`}><FaPhone className="text-white" id="phone-tooltip" /></a>}
-      <UncontrolledTooltip placement="top" target="phone-tooltip">
-        { phoneNumber }
-      </UncontrolledTooltip>
+      {phoneNumber !== '' && (
+        <UncontrolledTooltip placement="top" target="phone-tooltip">
+          { phoneNumber }
+        </UncontrolledTooltip>
+      )}
     </div>
   );
 }
