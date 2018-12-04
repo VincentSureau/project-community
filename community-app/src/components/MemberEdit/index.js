@@ -98,7 +98,6 @@ class MemberEdit extends React.Component {
     const promoname = this.getNestedObject(member, ['promotion', 'name']);
     const spename = this.getNestedObject(member, ['specialisation', 'name']);
     const competencesMember = this.getNestedObject(member, ['competences']);
-    console.log(member, (member !== {}));
     if (Object.keys(member).length !== 0) {
       return (
         <div id="memberedit">
