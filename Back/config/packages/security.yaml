@@ -11,22 +11,9 @@ security:
 
 
     firewalls:
-
-        login:
-            pattern:  ^/login
-            stateless: true
+        login_backend:
+            pattern:   ^/app_login
             anonymous: true
-            json_login:
-                check_path:               /login_check
-                success_handler:          lexik_jwt_authentication.handler.authentication_success
-                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
-            guard:
-                authenticators:
-                    - lexik_jwt_authentication.jwt_token_authenticator
-
-        admin:
-            pattern:   ^/admin
-            anonymous: ~
             form_login:
                 login_path: app_login
                 check_path: app_login
@@ -37,6 +24,22 @@ security:
             logout:
                 path: app_logout
                 target: admin_index
+            context: backend
+
+        admin:
+            pattern:   ^/admin
+            anonymous: true
+            form_login:
+                login_path: app_login
+                check_path: app_login
+                csrf_token_generator: security.csrf.token_manager
+            guard:
+                authenticators:
+                    - App\Security\AppUserAuthenticator
+            logout:
+                path: app_logout
+                target: admin_index
+            context: backend
 
         gestion:
             pattern:   ^/gestion
@@ -51,6 +54,21 @@ security:
             logout:
                 path: app_logout
                 target: admin_index
+            context: backend
+
+        login:
+            pattern:  ^/login
+            stateless: true
+            anonymous: true
+            json_login:
+                check_path:               /login_check
+                success_handler:          lexik_jwt_authentication.handler.authentication_success
+                failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+            context: api
+
 
         api:
             pattern:   ^/
@@ -59,10 +77,12 @@ security:
             guard:
                 authenticators:
                     - lexik_jwt_authentication.jwt_token_authenticator
+            context: api
 
     access_control:
-        - { path: ^/admin, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/gestion, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: ROLE_COMMUNITY_SUPERADMIN }
+        - { path: ^/gestion, roles: ROLE_COMMUNITY_ADMIN }
+        - { path: ^/app_login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/,       roles: IS_AUTHENTICATED_ANONYMOUSLY }
 

@@ -15,11 +15,18 @@ html, body {
 }
 
 body {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 main {
-    flex: 1 0 auto;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 auto;
+            flex: 1 0 auto;
 }
 
 ul, a{
@@ -59,6 +66,8 @@ hr {
 }
 
 .nav-link>a, .dropdown {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     text-align: center;
     padding: 10px 20px;
@@ -89,7 +98,9 @@ hr {
 }
 
 .navbar-nav {
-    flex-grow: 1;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
 }
 
 /*container home*/
@@ -97,7 +108,10 @@ hr {
 .page-admin{
     height: calc(100vh - 200px);
     min-height: 404px;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
 }
 
 .welcome-title{
@@ -134,7 +148,8 @@ hr {
     color: #fdf1cd!important;
     background-color: #194d61;
     border-radius: 20px;
-    transition-duration: 0.7s; 
+    -webkit-transition-duration: 0.7s;
+            transition-duration: 0.7s; 
 }
 
 .button-choice-admin:hover {
@@ -149,7 +164,8 @@ hr {
 /*footer*/
 
 footer {
-    flex-shrink: 0;
+    -ms-flex-negative: 0;
+        flex-shrink: 0;
     width: 95%;
     margin: auto;
     border-top: solid 1px #fdf1cd;
@@ -276,7 +292,9 @@ td {
 /*Pagination*/
 
 .pagination {
-    justify-content:center;
+    -webkit-box-pack:center;
+        -ms-flex-pack:center;
+            justify-content:center;
 }
 
 /*Bouton*/
@@ -320,8 +338,12 @@ td {
 
 /*Modal*/
 .modal-dialog {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 .modal-content {
     width: auto;
