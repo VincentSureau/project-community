@@ -26,6 +26,21 @@ security:
                 target: admin_index
             context: backend
 
+        logout_backend:
+            pattern:   ^/logout
+            anonymous: true
+            form_login:
+                login_path: app_login
+                check_path: app_login
+                csrf_token_generator: security.csrf.token_manager
+            guard:
+                authenticators:
+                    - App\Security\AppUserAuthenticator
+            logout:
+                path: app_logout
+                target: admin_index
+            context: backend
+
         admin:
             pattern:   ^/admin
             anonymous: true
