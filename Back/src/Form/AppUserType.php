@@ -69,27 +69,34 @@ class AppUserType extends AbstractType
                      ])
                      ->add('phoneNumber', TelType::class, [
                          'label' => 'Téléphone',
+                         'required' => false,
                      ] )
                      ->add('city', null, [
                          'label' => 'Ville',
+                         'required' => false,
                      ])
                      ->add('zipcode', null, [
                          'label' => 'Code postal',
+                         'required' => false,
                      ])
                      ->add('linkLinkedin', null, [
-                         'label' => '',
+                         'label' => 'Profil LinkedIn',
+                         'required' => false,
                      ])
                      ->add('linkGithub', null, [
-                         'label' => 'Profil LinkedIn',
+                         'label' => 'Profil Github',
+                         'required' => false,
                      ])
                      ->add('linkPersonal', null, [
                          'label' => 'Site personnel',
+                         'required' => false,
                      ])
                      ->add('isActive', null, [
                          'label' => 'Afficher le profil',
                      ])
                      ->add('description', null, [
                          'label' => 'Description',
+                         'required' => false,
                      ])
                      ->add('promotion', null, [
                          'label' => 'Promotion',
@@ -102,6 +109,7 @@ class AppUserType extends AbstractType
                      ])
                      ->add('project', null, [
                          'label' => 'Project',
+                         'required' => false,
                      ])
                      ->add('competences', EntityType::class, [
                         'class' => Competence::class,
