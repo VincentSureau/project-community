@@ -55,6 +55,7 @@ class AppUserType extends AbstractType
                     'label' => 'Date de naissance',
                     'widget' => 'single_text',
                     'html5' => false,
+                    'required' => false,
                     'attr' => ['class' => 'datepicker', 'autocomplete' => 'off'],
                     'format' => 'dd/MM/yyyy',
                     ])
