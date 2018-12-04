@@ -29,8 +29,11 @@ class ImageType extends AbstractType
                     'Non' => false
                 ],
                 'expanded' => true,
+                'label' => 'Image de couverture',
             ])
-            ->add('project')
+            ->add('project', null, [
+                'label' => 'Projet',
+            ])
         ;
     }
 

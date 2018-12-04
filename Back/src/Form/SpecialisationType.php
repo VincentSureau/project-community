@@ -14,7 +14,9 @@ class SpecialisationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
+            ->add('name', null, [
+                'label' => 'Nom',
+            ])
             ->add('AppUsers', EntityType::class, [
             'class' => AppUser::class,
             'multiple' => true,

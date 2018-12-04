@@ -18,6 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 
 class AppUserType extends AbstractType
 {
@@ -35,9 +36,15 @@ class AppUserType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('firstname')
-            ->add('lastname')
-            ->add('promotion');
+            ->add('firstname', null, [
+                'label' => 'Prénom',
+            ])
+            ->add('lastname', null, [
+                'label' => 'Nom'
+            ])
+            ->add('promotion', null, [
+                'label' => 'Promotion',
+            ]);
 
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             $user = $event->getData();
@@ -60,18 +67,42 @@ class AppUserType extends AbstractType
                         'download_link' => false,
                         'image_uri' => true,
                      ])
-                     ->add('phoneNumber')
-                     ->add('city')
-                     ->add('zipcode')
-                     ->add('linkLinkedin')
-                     ->add('linkGithub')
-                     ->add('linkPersonal')
-                     ->add('isActive')
-                     ->add('description')
-                     ->add('promotion')
-                     ->add('specialisation')
-                     ->add('professionalStatus')
-                     ->add('project')
+                     ->add('phoneNumber', TelType::class, [
+                         'label' => 'Téléphone',
+                     ] )
+                     ->add('city', null, [
+                         'label' => 'Ville',
+                     ])
+                     ->add('zipcode', null, [
+                         'label' => 'Code postal',
+                     ])
+                     ->add('linkLinkedin', null, [
+                         'label' => '',
+                     ])
+                     ->add('linkGithub', null, [
+                         'label' => 'Profil LinkedIn',
+                     ])
+                     ->add('linkPersonal', null, [
+                         'label' => 'Site personnel',
+                     ])
+                     ->add('isActive', null, [
+                         'label' => 'Afficher le profil',
+                     ])
+                     ->add('description', null, [
+                         'label' => 'Description',
+                     ])
+                     ->add('promotion', null, [
+                         'label' => 'Promotion',
+                     ])
+                     ->add('specialisation', null, [
+                         'label' => 'Spécialisation',
+                     ])
+                     ->add('professionalStatus', null, [
+                         'label' => 'Statut profesionnel',
+                     ])
+                     ->add('project', null, [
+                         'label' => 'Project',
+                     ])
                      ->add('competences', EntityType::class, [
                         'class' => Competence::class,
                         'multiple' => true,

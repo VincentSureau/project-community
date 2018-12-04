@@ -28,9 +28,15 @@ class ProjectType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('description')
-            ->add('promotion')
+            ->add('name', null, [
+                'label' => 'Nom',
+            ])
+            ->add('description', null, [
+                'label' => 'Description',
+            ])
+            ->add('promotion', null, [
+                'label' => 'Promotion',
+            ])
             ->add('appUsers', EntityType::class, [
                 'class' => AppUser::class,
                 'multiple' => true,
@@ -49,9 +55,12 @@ class ProjectType extends AbstractType
             $form = $event->getForm();
             dump($project);
             if ($project && $project->getId() !== null) {
-                $form->add('linkProject')
-                     ->add('linkVideo')
-                     ->add('competences')
+                $form->add('linkProject', null, [
+                    'label' => 'Lien du projet',
+                ])
+                     ->add('linkVideo', null, [
+                         'label' => 'Lien de la vidéo',
+                     ])
                      ->add('competences', EntityType::class, [
                         'class' => Competence::class,
                         'multiple' => true,
@@ -62,7 +71,9 @@ class ProjectType extends AbstractType
                             'data-placeholder' => 'Choisir une compétence'],
                         ]
                         )
-                     ->add('isActive')
+                     ->add('isActive', null, [
+                         'label' => 'Afficher le projet',
+                     ])
                      ;
 
             }
