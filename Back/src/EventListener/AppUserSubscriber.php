@@ -113,7 +113,7 @@ final class AppUserSubscriber implements EventSubscriber
 
         if ($user instanceof AppUser) {
             // toDo: create a util for this features
-            setLocale(LC_CTYPE, 'fr_FR.UTF8');
+            setLocale(LC_CTYPE, 'en_GB.UTF8');
             $firstname = strtolower(iconv('utf-8', 'ascii//TRANSLIT', $user->getFirstname()));
             $lastname = strtolower(iconv('utf-8', 'ascii//TRANSLIT', $user->getLastname()));
             $slug = $firstname . '-' . $lastname . '-' . $user->getId();
