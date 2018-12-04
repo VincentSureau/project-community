@@ -16,7 +16,7 @@ import {
   // connectedMemberReceived,
 } from 'src/store/actions/membersActions';
 
-const API_URL = 'http://127.0.0.1:8001';
+import { API_URL } from '../../configuration';
 
 /**
  * Middleware de gestion axios

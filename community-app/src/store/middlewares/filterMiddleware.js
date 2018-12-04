@@ -10,7 +10,7 @@ import {
   GET_FILTERS_PROJECTS,
 } from 'src/store/actions/filtersActions';
 
-const API_URL = 'http://127.0.0.1:8001';
+import { API_URL } from '../../configuration';
 
 /**
  * Middleware de gestion axios

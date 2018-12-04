@@ -7,7 +7,7 @@ import {
   proStatusReceived,
 } from 'src/store/actions/prostatusActions';
 
-const API_URL = 'http://127.0.0.1:8001';
+import { API_URL } from '../../configuration';
 
 /**
  * Middleware de gestion axios
