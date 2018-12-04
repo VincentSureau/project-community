@@ -6,8 +6,6 @@ api_platform:
             apiKey:		
                 name: Authorization		
                 type: header 
-<<<<<<< HEAD
+
     enable_swagger_ui: false
-=======
-    enable_swagger_ui: false
->>>>>>> b5d0764af1fab7c67b8dc40c3aa702cfe96b4cb3
+
