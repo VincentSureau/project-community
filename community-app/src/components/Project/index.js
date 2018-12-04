@@ -12,6 +12,7 @@ import ProjectPresentation from './ProjectPresentation';
 import ProjectGallery from './ProjectGallery';
 import ProjectDescription from './ProjectDescription';
 import ProjectLink from './ProjectLink';
+import { API_URL } from '../../configuration';
 
 // Styles
 import './project.scss';
@@ -48,7 +49,7 @@ class Project extends React.Component {
             <h1>{project.name}</h1>
             <div id="project-project-pc">
               <div id="project-project-pc-screen">
-                <img src={`http://127.0.0.1:8001/img/projects/${heroImage[0].contentUrl}`} alt="" />
+                <img src={`${API_URL}/img/projects/${heroImage[0].contentUrl}`} alt="" />
               </div>
             </div>
             <ArrowDown />

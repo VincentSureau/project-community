@@ -6,6 +6,7 @@ import {
   CarouselControl,
   CarouselIndicators,
 } from 'reactstrap';
+import { API_URL } from '../../configuration';
 
 class ProjectCarousel extends Component {
   constructor(props) {
@@ -51,7 +52,7 @@ class ProjectCarousel extends Component {
     this.items = images.map((image, i) => (
       {
         key: i,
-        src: `http://127.0.0.1:8001/img/projects/${image.contentUrl}`,
+        src: `${API_URL}/img/projects/${image.contentUrl}`,
         altText: `Slide ${i + 1}`,
         caption: `Slide ${i + 1}`,
       }));

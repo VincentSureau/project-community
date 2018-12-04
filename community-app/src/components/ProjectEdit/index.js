@@ -7,6 +7,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import uuid from 'uuid/v4';
 import serialize from '../../functions/Serialize';
+import { API_URL } from '../../configuration';
 
 
 /**
@@ -44,9 +45,7 @@ class ProjectEdit extends React.Component {
     if (evt.target.files[0].size < 500000) {
       fd.append('file', evt.target.files[0], evt.target.files[0].name);
       fd.append('isHero', hero);
-      console.log(hero);
-      console.log(`http://127.0.0.1:8001/project/${project.id}/project_pictures/${evt.target.id.split('/')[2]}`, fd);
-      axios.post(`http://127.0.0.1:8001/project/${project.id}/project_pictures/${evt.target.id.split('/')[2]}`, fd, {
+      axios.post(`${API_URL}/project/${project.id}/project_pictures/${evt.target.id.split('/')[2]}`, fd, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('connect_token')}`,
         },
@@ -63,24 +62,6 @@ class ProjectEdit extends React.Component {
   getNestedObject = (nestedObj, pathArr) => (
     pathArr.reduce((obj, key) => (obj && obj[key] !== 'undefined') ? obj[key] : undefined, nestedObj)
   );
-
-  // formToJSON = elements => [].reduce.call(elements, (data, element) => {
-  //   if (element.name === 'profile_pic') {
-  //     if (element.value !== '') {
-  //       data[element.name] = element.value;
-  //     }
-  //     else {
-  //       data[''] = '';
-  //     }
-  //   }
-  //   if (element.name.search('/competences/') >= 0) {
-  //     data[element.name] = element.checked;
-  //   }
-  //   else {
-  //     data[element.name] = element.value;
-  //   }
-  //   return data;
-  // }, {})
 
   handleSubmit(event) {
     event.preventDefault();
@@ -113,36 +94,21 @@ class ProjectEdit extends React.Component {
               <h1>{project.name}</h1>
               <div id="project-project-pc">
                 <div id="project-project-pc-screen">
-                  <img src={`http://127.0.0.1:8001/img/projects/${heroImage[0].contentUrl}`} alt="" />
+                  <img src={`${API_URL}/img/projects/${heroImage[0].contentUrl}`} alt="" />
                 </div>
               </div>
               <label className="label col-6 text-center" htmlFor={heroImage[0]['@id']}>
                 Image principale du projet (max: 500Ko):
                 <input id={heroImage[0]['@id']} className="text w-70" type="file" name="heroImage" placeholder="Aperçu écran" onChange={e => this.onChangeFile(e, true)} accept=".jpg, .png, .jpeg" />
 
-            {/*}    <input
-                  className="mx-2 input-text ishero w-80 text-project-lighter"
-                  type="text"
-                  id={heroImage[0]['@id']}
-                  name="images"
-                  defaultValue={heroImage[0].imageLink}
-                /> */}
               </label>
               <div id="projectedit-form-gallery" className="row">
                 {images.map(image => (
                   <div id="projectedit-form-gallery-imagechange" className="col-12 col-md-6 col-lg-4" key={uuid()}>
-                    <img src={`http://127.0.0.1:8001/img/projects/${image.contentUrl}`} alt="" />
+                    <img src={`${API_URL}/img/projects/${image.contentUrl}`} alt="" />
                     <label className="label col-12 images-label" htmlFor={image['@id']}>
                       Insérer un lien :
                       <input id={image['@id']} className="text" type="file" name="imageProject" placeholder="Aperçu écran" onChange={e => this.onChangeFile(e, false)} accept=".jpg, .png, .jpeg" />
-
-                      {/*<input
-                        className="input-text"
-                        type="text"
-                        id={image['@id']}
-                        name="images"
-                        defaultValue={image.imageLink}
-                      />*/}
                     </label>
                   </div>
                 ))}
