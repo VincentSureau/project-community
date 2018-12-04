@@ -19,6 +19,8 @@ use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity; 
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
+use Gedmo\Mapping\Annotation as Gedmo;
+
 
 /**
  * @ApiResource(
@@ -318,7 +320,8 @@ class AppUser implements UserInterface
 
     /**
      * @Groups({"user", "AppUserList", "project", "ProjectList"})
-     * @ORM\Column(type="string", length=120, nullable=true)
+     * @Gedmo\Slug(fields={"firstname", "lastname"})
+     * @ORM\Column(type="string", length=120, nullable=true, unique=true)
      * @ApiProperty(iri="https://schema.org/URL")
      */
     private $slug;

@@ -30,8 +30,6 @@ final class AppUserSubscriber implements EventSubscriber
     {
         return [
             Events::prePersist,
-            Events::postPersist,
-            Events::postUpdate,
         ];
     }
 
@@ -45,28 +43,6 @@ final class AppUserSubscriber implements EventSubscriber
     {
         $this->sendMail($args);
         $this->encryptPassword($args);
-    }
-
-    /**
-     * set user slug with they Id after persist event
-     *
-     * @param LifecycleEventArgs $args
-     * @return void
-     */
-    public function postPersist(LifecycleEventArgs $args)
-    {
-        $this->setSlug($args);
-    }
-
-    /**
-     * set user slug with they Id after update event
-     *
-     * @param LifecycleEventArgs $args
-     * @return void
-     */
-    public function postUpdate(LifecycleEventArgs $args)
-    {
-        $this->setSlug($args);
     }
 
     /**
@@ -98,28 +74,6 @@ final class AppUserSubscriber implements EventSubscriber
         if ($user instanceof AppUser) {
             $encodedPassword = $this->passwordEncoder->encodePassword($user, $user->getPassword());
             $user->setPassword($encodedPassword);
-        }
-    }
-
-    /**
-     * create the slug of a user
-     *
-     * @param LifecycleEventArgs $args
-     * @return void
-     */
-    public function setSlug(LifecycleEventArgs $args)
-    {
-        $user = $args->getObject();
-
-        if ($user instanceof AppUser) {
-            // toDo: create a util for this features
-            setLocale(LC_CTYPE, 'en_GB.UTF8');
-            $firstname = strtolower(iconv('utf-8', 'ascii//TRANSLIT', $user->getFirstname()));
-            $lastname = strtolower(iconv('utf-8', 'ascii//TRANSLIT', $user->getLastname()));
-            $slug = $firstname . '-' . $lastname . '-' . $user->getId();
-            $user->setSlug($slug);
-            $em = $args->getObjectManager();
-            $em->flush();          
         }
     }
 
