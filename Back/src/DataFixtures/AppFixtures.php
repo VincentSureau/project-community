@@ -277,8 +277,8 @@ class AppFixtures extends Fixture
         $promoKrypton->setEndDate(new \DateTime());
         $manager->persist($promoKrypton);
         $community = new Project;
-        $community->setDescription('L\'objectif du projet était de réaliser un site internet communautaire pour les anciens étudiants d\' O\'clock : un mélange de LinkedIn et des Copains d’Avant (une partie étant publique et l’autre privée).
-        Il s’agit d’une plateforme permettant de référencer tous les étudiants et anciens étudiants d\’ O\'clock en recensant leurs différents profils et projets.
+        $community->setDescription('L\'objectif du projet était de réaliser un site internet communautaire pour les anciens étudiants de O\'clock : un mélange de LinkedIn et des Copains d’Avant (une partie étant publique et l’autre privée).
+        Il s’agit d’une plateforme permettant de référencer tous les étudiants et anciens étudiants de O\'clock en recensant leurs différents profils et projets.
         Plusieurs avantages :
             Pour les personnes qui se projettent de s’inscrire : être convaincu en consultant les profils, projets et débouchés professionnels des anciens élèves d’O’Clock.
             Pour les élèves actuels de la formation O’Clock : être guidés dans leur choix de spécialisation en consultant les projets et profils des anciennes promo/élèves.
