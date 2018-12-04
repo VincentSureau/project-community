@@ -12,6 +12,7 @@ $(function() {
     showButtonPanel: true,
     changeMonth: true,
     changeYear: true,
+    yearRange: "1950:2018",
     dateFormat: 'dd/mm/yy',
     altField: "#datepicker",
     closeText: "Fermer",

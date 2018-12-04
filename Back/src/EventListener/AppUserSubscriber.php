@@ -43,7 +43,7 @@ final class AppUserSubscriber implements EventSubscriber
      */
     public function prePersist(LifecycleEventArgs $args)
     {
-        // $this->sendMail($args);
+        $this->sendMail($args);
         $this->encryptPassword($args);
     }
 
@@ -112,6 +112,8 @@ final class AppUserSubscriber implements EventSubscriber
         $user = $args->getObject();
 
         if ($user instanceof AppUser) {
+            // toDo: create a util for this features
+            setLocale(LC_CTYPE, 'fr_FR.UTF8');
             $firstname = strtolower(iconv('utf-8', 'ascii//TRANSLIT', $user->getFirstname()));
             $lastname = strtolower(iconv('utf-8', 'ascii//TRANSLIT', $user->getLastname()));
             $slug = $firstname . '-' . $lastname . '-' . $user->getId();

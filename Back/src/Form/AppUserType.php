@@ -44,7 +44,7 @@ class AppUserType extends AbstractType
             $form = $event->getForm();
             // add fields to the form when editing an existing user
             if ($user && $user->getId() !== null) {
-                $form->add('birthdate', DateType::class, [
+                $form->add('birthdate', BirthdayType::class, [
                     'label' => 'Date de naissance',
                     'widget' => 'single_text',
                     'html5' => false,
