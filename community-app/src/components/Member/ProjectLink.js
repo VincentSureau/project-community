@@ -9,6 +9,7 @@ import { NavLink } from 'react-router-dom';
  * Local import
  */
 // Components
+import { API_URL } from '../../configuration';
 
 // Styles
 import './member.scss';
@@ -32,7 +33,7 @@ const ProjectLink = ({
         <NavLink exact to={''.concat('/projects/', projectSlug)} className="no-blue-on-link d-flex flex-column align-items-center">
           <div id="member-project-pc">
             <div id="member-project-pc-screen">
-              <img src={`http://127.0.0.1:8001/img/projects/${heroImage[0].contentUrl}`} alt="" />
+              <img src={`${API_URL}/img/projects/${heroImage[0].contentUrl}`} alt="" />
             </div>
           </div>
           <button type="button" className="btn btn-outline-white mx-3 btn-border-radius text-uppercase mt-7">C'est par ici</button>
