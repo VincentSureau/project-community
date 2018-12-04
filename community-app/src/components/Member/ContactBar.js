@@ -41,9 +41,9 @@ const ContactBar = ({
       {/* On affiche les icones uniquement si les champs ont été renseignés par le membre */}
       {/* {email !== null && <a href={`mailto:${email}`}><FaRegEnvelope className="text-white" /></a>}
       {phoneNumber !== '' && <a href={`tel:${phoneNumber}`}><FaPhone className="text-white" /></a>} */}
-      {linkGithub !== '' && <a href={linkGithub}><FaGithub className="text-white" /></a>}
-      {linkLinkedin !== '' && <a href={linkLinkedin}><FaLinkedinIn className="text-white" /></a>}
-      {linkPersonal !== '' && <a href={linkPersonal}><FaDesktop className="text-white" /></a>}
+      {linkGithub !== null && <a href={linkGithub}><FaGithub className="text-white" /></a>}
+      {linkLinkedin !== null && <a href={linkLinkedin}><FaLinkedinIn className="text-white" /></a>}
+      {linkPersonal !== null && <a href={linkPersonal}><FaDesktop className="text-white" /></a>}
     </div>
     <div className="col-4 col-md-4 order-3 order-md-2 align-self-center">
       <ArrowDown />
