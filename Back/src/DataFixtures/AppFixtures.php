@@ -288,7 +288,31 @@ class AppFixtures extends Fixture
         $community->setIsActive(true);
         $community->setPromotion($promoKrypton);
         $community->setName('Oclock Community');
+
         $manager->persist($community);
+
+        for($image_index = 0; $image_index < 4; $image_index++) {
+            $image = new Image;
+            $url_to_image = 'https://via.placeholder.com/504x300.png';
+            
+            $ch = curl_init($url_to_image);
+            
+            $my_save_dir = 'public/img/projects/';
+            $filename = md5(uniqid(rand(), true)) . '.png';
+            $complete_save_loc = $my_save_dir . $filename;
+            $fp = fopen($complete_save_loc, 'wb');
+            curl_setopt($ch, CURLOPT_FILE, $fp);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_exec($ch);
+            curl_close($ch);
+            fclose($fp);
+            
+            $image->setContentUrl($filename);
+            $image->setProject($community);
+            $image->setIsHero(($image_index == 0)? true : false);
+            $manager->persist($image);
+        }
+
         $communityUsers = [
             [
                 'prenom' => 'Tristan',
