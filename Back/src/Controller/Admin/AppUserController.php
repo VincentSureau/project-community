@@ -92,6 +92,9 @@ class AppUserController extends AbstractController
                 'L\' utilisateur ' . $appUser->__toString() . ' a été modifié'
             );
 
+            // Prevent the serialization of the file property
+            $appUser->file = null;
+
             return $this->redirectToRoute('app_user_index', ['id' => $appUser->getId()]);
         }
 

@@ -79,7 +79,9 @@ class ImageController extends AbstractController
                 'success',
                 'L\'image ' . $image->getId() . ' a été modifiée'
             );            
-
+            // Prevent the serialization of the file property
+            $image->file = null;
+            
             return $this->redirectToRoute('image_index');
         }
 
