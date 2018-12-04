@@ -169,7 +169,7 @@ class MemberEdit extends React.Component {
                       }
                     </div>
                   </div>
-                </label>s
+                </label>
                 <label className="label col-12" htmlFor="selectinput-select">
                   Status professionnel:
                   <div>
@@ -179,7 +179,9 @@ class MemberEdit extends React.Component {
                           <option
                             key={this.getNestedObject(singleStatus, ['@id'])}
                             value={this.getNestedObject(singleStatus, ['@id'])}
-                            selected={value.status === this.getNestedObject(singleStatus, ['name'])}
+                            selected={(this.getNestedObject(value, ['status', 'name']) === this.getNestedObject(singleStatus, ['name']))
+                              ? true 
+                              : false}
                           >
                             {this.getNestedObject(singleStatus, ['name'])}
                           </option>
