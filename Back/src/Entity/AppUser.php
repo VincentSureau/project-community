@@ -198,7 +198,7 @@ class AppUser implements UserInterface
      * @ORM\Column(type="string", length=150, nullable=true)
      * @Assert\Url(
      *     message = "L'url '{{ value }}  n'est pas une url valide",
-     *     protocols = {"http", "https"}
+     *     protocols = {"http", "https"},
      *     relativeProtocol = true
      * )
      * @ApiProperty(iri="https://schema.org/URL")
@@ -210,7 +210,7 @@ class AppUser implements UserInterface
      * @ORM\Column(type="string", length=150, nullable=true)
      * @Assert\Url(
      *     message = "L'url '{{ value }}  n'est pas une url valide",
-     *     protocols = {"http", "https"}
+     *     protocols = {"http", "https"},
      *     relativeProtocol = true
      * )
      * @ApiProperty(iri="https://schema.org/URL")
@@ -222,7 +222,7 @@ class AppUser implements UserInterface
      * @ORM\Column(type="string", length=150, nullable=true)
      * @Assert\Url(
      *     message = "L'url '{{ value }}  n'est pas une url valide",
-     *     protocols = {"http", "https"}
+     *     protocols = {"http", "https"},
      *     relativeProtocol = true
      * )
      * @ApiProperty(iri="https://schema.org/URL")
