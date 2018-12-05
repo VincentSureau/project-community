@@ -163,7 +163,7 @@ class ReactStrapNavbar extends React.Component {
                 {
                   (isConnected)
                     ? <ReactStrapLink className="btn btn-outline-white mx-3 btn-border-radius text-white text-uppercase font-weight-bold connection-button" onClick={() => this.disconnect()}>Me déconnecter</ReactStrapLink>
-                    : <NavLink exact to="/login" className="btn btn-outline-white mx-3 btn-border-radius text-white text-uppercase font-weight-bold connection-button">Me connecter</NavLink>
+                    : <NavLink exact to="/login" className="btn btn-outline-white mx-3 btn-border-radius text-white text-uppercase font-weight-bold connection-button d-flex justify-content-center">Me connecter</NavLink>
                 }
               </NavItem>
             </Nav>
