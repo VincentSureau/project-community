@@ -54,7 +54,7 @@ class MemberEdit extends React.Component {
     const fd = new FormData();
     if (evt.target.files[0].size < 500000) {
       fd.append('file', evt.target.files[0], evt.target.files[0].name);
-      axios.post(`http://127.0.0.1:8001/app_users/${member.id}/profil_picture`, fd, {
+      axios.post(`${API_URL}/app_users/${member.id}/profil_picture`, fd, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('connect_token')}`,
         },
@@ -169,7 +169,7 @@ class MemberEdit extends React.Component {
                       }
                     </div>
                   </div>
-                </label>s
+                </label>
                 <label className="label col-12" htmlFor="selectinput-select">
                   Status professionnel:
                   <div>
@@ -179,7 +179,9 @@ class MemberEdit extends React.Component {
                           <option
                             key={this.getNestedObject(singleStatus, ['@id'])}
                             value={this.getNestedObject(singleStatus, ['@id'])}
-                            selected={value.status === this.getNestedObject(singleStatus, ['name'])}
+                            selected={(this.getNestedObject(value, ['status', 'name']) === this.getNestedObject(singleStatus, ['name']))
+                              ? true 
+                              : false}
                           >
                             {this.getNestedObject(singleStatus, ['name'])}
                           </option>

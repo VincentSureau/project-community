@@ -108,7 +108,11 @@ class Project
      * @Assert\Url(
      *     message = "L'url '{{ value }}  n'est pas une url valide",
      *     protocols = {"http", "https"}
+<<<<<<< HEAD
      *     relativeProtocol = true
+=======
+     *     relativeProtocol: true
+>>>>>>> efa741d4f305f8dbde4e73dc034a65368ed4d26f
      * )
      * @Groups({"project", "projectWrite"})
      * @ApiProperty(iri="https://schema.org/URL") 
@@ -120,7 +124,11 @@ class Project
      * @Assert\Url(
      *     message = "L'url '{{ value }}  n'est pas une url valide",
      *     protocols = {"http", "https"}
+<<<<<<< HEAD
      *     relativeProtocol = true
+=======
+     *     relativeProtocol: true
+>>>>>>> efa741d4f305f8dbde4e73dc034a65368ed4d26f
      * )
      * @Groups({"project", "projectWrite"})
      * @ApiProperty(iri="https://schema.org/URL")
