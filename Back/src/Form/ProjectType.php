@@ -53,7 +53,6 @@ class ProjectType extends AbstractType
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             $project = $event->getData();
             $form = $event->getForm();
-            dump($project);
             if ($project && $project->getId() !== null) {
                 $form->add('linkProject', null, [
                     'label' => 'Lien du projet',
