@@ -73,8 +73,8 @@ class ReactStrapNavbar extends React.Component {
     );
 
     const classNavBar = (classcolor !== '')
-      ? `fixed-top row bg-${classcolor}`
-      : 'fixed-top row bg-notfound-navfoot';
+      ? `fixed-top bg-${classcolor}`
+      : 'fixed-top bg-notfound-navfoot';
 
     const classNavBarColor = (classcolor !== '')
       ? `bg-${classcolor}`
