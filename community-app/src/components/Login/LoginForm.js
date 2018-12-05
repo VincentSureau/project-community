@@ -32,7 +32,6 @@ class LoginForm extends React.Component {
     evt.preventDefault();
     const { onSubmitLogin } = this.props;
     const data = serialize(evt.target, { hash: true });
-    console.log(evt);
     onSubmitLogin(data);
   }
 

@@ -81,7 +81,6 @@ const projectMiddleware = store => next => (action) => {
       })
         // succes
         .then((response) => {
-          console.log(response);
           store.dispatch(projectEdited());
         })
         // echec

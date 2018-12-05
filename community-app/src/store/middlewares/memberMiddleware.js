@@ -98,6 +98,9 @@ const memberMiddleware = store => next => (action, context) => {
         method: 'delete',
         url: `${API_URL}/app_users/${action.id}`,
         responseType: 'json',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('connect_token')}`,
+        },
       })
         // succes
         .then((response) => {

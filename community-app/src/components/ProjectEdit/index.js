@@ -50,10 +50,8 @@ class ProjectEdit extends React.Component {
           Authorization: `Bearer ${localStorage.getItem('connect_token')}`,
         },
       }).then((response) => {
-        console.log(response);
         window.location.reload(true);
       }).catch((error) => {
-        console.error(error);
       });
     }
   }

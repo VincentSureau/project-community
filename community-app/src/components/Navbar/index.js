@@ -47,7 +47,6 @@ class ReactStrapNavbar extends React.Component {
 
   toggle() {
     const { isOpen } = this.state;
-    console.log(!isOpen);
     this.setState({
       isOpen: !isOpen,
     });
