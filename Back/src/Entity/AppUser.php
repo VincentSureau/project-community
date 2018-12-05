@@ -199,6 +199,7 @@ class AppUser implements UserInterface
      * @Assert\Url(
      *     message = "L'url '{{ value }}  n'est pas une url valide",
      *     protocols = {"http", "https"}
+     *     relativeProtocol: true
      * )
      * @ApiProperty(iri="https://schema.org/URL")
      */
@@ -210,6 +211,7 @@ class AppUser implements UserInterface
      * @Assert\Url(
      *     message = "L'url '{{ value }}  n'est pas une url valide",
      *     protocols = {"http", "https"}
+     *     relativeProtocol: true
      * )
      * @ApiProperty(iri="https://schema.org/URL")
      */
@@ -221,6 +223,7 @@ class AppUser implements UserInterface
      * @Assert\Url(
      *     message = "L'url '{{ value }}  n'est pas une url valide",
      *     protocols = {"http", "https"}
+     *     relativeProtocol: true
      * )
      * @ApiProperty(iri="https://schema.org/URL")
      */
