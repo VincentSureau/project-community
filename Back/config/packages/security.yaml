@@ -38,7 +38,7 @@ security:
                     - App\Security\AppUserAuthenticator
             logout:
                 path: app_logout
-                target: admin_index
+                target: 'http://o-community.fr'
             context: backend
 
         admin:
