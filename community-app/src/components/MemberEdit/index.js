@@ -59,7 +59,6 @@ class MemberEdit extends React.Component {
           Authorization: `Bearer ${localStorage.getItem('connect_token')}`,
         },
       }).then((response) => {
-        console.log(response);
         window.location.reload(true);
       });
     }
@@ -145,7 +144,7 @@ class MemberEdit extends React.Component {
                 </label>
                 <label className="label col-12" htmlFor="bio-textarea">
                   Biographie :
-                  <textarea id="bio-textarea" className="col-12 input-textarea" type="textarea" name="description" row="" placeholder="Décrivez votre parcourt, votre but et tout ce qui fait qu'un recruteur veuille de vous." defaultValue={value.description} onChange={e => this.onChangeInput(e)} />
+                  <textarea id="bio-textarea" className="col-12 input-textarea" type="textarea" name="description" row="" placeholder="Décrivez votre parcours, votre but et tout ce qui fait qu'un recruteur veuille de vous." defaultValue={value.description} onChange={e => this.onChangeInput(e)} />
                 </label>
                 <label className="label col-12" htmlFor="competences-checkbox">
                   Compétences:

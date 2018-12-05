@@ -15,6 +15,7 @@ import {
   memberEdited,
   // connectedMemberReceived,
 } from 'src/store/actions/membersActions';
+import { disconnectMember } from 'src/store/actions/loginActions';
 
 import { API_URL } from '../../configuration';
 
@@ -98,10 +99,21 @@ const memberMiddleware = store => next => (action, context) => {
         method: 'delete',
         url: `${API_URL}/app_users/${action.id}`,
         responseType: 'json',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('connect_token')}`,
+        },
       })
         // succes
         .then((response) => {
           console.log('DeleteProfil', response);
+          localStorage.removeItem('connect_token');
+          localStorage.removeItem('connectedMember');
+          localStorage.removeItem('connectedMemberFirstName');
+          localStorage.removeItem('connectedMemberLastName');
+          localStorage.removeItem('connectedMemberSlugMember');
+          localStorage.removeItem('connectedMemberisActive');
+          localStorage.removeItem('connectedMemberSlugProject');
+          store.dispatch(disconnectMember());
         })
         // echec
         .catch((error) => {

@@ -17,15 +17,12 @@ import './textinput.scss';
  */
 class TextInput extends React.Component {
   onChangeInput(e) {
-    // console.log(e.target.name, ' --- ', e.target.value);
     const { setFilterWithType } = this.props;
     setFilterWithType(e.target.name, e.target.value);
   }
 
   render() {
     const { type, placeholder, value } = this.props;
-    console.log(value);
-    
     return (
       <div className="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-3">
         <div id="textinput">
@@ -48,6 +45,11 @@ TextInput.propTypes = {
   type: PropTypes.string.isRequired,
   placeholder: PropTypes.string.isRequired,
   setFilterWithType: PropTypes.func.isRequired,
+  value: PropTypes.string,
+};
+
+TextInput.defaultProps = {
+  value: '',
 };
 
 /**

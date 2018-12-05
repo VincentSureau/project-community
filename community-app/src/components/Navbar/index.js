@@ -47,7 +47,6 @@ class ReactStrapNavbar extends React.Component {
 
   toggle() {
     const { isOpen } = this.state;
-    console.log(!isOpen);
     this.setState({
       isOpen: !isOpen,
     });
@@ -152,7 +151,7 @@ class ReactStrapNavbar extends React.Component {
                     )}
                     {((connectedMemberRole === 'ROLE_COMMUNITY_ADMIN') || (connectedMemberRole === 'ROLE_COMMUNITY_SUPERADMIN'))
                       && (
-                      <ReactStrapLink className="nav-item nav-link text-white text-center text-uppercase font-weight-bold" href="http://127.0.0.1:8001/app_login">Espace admin</ReactStrapLink>
+                      <ReactStrapLink className="nav-item nav-link text-white text-center text-uppercase font-weight-bold" href="http://api.o-community.fr/gestion">Espace admin</ReactStrapLink>
                       )
                     }
                   </DropdownMenu>

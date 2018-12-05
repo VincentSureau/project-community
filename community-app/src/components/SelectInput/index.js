@@ -17,7 +17,6 @@ import './selectinput.scss';
  */
 class SelectInput extends React.Component {
   onChange(e) {
-    console.log(e.target.value);
     const { setFilterWithType } = this.props;
     setFilterWithType(e.target.name, e.target.value);
   }

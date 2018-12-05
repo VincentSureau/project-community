@@ -38,7 +38,7 @@ const login = store => next => (action) => {
         // echec
         .catch((error) => {
           console.error('Connexion: ', error);
-          console.log(store.dispatch(errorConnexion('Les identifiants ne sont pas valides')));
+          store.dispatch(errorConnexion('Les identifiants ne sont pas valides'));
         });
 
       break;
