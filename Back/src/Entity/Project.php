@@ -128,7 +128,7 @@ class Project
     private $linkVideo;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\AppUser", mappedBy="project")
+     * @ORM\OneToMany(targetEntity="App\Entity\AppUser", mappedBy="project", cascade={"all"})
      * @Groups({"project", "ProjectList"})
      */
     private $appUsers;
@@ -364,4 +364,5 @@ class Project
     {
         return $this->name;
     }
+
 }

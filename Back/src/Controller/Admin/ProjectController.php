@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Project;
 use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
+use App\Repository\AppUserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,6 +43,15 @@ class ProjectController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($project);
+
+            // because the relation between project and appuser is mapped by app user,
+            // appUser changes will not be persisted in the database, so we need to do
+            // it manually
+            foreach($project->getAppUsers() as $user)
+            {
+                $user->setProject($project);
+            }
+
             $em->flush();
 
             $this->addFlash(
@@ -69,20 +79,39 @@ class ProjectController extends AbstractController
     /**
      * @Route("/{id}/edit", name="project_edit", methods="GET|POST")
      */
-    public function edit(Request $request, Project $project): Response
+    public function edit(Request $request, Project $project, AppUserRepository $userRepo): Response
     {
         $form = $this->createForm(ProjectType::class, $project);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $em = $this->getDoctrine()->getManager();
+
+            // because the relation between project and appuser is mapped by app user,
+            // appUser changes will not be persisted in the database, so we need to do
+            // it manually
+            $oldUsers = $userRepo->findByProject($project);
+            if(!empty($oldUsers))
+            {
+                foreach($oldUsers as $oldUser)
+                {
+                    $oldUser->setProject(null);
+                }
+            }
+
+            foreach($project->getAppUsers() as $user)
+            {
+                $user->setProject($project);
+            }
+
+            $em->flush();
 
             $this->addFlash(
                 'success',
                 'Le projet ' . $project->getName() . ' a été modifié'
             );
 
-            return $this->redirectToRoute('project_index', ['id' => $project->getId()]);
+            return $this->redirectToRoute('project_index');
         }
 
         return $this->render('admin/project/edit.html.twig', [

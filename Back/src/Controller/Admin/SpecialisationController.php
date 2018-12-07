@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Specialisation;
 use App\Form\SpecialisationType;
 use App\Repository\SpecialisationRepository;
+use App\Repository\AppUserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,6 +43,15 @@ class SpecialisationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($specialisation);
+
+            // because the relation between specialisation and appuser is mapped by app user,
+            // appUser changes will not be persisted in the database, so we need to do
+            // it manually
+            foreach($specialisation->getAppUsers() as $user)
+            {
+                $user->setSpecialisation($specialisation);
+            }
+
             $em->flush();
 
             $this->addFlash(
@@ -69,12 +79,30 @@ class SpecialisationController extends AbstractController
     /**
      * @Route("/{id}/edit", name="specialisation_edit", methods="GET|POST")
      */
-    public function edit(Request $request, Specialisation $specialisation): Response
+    public function edit(Request $request, Specialisation $specialisation, AppUserRepository $userRepo): Response
     {
         $form = $this->createForm(SpecialisationType::class, $specialisation);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // because the relation between specialisation and appuser is mapped by app user,
+            // appUser changes will not be persisted in the database, so we need to do
+            // it manually
+            $oldUsers = $userRepo->findByspecialisation($specialisation);
+            if(!empty($oldUsers))
+            {
+                foreach($oldUsers as $oldUser)
+                {
+                    $oldUser->setSpecialisation(null);
+                }
+            }
+
+            foreach($specialisation->getAppUsers() as $user)
+            {
+                $user->setSpecialisation($specialisation);
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash(
