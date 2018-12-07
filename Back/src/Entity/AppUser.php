@@ -308,7 +308,7 @@ class AppUser implements UserInterface
 
     /**
      * @Groups({"user"})
-     * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="appUsers")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Project", inversedBy="appUsers", cascade={"all"})
      * @ORM\JoinColumn(onDelete="SET NULL")
      * @ApiProperty(iri="https://schema.org/Project")
      */

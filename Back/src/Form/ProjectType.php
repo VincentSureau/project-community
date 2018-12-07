@@ -13,6 +13,9 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use App\Form\AppUserType;
 
 
 class ProjectType extends AbstractType
@@ -48,6 +51,7 @@ class ProjectType extends AbstractType
                     'data-placeholder' => 'Choisir un membre'],
                 ]
                 );
+
 
         // add field to the form when editing an existing project
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
